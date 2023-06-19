@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin_cp;
+namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class Homecontroller extends Controller
+class HomeController extends Controller
 {
     //
 }
