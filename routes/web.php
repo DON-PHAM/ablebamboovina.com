@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/login',function () {
-    return view('Admin_cp.Login.index');
+Route::post('/login','LoginController@login')->name('postlogin');
+Route::get('/login','LoginController@show')->name('login');
+Route::group(['prefix'=>'dashboard'],function () {
+    Route::get('/','Dashboard\HomeController@index');
+    Route::get('users','UserController@index')->name('userlist');
+
 });
