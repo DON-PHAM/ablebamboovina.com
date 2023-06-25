@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Quản trị viên</title>
+    <title>@yield('title')</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <!-- google font -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" type="text/css" />
@@ -26,13 +26,6 @@
     <link href="{{asset('backend/assets/css/dark.css')}}" rel="stylesheet">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119595512-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'UA-119595512-1');
-    </script>
 
 </head>
 <body>

@@ -49,13 +49,13 @@
         </div>
 
         <div id="emailInputWrapper">
-            <label for="email">Email </label>
+            <label for="email">{!! trans('login.email') !!} </label>
             <i class="fas fa-check"></i>
             <input id="email" type="text" name="email" value="" >
         </div>
 
         <div id="passInputWrapper">
-            <label for="password">Mật khẩu <span onclick="toggleShowPass(this)"> <i class="fas fa-eye-slash"></i><i class="fas fa-eye"></i></span> </label>
+            <label for="password">{!! trans('login.password') !!} <span onclick="toggleShowPass(this)"> <i class="fas fa-eye-slash"></i><i class="fas fa-eye"></i></span> </label>
             <i class="fas fa-check"></i>
             <i class="fas fa-exclamation-circle"></i>
             <input id="password" type="password" name="password" value="" disabled="true">
@@ -69,7 +69,7 @@
         </div>
 
         <div id="submit-wrapper">
-            <a class="login-btn" href="javascript:void()">Đăng nhập</a>
+            <a class="login-btn" href="javascript:void()">{!! trans('login.login') !!}</a>
 
         </div>
     </form>

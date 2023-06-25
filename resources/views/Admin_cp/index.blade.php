@@ -1,4 +1,5 @@
 @extends('Admin_cp.Layout.master')
+@section('title',trans('home.title'))
 @section('content')
     <div class="container-fluid">
         <!-- breadcrumb -->
@@ -18,7 +19,7 @@
                                 <i class="fa fa-angle-right"></i>
                             </li>
                             <li class="active">
-                                Dashboard
+                                {!! trans("home.home") !!}
                             </li>
                         </ol>
                     </div>

@@ -1,0 +1,6 @@
+<?php
+return [
+    'email' => '이메일',
+    'password' => '비밀번호',
+    'login' => '로그인'
+];
