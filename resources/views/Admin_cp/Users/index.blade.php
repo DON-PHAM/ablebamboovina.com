@@ -8,7 +8,8 @@
                 <div class="col-md-6">
                     <div class="page-breadcrumb">
                         <h1>{{trans('user.list-user')}}</h1>
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal4" data-whatever="@mdo">
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#userModal"
+                                data-whatever="@mdo">
                             {{trans('home.add')}}
                         </button>
                     </div>
@@ -47,7 +48,7 @@
                                 <th>{{trans('user.phone-number')}}</th>
                                 <th>{{trans('user.status')}}</th>
                                 <th>{{trans('user.active')}}</th>
-                                <th>Salary</th>
+
                             </tr>
                             </thead>
 
@@ -57,49 +58,13 @@
                                 <td>System Architect</td>
                                 <td>Edinburgh</td>
                                 <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
+                                <td>
+                                    <a href="" title="{{trans('user.edit')}}"><i class="fa fa-edit"></i></a>
+                                    <a href="" title="{{trans('user.remove')}}"><i class="fa fa-remove"></i></a>
+                                </td>
+
                             </tr>
-                            <tr>
-                                <td>Garrett Winters</td>
-                                <td>Accountant</td>
-                                <td>Tokyo</td>
-                                <td>63</td>
-                                <td>2011/07/25</td>
-                                <td>$170,750</td>
-                            </tr>
-                            <tr>
-                                <td>Ashton Cox</td>
-                                <td>Junior Technical Author</td>
-                                <td>San Francisco</td>
-                                <td>66</td>
-                                <td>2009/01/12</td>
-                                <td>$86,000</td>
-                            </tr>
-                            <tr>
-                                <td>Cedric Kelly</td>
-                                <td>Senior Javascript Developer</td>
-                                <td>Edinburgh</td>
-                                <td>22</td>
-                                <td>2012/03/29</td>
-                                <td>$433,060</td>
-                            </tr>
-                            <tr>
-                                <td>Airi Satou</td>
-                                <td>Accountant</td>
-                                <td>Tokyo</td>
-                                <td>33</td>
-                                <td>2008/11/28</td>
-                                <td>$162,700</td>
-                            </tr>
-                            <tr>
-                                <td>Brielle Williamson</td>
-                                <td>Integration Specialist</td>
-                                <td>New York</td>
-                                <td>61</td>
-                                <td>2012/12/02</td>
-                                <td>$372,000</td>
-                            </tr>
+
 
                             </tbody>
 
@@ -108,7 +73,8 @@
                 </div>
             </div>
 
-            <div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+            <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2"
+                 aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -118,26 +84,107 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form>
-                                <div class="form-group">
-                                    <label for="recipient-name" class="col-form-label">Recipient:</label>
-                                    <input type="text" class="form-control" id="recipient-name">
+                            <form id="formData">
+                                <div class="avatar-wrapper">
+                                    <img class="profile-pic" src=""/>
+                                    <div class="upload-button">
+                                        <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+                                    </div>
+                                    <input class="file-upload" type="file" accept="image/*"/>
                                 </div>
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label">Message:</label>
-                                    <textarea class="form-control" id="message-text"></textarea>
+                                    <label for="recipient-name" class="col-form-label">{{trans('user.email')}}</label>
+                                    <input type="email" name="email" class="form-control" id="recipient-name">
                                 </div>
+                                <div class="form-group">
+                                    <label for="recipient-name"
+                                           class="col-form-label">{{trans('user.user-name')}}</label>
+                                    <input type="text" name="username" class="form-control" id="recipient-name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipient-name"
+                                           class="col-form-label">{{trans('user.phone-number')}}</label>
+                                    <input type="text" name="phonenumber" class="form-control" id="recipient-name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipient-name"
+                                           class="col-form-label">{{trans('user.password')}}</label>
+                                    <input type="password" name="password" class="form-control" id="recipient-name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">{{trans('user.active')}}</label>
+                                    <input type="checkbox" name="status" class="" id="recipient-name">
+                                </div>
+
                             </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                 {{trans('home.close')}}
                             </button>
-                            <button type="button" class="btn btn-primary">
+                            <button type="button" id="saveUser" class="btn btn-primary">
                                 {{trans('home.save')}}
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
+
+            @endsection
+            @section('scripts')
+                <script>
+                    $(document).ready(function () {
+                        loadTable();
+                        var readURL = function (input) {
+                            if (input.files && input.files[0]) {
+                                var reader = new FileReader();
+
+                                reader.onload = function (e) {
+                                    $('.profile-pic').attr('src', e.target.result);
+                                }
+
+                                reader.readAsDataURL(input.files[0]);
+                            }
+                        }
+                        $(".file-upload").on('change', function () {
+                            readURL(this);
+                        });
+                        $(".upload-button").on('click', function () {
+                            $(".file-upload").click();
+                        });
+
+                        function loadTable() {
+                            $.ajax({
+                                url: '{{route('user-list')}}',
+                                method: 'GET',
+                                dataType: 'JSON',
+                                success: function (response) {
+                                    if (response.status) {
+                                        let rows = '';
+                                        $.each(response.data, function (index, value) {
+                                            rows += '<tr>';
+                                            rows += '';
+                                            rows += '';
+                                            rows += '';
+                                            rows += '';
+                                            rows += '<td><a href="" title="{{trans('user.edit')}}"><i class="fa fa-edit"></i></a><a href="" title="{{trans('user.remove')}}"><i class="fa fa-remove"></i></a></td>';
+                                            rows += '</tr>'
+                                        });
+                                    }
+                                },
+                                error: function (xhr, status, error) {
+
+                                }
+                            });
+                        };
+
+                        $('#saveUser').click(function () {
+                            let formData = $('#formData').serialize();
+                            alert(formData);
+                        });
+                    });
+
+                </script>
+
 @endsection

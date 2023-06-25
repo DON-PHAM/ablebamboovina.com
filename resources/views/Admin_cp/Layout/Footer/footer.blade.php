@@ -35,7 +35,7 @@
         $('#bs4-table').DataTable();
     });
 </script>
-
+@yield('scripts')
 <script>
     $(document).ready(function() {
         $('#language').change(function() {
@@ -45,12 +45,17 @@
                 type: "get",
                 success: function(response) {
                     // reload trang để hiển thị nội dung mới
+                    localStorage.setItem('locale',language);
                     location.reload();
                 }
             });
-        })
-    })
+        });
+        let language = localStorage.getItem('locale');
+        $("#language").val(language);
+    });
+
 </script>
+
 
 </body>
 

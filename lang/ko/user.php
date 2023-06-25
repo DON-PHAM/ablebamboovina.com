@@ -9,10 +9,7 @@ return [
     'active' => '행동',
     'user-info' => '계정 정보',
     'password' => '비밀번호',
-
-
-
-
-
+    'edit' => '편집하다',
+    'remove' => '제거하다'
 
 ];

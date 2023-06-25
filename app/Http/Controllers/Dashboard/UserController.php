@@ -12,5 +12,12 @@ class UserController extends Controller
         return view('Admin_cp.Users.index');
     }
 
+    public function getAll() {
+        $data = [
+            'message' => 'xin chào'
+        ];
+        return response()->json($data);
+    }
+
 
 }

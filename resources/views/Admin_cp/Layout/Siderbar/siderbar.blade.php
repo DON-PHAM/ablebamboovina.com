@@ -14,7 +14,7 @@
     <ul id="dc_accordion" class="sidebar-menu tree">
 
         <li class="menu_sub" title="{!! trans('home.user') !!}">
-            <a href="#"> <i class="fa fa-user"></i> <span>{!! trans('home.user') !!} </span> </a>
+            <a href="{{route('user-list')}}"> <i class="fa fa-user"></i> <span>{!! trans('home.user') !!} </span> </a>
 
         </li>
 

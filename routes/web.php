@@ -19,7 +19,7 @@ Route::get('/', function () {
 Route::get('change_language/{language}','Dashboard\HomeController@changLanguage')
     ->name('change-language');
 Route::group(['middleware'=>'locale'],function() {
-    Route::post('/login','LoginController@login')->name('postlogin');
+    Route::post('/login','LoginController@login')->name('post-login');
     Route::get('/login','LoginController@show')->name('login');
 });
 
@@ -29,9 +29,10 @@ Route::group(['middleware'=>'locale'],function() {
 Route::group(['prefix'=>'dashboard','middleware'=>['locale']],function () {
 
     Route::get('/','Dashboard\HomeController@index')->name('admin');
-
+    Route::get('/logout','LoginController@logout')->name('logout');
     //User management
-    Route::get('users','Dashboard\UserController@index')->name('user-list');
+    Route::get('users','Dashboard\UserController@index')->name('user');
+    Route::get('users-list','Dashboard\UserController@getAll')->name('user-list');
     Route::get('users/create','Dashboard\UserController@create')->name('get-user-create');
     Route::post('users/create','Dashboard\UserController@create')->name('post-user-create');
     Route::get('users/edit/{id}','Dashboard\UserController@edit')->name('get-user-edit');

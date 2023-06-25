@@ -24,6 +24,7 @@
     <link href="{{asset('backend/assets/css/menu.css')}}" rel="stylesheet">
     <link href="{{asset('backend/assets/css/responsive.cs')}}s" rel="stylesheet">
     <link href="{{asset('backend/assets/css/dark.css')}}" rel="stylesheet">
+    <link href="{{asset('backend/assets/css/custom.css')}}" rel="stylesheet">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119595512-1"></script>
 
