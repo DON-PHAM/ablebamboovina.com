@@ -26,7 +26,19 @@ class UserRequest extends FormRequest
         return [
             'email' => 'required | email',
             'password' => 'required | min: 6',
-            'name' => 'required'
+            'username' => 'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'username.required' => 'Vui lòng nhập tên.',
+            'email.required' => 'Vui lòng nhập email.',
+            'email.email' => 'Email không đúng định dạng.',
+            'password.required' => 'Vui lòng nhập mật khẩu.',
+            'password.min' => 'Mật khẩu tối thiểu 6 ký tự',
+            // Thêm các message validate khác vào đây
         ];
     }
 }

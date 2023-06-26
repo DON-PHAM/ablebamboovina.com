@@ -14,12 +14,12 @@
     <ul id="dc_accordion" class="sidebar-menu tree">
 
         <li class="menu_sub" title="{!! trans('home.user') !!}">
-            <a href="{{route('user-list')}}"> <i class="fa fa-user"></i> <span>{!! trans('home.user') !!} </span> </a>
+            <a href="{{route('user')}}"> <i class="fa fa-user"></i> <span>{!! trans('home.user') !!} </span> </a>
 
         </li>
 
         <li class="menu_sub">
-            <a href="{{ route('user-list') }}"> <i class="fa fa-indent"></i> <span>{!! trans('home.categoryProduct') !!} </span> </a>
+            <a href="{{ route('category-list') }}"> <i class="fa fa-indent"></i> <span>{!! trans('home.categoryProduct') !!} </span> </a>
 
         </li>
 

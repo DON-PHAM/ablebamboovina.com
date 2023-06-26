@@ -9,7 +9,7 @@
                     <div class="page-breadcrumb">
                         <h1>{{trans('user.list-user')}}</h1>
                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#userModal"
-                                data-whatever="@mdo">
+                                data-whatever="@mdo" style="margin-bottom: 10px">
                             {{trans('home.add')}}
                         </button>
                     </div>
@@ -40,7 +40,7 @@
             <div class=" col-sm-12">
                 <div class="card card-shadow mb-4">
                     <div class="card-body">
-                        <table id="bs4-table" class="table table-bordered table-striped">
+                        <table id="userTable" class="table table-bordered table-striped">
                             <thead>
                             <tr>
                                 <th>{{trans('user.user-name')}}</th>
@@ -53,18 +53,6 @@
                             </thead>
 
                             <tbody>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>
-                                    <a href="" title="{{trans('user.edit')}}"><i class="fa fa-edit"></i></a>
-                                    <a href="" title="{{trans('user.remove')}}"><i class="fa fa-remove"></i></a>
-                                </td>
-
-                            </tr>
-
 
                             </tbody>
 
@@ -84,7 +72,9 @@
                             </button>
                         </div>
                         <div class="modal-body">
+
                             <form id="formData">
+                                @csrf
                                 <div class="avatar-wrapper">
                                     <img class="profile-pic" src=""/>
                                     <div class="upload-button">
@@ -94,27 +84,32 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">{{trans('user.email')}}</label>
-                                    <input type="email" name="email" class="form-control" id="recipient-name">
+                                    <input type="email" name="email" class="form-control" id="email">
                                 </div>
                                 <div class="form-group">
                                     <label for="recipient-name"
                                            class="col-form-label">{{trans('user.user-name')}}</label>
-                                    <input type="text" name="username" class="form-control" id="recipient-name">
+                                    <input type="text" name="username" class="form-control" id="username">
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipient-name"
+                                           class="col-form-label">{{trans('user.fullname')}}</label>
+                                    <input type="text" name="name" class="form-control" id="name">
                                 </div>
                                 <div class="form-group">
                                     <label for="recipient-name"
                                            class="col-form-label">{{trans('user.phone-number')}}</label>
-                                    <input type="text" name="phonenumber" class="form-control" id="recipient-name">
+                                    <input type="text" name="phonenumber" class="form-control" id="phonenumber">
                                 </div>
                                 <div class="form-group">
                                     <label for="recipient-name"
                                            class="col-form-label">{{trans('user.password')}}</label>
-                                    <input type="password" name="password" class="form-control" id="recipient-name">
+                                    <input type="password" name="password" class="form-control" id="password">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">{{trans('user.active')}}</label>
-                                    <input type="checkbox" name="status" class="" id="recipient-name">
+                                    <input type="checkbox" name="status" class="" id="status">
                                 </div>
 
                             </form>
@@ -155,33 +150,56 @@
                         });
 
                         function loadTable() {
+                            $('#userTable').DataTable({
+                                processing:true,
+                                serverSide: true,
+                                ajax: '{{route('user-list')}}',
+                                columns: [
+                                    {data:'username',name:'username'},
+                                    {data: 'email',name:'email'},
+                                    {data:'phonenumber',name: 'phonenumber'},
+                                    {data:'created_at',name:'created_at'},
+                                    {data: 'id', render:function(data,row,type) {
+                                        console.log(data)
+                                        return `<button data-id="${data}" class="btn btn-success">Edit</button> <button data-delete="${data}" class="btn btn-danger">Delete</button>`
+                                        }}
+                                ],
+                                paging: true,
+                                pageLength: 25
+                            })
+
+                        }
+                        $.ajaxSetup({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                        });
+
+                        $('#saveUser').click(function (e) {
+                            e.preventDefault();
+                            let formData = $('#formData').serializeArray();
                             $.ajax({
-                                url: '{{route('user-list')}}',
-                                method: 'GET',
-                                dataType: 'JSON',
-                                success: function (response) {
-                                    if (response.status) {
-                                        let rows = '';
-                                        $.each(response.data, function (index, value) {
-                                            rows += '<tr>';
-                                            rows += '';
-                                            rows += '';
-                                            rows += '';
-                                            rows += '';
-                                            rows += '<td><a href="" title="{{trans('user.edit')}}"><i class="fa fa-edit"></i></a><a href="" title="{{trans('user.remove')}}"><i class="fa fa-remove"></i></a></td>';
-                                            rows += '</tr>'
+                                url: '{{route('post-user-create')}}',
+                                method: 'POST',
+                                data:formData,
+                                success:function(response) {
+                                    loadTable();
+                                    $('#userModal').modal('hide');
+                                    $('#userModal').reset();
+
+                                },
+                                error:function (xhr, status, error){
+                                    if (xhr.status == 422) {
+                                        // Hiển thị lỗi validate cho người dùng
+                                        var errors = xhr.responseJSON.errors;
+                                        $.each(errors, function(key, value) {
+                                            alert(value[0]);
                                         });
+                                    } else {
+                                        // Xử lý các loại lỗi khác
                                     }
                                 },
-                                error: function (xhr, status, error) {
-
-                                }
-                            });
-                        };
-
-                        $('#saveUser').click(function () {
-                            let formData = $('#formData').serialize();
-                            alert(formData);
+                            })
                         });
                     });
 

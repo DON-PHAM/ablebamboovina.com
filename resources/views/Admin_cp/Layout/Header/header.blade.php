@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- google font -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" type="text/css" />
     <link href="{{asset('backend/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
