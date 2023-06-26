@@ -18,10 +18,7 @@
 <script type="text/javascript" src="{{asset('backend/assets/js/popper.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/assets/js/bootstrap.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/assets/js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
-<!--echarts-->
-<script type="text/javascript" src="{{asset('backend/assets/js/echarts/echarts-all-3.js')}}"></script>
-<!--init echarts-->
-<script type="text/javascript" src="{{asset('backend/assets/js/index/init-echarts.js')}}"></script>
+
 
 <!--datatables-->
 <script src="{{asset('backend/assets/js/jquery.dataTables.min.js')}}"></script>
@@ -35,7 +32,7 @@
         $('#bs4-table').DataTable();
     });
 </script>
-
+@yield('scripts')
 <script>
     $(document).ready(function() {
         $('#language').change(function() {
@@ -45,12 +42,17 @@
                 type: "get",
                 success: function(response) {
                     // reload trang để hiển thị nội dung mới
+                    localStorage.setItem('locale',language);
                     location.reload();
                 }
             });
-        })
-    })
+        });
+        let language = localStorage.getItem('locale');
+        $("#language").val(language);
+    });
+
 </script>
+
 
 </body>
 

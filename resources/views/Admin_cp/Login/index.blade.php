@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Donnie Login Animation</title>
+    <title>{{trans('login.login')}}</title>
 
     <link href="https://fonts.googleapis.com/css?family=Signika+Negative:300,400,600,700" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
@@ -10,7 +10,9 @@
 
 <body>
 <div class="login-form-wrapper">
-    <form class="login-form" action="" method="post">
+    <form class="login-form" action="{{route('post-login')}}" method="POST">
+        @csrf
+        @include('Error.message')
         <div class="donnie-svg-wrapper">
             <svg id="donnie-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 177.6 177.3">
                 <style>
@@ -51,7 +53,10 @@
         <div id="emailInputWrapper">
             <label for="email">{!! trans('login.email') !!} </label>
             <i class="fas fa-check"></i>
-            <input id="email" type="text" name="email" value="" >
+            <input id="email" type="text" name="username" value="" >
+            @if ($errors->has('username'))
+                <span class="text-danger text-left">{{ $errors->first('username') }}</span>
+            @endif
         </div>
 
         <div id="passInputWrapper">
@@ -66,10 +71,14 @@
                     <p id="oneNumber">Có ít nhất 1 số <i class="fas fa-check"></i></p>
                 </div>
             </div>
+            @if ($errors->has('password'))
+                <span class="text-danger text-left">{{ $errors->first('password') }}</span>
+            @endif
         </div>
 
         <div id="submit-wrapper">
-            <a class="login-btn" href="javascript:void()">{!! trans('login.login') !!}</a>
+            <button class="login-btn" type="submit">{!! trans('login.login') !!}</button>
+
 
         </div>
     </form>

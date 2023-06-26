@@ -4,7 +4,7 @@
     <header class="main-header">
         <div class="container_header">
             <div class="logo d-flex align-items-center justify-content-center justify-content-lg-start">
-                <a href="#"> <strong class="logo_icon"> <img src="{!! asset('backend/assets/images/small-logo.png') !!}" alt=""> </strong> <span class="logo-default"> <img src="{!! asset('backend/assets/images/logo.png') !!}" alt=""> </span> </a>
+{{--                <a href="#"> <strong class="logo_icon"> <img src="{!! asset('backend/assets/images/small-logo.png') !!}" alt=""> </strong> <span class="logo-default"> <img src="{!! asset('backend/assets/images/logo.png') !!}" alt=""> </span> </a>--}}
                 <div class="icon_menu">
                     <a href="#" class="menu-toggler sidebar-toggler"></a>
                 </div>
@@ -22,9 +22,11 @@
                         <div class="right_bar_top d-flex align-items-center">
 
                             <select class="language custom-select mb-2 mr-sm-2 mb-sm-0" id="language">
-                                <?php $locale = session()->get('locale');  ?>
-                                    <option value="vi" @if($locale == 'vi') selected @endif>Tiếng Việt</option>
-                                    <option value="ko" @if($locale == 'ko') selected @endif>한국인</option>
+{{--                                <?php $locale = session()->get('locale');  ?>--}}
+{{--                                    <option value="vi" @if($locale == 'vi') selected @endif>Tiếng Việt</option>--}}
+{{--                                    <option value="ko" @if($locale == 'ko') selected @endif>한국인</option>--}}
+                                <option value="vi">Tiếng Việt</option>
+                                <option value="ko">한국인</option>
                             </select>
 
 

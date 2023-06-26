@@ -6,9 +6,15 @@ use App\Services\UserService;
 
 class UserRepository implements UserService {
 
+    protected $model;
+    public function __construct(User $model)
+    {
+        $this->model = $model;
+    }
+
     public function createUser(array $data)
     {
-        return User::create($data);
+        return $this->model->create($data);
     }
 
     public function updateUser(int $id, array $data)
@@ -30,6 +36,6 @@ class UserRepository implements UserService {
 
     public function getUsers()
     {
-        // TODO: Implement getUsers() method.
+        return $this->model->all();
     }
 }
