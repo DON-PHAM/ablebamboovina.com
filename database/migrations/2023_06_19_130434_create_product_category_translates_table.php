@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('product_category_translates', function (Blueprint $table) {
             $table->id();
+            $table->integer('productcategoryid');
+            $table->string('languageid');
+            $table->string('name');
+            $table->string('description');
             $table->timestamps();
         });
     }

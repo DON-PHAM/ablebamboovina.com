@@ -2,19 +2,22 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Helper\ImagesHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UserRequest;
 use App\Repositories\UserRepository;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use mysql_xdevapi\Exception;
 
 class UserController extends Controller
 {
-    protected $userRepository;
+    protected $userService;
 
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserService $userService)
     {
-        $this->userRepository = $userRepository;
+        $this->userService = $userService;
     }
 
     public function index()
@@ -23,23 +26,38 @@ class UserController extends Controller
     }
 
     public function getAll() {
-        $data = $this->userRepository->getUsers();
+        $data = $this->userService->getUsers();
         return response()->json(['status'=>true,'data'=>$data]);
     }
 
-    public function create(UserRequest $request)
+    public function create(Request $request)
     {
-        $data = [
-            'email' => $request->email,
-            'name' => $request->name,
-            'username' => $request->username,
-            'password' => Hash::make($request->password),
-            'phonenumber' => $request->phonenumber,
-            'avatar'=> ''
+        try {
+            $image_new = "";
+            if ($request->hasFile('avatar'))
+            {
+                $image = $request->file('avatar');
+                $image_new = rand().'.'.$image->getClientOriginalExtension();
+                $image->move(public_path('upload/avatar'),$image_new);
+            }
+            $data = [
+                'email' => $request->email,
+                'name' => $request->name,
+                'username' => $request->username,
+                'password' => Hash::make($request->password),
+                'phonenumber' => $request->phonenumber,
+                'avatar'=> $image_new,
+                'status' =>$request->status == 'on' ? 1: 0,
+                'role' => $request->role
 
-        ];
-        $result = $this->userRepository->createUser($data);
-        return response()->json(['success'=>true,'result'=>$result]);
+            ];
+            $result = $this->userService->createUser($data);
+            return response()->json(['success'=>true,'result'=>$result]);
+        }
+        catch (Exception $ex) {
+            return  response()->json(['success'=>false]);
+        }
+
     }
 
 

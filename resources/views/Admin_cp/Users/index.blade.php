@@ -48,6 +48,7 @@
                                 <th>{{trans('user.phone-number')}}</th>
                                 <th>{{trans('user.status')}}</th>
                                 <th>{{trans('user.active')}}</th>
+                                <th>{{trans('user.role')}}</th>
 
                             </tr>
                             </thead>
@@ -73,14 +74,14 @@
                         </div>
                         <div class="modal-body">
 
-                            <form id="formData">
+                            <form id="formData" enctype="multipart/form-data">
                                 @csrf
                                 <div class="avatar-wrapper">
                                     <img class="profile-pic" src=""/>
                                     <div class="upload-button">
                                         <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
                                     </div>
-                                    <input class="file-upload" type="file" accept="image/*"/>
+                                    <input class="file-upload" type="file" name="avatar" accept="image/*"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">{{trans('user.email')}}</label>
@@ -108,36 +109,48 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="recipient-name"
+                                           class="col-form-label">{{trans('user.role')}}</label>
+                                    <select class="role form-control" id="role">
+                                        <option value="1">Admin</option>
+                                        <option value="2">User</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">{{trans('user.active')}}</label>
                                     <input type="checkbox" name="status" class="" id="status">
                                 </div>
 
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                        {{trans('home.close')}}
+                                    </button>
+                                    <button id="saveUser" type="submit" class="btn btn-primary">
+                                        {{trans('home.save')}}
+                                    </button>
+                                </div>
                             </form>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                {{trans('home.close')}}
-                            </button>
-                            <button type="button" id="saveUser" class="btn btn-primary">
-                                {{trans('home.save')}}
-                            </button>
-                        </div>
+
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            @endsection
-            @section('scripts')
-                <script>
-                    $(document).ready(function () {
-                        loadTable();
-                        let readURL = function (input) {
-                            if (input.files && input.files[0]) {
-                                let reader = new FileReader();
+@endsection
+@section('scripts')
+    <script>
+        $(document).ready(function () {
+            loadTable();
+            let readURL = function (input) {
+                if (input.files && input.files[0]) {
+                    let reader = new FileReader();
 
-                                reader.onload = function (e) {
-                                    $('.profile-pic').attr('src', e.target.result);
-                                }
+                    reader.onload = function (e) {
+                        $('.profile-pic').attr('src', e.target.result);
+                    }
 
                                 reader.readAsDataURL(input.files[0]);
                             }
@@ -157,50 +170,75 @@
                                 destroy: true,
                                 ajax: '{{route('user-list')}}',
                                 columns: [
-                                    {data:'username',name:'username'},
-                                    {data: 'email',name:'email'},
-                                    {data:'phonenumber',name: 'phonenumber'},
-                                    {data:'created_at',name:'created_at'},
-                                    {data: 'id', render:function(data,row,type) {
-                                        return `<button data-id="${data}" class="btn btn-success">Edit</button> <button data-delete="${data}" class="btn btn-danger">Delete</button>`
-                                        }}
+                                    {data: 'username', name: 'username'},
+                                    {data: 'email', name: 'email'},
+                                    {data: 'phonenumber', name: 'phonenumber'},
+                                    {
+                                        data: 'status', render: function (data) {
+                                            if (data == 1) {
+                                                return "Active";
+                                            }
+                                            return "InActive";
+                                        }
+                                    },
+                                    {
+                                        data: 'role', render: function (data) {
+                                            if (data == 1) {
+                                                return "Admin";
+                                            }
+                                            return "User";
+                                        }
+                                    },
+                                    {
+                                        data: 'id', render: function (data, row, type) {
+                                            return `<button data-id="${data}" class="btn btn-success">Edit</button> <button data-delete="${data}" class="btn btn-danger">Delete</button>`
+                                        }
+                                    }
                                 ]
                             })
 
                         }
-                        $.ajaxSetup({
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            }
-                        });
 
-                        $('#saveUser').click(function (e) {
-                            e.preventDefault();
-                            let formData = $('#formData').serializeArray();
-                            $.ajax({
-                                url: '{{route('post-user-create')}}',
-                                method: 'POST',
-                                data:formData,
-                                success:function(response) {
-                                    loadTable();
-                                    $('#userModal').modal('hide');
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
 
-                                },
-                                error:function (xhr, status, error){
-                                    if (xhr.status == 422) {
-                                        // Hiển thị lỗi validate cho người dùng
-                                        var errors = xhr.responseJSON.errors;
-                                        $.each(errors, function(key, value) {
-                                            alert(value[0]);
-                                        });
-                                    } else {
-                                        // Xử lý các loại lỗi khác
-                                    }
-                                },
-                            })
-                        });
-                    });
+            $('form#formData').on('submit', function (e) {
+                e.preventDefault();
+                let role = $('#role option:selected').val();
+                // Lấy dữ liệu từ form
+                let formData = new FormData(this);
+                formData.append('image', $('input[type=file]')[0].files[0]);
+                formData.append('role', role);
 
-                </script>
+                // Hiển thị dữ liệu trong object FormData lên console
+                for (var pair of formData.entries()) {
+                    console.log(pair[0] + ', ' + pair[1]);
+                }
+
+                // Gửi dữ liệu lên server
+                $.ajax({
+                    url: '{{route('post-user-create')}}',
+                    type: 'POST',
+                    data: formData,
+                    dataType: 'json',
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        if (response.success) {
+                            loadTable();
+                            $('#userModal').modal('hide');
+                        }
+                    },
+                    error: function (xhr, status, error) {
+
+                    }
+                });
+            });
+        });
+
+    </script>
 
 @endsection

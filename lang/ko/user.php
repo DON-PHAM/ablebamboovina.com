@@ -11,6 +11,7 @@ return [
     'password' => '비밀번호',
     'edit' => '편집하다',
     'remove' => '제거하다',
-    'fullname' => '성명'
+    'fullname' => '성명',
+    'role' => '역할'
 
 ];
