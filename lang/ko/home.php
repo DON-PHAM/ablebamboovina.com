@@ -12,7 +12,7 @@ return [
     'save' => '구하다',
     'close'=> '닫다',
     'online' => '온라인',
-    'categoryProduct' => '제품 카테고리',
+    'category-product' => '제품 카테고리',
     'product' => '제품',
     'categoryPost' => '포스트 카테고리',
     'post' => '우편',

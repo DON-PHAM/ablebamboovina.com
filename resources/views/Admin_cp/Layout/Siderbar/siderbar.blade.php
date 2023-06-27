@@ -19,7 +19,7 @@
         </li>
 
         <li class="menu_sub">
-            <a href="{{ route('category-list') }}"> <i class="fa fa-indent"></i> <span>{!! trans('home.categoryProduct') !!} </span> </a>
+            <a href="{{ route('category-list') }}"> <i class="fa fa-indent"></i> <span>{!! trans('home.category-product') !!} </span> </a>
 
         </li>
 

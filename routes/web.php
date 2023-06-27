@@ -36,15 +36,15 @@ Route::group(['prefix'=>'dashboard','middleware'=>['locale']],function () {
     Route::get('users/create','Dashboard\UserController@create')->name('get-user-create');
     Route::post('users/create','Dashboard\UserController@create')->name('post-user-create');
     Route::get('users/edit/{id}','Dashboard\UserController@edit')->name('get-user-edit');
-    Route::put('users/edit/{id}','Dashboard\UserController@edit')->name('put-user-edit');
+    Route::post('users/edit/{id}','Dashboard\UserController@edit')->name('put-user-edit');
     Route::delete('users/delete/{id}','Dashboard\UserController@edit')->name('delete-user-edit');
 
     //Category Product Management
     Route::get('category','Dashboard\CategoryProductController@index')->name('category-list');
     Route::get('category/create','Dashboard\CategoryProductController@create')->name('get-category-create');
-    Route::post('category/create','Dashboard\CategoryProductController@create')->name('post-category-create');
+    Route::post('category/create','Dashboard\CategoryProductController@postCreate')->name('post-category-create');
     Route::get('category/edit/{id}','Dashboard\CategoryProductController@edit')->name('get-category-edit');
-    Route::put('category/edit/{id}','Dashboard\CategoryProductController@edit')->name('put-category-edit');
+    Route::post('category/edit/{id}','Dashboard\CategoryProductController@update')->name('put-category-edit');
     Route::delete('category/delete/{id}','Dashboard\CategoryProductController@edit')->name('delete-category-edit');
 
     //Category Post Management
