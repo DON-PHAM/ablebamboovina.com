@@ -131,9 +131,9 @@
                 <script>
                     $(document).ready(function () {
                         loadTable();
-                        var readURL = function (input) {
+                        let readURL = function (input) {
                             if (input.files && input.files[0]) {
-                                var reader = new FileReader();
+                                let reader = new FileReader();
 
                                 reader.onload = function (e) {
                                     $('.profile-pic').attr('src', e.target.result);
@@ -152,7 +152,9 @@
                         function loadTable() {
                             $('#userTable').DataTable({
                                 processing:true,
-                                serverSide: true,
+                                paging: true,
+                                searching: false,
+                                destroy: true,
                                 ajax: '{{route('user-list')}}',
                                 columns: [
                                     {data:'username',name:'username'},
@@ -160,12 +162,9 @@
                                     {data:'phonenumber',name: 'phonenumber'},
                                     {data:'created_at',name:'created_at'},
                                     {data: 'id', render:function(data,row,type) {
-                                        console.log(data)
                                         return `<button data-id="${data}" class="btn btn-success">Edit</button> <button data-delete="${data}" class="btn btn-danger">Delete</button>`
                                         }}
-                                ],
-                                paging: true,
-                                pageLength: 25
+                                ]
                             })
 
                         }
@@ -185,7 +184,6 @@
                                 success:function(response) {
                                     loadTable();
                                     $('#userModal').modal('hide');
-                                    $('#userModal').reset();
 
                                 },
                                 error:function (xhr, status, error){
