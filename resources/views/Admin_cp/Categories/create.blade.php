@@ -30,7 +30,8 @@
     </div>
     <!--page title end-->
     <div class="container-fluid">
-        <form id="categoryPost" method="POST" action="{{route('post-category-create')}}" class=" right-text-label-form feedback-icon-form">
+        <form id="categoryPost" method="post" action="{{route('post-category-new-create')}}"
+              class="right-text-label-form feedback-icon-form">
             @csrf
             <!-- state start-->
             <div class="row">
@@ -42,21 +43,22 @@
                             </div>
                         </div>
                         <div class="card-body">
-                                <div class="form-group row">
-                                    <label class="col-sm-4 control-label" for="firstname">Tên chuyên mục (*)</label>
-                                    <div class="col-sm-5">
-                                        <input type="text" class="form-control" id="vi_name" name="vi_name"
-                                               placeholder=""/>
-                                    </div>
-                                </div>
 
-                                <div class="form-group row">
-                                    <label class="col-sm-4 control-label" for="lastname">Mô tả</label>
-                                    <div class="col-sm-5">
-                                        <input type="text" class="form-control" id="vi_description" name="vi_description"
-                                               placeholder=""/>
-                                    </div>
+                            <div class="form-group row">
+                                <label class="col-sm-4 control-label" for="vi_name">Tên chuyên mục (*)</label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control" id="vi_name" name="vi_name"
+                                           placeholder=""/>
                                 </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-4 control-label" for="vi_description">Mô tả chuyên mục</label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control" id="vi_description" name="vi_description"
+                                           placeholder=""/>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -71,14 +73,14 @@
                         </div>
                         <div class="card-body">
                             <div class="form-group row">
-                                <label class="col-sm-4 control-label" for="lastname1">카테고리 이름 (*)</label>
+                                <label class="col-sm-4 control-label" for="">카테고리 이름 (*)</label>
                                 <div class="col-sm-5">
                                     <input type="text" class="form-control" id="ko_name" name="ko_name"
                                            placeholder=""/>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 control-label" for="firstname1">설명하다</label>
+                                <label class="col-sm-4 control-label" for="">설명하다</label>
                                 <div class="col-sm-5">
                                     <input type="text" class="form-control" id="ko_description" name="ko_description"
                                            placeholder=""/>
@@ -86,18 +88,18 @@
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-sm-4 control-label"> </label>
+                                <label class="col-sm-4 control-label"></label>
                                 <div class="col-sm-5 ">
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" id="status" name="status" value="status"/>
+                                            <input type="checkbox" id="status" name="status"/>
                                             Active </label>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-8 ml-auto">
-                                    <button type="submit" class="btn btn-info" name="signup1" value="Sign up">
+                                    <button type="submit" class="btn btn-info" name="signup1">
                                         SAVE
                                     </button>
                                 </div>
@@ -120,7 +122,7 @@
         @if(isset ($errors) && count($errors) > 0)
 
         @foreach($errors->all() as $error)
-        toastr.error('{{ $error }}')
+            toastr.error('{{ $error }}')
         @endforeach
 
         @endif

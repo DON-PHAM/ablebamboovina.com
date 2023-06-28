@@ -18,6 +18,7 @@
 <script type="text/javascript" src="{{asset('backend/assets/js/popper.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/assets/js/bootstrap.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/assets/js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('backend/assets/js/jquery.validate.js')}}"></script>
 
 
 <!--datatables-->

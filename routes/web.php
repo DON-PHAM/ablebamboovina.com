@@ -50,9 +50,9 @@ Route::group(['prefix'=>'dashboard','middleware'=>['locale']],function () {
     //Category Post Management
     Route::get('category-new','Dashboard\CategoryPostController@index')->name('category-new-list');
     Route::get('category-new/create','Dashboard\CategoryPostController@create')->name('get-category-new-create');
-    Route::post('category-new/create','Dashboard\CategoryPostController@create')->name('post-category-new-create');
+    Route::post('category-new/create','Dashboard\CategoryPostController@postCreate')->name('post-category-new-create');
     Route::get('category-new/edit/{id}','Dashboard\CategoryPostController@edit')->name('get-category-new-edit');
-    Route::put('category-new/edit/{id}','Dashboard\CategoryPostController@edit')->name('put-category-new-edit');
+    Route::post('category-new/edit/{id}','Dashboard\CategoryPostController@update')->name('put-category-new-edit');
     Route::delete('category-new/delete/{id}','Dashboard\CategoryPostController@edit')->name('delete-category-new-edit');
 
     //Product Management
@@ -60,7 +60,7 @@ Route::group(['prefix'=>'dashboard','middleware'=>['locale']],function () {
     Route::get('product/create','Dashboard\ProductController@create')->name('get-product-create');
     Route::post('product/create','Dashboard\ProductController@create')->name('post-product-create');
     Route::get('product/edit/{id}','Dashboard\ProductController@edit')->name('get-product-edit');
-    Route::put('product/edit/{id}','Dashboard\ProductController@edit')->name('put-product-edit');
+    Route::post('product/edit/{id}','Dashboard\ProductController@edit')->name('put-product-edit');
     Route::delete('product/delete/{id}','Dashboard\ProductController@edit')->name('delete-product-edit');
 
     //New Management
@@ -68,7 +68,7 @@ Route::group(['prefix'=>'dashboard','middleware'=>['locale']],function () {
     Route::get('new/create','Dashboard\NewController@create')->name('get-new-create');
     Route::post('new/create','Dashboard\NewController@create')->name('post-new-create');
     Route::get('new/edit/{id}','Dashboard\NewController@edit')->name('get-new-edit');
-    Route::put('new/edit/{id}','Dashboard\NewController@edit')->name('put-new-edit');
+    Route::post('new/edit/{id}','Dashboard\NewController@edit')->name('put-new-edit');
     Route::delete('new/delete/{id}','Dashboard\NewController@edit')->name('delete-new-edit');
 
     //Setting Management
@@ -76,7 +76,7 @@ Route::group(['prefix'=>'dashboard','middleware'=>['locale']],function () {
     Route::get('setting/create','Dashboard\SettingController@create')->name('get-setting-create');
     Route::post('setting/create','Dashboard\SettingController@create')->name('post-setting-create');
     Route::get('setting/edit/{id}','Dashboard\SettingController@edit')->name('get-setting-edit');
-    Route::put('setting/edit/{id}','Dashboard\SettingController@edit')->name('put-setting-edit');
+    Route::post('setting/edit/{id}','Dashboard\SettingController@edit')->name('put-setting-edit');
     Route::delete('setting/delete/{id}','Dashboard\SettingController@edit')->name('delete-setting-edit');
 
     //Slider Management
@@ -84,7 +84,7 @@ Route::group(['prefix'=>'dashboard','middleware'=>['locale']],function () {
     Route::get('slider/create','Dashboard\SliderController@create')->name('get-slider-create');
     Route::post('slider/create','Dashboard\SliderController@create')->name('post-slider-create');
     Route::get('slider/edit/{id}','Dashboard\SliderController@edit')->name('get-slider-edit');
-    Route::put('slider/edit/{id}','Dashboard\SliderController@edit')->name('put-slider-edit');
+    Route::post('slider/edit/{id}','Dashboard\SliderController@edit')->name('put-slider-edit');
     Route::delete('slider/delete/{id}','Dashboard\SliderController@edit')->name('delete-slider-edit');
 
 

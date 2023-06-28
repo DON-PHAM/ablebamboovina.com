@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class PostCategory_translate extends Model
 {
     use HasFactory;
+    protected $fillable = ['name','languageid','postcategoryid','description'];
 }

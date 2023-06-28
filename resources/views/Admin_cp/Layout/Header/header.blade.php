@@ -14,6 +14,7 @@
     <link href="{{asset('backend/assets/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('backend/assets/css/ionicons.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('backend/assets/css/simple-line-icons.css')}}" rel="stylesheet" type="text/css">
+
     <!--bs4 data table-->
     <link href="{{asset('backend/assets/css/dataTables.bootstrap4.min.cs')}}s" rel="stylesheet">
     <link href="{{asset('backend/assets/css/jquery.mCustomScrollbar.css')}}" rel="stylesheet">
