@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Repositories\CategoryPostRepository;
 use App\Repositories\CategoryProductRepository;
 use App\Repositories\UserRepository;
+use App\Services\CategoryPostService;
 use App\Services\CategoryProductService;
 use App\Services\UserService;
 use Illuminate\Support\ServiceProvider;
@@ -22,6 +24,9 @@ class AppServiceProvider extends ServiceProvider
         );
         $this->app->bind(
             CategoryProductService::class,CategoryProductRepository::class
+        );
+        $this->app->bind(
+            CategoryPostService::class,CategoryPostRepository::class
         );
     }
 

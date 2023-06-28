@@ -15,14 +15,10 @@ return new class extends Migration
     {
         Schema::create('post_category_translates', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('content');
-            $table->text('description');
             $table->integer('postcategoryid');
-            $table->string('language');
-            $table->boolean('status');
-
-
+            $table->string('languageid');
+            $table->string('name');
+            $table->string('description');
             $table->timestamps();
         });
     }

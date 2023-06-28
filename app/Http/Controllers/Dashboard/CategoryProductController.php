@@ -19,6 +19,8 @@ class CategoryProductController extends Controller
 
     public function index() {
         $locale = session()->get('locale');
+        if ($locale == null)
+            $locale = App::getLocale();
         $categories = $this->categoryProduct->getAll($locale);
         return view('Admin_cp.CategoryProduct.index',compact('categories'));
     }
@@ -46,6 +48,6 @@ class CategoryProductController extends Controller
     }
 
     public function update($id, CategoryRequest $request) {
-        dd(1);
+
     }
 }
