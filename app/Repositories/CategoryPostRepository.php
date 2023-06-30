@@ -54,7 +54,10 @@ class CategoryPostRepository implements CategoryPostService {
 
     public function getById(int $id)
     {
-        // TODO: Implement getById() method.
+        $category = PostCategory::join('post_category_translates','post_categories.id','=','post_category_translates.postcategoryid')
+            ->where('post_categories.id','=',$id)
+            ->get(['post_categories.*','post_category_translates.*']);
+        return $category;
     }
 
     public function getAll(string $locale)

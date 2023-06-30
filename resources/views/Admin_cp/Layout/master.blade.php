@@ -1,70 +1,128 @@
-@include('Admin_cp.Layout.Header.header')
-<div class="wrapper">
-    <!-- header -->
-    <header class="main-header">
-        <div class="container_header">
-            <div class="logo d-flex align-items-center justify-content-center justify-content-lg-start">
-{{--                <a href="#"> <strong class="logo_icon"> <img src="{!! asset('backend/assets/images/small-logo.png') !!}" alt=""> </strong> <span class="logo-default"> <img src="{!! asset('backend/assets/images/logo.png') !!}" alt=""> </span> </a>--}}
-                <div class="icon_menu">
-                    <a href="#" class="menu-toggler sidebar-toggler"></a>
-                </div>
-            </div>
+<!DOCTYPE html>
+<html lang="en">
 
-            <div class="right_detail">
-                <div class="row d-flex align-items-center min-h pos-md-r">
-                    <div class="col-xl-5 col-3 search_col">
-                        <div class="top_function">
+<head>
+    <meta charset="utf-8" />
+    <title>Dashboard 1 | Zircos - Responsive Bootstrap 4 Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Responsive bootstrap 4 admin template" name="description" />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-                        </div>
-                    </div>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{asset('backend/assets/images/favicon.ico')}}">
 
-                    <div class="col-xl-7 col-9 d-flex justify-content-end">
-                        <div class="right_bar_top d-flex align-items-center">
+    <!-- App css -->
+    <link href="{{asset('backend/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
+    <link href="{{asset('backend/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
 
-                            <select class="language custom-select mb-2 mr-sm-2 mb-sm-0" id="language">
-{{--                                <?php $locale = session()->get('locale');  ?>--}}
-{{--                                    <option value="vi" @if($locale == 'vi') selected @endif>Tiếng Việt</option>--}}
-{{--                                    <option value="ko" @if($locale == 'ko') selected @endif>한국인</option>--}}
-                                <option value="vi">Tiếng Việt</option>
-                                <option value="ko">한국인</option>
-                            </select>
+    <!-- Table datatable css -->
+    <link href="{{asset('backend/assets/libs/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('backend/assets/libs/datatables/responsive.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('backend/assets/libs/datatables/buttons.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('backend/assets/libs/datatables/fixedHeader.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('backend/assets/libs/datatables/scroller.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('backend/assets/libs/datatables/dataTables.colVis.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('backend/assets/libs/datatables/fixedColumns.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
 
 
+    <link href="{{asset('backend/assets/css/app.min.css')}}" rel="stylesheet" type="text/css" id="app-stylesheet" />
+    <link href="{{asset('backend/assets/css/custom.css')}}" rel="stylesheet" type="text/css" id="app-stylesheet" />
 
-                            <!-- Dropdown_User -->
-                            <div class="dropdown dropdown-user">
-                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="true"> <img class="img-circle pro_pic" src="{!! asset('backend/assets/images/about-1.jpg') !!}" alt=""> </a>
-                                <ul class="dropdown-menu dropdown-menu-default">
-                                    <li>
-                                        <a href="#"> <i class="icon-user"></i> {!! trans('home.profile') !!} </a>
-                                    </li>
-                                    <li>
-                                        <a href="#"> <i class="icon-settings"></i>{!! trans('home.setting') !!} </a>
-                                    </li>
+</head>
 
-                                    <li>
-                                        <a href="#"> <i class="icon-logout"></i> {!! trans('home.logout') !!} </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- Dropdown_User_End -->
-                        </div>
-                    </div>
+<body>
 
-                </div>
-            </div>
+<!-- Begin page -->
+<div id="wrapper">
 
-        </div>
-    </header>
-    <!-- header_End -->
-    <!-- Content_right -->
-    <div class="container_full">
 
-        @include('Admin_cp.Layout.Siderbar.siderbar')
-        <div class="content_wrapper">
+    <!-- Topbar Start -->
+    @include('Admin_cp.Layout.Topbar.topbar')
+    <!-- end Topbar -->
+
+    <!-- ========== Left Sidebar Start ========== -->
+    @include('Admin_cp.Layout.Siderbar.siderbar')
+    <!-- Left Sidebar End -->
+
+    <!-- ============================================================== -->
+    <!-- Start Page Content here -->
+    <!-- ============================================================== -->
+    <div class="content-page">
+        <div class="content">
+            <div class="container-fluid">
+            <!-- Start Content-->
             @yield('content')
+            <!-- end container-fluid -->
+            </div>
         </div>
-    </div>
-    <!-- Content_right_End -->
+        <!-- end content -->
+        <!-- Footer Start -->
+        @include('Admin_cp.Layout.Footer.footer')
+        <!-- end Footer -->
 
-@include('Admin_cp.Layout.Footer.footer')
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- End Page content -->
+    <!-- ============================================================== -->
+
+</div>
+<!-- END wrapper -->
+
+<!-- Vendor js -->
+<script src="{{asset('backend/assets/js/vendor.min.js')}}"></script>
+
+<script src="{{asset('backend/assets/libs/raphael/raphael.min.js')}}"></script>
+
+
+<!-- Datatable plugin js -->
+<script src="{{asset('backend/assets/libs/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('backend/assets/libs/datatables/dataTables.bootstrap4.min.js')}}"></script>
+
+<script src="{{asset('backend/assets/libs/datatables/dataTables.responsive.min.js')}}"></script>
+<script src="{{asset('backend/assets/libs/datatables/responsive.bootstrap4.min.js')}}"></script>
+
+<script src="{{asset('backend/assets/libs/datatables/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('backend/assets/libs/datatables/buttons.bootstrap4.min.js')}}"></script>
+
+<script src="{{asset('backend/assets/libs/datatables/buttons.html5.min.js')}}"></script>
+<script src="{{asset('backend/assets/libs/datatables/buttons.print.min.js')}}"></script>
+
+<script src="{{asset('backend/assets/libs/datatables/dataTables.keyTable.min.js')}}"></script>
+<script src="{{asset('backend/assets/libs/datatables/dataTables.fixedHeader.min.j')}}s"></script>
+<script src="{{asset('backend/assets/libs/datatables/dataTables.scroller.min.js')}}"></script>
+<script src="{{asset('backend/assets/libs/datatables/dataTables.fixedColumns.min.js')}}"></script>
+
+
+<!-- App js -->
+<script src="{{asset('backend/assets/js/app.min.js')}}"></script>
+
+<script src="{{asset('backend/assets/js/custom.js')}}" type="text/javascript"></script>
+
+@yield('scripts')
+<script>
+
+    $(document).ready(function() {
+        $('#language').change(function() {
+            let language = $('#language').find(":selected").val();
+            $.ajax({
+                url: "{{ route('change-language',':language') }}".replace(':language',language),
+                type: "get",
+                success: function(response) {
+                    // reload trang để hiển thị nội dung mới
+                    localStorage.setItem('locale',language);
+                    location.reload();
+                }
+            });
+        });
+        let language = localStorage.getItem('locale');
+        $("#language").val(language);
+    });
+
+</script>
+
+</body>
+
+</html>

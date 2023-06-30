@@ -56,7 +56,7 @@
                                         <td>{{$item->status ? "Active" : "InActive"}}</td>
                                         <td>
                                             <a href="{{route('get-category-edit', ['id' => $item->productcategoryid])}}"><i class="fa fa-edit"></i></a>
-                                            <a href="{{route('delete-category-edit', ['id' => $item->productcategoryid])}}"><i class="fa fa-remove"></i></a>
+                                            <a href="{{route('delete-category-edit', ['id' => $item->productcategoryid])}}"><i class="mdi mdi-trash-can-outline"></i></a>
 
                                         </td>
                                     </tr>

@@ -41,7 +41,6 @@
                                 Vietnamese
                             </div>
                         </div>
-                        @include('Error.message')
                         @if($result)
                             <form method="POST"
                                   action="{{route('put-category-edit',['id'=>$result[0]['productcategoryid']])}}">
