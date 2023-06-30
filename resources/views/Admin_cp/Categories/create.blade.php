@@ -7,7 +7,7 @@
             <div class="row d-flex align-items-center">
                 <div class="col-md-6">
                     <div class="page-breadcrumb">
-                        <h1>{{trans('category.list-category-product')}}</h1>
+                        <h1>{{trans('category.list-category-new')}}</h1>
                     </div>
 
                 </div>

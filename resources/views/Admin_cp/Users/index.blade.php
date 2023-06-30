@@ -75,14 +75,15 @@
                         <div class="modal-body">
 
                             <form id="formData" enctype="multipart/form-data">
-                                @csrf
+
                                 <div class="avatar-wrapper">
-                                    <img class="profile-pic" src=""/>
+                                    <img class="profile-pic" src="" />
                                     <div class="upload-button">
                                         <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
                                     </div>
-                                    <input class="file-upload" type="file" name="avatar" accept="image/*"/>
+                                    <input class="file-upload" type="file" accept="image/*"/>
                                 </div>
+
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">{{trans('user.email')}}</label>
                                     <input type="email" name="email" class="form-control" id="email">
@@ -143,85 +144,79 @@
 @section('scripts')
     <script>
         $(document).ready(function () {
-            loadTable();
-            let readURL = function (input) {
+            let readURL = function(input) {
                 if (input.files && input.files[0]) {
-                    let reader = new FileReader();
+                    var reader = new FileReader();
 
                     reader.onload = function (e) {
                         $('.profile-pic').attr('src', e.target.result);
                     }
 
-                                reader.readAsDataURL(input.files[0]);
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            $(".file-upload").on('change', function(){
+                readURL(this);
+            });
+
+            $(".upload-button").on('click', function() {
+                $(".file-upload").click();
+            });
+            loadTable();
+            function loadTable() {
+                $('#userTable').DataTable({
+                    processing:true,
+                    paging: true,
+                    searching: false,
+                    destroy: true,
+                    ajax: '{{route('user-list')}}',
+                    columns: [
+                        {data: 'username', name: 'username'},
+                        {data: 'email', name: 'email'},
+                        {data: 'phonenumber', name: 'phonenumber'},
+                        {
+                            data: 'status', render: function (data) {
+                                if (data == 1) {
+                                    return "Active";
+                                }
+                                return "InActive";
+                            }
+                        },
+                        {
+                            data: 'role', render: function (data) {
+                                if (data == 1) {
+                                    return "Admin";
+                                }
+                                return "User";
+                            }
+                        },
+                        {
+                            data: 'id', render: function (data, row, type) {
+                                return `<button data-id="${data}" class="btn btn-success">Edit</button> <button data-delete="${data}" class="btn btn-danger">Delete</button>`
                             }
                         }
-                        $(".file-upload").on('change', function () {
-                            readURL(this);
-                        });
-                        $(".upload-button").on('click', function () {
-                            $(".file-upload").click();
-                        });
+                    ]
+                })
 
-                        function loadTable() {
-                            $('#userTable').DataTable({
-                                processing:true,
-                                paging: true,
-                                searching: false,
-                                destroy: true,
-                                ajax: '{{route('user-list')}}',
-                                columns: [
-                                    {data: 'username', name: 'username'},
-                                    {data: 'email', name: 'email'},
-                                    {data: 'phonenumber', name: 'phonenumber'},
-                                    {
-                                        data: 'status', render: function (data) {
-                                            if (data == 1) {
-                                                return "Active";
-                                            }
-                                            return "InActive";
-                                        }
-                                    },
-                                    {
-                                        data: 'role', render: function (data) {
-                                            if (data == 1) {
-                                                return "Admin";
-                                            }
-                                            return "User";
-                                        }
-                                    },
-                                    {
-                                        data: 'id', render: function (data, row, type) {
-                                            return `<button data-id="${data}" class="btn btn-success">Edit</button> <button data-delete="${data}" class="btn btn-danger">Delete</button>`
-                                        }
-                                    }
-                                ]
-                            })
-
-                        }
-
+            }
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
 
-            $('form#formData').on('submit', function (e) {
-                e.preventDefault();
+            $('form#formData').on('submit', function () {
                 let role = $('#role option:selected').val();
                 // Lấy dữ liệu từ form
                 let formData = new FormData(this);
                 formData.append('image', $('input[type=file]')[0].files[0]);
                 formData.append('role', role);
 
-                // Hiển thị dữ liệu trong object FormData lên console
-                for (var pair of formData.entries()) {
-                    console.log(pair[0] + ', ' + pair[1]);
-                }
-
                 // Gửi dữ liệu lên server
                 $.ajax({
-                    url: '{{route('post-user-create')}}',
-                    type: 'POST',
+                    url: "{{route('post-user-create')}}",
+                    method: "post",
                     data: formData,
                     dataType: 'json',
                     processData: false,

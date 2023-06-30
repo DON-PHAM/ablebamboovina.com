@@ -30,8 +30,9 @@ class UserController extends Controller
         return response()->json(['status'=>true,'data'=>$data]);
     }
 
-    public function create(Request $request)
+    public function postCreate(UserRequest $request)
     {
+        dd($request);
         try {
             $image_new = "";
             if ($request->hasFile('avatar'))
@@ -54,10 +55,15 @@ class UserController extends Controller
             $result = $this->userService->createUser($data);
             return response()->json(['success'=>true,'result'=>$result]);
         }
-        catch (Exception $ex) {
+        catch (\Exception $ex) {
             return  response()->json(['success'=>false]);
         }
 
+    }
+
+    public function postEdit($id, Request $request)
+    {
+        return response()->json(['success'=>'data']);
     }
 
 

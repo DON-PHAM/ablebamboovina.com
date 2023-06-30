@@ -1,53 +1,90 @@
-<div class="side_bar scroll_auto">
-    <div class="user-panel">
-        <div class="user_image">
-            <img src="{{asset('backend/assets/images/about-1.jpg')}}" class="img-circle mCS_img_loaded" alt="User Image">
+<div class="left-side-menu">
+
+    <div class="slimscroll-menu">
+
+        <!--- Sidemenu -->
+        <div id="sidebar-menu">
+
+            <ul class="metismenu" id="side-menu">
+
+                <li class="menu-title">Navigation</li>
+
+                <li>
+                    <a href="{{route('admin')}}" class="waves-effect waves-light">
+                        <i class="mdi mdi-home-map-marker"></i>
+                        <span>  {{trans('home.home')}}  </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{route('user')}}" class="waves-effect waves-light">
+                        <i class=" mdi mdi-account-details"></i>
+                        <span>  {{trans('home.user')}}  </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{route('category-list')}}" class="waves-effect waves-light">
+                        <i class="mdi mdi-layers"></i>
+                        <span>  {{trans('home.category-product')}} </span>
+                    </a>
+
+                </li>
+                <li>
+
+                    <a href="{{route('category-new-list')}}" class="waves-effect waves-light">
+                        <i class="mdi mdi-flip-horizontal"></i>
+                        <span>  {{trans('home.categoryPost')}}  </span>
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="{{route('product-list')}}" class="waves-effect waves-light">
+                        <i class="mdi mdi-sprout-outline"></i>
+                        <span>  {{trans('home.product')}}  </span>
+                    </a>
+
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="waves-effect waves-light">
+                        <i class="mdi mdi-comment-text-outline"></i>
+                        <span>  {{trans('home.post')}}  </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="calendar.html" class="waves-effect waves-light">
+                        <i class="mdi mdi-projector-screen"></i>
+                        <span> {{trans('home.slider')}} </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="waves-effect waves-light">
+                        <i class="mdi mdi-settings"></i>
+                        <span>  {{trans('home.setting')}} </span>
+                    </a>
+
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="waves-effect waves-light">
+                        <i class="mdi mdi-settings"></i>
+                        <span>  {{trans('home.feedback')}} </span>
+                    </a>
+
+                </li>
+            </ul>
+
         </div>
-        <div class="info">
-            <p>
-                Ablebamboovina
-            </p>
-            <a href="javascript:void()"> <i class="fa fa-circle text-success"></i> {!! trans('home.online') !!}</a>
-        </div>
+        <!-- End Sidebar -->
+
+        <div class="clearfix"></div>
+
     </div>
+    <!-- Sidebar -left -->
 
-    <ul id="dc_accordion" class="sidebar-menu tree">
-
-        <li class="menu_sub" title="{!! trans('home.user') !!}">
-            <a href="{{route('user')}}"> <i class="fa fa-user"></i> <span>{!! trans('home.user') !!} </span> </a>
-
-        </li>
-
-        <li class="menu_sub">
-            <a href="{{ route('category-list') }}"> <i class="fa fa-indent"></i> <span>{!! trans('home.category-product') !!} </span> </a>
-
-        </li>
-
-        <li class="menu_sub">
-            <a href="{{route('category-new-list')}}"> <i class="fa fa-inbox"></i> <span>{!! trans('home.categoryPost') !!} </span> </a>
-
-        </li>
-        <li class="menu_sub">
-            <a href="{{route('category-list')}}"> <i class="fa fa-product-hunt"></i> <span>{!! trans('home.product') !!} </span> </a>
-
-        </li>
-
-        <li class="menu_sub">
-            <a href="{{route('new-list')}}"> <i class="fa fa-edit"></i> <span>{!! trans('home.post') !!} </span> </a>
-
-        </li>
-        <li class="menu_sub">
-            <a href="{{route('setting-list')}}"> <i class="fa fa-gear"></i> <span>{!! trans('home.setting') !!} </span> </a>
-
-        </li>
-        <li class="menu_sub">
-            <a href="#"> <i class="fa fa-shopping-cart"></i> <span>{!! trans('home.order') !!} </span> </a>
-
-        </li>
-        <li class="menu_sub">
-            <a href="{{route('slider-list')}}"> <i class="fa fa-sliders"></i> <span>{!! trans('home.slider') !!} </span> </a>
-
-        </li>
-
-    </ul>
 </div>

@@ -37,6 +37,12 @@ class CategoryPostController extends Controller
             'status' => $request->status
         ];
         $result = $this->categoryPost->create($data);
+
         return redirect()->route('category-new-list')->with('success','Thêm mới thành công');
+    }
+
+    public function edit($id) {
+        $result = $this->categoryPost->getById($id);
+        return view('Admin_cp.Categories.edit',compact('result'));
     }
 }

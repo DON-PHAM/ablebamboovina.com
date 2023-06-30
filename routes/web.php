@@ -33,11 +33,10 @@ Route::group(['prefix'=>'dashboard','middleware'=>['locale']],function () {
     //User management
     Route::get('users','Dashboard\UserController@index')->name('user');
     Route::get('users-list','Dashboard\UserController@getAll')->name('user-list');
-    Route::get('users/create','Dashboard\UserController@create')->name('get-user-create');
-    Route::post('users/create','Dashboard\UserController@create')->name('post-user-create');
+    Route::post('users/create','Dashboard\UserController@postCreate')->name('post-user-create');
     Route::get('users/edit/{id}','Dashboard\UserController@edit')->name('get-user-edit');
-    Route::post('users/edit/{id}','Dashboard\UserController@edit')->name('put-user-edit');
-    Route::delete('users/delete/{id}','Dashboard\UserController@edit')->name('delete-user-edit');
+    Route::post('users/edit/{id}','Dashboard\UserController@postEdit')->name('put-user-edit');
+    Route::get('users/delete/{id}','Dashboard\UserController@edit')->name('delete-user-edit');
 
     //Category Product Management
     Route::get('category','Dashboard\CategoryProductController@index')->name('category-list');

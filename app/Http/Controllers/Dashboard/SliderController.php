@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class SliderController extends Controller
 {
     public function index() {
-
+        return view('Admin_cp.Slider.index');
     }
 }
