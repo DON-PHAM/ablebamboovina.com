@@ -30,9 +30,8 @@ class UserController extends Controller
         return response()->json(['status'=>true,'data'=>$data]);
     }
 
-    public function postCreate(UserRequest $request)
+    public function postCreate(Request $request)
     {
-        dd($request);
         try {
             $image_new = "";
             if ($request->hasFile('avatar'))
@@ -53,10 +52,14 @@ class UserController extends Controller
 
             ];
             $result = $this->userService->createUser($data);
-            return response()->json(['success'=>true,'result'=>$result]);
+            if ($result)
+            {
+                return redirect()->route('user')->with('success','Thêm mới thành công');
+            }
+            return redirect()->route('user')->with('false','Thất bại');
         }
         catch (\Exception $ex) {
-            return  response()->json(['success'=>false]);
+            return redirect()->route('user')->with('false','Thất bại');
         }
 
     }
@@ -64,6 +67,12 @@ class UserController extends Controller
     public function postEdit($id, Request $request)
     {
         return response()->json(['success'=>'data']);
+    }
+
+    public function delete($id)
+    {
+        $result = $this->userService->deleteUser($id);
+        return redirect()->route('user')->with('success','Xóa thành công');
     }
 
 

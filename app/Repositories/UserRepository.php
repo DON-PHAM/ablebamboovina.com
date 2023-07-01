@@ -26,7 +26,7 @@ class UserRepository implements UserService {
 
     public function deleteUser(int $id)
     {
-        // TODO: Implement deleteUser() method.
+        return $this->model->destroy($id);
     }
 
     public function getUser(int $id)
