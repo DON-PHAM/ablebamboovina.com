@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
             $table->string('email');
-            $table->string('phonenumber');
+            $table->string('phone');
             $table->string('facebook');
             $table->string('tiktok');
             $table->string('address');

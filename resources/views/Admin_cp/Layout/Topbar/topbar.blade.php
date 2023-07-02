@@ -1,84 +1,51 @@
-<div class="navbar-custom">
-    <ul class="list-unstyled topnav-menu float-right mb-0">
-        <li class="dropdown notification-list nav-link dropdown-toggle  waves-effect">
-            <select class="form-control language custom-select mb-2 mr-sm-2 mb-sm-0" id="language">
+<nav class="main-header navbar navbar-expand navbar-dark navbar-lightblue">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+
+            <select name="language" id="language" class="form-control">
                 <option value="vi">Tiếng Việt</option>
                 <option value="ko">Korean</option>
             </select>
-        </li>
-        <li class="dropdown notification-list">
-            <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button"
-               aria-haspopup="false" aria-expanded="false">
-                <img src="{{asset('backend/assets/images/users/avatar-1.jpg')}}" alt="user-image"
-                     class="rounded-circle">
-                <span class="d-none d-sm-inline-block ml-1">Alex M.</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
-                <!-- item-->
-                <div class="dropdown-header noti-title">
-                    <h6 class="text-overflow m-0">Welcome !</h6>
-                </div>
-
-                <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                    <i class="mdi mdi-account-outline"></i>
-                    <span>{{trans('home.profile')}}</span>
-                </a>
-
-                <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                    <i class="mdi mdi-settings-outline"></i>
-                    <span>{{trans('home.setting')}}</span>
-                </a>
-
-
-                <div class="dropdown-divider"></div>
-
-                <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                    <i class="mdi mdi-logout-variant"></i>
-                    <span>{{trans('home.logout')}}</span>
-                </a>
-
-            </div>
-        </li>
 
     </ul>
-
-    <!-- LOGO -->
-    <div class="logo-box">
-        <a href="{{route('admin')}}" class="logo text-center">
-                    <span class="logo-lg">
-                        <img src="{{asset('backend/assets/images/logo-light.png')}}" alt="" height="18">
-                        <!-- <span class="logo-lg-text-light">Zircos</span> -->
-                    </span>
-            <span class="logo-sm">
-                        <!-- <span class="logo-sm-text-dark">Z</span> -->
-                        <img src="{{asset('backend/assets/images/logo-sm.png')}}" alt="" height="24">
-                    </span>
+    <form action="" method="get" class="form-inline ml-3 d-none d-sm-block">
+        <div class="input-group input-group-sm">
+            <input name="keyword" class="form-control form-control-navbar" type="search" placeholder="Tìm đơn hàng" aria-label="Search">
+            <div class="input-group-append">
+                <button class="btn btn-navbar" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+    <ul class="navbar-nav ml-auto">
+        <a class="nav-link" href="{{route('admin')}}" target="_new">
+            <i class="fas fa-home"></i>
         </a>
-    </div>
 
-    <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
-        <li>
-            <button class="button-menu-mobile waves-effect">
-                <i class="mdi mdi-menu"></i>
-            </button>
-        </li>
-
-        <li class="d-none d-sm-block">
-            <form class="app-search">
-                <div class="app-search-box">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search...">
-                        <div class="input-group-append">
-                            <button class="btn" type="submit">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
+        <li class="nav-item dropdown user-menu">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
+                <img src="{{asset('backend/assets/admin/avatar/user.jpg')}}" class="user-image" alt="User Image">
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                <div class="text-center">
+                    <img src="{{asset('backend/assets/admin/avatar/user.jpg')}}" class="img-circle" alt="Test">
+                    <div>
+                        Test<br>
+                        <small>Tham gia từ 2022-12-23 21:47:06</small>
                     </div>
                 </div>
-            </form>
+                <div class="user-footer">
+                    <div class="float-left">
+                        <a href="" class="btn btn-default btn-flat">{{trans('home.profile')}}</a>
+                    </div>
+                    <div class="float-right">
+                        <a href="{{route('logout')}}" class="btn btn-default btn-flat">{{trans('home.logout')}}</a>
+                    </div>
+                </div>
+            </div>
         </li>
     </ul>
-</div>
+</nav>

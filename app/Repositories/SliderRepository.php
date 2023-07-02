@@ -1,31 +1,39 @@
 <?php
 namespace App\Repositories;
+use App\Models\Slider;
 use App\Services\SliderService;
 
 class SliderRepository implements SliderService {
 
+    protected $model;
+    public function __construct(Slider $model)
+    {
+        $this->model = $model;
+    }
+
     public function create(array $data)
     {
-        // TODO: Implement create() method.
+        return $this->model->create($data);
     }
 
     public function update(int $id, array $data)
     {
-        // TODO: Implement update() method.
+        $slider = $this->model->find($id);
+        return $slider->update($data);
     }
 
     public function delete(int $id)
     {
-        // TODO: Implement delete() method.
+        return $this->model->destroy($id);
     }
 
     public function getById(int $id)
     {
-        // TODO: Implement getById() method.
+        return $this->model->find($id);
     }
 
-    public function getAll(string $locale)
+    public function getAll()
     {
-        // TODO: Implement getAll() method.
+        return $this->model->paginate(15);
     }
 }

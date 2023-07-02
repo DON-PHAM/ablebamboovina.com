@@ -9,5 +9,5 @@ interface SliderService
     public function delete(int $id);
 
     public function getById(int $id);
-    public function getAll(string $locale);
+    public function getAll();
 }

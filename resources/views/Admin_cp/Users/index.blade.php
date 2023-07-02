@@ -1,223 +1,192 @@
 @extends('Admin_cp.Layout.master')
 @section('title',trans('user.title'))
 @section('content')
-    <!--page title start-->
-    <div class="page-heading">
+    <div class="content-header">
         <div class="container-fluid">
-            <div class="row d-flex align-items-center">
-                <div class="col-md-6">
-                    <div class="page-breadcrumb">
-                        <h1>{{trans('user.list-user')}}</h1>
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#userModal"
-                                data-whatever="@mdo" style="margin-bottom: 10px">
-                            {{trans('home.add')}}
-                        </button>
-                    </div>
-
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">
+                        <i class="fa fa-indent" aria-hidden="true"></i> {{trans('user.list-user')}}
+                    </h1>
+                    <div class="more_info"></div>
                 </div>
-                <div class="col-md-6 justify-content-md-end d-flex">
-                    <div class="breadcrumb_nav">
-                        <ol class="breadcrumb">
-                            <li>
-                                <i class="fa fa-home"></i>
-                                <a class="parent-item" href="{{route('admin')}}">{{trans('home.home')}}</a>
-                                <i class="fa fa-angle-right"></i>
-                            </li>
-                            <li class="active">
-                                {{trans('home.user')}}
-                            </li>
-                        </ol>
-                    </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="{{route('admin')}}"><i
+                                    class="fa fa-home fa-1x"></i> {{trans('home.home')}}</a></li>
+                        <li class="breadcrumb-item active">{{trans('user.list-user')}}</li>
+                    </ol>
                 </div>
             </div>
         </div>
     </div>
-    <!--page title end-->
 
-    <div class="container-fluid">
-        <!-- state start-->
-        <div class="row">
-            <div class=" col-sm-12">
-                <div class="card card-shadow mb-4">
-                    <div class="card-body">
-                        <table id="userTable" class="table table-bordered table-striped">
-                            <thead>
-                            <tr>
-                                <th>{{trans('user.user-name')}}</th>
-                                <th>{{trans('user.email')}}</th>
-                                <th>{{trans('user.phone-number')}}</th>
-                                <th>{{trans('user.status')}}</th>
-                                <th>{{trans('user.active')}}</th>
-                                <th>{{trans('user.role')}}</th>
 
-                            </tr>
-                            </thead>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header with-border">
+                            <div class="card-tools">
+                                <div class="menu-right">
+                                    <form action="" id="button_search">
+                                        <div class="input-group input-group" style="width: 350px;">
+                                            <input type="text" name="keyword" class="form-control rounded-0 float-right"
+                                                   placeholder="{{trans('user.find-name')}}" value="">
+                                            <div class="input-group-append">
+                                                <button type="submit" class="btn btn-primary"><i
+                                                        class="fas fa-search"></i></button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="float-left">
+                            </div>
 
-                            <tbody>
-
-                            </tbody>
-
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2"
-                 aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel2">{{trans('user.user-info')}}</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
                         </div>
-                        <div class="modal-body">
-
-                            <form id="formData" enctype="multipart/form-data" method="post" action="{{route('post-user-create')}}">
-                                @csrf
-                                <div class="avatar-wrapper">
-                                    <img class="profile-pic" src="" />
-                                    <div class="upload-button">
-                                        <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+                        <div class="card-header with-border">
+                            <div class="card-tools">
+                                <div class="menu-right">
+                                    <a href="{{route('user-create')}}"
+                                       class="btn  btn-success  btn-flat" title="New" id="button_create_new">
+                                        <i class="fa fa-plus" title="Thêm mới"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="float-left">
+                                <div class="menu-left">
+                                    <span class="btn btn-flat btn-primary grid-refresh" title="Làm mới"><i
+                                            class="fas fa-sync-alt"></i></span>
+                                </div>
+                                <div class="menu-left">
+                                    <div class="input-group float-right ml-1" style="width: 350px;">
+                                        <div class="btn-group">
+                                            <select class="form-control rounded-0 float-right" id="order_sort">
+                                                <option value="id__desc">ID giảm dần</option>
+                                                <option value="id__asc">ID tăng dần</option>
+                                                <option value="username__desc">username theo thứ tự z-a</option>
+                                                <option value="alpha__asc">username theo thứ tự a-z</option>
+                                                <option value="name__desc">Tên theo thứ tự z-a</option>
+                                                <option value="name__asc">Tên theo thứ tự a-z</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-group-append">
+                                            <button id="button_sort" type="submit" class="btn btn-primary"><i
+                                                    class="fas fa-sort-amount-down-alt"></i></button>
+                                        </div>
                                     </div>
-                                    <input class="file-upload" type="file" name="avatar" accept="image/*"/>
                                 </div>
-
-                                <div class="form-group">
-                                    <label for="recipient-name" class="col-form-label">{{trans('user.email')}}</label>
-                                    <input type="email" name="email" class="form-control" id="email">
-                                </div>
-                                <div class="form-group">
-                                    <label for="recipient-name"
-                                           class="col-form-label">{{trans('user.user-name')}}</label>
-                                    <input type="text" name="username" class="form-control" id="username">
-                                </div>
-                                <div class="form-group">
-                                    <label for="recipient-name"
-                                           class="col-form-label">{{trans('user.fullname')}}</label>
-                                    <input type="text" name="name" class="form-control" id="name">
-                                </div>
-                                <div class="form-group">
-                                    <label for="recipient-name"
-                                           class="col-form-label">{{trans('user.phone-number')}}</label>
-                                    <input type="text" name="phonenumber" class="form-control" id="phonenumber">
-                                </div>
-                                <div class="form-group">
-                                    <label for="recipient-name"
-                                           class="col-form-label">{{trans('user.password')}}</label>
-                                    <input type="password" name="password" class="form-control" id="password">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="recipient-name"
-                                           class="col-form-label">{{trans('user.role')}}</label>
-                                    <select class="role form-control" id="role" name="role">
-                                        <option value="1">Admin</option>
-                                        <option value="2">User</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="recipient-name" class="col-form-label">{{trans('user.active')}}</label>
-                                    <input type="checkbox" name="status" class="" id="status">
-                                </div>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                        {{trans('home.close')}}
-                                    </button>
-                                    <button id="saveUser" type="submit" class="btn btn-primary">
-                                        {{trans('home.save')}}
-                                    </button>
-                                </div>
-                            </form>
+                            </div>
                         </div>
 
+                        <div class="card-body p-0" id="pjax-container">
+                            <div class="table-responsive">
+                                <table class="table table-hover box-body text-wrap table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>{{trans('user.user-name')}}</th>
+                                        <th>{{trans('user.email')}}</th>
+                                        <th>{{trans('user.fullname')}}</th>
+                                        <th>{{trans('user.role')}}</th>
+                                        <th>{{trans('user.status')}}</th>
+                                        <th>{{trans('user.action')}}</th>
+                                    </tr>
+                                    </thead>
+                                    @if($users)
+                                            <?php $i = 1; ?>
+                                        <tbody>
+                                        @foreach($users as $user)
+                                            <tr>
+                                                <td>{{$i}}</td>
+                                                <td>{{$user->username}}</td>
+                                                <td>{{$user->email}}</td>
+                                                <td>{{$user->name}}</td>
+                                                <td>{{$user->role == 1 ? "Admin" : "User"}}</td>
+                                                <td>{{$user->status == 1 ? "Kích hoạt" : "Chưa kích hoạt"}}</td>
+                                                <td>
+                                                    <a href="{{route('get-user-edit',['id'=>$user->id])}}">
+<span title="Edit" type="button" class="btn btn-flat btn-sm btn-primary">
+<i class="fa fa-edit"></i>
+</span>
+                                                    </a>
+                                                    <span onclick="deleteItem({{$user->id}});" title="Xóa" class="btn btn-flat btn-sm btn-danger">
+<i class="fas fa-trash-alt"></i>
+</span>
+
+                                                </td>
+
+                                            </tr>
+                                            <?php $i++ ?>
+                                        @endforeach
+                                        </tbody>
+                                    @endif
+                                </table>
+
+                            </div>
+                            {{$users->links("pagination::bootstrap-4")}}
+                        </div>
+
+                        <div class="card-footer clearfix">
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
 @endsection
-@section('scripts')
+@section('script')
+    <script src="{{asset('backend/assets/admin/plugin/jquery.pjax.js')}}"></script>
     <script>
-        $(document).ready(function () {
-            let readURL = function(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-
-                    reader.onload = function (e) {
-                        $('.profile-pic').attr('src', e.target.result);
-                    }
-
-                    reader.readAsDataURL(input.files[0]);
-                }
-            }
-
-            $(".file-upload").on('change', function(){
-                readURL(this);
-            });
-
-            $(".upload-button").on('click', function() {
-                $(".file-upload").click();
-            });
-            loadTable();
-            function loadTable() {
-                $('#userTable').DataTable({
-                    processing:true,
-                    paging: true,
-                    searching: false,
-                    destroy: true,
-                    ajax: '{{route('user-list')}}',
-                    columns: [
-                        {data: 'username', name: 'username'},
-                        {data: 'email', name: 'email'},
-                        {data: 'phonenumber', name: 'phonenumber'},
-                        {
-                            data: 'status', render: function (data) {
-                                if (data == 1) {
-                                    return "Active";
-                                }
-                                return "InActive";
-                            }
-                        },
-                        {
-                            data: 'role', render: function (data) {
-                                if (data == 1) {
-                                    return "Admin";
-                                }
-                                return "User";
-                            }
-                        },
-                        {
-                            data: 'id', render: function (data, row, type) {
-                                let urlEdit = "{{route('get-user-edit',':id')}}".replace(':id',data);
-                                let urlDelete = "{{route('delete-user',':id')}}".replace(':id',data);
-                                return `<a class="btn btn-success" href=${urlEdit}>Edit</a><a class="btn btn-danger" href=${urlDelete}>Delete</a>`
-                            }
-                        }
-                    ]
-                })
-
-            }
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
+        $('.grid-trash').on('click', function() {
+            let ids = selectedRows().join();
+            deleteItem(ids);
         });
-        $('#delete').click(function() {alert(1)})
 
-    </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    <script>
-        @if(session('success'))
-        toastr.success('{{ session('success') }}')
-        @endif
-    </script>
+        function deleteItem(ids){
+            Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: true,
+            }).fire({
+                title: '{{trans('user.delete-notifi')}}',
+                text: "",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: '{{trans('user.yes')}}',
+                confirmButtonColor: "#DD6B55",
+                cancelButtonText: '{{trans('user.no')}}',
+                reverseButtons: true,
 
+                preConfirm: function() {
+                    return new Promise(function(resolve) {
+                        $.ajax({
+                            method: 'get',
+                            url: '{{route('delete-user',':id')}}'.replace(':id',ids),
+                            success: function (data) {
+                                location.reload();
+                            }
+                        });
+                    });
+                }
+
+            }).then((result) => {
+                if (result.value) {
+                    toastr.success('Xóa thành công');
+                } else if (
+                    // Read more about handling dismissals
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+
+                }
+            })
+        }
+    </script>
 @endsection
+

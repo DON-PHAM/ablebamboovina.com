@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('productcategoryid');
             $table->string('languageid');
+            $table->string('keyword');
             $table->string('name');
             $table->string('description');
             $table->timestamps();

@@ -21,7 +21,9 @@ class CategoryProductRepository implements CategoryProductService {
     {
         $category = [
             'slug' => Str::Slug($data['vi_name']),
-            'status'=> $data['status'] == 'on' ? 1: 0
+            'status'=> $data['status'] == 'on' ? 1: 0,
+            'image'=> $data['image'],
+            'typeid'=>$data['typeid']
         ];
         $result = $this->category->create($category);
 
@@ -29,7 +31,8 @@ class CategoryProductRepository implements CategoryProductService {
             'productcategoryid' => $result->id,
             'languageid' =>'vi',
             'name' => $data['vi_name'],
-            'description' => $data['vi_description']
+            'description' => $data['vi_description'],
+            'keyword' => $data['vi_keyword']
         ];
 
         $this->categoryTranslate->create($categoryTranslateVi);
@@ -37,7 +40,8 @@ class CategoryProductRepository implements CategoryProductService {
             'productcategoryid' => $result->id,
             'languageid' =>'ko',
             'name' => $data['ko_name'],
-            'description' => $data['ko_description']
+            'description' => $data['ko_description'],
+            'keyword' => $data['ko_keyword']
         ];
         $this->categoryTranslate->create($categoryTranslateKo);
         return $result;
@@ -46,18 +50,54 @@ class CategoryProductRepository implements CategoryProductService {
 
     public function update(int $id, array $data)
     {
-        // TODO: Implement update() method.
+        $category = [
+            'slug' => Str::Slug($data['vi_name']),
+            'status' => isset($data['status']) && $data['status'] == 'on' ? 1 : 0,
+            'typeid' => $data['typeid']
+        ];
+
+        if (isset($data['image'])) {
+            $category['image'] = $data['image'];
+        }
+
+        $result = $this->category->find($id)->update($category);
+
+        $catTranslatevi = $this->categoryTranslate
+            ->where('productcategoryid', $id)
+            ->where('languageid', 'vi')
+            ->first();
+        $catTranslatevi->update([
+            'name' => $data['vi_name'],
+            'description' => $data['vi_description'],
+            'keyword' => $data['vi_keyword']
+        ]);
+
+        $catTranslateko = $this->categoryTranslate
+            ->where('productcategoryid', $id)
+            ->where('languageid', 'ko')
+            ->first();
+        $catTranslateko->update([
+            'name' => $data['ko_name'],
+            'description' => $data['ko_description'],
+            'keyword' => $data['ko_keyword']
+        ]);
+
+        return $result;
     }
 
     public function delete(int $id)
     {
-        // TODO: Implement delete() method.
+        $categoryTranslate = $this->categoryTranslate->where('productcategoryid','=',$id)->take(2)->get();
+        foreach ($categoryTranslate as $item)
+        {
+            $item->delete();
+        }
     }
 
     public function getById(int $id)
     {
         $category = ProductCategory::join('product_category_translates','product_categories.id','=','product_category_translates.productcategoryid')
-            ->where('product_categories.id','=',$id)
+            ->where('product_category_translates.productcategoryid','=',$id)
             ->get(['product_categories.*','product_category_translates.*']);
         return $category;
     }
@@ -66,7 +106,7 @@ class CategoryProductRepository implements CategoryProductService {
     {
         $category = ProductCategory::join('product_category_translates','product_categories.id','=','product_category_translates.productcategoryid')
                                         ->where('product_category_translates.languageid','=',$locale)
-                                        ->get(['product_categories.*','product_category_translates.*']);
+                                        ->paginate(15, ['product_categories.*', 'product_category_translates.*']);
         return $category;
     }
 }

@@ -22,8 +22,13 @@ class LoginController extends Controller
             return redirect()->to('login')->withErrors(trans('message.fail'));
         endif;
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
+        if ($user->status != 1)
+        {
+            return redirect()->to('login')->withErrors(trans('message.inactive'));
+        }
         Auth::login($user);
-
+        // Store user information in session
+        Session::put('user', $user);
         return $this->authenticated($request,$user);
     }
 

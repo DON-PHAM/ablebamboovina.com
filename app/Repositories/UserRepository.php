@@ -31,11 +31,11 @@ class UserRepository implements UserService {
 
     public function getUser(int $id)
     {
-        // TODO: Implement getUser() method.
+        return $this->model->find($id);
     }
 
     public function getUsers()
     {
-        return $this->model->all();
+        return $this->model->paginate(15);
     }
 }
