@@ -1,128 +1,244 @@
 @extends('Admin_cp.Layout.master')
 @section('title',trans('category.title'))
 @section('content')
-    <!--page title start-->
-    <div class="page-heading">
-        <div class="container-fluid">
-            <div class="row d-flex align-items-center">
-                <div class="col-md-6">
-                    <div class="page-breadcrumb">
-                        <h1>{{trans('category.list-category-product')}}</h1>
-                    </div>
+    <style>
+        img {
+            max-width: 180px;
+        }
 
+        input[type=file] {
+            padding: 10px;
+            background: #2d2d2d;
+        }
+
+    </style>
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">
+                        <i class="fa fa-plus" aria-hidden="true"></i> Add new category
+                    </h1>
+                    <div class="more_info"></div>
                 </div>
-                <div class="col-md-6 justify-content-md-end d-flex">
-                    <div class="breadcrumb_nav">
-                        <ol class="breadcrumb">
-                            <li>
-                                <i class="fa fa-home"></i>
-                                <a class="parent-item" href="{{route('admin')}}">{{trans('home.home')}}</a>
-                                <i class="fa fa-angle-right"></i>
-                            </li>
-                            <li class="active">
-                                {{trans('home.category-product')}}
-                            </li>
-                        </ol>
-                    </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href=""><i
+                                    class="fa fa-home fa-1x"></i> Home</a></li>
+                        <li class="breadcrumb-item active">Add new category</li>
+                    </ol>
                 </div>
             </div>
         </div>
     </div>
-    <!--page title end-->
-    <div class="container-fluid">
-        <form id="categoryPost" method="POST" action="{{route('post-category-create')}}" class=" right-text-label-form feedback-icon-form">
-            @csrf
-            <!-- state start-->
+
+
+    <section class="content">
+        <div class="container-fluid">
             <div class="row">
-                <div class=" col-md-12">
-                    <div class="card card-shadow mb-4">
-                        <div class="card-header">
-                            <div class="card-title">
-                                Tiếng Việt
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header with-border">
+                            <h2 class="card-title">Add new</h2>
+                            <div class="card-tools">
+                                <div class="btn-group float-right mr-5">
+                                    <a href=""
+                                       class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span
+                                            class="hidden-xs"> Back list</span></a>
+                                </div>
                             </div>
                         </div>
-                        <div class="card-body">
-                                <div class="form-group row">
-                                    <label class="col-sm-4 control-label" for="firstname">Tên chuyên mục (*)</label>
-                                    <div class="col-sm-5">
-                                        <input type="text" class="form-control" id="vi_name" name="vi_name"
-                                               placeholder=""/>
+
+                        @include('Error.message')
+                        <form action="{{route('post-category-create')}}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="card-body">
+                                <div class="card">
+                                    <div class="card-header with-border">
+                                        <h3 class="card-title">Korean <img alt="Korean" title=""
+                                                                           src="{{asset('backend/assets/data/language/flag_uk.png')}}"
+                                                                           style=" width:20px; height:20px;"></h3>
+                                        <div class="card-tools">
+                                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group row  ">
+                                            <label for="ko_name" class="col-sm-2 col-form-label">Name <span
+                                                    class="seo" title="SEO"><i class="fa fa-coffee"
+                                                                               aria-hidden="true"></i></span></label>
+                                            <div class="col-sm-8">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i class="fas fa-pencil-alt"></i></span>
+                                                    </div>
+                                                    <input type="text" id="ko_name" name="ko_name"
+                                                           value="" class="form-control ko_name" placeholder="">
+                                                </div>
+                                                <span class="form-text">
+<i class="fa fa-info-circle"></i> Maximum 200 characters
+</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row  ">
+                                            <label for="ko_keyword" class="col-sm-2 col-form-label">Keyword <span
+                                                    class="seo" title="SEO"><i class="fa fa-coffee"
+                                                                               aria-hidden="true"></i></span></label>
+                                            <div class="col-sm-8">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i class="fas fa-pencil-alt"></i></span>
+                                                    </div>
+                                                    <input type="text" id="ko_keyword" name="ko_keyword"
+                                                           value="" class="form-control ko_keyword" placeholder="">
+                                                </div>
+                                                <span class="form-text">
+<i class="fa fa-info-circle"></i> Maximum 200 characters
+</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row  ">
+                                            <label for="ko_description" class="col-sm-2 col-form-label">Description
+                                                <span class="seo" title="SEO"><i class="fa fa-coffee"
+                                                                                 aria-hidden="true"></i></span></label>
+                                            <div class="col-sm-8">
+                                                <textarea type="text" id="ko_description"
+                                                          name="ko_description"
+                                                          class="form-control ko_description"
+                                                          placeholder=""></textarea>
+                                                <span class="form-text">
+<i class="fa fa-info-circle"></i> Maximum 300 characters
+</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header with-border">
+                                        <h3 class="card-title">Tiếng Việt <img alt="Tiếng Việt" title=""
+                                                                               src="{{asset('backend/assets/data/language/flag_vn.png')}}"
+                                                                               style=" width:20px; height:20px;"></h3>
+                                        <div class="card-tools">
+                                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group row  ">
+                                            <label for="vi_name" class="col-sm-2 col-form-label">Name <span
+                                                    class="seo" title="SEO"><i class="fa fa-coffee"
+                                                                               aria-hidden="true"></i></span></label>
+                                            <div class="col-sm-8">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i class="fas fa-pencil-alt"></i></span>
+                                                    </div>
+                                                    <input type="text" id="vi_name" name="vi_name"
+                                                           value="" class="form-control vi_name" placeholder="">
+                                                </div>
+                                                <span class="form-text">
+<i class="fa fa-info-circle"></i> Maximum 200 characters
+</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row  ">
+                                            <label for="vi_keyword" class="col-sm-2 col-form-label">Keyword <span
+                                                    class="seo" title="SEO"><i class="fa fa-coffee"
+                                                                               aria-hidden="true"></i></span></label>
+                                            <div class="col-sm-8">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i class="fas fa-pencil-alt"></i></span>
+                                                    </div>
+                                                    <input type="text" id="vi_keyword" name="vi_keyword"
+                                                           value="" class="form-control vi_keyword" placeholder="">
+                                                </div>
+                                                <span class="form-text">
+<i class="fa fa-info-circle"></i> Maximum 200 characters
+</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row  ">
+                                            <label for="vi_description" class="col-sm-2 col-form-label">Description
+                                                <span class="seo" title="SEO"><i class="fa fa-coffee"
+                                                                                 aria-hidden="true"></i></span></label>
+                                            <div class="col-sm-8">
+                                                <textarea type="text" id="vi_description"
+                                                          name="vi_description"
+                                                          class="form-control vi_description"
+                                                          placeholder=""></textarea>
+                                                <span class="form-text">
+<i class="fa fa-info-circle"></i> Maximum 300 characters
+</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row  ">
+                                    <label for="image" class="col-sm-2 col-form-label">Image</label>
+                                    <div class="col-sm-8">
+                                        <input type="file" onchange="readURL(this);" name="image"/>
+                                        <img id="blah" src="http://placehold.it/180" alt="your image"/>
+                                    </div>
+                                </div>
+                                <div class="form-group row  ">
+                                    <label for="sort" class="col-sm-2 col-form-label">Type</label>
+                                    <div class="col-sm-8">
+                                        <div class="input-group">
+
+                                            <select class="form-control" name="type">
+                                                <option value="1">Product</option>
+                                                <option value="0">New</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="form-group row">
-                                    <label class="col-sm-4 control-label" for="lastname">Mô tả</label>
-                                    <div class="col-sm-5">
-                                        <input type="text" class="form-control" id="vi_description" name="vi_description"
-                                               placeholder=""/>
+                                <div class="form-group  row">
+                                    <label for="status" class="col-sm-2 col-form-label">Status</label>
+                                    <div class="col-sm-8">
+                                        <input name="status" id="status" type="checkbox">
                                     </div>
                                 </div>
-                        </div>
+                            </div>
+
+                            <div class="card-footer row" id="card-footer">
+                                <div class="col-md-2">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="btn-group float-right">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                    <div class="btn-group float-left">
+                                        <button type="reset" class="btn btn-warning">Reset</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class=" col-md-12">
-                    <div class="card card-shadow mb-4">
-                        <div class="card-header">
-                            <div class="card-title">
-                                한국인
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-group row">
-                                <label class="col-sm-4 control-label" for="lastname1">카테고리 이름 (*)</label>
-                                <div class="col-sm-5">
-                                    <input type="text" class="form-control" id="ko_name" name="ko_name"
-                                           placeholder=""/>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-4 control-label" for="firstname1">설명하다</label>
-                                <div class="col-sm-5">
-                                    <input type="text" class="form-control" id="ko_description" name="ko_description"
-                                           placeholder=""/>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-sm-4 control-label"> </label>
-                                <div class="col-sm-5 ">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="status" name="status" value="status"/>
-                                            Active </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-8 ml-auto">
-                                    <button type="submit" class="btn btn-info" name="signup1" value="Sign up">
-                                        SAVE
-                                    </button>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-
-    </div>
+        </div>
+    </section>
 @endsection
-@section('scripts')
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js">
-    </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+@section('script')
+
     <script>
-        @if(isset ($errors) && count($errors) > 0)
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                let reader = new FileReader();
 
-        @foreach($errors->all() as $error)
-        toastr.error('{{ $error }}')
-        @endforeach
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result);
+                };
 
-        @endif
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
     </script>
 @endsection

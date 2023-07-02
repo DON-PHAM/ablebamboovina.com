@@ -1,109 +1,362 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="vi">
 <head>
-    <meta charset="utf-8" />
-    <title>Dashboard 1 | Zircos - Responsive Bootstrap 4 Admin Dashboard</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Responsive bootstrap 4 admin template" name="description" />
-    <meta content="Coderthemes" name="author" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- App favicon -->
-    <link rel="shortcut icon" href="{{asset('backend/assets/images/favicon.ico')}}">
-
-    <!-- App css -->
-    <link href="{{asset('backend/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
-    <link href="{{asset('backend/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
-
-    <!-- Table datatable css -->
-    <link href="{{asset('backend/assets/libs/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('backend/assets/libs/datatables/responsive.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('backend/assets/libs/datatables/buttons.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('backend/assets/libs/datatables/fixedHeader.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('backend/assets/libs/datatables/scroller.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('backend/assets/libs/datatables/dataTables.colVis.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('backend/assets/libs/datatables/fixedColumns.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
-
-
-    <link href="{{asset('backend/assets/css/app.min.css')}}" rel="stylesheet" type="text/css" id="app-stylesheet" />
-    <link href="{{asset('backend/assets/css/custom.css')}}" rel="stylesheet" type="text/css" id="app-stylesheet" />
-
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="{{asset('backend/assets/images/icon.png')}}" type="image/png" sizes="16x16">
+    <title>@yield('title')</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{asset('backend/assets/admin/LTE/plugins/fontawesome-free/css/all.min.css')}}">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="{{asset('backend/assets/admin/LTE/plugins/jqvmap/jqvmap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/admin/LTE/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/admin/LTE/plugins/summernote/summernote-bs4.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('backend/assets/admin/LTE/plugins/iCheck/square/blue.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/admin/LTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/admin/LTE/plugins/select2/css/select2.min.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        #summary ul, #summary li {
+            margin: 0;
+            list-style: none;
+            font-size: 11px;
+            color: #fff;
+            padding: 5px;
+        }
+        #summary {
+            border-radius: 3px;
+            border: 1px dashed #c7626c;
+            margin: 10px 2px;
+            background: #e9ecef;
+        }
+        .footer-static{
+            color: #343a40 !important;
+        }
+        #summary div:first-child {
+            margin-bottom: 4px;
+        }
+        #summary .progress {
+            height: 3px;
+            margin-bottom: 0;
+            background: #fff;
+        }
+        .progress {
+            overflow: hidden;
+            height: 18px;
+            margin-bottom: 18px;
+            background-color: #f5f5f5;
+            border-radius: 3px;
+            -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+            box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+        }
+        .progress-bar {
+            height: 50px;
+        }
+        .progress-bar-default {
+            background-color: #000;
+        }
+        @media (min-width: 768px) {
+            .sidebar-collapse #summary {
+                display: none !important;
+                -webkit-transform: translateZ(0);
+            }
+            .box-body td,.box-body th{
+                max-width:150px;word-break:break-all;
+            }
+        }
+        .overlay {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transform: -webkit-translate(-50%, -50%);
+            transform: -moz-translate(-50%, -50%);
+            transform: -ms-translate(-50%, -50%);
+            color:#1f222b;
+            z-index: 9999;
+            background: rgba(255,255,255,0.7);
+        }
+        .select2-selection{
+            border-radius: inherit  !important;
+            border: 1px solid #ccc !important;
+        }
+        .form-group > label.asterisk:after {
+            content: " *";
+            color: red;
+        }
+        #loading{
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 50;
+            background: rgba(255,255,255,0.7);
+        }
+        .img_holder{
+            margin-top:15px;
+        }
+        .img_holder > img{
+            max-height:100px;max-width: 100px;
+        }
+        .more_info{
+            margin-top: 10px;
+            margin-left: 5px;
+        }
+        .breadcrumb{
+            margin-right: 30px;
+        }
+        .action-teplate{
+            min-width: 80px;
+        }
+        .seo{
+            font-size: 10px;
+            color: #ad3419;
+        }
+        .menu-left, .menu-right{
+            display: inline;
+        }
+        .sc-old-price {
+            text-decoration: line-through;
+            color: #a95d5d;
+            font-size: 13px;
+            padding: 10px;
+        }
+        .sc-new-price {
+            color: #FE980F;
+            font-size: 14px;
+            padding: 10px 5px;
+            font-weight: bold;
+        }
+        #form-main hr{
+            background-color: #afafaf;
+            height: 1px;
+            margin-bottom: 40px !important;
+        }
+        .pointer {cursor: pointer;}
+        .btn-import{
+            font-weight: bold !important;
+            border-right: 1px solid #e1eae6;
+            border-left: 1px solid #e1eae6;
+            box-shadow: -1px -2px 0px 0px #e1eae6;
+        }
+        .filter-search {
+            border: 1px solid #c5c5c5 !important;
+        }
+        .filter-button{
+            border: 1px solid #c5c5c5 !important;
+            background: #d2d6de;
+        }
+        .has-treeview li.active > a:last-child,
+        .sidebar-menu > .active.menu-open > a:last-child,
+        li.nav-item.active > a:last-child,
+        .table-list tr.active {
+            background: #c1d2ff !important;
+        }
+        .has-treeview.active.menu-open > a {
+            font-weight: bold;
+        }
+        .nav-treeview {
+            background: #fff !important;
+        }
+        .btn-primary {
+            color: #fff;
+            background-color: #3c8dbc !important;
+            border-color: #3c8dbc !important;
+        }
+        .header-fix,.header-fix:hover{
+            background: #8cc1dc;
+            border-radius: 0px;
+            color:#424242;
+        }
+        .dd-handle{
+            border-radius: 0px !important;
+        }
+        .remove_menu{
+            cursor: pointer;
+        }
+        .active-item{
+            background: #c9d3d8 !important;
+        }
+        .dd-handle:hover{
+            background: rgba(0,0,0,.1) !important;
+        }
+        /* .layout-fixed .main-sidebar{
+        background-color: #222d32 !important;
+        }
+        */
+        .header {
+            border-radius: 0px !important;
+        }
+        .sub-header {
+            display: inline;
+        }
+        .invalid .help-block {
+            color:red;
+        }
+        /* lightblue */
+        .main-sidebar .sidebar-lightblue  li.header{
+            color: #ffffff !important;
+            background: #4da0f1 !important;
+            padding: 10px 25px 10px 15px;
+        }
+        .sidebar-lightblue .nav-item.has-treeview > a {
+            color: #3b8ab8 !important;
+        }
+        /* dark */
+        .main-sidebar .sidebar-gray-dark  li.header{
+            color: #ffffff !important;
+            background: #343a40 !important;
+            padding: 10px 25px 10px 15px;
+        }
+        .sidebar-gray-dark .nav-item.has-treeview > a {
+            color: #343a40 !important;
+        }
+        /* success */
+        .main-sidebar .sidebar-success  li.header{
+            color: #ffffff !important;
+            background: #28a745 !important;
+            padding: 10px 25px 10px 15px;
+        }
+        .sidebar-success .nav-item.has-treeview > a {
+            color: #28a745 !important;
+        }
+        /* white */
+        .main-sidebar .sidebar-white  li.header{
+            color: #000 !important;
+            background: #96a3ab !important;
+            padding: 10px 25px 10px 15px;
+        }
+        .sidebar-white .nav-item.has-treeview > a {
+            color: #000 !important;
+        }
+        /* pink */
+        .main-sidebar .sidebar-pink  li.header{
+            color: #ffffff !important;
+            background: #e83e8c !important;
+            padding: 10px 25px 10px 15px;
+        }
+        .sidebar-pink .nav-item.has-treeview > a {
+            color: #e83e8c !important;
+        }
+        .brand-link.navbar-secondary {
+            background-color: #c7626c !important;
+            text-align: center;
+            color: #fff !important;
+        }
+        .sidebar-form{
+            background-color: #f4f6f9 !important;
+        }
+        .sidebar-form .form-control {
+            border: 1px solid transparent !important;
+        }
+        /* .sidebar-form > .input-group:focus{
+        background-color: #fff !important;
+        color: #666 !important;
+        } */
+        .sidebar-form  input {
+            background-color: transparent !important;
+        }
+        .tab-action > .nav-item {
+            border-right: 1px solid #4da0f1;
+        }
+        .tab-action > .nav-item:last-child {
+            border-right: 0px;
+        }
+        .tab-action > .nav-item.active {
+            background: #e4ebff;
+            border-bottom: 2px solid #b72020 80%;
+            border: 1px dotted #f00;
+            font-weight: bold;
+        }
+        .card-primary.card-outline-tabs>.card-header a.active {
+            border-top: 3px solid #4da0f1 !important;
+        }
+        /* .navbar-primary {
+        background: #386c84 !important;
+        } */
+        .icheckbox_square-blue {
+            vertical-align: inherit !important;
+        }
+        .form-text {
+            font-size: 12px;
+        }
+        .filter-api {
+            margin-right:5px;
+            vertical-align: text-top !important;
+            display:inline
+        }
+        .order-info {
+            clear: both;
+            font-size: 14px;
+        }
+        .order-info span {
+            display: block;
+        }
+        .block-action {
+            display: inline;
+            margin-right: 10px;
+        }
+        .help-block {
+            color: red;
+        }
+        .nav-sidebar > .nav-link{
+            text-transform: uppercase;
+        }
+        .sub-title {
+            font-size: 15px;
+            margin: 10px;
+            border: 1px dotted #b58989;
+            padding: 5px;
+        }
+        .form-inline label {
+            display: inherit !important;
+        }
+    </style>
+    <link rel="stylesheet" href="{{asset('backend/assets/admin/LTE/plugins/jquery-ui/jquery-ui.min.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/admin/LTE/dist/css/adminlte.min.css')}}">
 </head>
-
-<body>
-
-<!-- Begin page -->
-<div id="wrapper">
-
-
-    <!-- Topbar Start -->
+<body class="hold-transition sidebar-mini layout-navbar-fixed layout-fixed accent-lightblue">
+<div class="wrapper">
     @include('Admin_cp.Layout.Topbar.topbar')
-    <!-- end Topbar -->
-
-    <!-- ========== Left Sidebar Start ========== -->
     @include('Admin_cp.Layout.Siderbar.siderbar')
-    <!-- Left Sidebar End -->
-
-    <!-- ============================================================== -->
-    <!-- Start Page Content here -->
-    <!-- ============================================================== -->
-    <div class="content-page">
-        <div class="content">
-            <div class="container-fluid">
-            <!-- Start Content-->
-            @yield('content')
-            <!-- end container-fluid -->
-            </div>
-        </div>
-        <!-- end content -->
-        <!-- Footer Start -->
-        @include('Admin_cp.Layout.Footer.footer')
-        <!-- end Footer -->
-
+    <div class="content-wrapper">
+          @yield('content')
     </div>
 
-    <!-- ============================================================== -->
-    <!-- End Page content -->
-    <!-- ============================================================== -->
-
+    <aside class="control-sidebar control-sidebar-dark">
+    </aside>
+    <div id="loading">
+        <div id="overlay" class="overlay"><i class="fa fa-spinner fa-pulse fa-5x fa-fw "></i></div>
+    </div>
 </div>
-<!-- END wrapper -->
-
-<!-- Vendor js -->
-<script src="{{asset('backend/assets/js/vendor.min.js')}}"></script>
-
-<script src="{{asset('backend/assets/libs/raphael/raphael.min.js')}}"></script>
-
-
-<!-- Datatable plugin js -->
-<script src="{{asset('backend/assets/libs/datatables/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('backend/assets/libs/datatables/dataTables.bootstrap4.min.js')}}"></script>
-
-<script src="{{asset('backend/assets/libs/datatables/dataTables.responsive.min.js')}}"></script>
-<script src="{{asset('backend/assets/libs/datatables/responsive.bootstrap4.min.js')}}"></script>
-
-<script src="{{asset('backend/assets/libs/datatables/dataTables.buttons.min.js')}}"></script>
-<script src="{{asset('backend/assets/libs/datatables/buttons.bootstrap4.min.js')}}"></script>
-
-<script src="{{asset('backend/assets/libs/datatables/buttons.html5.min.js')}}"></script>
-<script src="{{asset('backend/assets/libs/datatables/buttons.print.min.js')}}"></script>
-
-<script src="{{asset('backend/assets/libs/datatables/dataTables.keyTable.min.js')}}"></script>
-<script src="{{asset('backend/assets/libs/datatables/dataTables.fixedHeader.min.j')}}s"></script>
-<script src="{{asset('backend/assets/libs/datatables/dataTables.scroller.min.js')}}"></script>
-<script src="{{asset('backend/assets/libs/datatables/dataTables.fixedColumns.min.js')}}"></script>
-
-
-<!-- App js -->
-<script src="{{asset('backend/assets/js/app.min.js')}}"></script>
-
-<script src="{{asset('backend/assets/js/custom.js')}}" type="text/javascript"></script>
-
-@yield('scripts')
+<script src="{{asset('backend/assets/admin/LTE/plugins/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('backend/assets/admin/LTE/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
+<script src="{{asset('backend/assets/admin/LTE/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('backend/assets/admin/LTE/plugins/jqvmap/jquery.vmap.min.js')}}"></script>
+<script src="{{asset('backend/assets/admin/LTE/plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script>
+<script src="{{asset('backend/assets/admin/LTE/plugins/summernote/summernote-bs4.min.js')}}"></script>
+<script src="{{asset('backend/assets/admin/LTE/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
+<script src="{{asset('backend/assets/admin/LTE/plugins/sparklines/sparkline.js')}}"></script>
+<script src="{{asset('backend/assets/admin/LTE/plugins/fastclick/fastclick.js')}}"></script>
+<script src="{{asset('backend/assets/admin/LTE/dist/js/adminlte.js')}}"></script>
+<script src="{{asset('backend/assets/admin/plugin/sweetalert2.all.min.js')}}"></script>
+<script src="{{asset('backend/assets/admin/LTE/plugins/select2/js/select2.full.min.js')}}"></script>
+<script src="{{asset('backend/assets/admin/plugin/bootstrap-switch.min.js')}}"></script>
+<script src="{{asset('backend/assets/admin/LTE/plugins/iCheck/icheck.min.js')}}"></script>
+<script src="{{asset('backend/assets/admin/LTE/plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-
+    $(function () {
+        bsCustomFileInput.init();
+    });
+</script>
+<script type="text/javascript">
+    // active tree menu
+    $('.nav-treeview > li.active').parents('.has-treeview').addClass('active menu-open');
+    // ==end active tree menu
     $(document).ready(function() {
         $('#language').change(function() {
             let language = $('#language').find(":selected").val();
@@ -121,8 +374,8 @@
         $("#language").val(language);
     });
 
+
 </script>
-
+@yield('script')
 </body>
-
 </html>

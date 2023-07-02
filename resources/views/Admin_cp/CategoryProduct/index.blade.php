@@ -1,88 +1,131 @@
 @extends('Admin_cp.Layout.master')
 @section('title',trans('category.title'))
 @section('content')
-    <!--page title start-->
-    <div class="page-heading">
+    <div class="content-header">
         <div class="container-fluid">
-            <div class="row d-flex align-items-center">
-                <div class="col-md-6">
-                    <div class="page-breadcrumb">
-                        <h1>{{trans('category.list-category-product')}}</h1>
-                        <a href="{{route('get-category-create')}}" class="btn btn-danger">{{trans('home.add')}}</a>
-                    </div>
-
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">
+                        <i class="fa fa-indent" aria-hidden="true"></i> Danh sách danh mục
+                    </h1>
+                    <div class="more_info"></div>
                 </div>
-                <div class="col-md-6 justify-content-md-end d-flex">
-                    <div class="breadcrumb_nav">
-                        <ol class="breadcrumb">
-                            <li>
-                                <i class="fa fa-home"></i>
-                                <a class="parent-item" href="{{route('admin')}}">{{trans('home.home')}}</a>
-                                <i class="fa fa-angle-right"></i>
-                            </li>
-                            <li class="active">
-                                {{trans('home.category-product')}}
-                            </li>
-                        </ol>
-                    </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href=""><i class="fa fa-home fa-1x"></i> Trang chủ</a></li>
+                        <li class="breadcrumb-item active">Danh sách danh mục</li>
+                    </ol>
                 </div>
             </div>
         </div>
     </div>
-    <!--page title end-->
 
-    <div class="container-fluid">
-        <!-- state start-->
-        <div class="row">
-            <div class=" col-sm-12">
-                <div class="card card-shadow mb-4">
-                    <div class="card-body">
-                        <table id="userTable" class="table table-bordered table-striped">
-                            <thead>
-                            <tr>
-                                <th>{{trans('category.name')}}</th>
-                                <th>{{trans('category.description')}}</th>
-                                <th>{{trans('category.status')}}</th>
-                                <th>{{trans('category.active')}}</th>
-                            </tr>
-                            </thead>
 
-                            <tbody>
-                            @if($categories)
-                                @foreach($categories as $item  )
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header with-border">
+                            <div class="card-tools">
+                                <div class="menu-right">
+                                    <form action="" id="button_search">
+                                        <div class="input-group input-group" style="width: 350px;">
+                                            <input type="text" name="keyword" class="form-control rounded-0 float-right" placeholder="Nhập từ khóa" value="">
+                                            <div class="input-group-append">
+                                                <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="float-left">
+                            </div>
+
+                        </div>
+                        <div class="card-header with-border">
+                            <div class="card-tools">
+                                <div class="menu-right">
+                                    <a href="{{route('get-category-create')}}" class="btn  btn-success  btn-flat" title="New" id="button_create_new">
+                                        <i class="fa fa-plus" title="action.add_new"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="float-left">
+
+                                <div class="menu-left">
+                                    <span class="btn btn-flat btn-primary grid-refresh" title="Làm mới"><i class="fas fa-sync-alt"></i></span>
+                                </div>
+                                <div class="menu-left">
+                                    <div class="input-group float-right ml-1" style="width: 350px;">
+                                        <div class="btn-group">
+                                            <select class="form-control rounded-0 float-right" id="order_sort">
+                                                <option value="id__desc">ID giảm dần</option><option value="id__asc">ID tăng dần</option><option value="title__desc">Tiêu đề theo thứ tự z-a</option><option value="title__asc">Tiêu đề theo thứ tự a-z</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-group-append">
+                                            <button id="button_sort" type="submit" class="btn btn-primary"><i class="fas fa-sort-amount-down-alt"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body p-0" id="pjax-container">
+                            <div id="url-sort" data-urlsort="" style="display: none;"></div>
+                            <div class="table-responsive">
+                                <table class="table table-hover box-body text-wrap table-bordered">
+                                    <thead>
                                     <tr>
-                                        <td>{{$item->name}}</td>
-                                        <td>{{$item->description}}</td>
-                                        <td>{{$item->status ? "Active" : "InActive"}}</td>
-                                        <td>
-                                            <a href="{{route('get-category-edit', ['id' => $item->productcategoryid])}}"><i class="fa fa-edit"></i></a>
-                                            <a href="{{route('delete-category-edit', ['id' => $item->productcategoryid])}}"><i class="mdi mdi-trash-can-outline"></i></a>
-
-                                        </td>
+                                        <th>Stt</th>
+                                        <th>Hình ảnh</th>
+                                        <th>Tên</th>
+                                        <th>Trạng thái</th>
+                                        <th>Mô tả</th>
+                                        <th>Loại danh mục</th>
+                                        <th>Thao tác</th>
                                     </tr>
+                                    </thead>
+                                    <tbody>
+                                    @if($categories)
+                                        <?php $i = 1; ?>
+                                        @foreach($categories as $caterory)
+                                            <tr>
+                                                <td>{{$i}}</td>
+                                                <td><img alt="Toi Ly Son" title="" src="{{asset('upload/category/'.$caterory->image)}}" style=" width:50px; height:50px;"></td>
+                                                <td>{{$caterory->name}}</td>
+                                                <td>{{$caterory->status == 1 ? "Kích hoạt" : "Chưa kích hoạt"}}</td>
+                                                <td>{{$caterory->description}}</td>
+                                                <td>{{$caterory->typeid ==1 ? "Sản phẩm" : "Tin tức"}}</td>
+                                                <td>
+                                                    <a href="{{route('get-category-edit',$caterory->productcategoryid)}}">
+<span title="Edit" type="button" class="btn btn-flat btn-sm btn-primary">
+<i class="fa fa-edit"></i>
+</span>
+                                                    </a>
+                                                    <a href="{{route('delete-category-edit',$caterory->productcategoryid)}}" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a>
 
-                                @endforeach
-                            @endif
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
 
-                            </tbody>
+                                    </tbody>
+                                </table>
+                                {{$categories->links("pagination::bootstrap-4")}}
+                            </div>
 
-                        </table>
+                        </div>
+
+                        <div class="card-footer clearfix">
+                        </div>
                     </div>
+
                 </div>
             </div>
-
-
         </div>
-    </div>
+    </section>
 @endsection
 @section('scripts')
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js">
-    </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    <script>
-        @if(session('success'))
-        toastr.success('{{ session('success') }}')
-        @endif
-    </script>
+
 @endsection

@@ -26,16 +26,16 @@ class UserRepository implements UserService {
 
     public function deleteUser(int $id)
     {
-        // TODO: Implement deleteUser() method.
+        return $this->model->destroy($id);
     }
 
     public function getUser(int $id)
     {
-        // TODO: Implement getUser() method.
+        return $this->model->find($id);
     }
 
     public function getUsers()
     {
-        return $this->model->all();
+        return $this->model->paginate(15);
     }
 }

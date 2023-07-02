@@ -5,6 +5,7 @@ return [
     'profile' => '프로필',
     'setting' => '환경',
     'logout' => '로그 아웃',
+    'user-manager' => '사용자 관리',
     'user' => '사용자',
     'add' => '새 항목 추가',
     'edit' => '편집하다',
@@ -12,10 +13,16 @@ return [
     'save' => '구하다',
     'close'=> '닫다',
     'online' => '온라인',
+    'product-category-manager' => '상품 및 카테고리 관리',
     'category-product' => '제품 카테고리',
     'product' => '제품',
     'categoryPost' => '포스트 카테고리',
     'post' => '우편',
+    'order-manager' => '주문 관리',
     'order' => '순서',
-    'slider' => '스크롤 바'
+    'slider' => '스크롤 바',
+    'reset' => '초기화',
+    'branch' => '생산자',
+    'feedback' => '고객 피드백',
+
 ];
