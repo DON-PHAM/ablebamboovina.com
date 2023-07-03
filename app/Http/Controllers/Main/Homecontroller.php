@@ -10,10 +10,15 @@ use Illuminate\Support\Facades\Session;
 class Homecontroller extends Controller
 {
 
+    public function index()
+    {
+        return view('Main.index');
+    }
+
     public function changLanguage($language)
     {
         App::setLocale($language);
-        Session::put('locale',$language);
+        Session::put('locale', $language);
         return redirect()->back();
     }
 }

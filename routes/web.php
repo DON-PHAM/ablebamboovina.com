@@ -25,7 +25,7 @@ Route::group(['middleware'=>['locale','checkLoggedIn']],function() {
 });
 Route::get('logout','LoginController@logout')->name('logout');
 
-
+Route::get('home', 'Main\Homecontroller@index')->name('homepage');
 
 
 Route::group(['prefix'=>'dashboard','middleware'=>['locale']],function () {
