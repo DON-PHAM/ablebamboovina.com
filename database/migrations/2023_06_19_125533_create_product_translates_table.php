@@ -19,9 +19,8 @@ return new class extends Migration
             $table->string('languageid');
             $table->string('name');
             $table->text('description');
-            $table->text('contents');
+            $table->text('content');
             $table->string('metakeyword');
-            $table->string('image');
             $table->timestamps();
         });
     }
