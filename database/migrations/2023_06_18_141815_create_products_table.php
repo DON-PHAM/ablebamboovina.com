@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('slug');
             $table->string('image');
             $table->string('code');
-            $table->integer('discount');
+            $table->double('discount');
             $table->decimal('price');
             $table->integer('categoryid');
             $table->integer('branchid');

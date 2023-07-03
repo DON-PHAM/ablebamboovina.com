@@ -18,7 +18,12 @@ class CheckLoggedIn
     public function handle($request, Closure $next)
     {
         if (Auth::check()) {
-            return redirect()->route('admin'); // Chuyển hướng người dùng đến trang dashboard nếu đã đăng nhập
+            $user = Auth::user();
+            if ($user->role == 1)
+            {
+                return redirect()->route('admin');
+            }
+            return redirect()->route('home'); // Chuyển hướng người dùng đến trang dashboard nếu đã đăng nhập
         }
 
         return $next($request);

@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class NewController extends Controller
 {
     public function index() {
-
+        return view('Admin_cp.Post.index');
     }
 }
