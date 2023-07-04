@@ -24,7 +24,6 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'image' => 'required|image',
             'code' => 'required',
             'price' => 'required',
             'categoryid' => 'required',
@@ -38,6 +37,24 @@ class ProductRequest extends FormRequest
             'ko_description' => 'required',
             'ko_metakeyword' => 'required',
             'ko_content' => 'required'
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'code.required' => 'code required',
+            'price.required' => ' price required',
+            'categoryid.required' => 'categoryid required',
+            'branchid.required' => 'branchid required',
+            'quantity.required' => 'quantity required',
+            'vi_name.required' => 'vi_name required',
+            'vi_description.required' => 'vi_description required',
+            'vi_content.required' => 'vi_content required',
+            'vi_metakeyword.required' => 'vi_metakeyword required',
+            'ko_name.required' => 'ko_name required',
+            'ko_description.required' => 'ko_description required',
+            'ko_metakeyword.required' => 'ko_metakeyword required',
+            'ko_content.required' => 'ko_content required'
         ];
     }
 }

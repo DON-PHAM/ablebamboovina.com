@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Helper\ProductData;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ProductRequest;
+use App\Models\Product;
 use App\Services\BranchService;
 use App\Services\CategoryProductService;
 use App\Services\ProductService;
@@ -12,28 +14,44 @@ use Illuminate\Support\Facades\App;
 
 class ProductController extends Controller
 {
-    protected $productService;
-    protected $categoryService;
-    protected $branchService;
-    public function __construct(ProductService $productService, CategoryProductService $categoryService, BranchService $branchService)
+    protected $productData;
+
+
+    public function __construct(ProductData $productData)
     {
-        $this->productService = $productService;
-        $this->categoryService =$categoryService;
-        $this->branchService = $branchService;
+        $this->productData = $productData;
+
     }
 
-    public function index() {
-
-        return view('Admin_cp.Product.index');
-    }
-    public function create() {
+    public function index()
+    {
         $locale = session()->get('locale') ?? App::getLocale();
-        $categories = $this->categoryService->getCategoryProduct($locale);
-        $branchs = $this->branchService->getAll();
-        return view('Admin_cp.Product.create',compact(['categories','branchs']));
+        $products = $this->productData->getAll($locale);
+        return view('Admin_cp.Product.index', compact('products'));
     }
-    public function postCreate(ProductRequest $request) {
 
+    public function create()
+    {
+        $data = $this->productData->getDataCreate();
+        return view('Admin_cp.Product.create', $data);
+    }
+
+    public function postCreate(ProductRequest $request)
+    {
+        $this->productData->create($request);
         return redirect()->route('product-list');
     }
+
+    public function edit($id)
+    {
+        $data = $this->productData->getDataEdit($id);
+        return view('Admin_cp.Product.edit',$data);
+    }
+
+    public function update($id, ProductRequest $request)
+    {
+        return redirect()->route('product-list')->with('success', 'Sửa thành công');
+    }
+
+
 }
