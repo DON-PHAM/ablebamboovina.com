@@ -1,10 +1,12 @@
 <?php
 namespace  App\Services;
+use App\Http\Requests\Admin\ProductRequest;
+
 interface ProductService
 {
-    public function create(array $data);
+    public function create(ProductRequest $request);
 
-    public function update(int $id, array $data);
+    public function update(int $id, ProductRequest $request);
 
     public function delete(int $id);
 

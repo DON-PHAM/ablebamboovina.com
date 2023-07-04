@@ -1,16 +1,27 @@
 <?php
 
 namespace App\Repositories;
+use App\Http\Requests\Admin\ProductRequest;
+use App\Models\Product;
+use App\Models\ProductTranslate;
 use App\Services\ProductService;
 
 class ProductRepository implements ProductService {
 
-    public function create(array $data)
+    protected $product;
+    protected $productTranslate;
+    public function __construct(Product $product, ProductTranslate $productTranslate)
+    {
+        $this->product = $product;
+        $this->productTranslate = $productTranslate;
+    }
+
+    public function create(ProductRequest $request)
     {
         // TODO: Implement create() method.
     }
 
-    public function update(int $id, array $data)
+    public function update(int $id, ProductRequest $request)
     {
         // TODO: Implement update() method.
     }

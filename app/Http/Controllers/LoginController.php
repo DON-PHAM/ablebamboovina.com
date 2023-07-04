@@ -6,6 +6,7 @@ use App\Http\Requests\Admin\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
@@ -29,7 +30,8 @@ class LoginController extends Controller
         Auth::login($user);
         // Store user information in session
         Session::put('user', $user);
-        return $this->authenticated($request,$user);
+        //Log::info('Login success with user:', $user);
+        return redirect()->route('admin');
     }
 
     public function logOut() {

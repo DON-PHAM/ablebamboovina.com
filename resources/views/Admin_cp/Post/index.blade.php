@@ -108,23 +108,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="block-pagination clearfix m-10">
-                                    <div class="ml-3 float-left">
-                                        Hiển thị <b>1</b>-<b>6</b> của <b>6</b> kết quả
-                                    </div>
-                                    <div class="pagination pagination-sm mr-3 float-right">
-                                        <ul class="pagination pagination-sm no-margin pull-right">
 
-                                            <li class="page-item disabled"><span class="page-link pjax-container">«</span></li>
-
-
-
-                                            <li class="page-item active"><span class="page-link pjax-container">1</span></li>
-
-                                            <li class="page-item disabled"><span class="page-link pjax-container">»</span></li>
-                                        </ul>
-                                    </div>
-                                </div>
                             </div>
 
                             <div class="card-footer clearfix">
