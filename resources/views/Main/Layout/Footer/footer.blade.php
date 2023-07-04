@@ -21,8 +21,7 @@
                             <p class="phone-info">
                                 NEED HELP?
                                 <span>
-												(+800) 345 678 <br/>
-												(+800) 123 456
+												(+800) 345 678
 											</span>
                             </p>
                         </div>
@@ -78,7 +77,7 @@
                         <h4 class="footer-herading">Bản tin</h4>
                         <div class="subscrib-text">
                             <p>
-                               Đăng ký để nhận nhiều thông tin khuyến mãi hấp dẫn
+                                Đăng ký để nhận nhiều thông tin khuyến mãi hấp dẫn
                             </p>
                         </div>
 

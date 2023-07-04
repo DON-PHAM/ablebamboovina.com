@@ -2,6 +2,29 @@
 @section('title',trans('Ablebamboovina'))
 @section('content')
 
+    <table class="table table-hover box-body text-wrap table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>{{trans('ten san pham')}}</th>
+            <th>{{trans('ma san pham')}}</th>
+        </tr>
+        </thead>
+        @if($products)
+                <?php $i = 1; ?>
+            <tbody>
+            @foreach($products as $user)
+                <tr>
+                    <td>{{$i}}</td>
+                    <td>{{$user->code}}</td>
+                    <td>{{$user->name}}</td>
+                </tr>
+                    <?php $i++ ?>
+            @endforeach
+            </tbody>
+        @endif
+    </table>
+
     <!-- Beauty Category -->
     <div class="container-fluid d-lg-none hover-style-cosmatics">
         <!--=======  category menu  =======-->

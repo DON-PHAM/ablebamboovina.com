@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
+use App\Services\ProductService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
@@ -10,9 +11,22 @@ use Illuminate\Support\Facades\Session;
 class Homecontroller extends Controller
 {
 
+    protected $productService;
+
+    public function __construct(ProductService $productService)
+    {
+        $this->productService = $productService;
+    }
+
     public function index()
     {
-        return view('Main.index');
+        $locale = session()->get('locale');
+        echo '2222';
+        if ($locale == null)
+            $locale = App::getLocale();
+        $products = $this->productService->getAll($locale);
+        echo $products;
+        return view('Main.index',compact('products'));
     }
 
     public function changLanguage($language)

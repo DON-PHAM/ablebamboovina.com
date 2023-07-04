@@ -28,8 +28,9 @@
                             </button>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li>
-                                    <a class="dropdown-item" href="#"
+                                    <a class="dropdown-item" href="#" style="color: #111111"
                                     ><img
+                                            class="me-2"
                                             style="width: 25px;"
                                             src="{{asset('frontend/assets/images/icon-korea.png')}}"
                                             alt=""
@@ -37,8 +38,9 @@
                                     >
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="#"
+                                    <a class="dropdown-item" href="#" style="color: #111111"
                                     ><img
+                                            class="me-2"
                                             src="{{asset('frontend/assets/images/icon-vi.png')}}"
                                             alt=""
                                         />Việt Nam</a

@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+//Route::get('/', function () {
+//    return view('welcome');
+//})->name('home');
+Route::get('/', 'Main\Homecontroller@index')->name('homepage');
 Route::get('change_language/{language}','Dashboard\HomeController@changLanguage')
     ->name('change-language');
 Route::group(['middleware'=>['locale','checkLoggedIn']],function() {
@@ -25,7 +26,7 @@ Route::group(['middleware'=>['locale','checkLoggedIn']],function() {
 });
 Route::get('logout','LoginController@logout')->name('logout');
 
-Route::get('home', 'Main\Homecontroller@index')->name('homepage');
+//Route::get('home', 'Main\Homecontroller@index')->name('homepage');
 
 
 Route::group(['prefix'=>'dashboard','middleware'=>['locale']],function () {
