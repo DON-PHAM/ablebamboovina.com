@@ -21,11 +21,9 @@ class Homecontroller extends Controller
     public function index()
     {
         $locale = session()->get('locale');
-        echo '2222';
         if ($locale == null)
             $locale = App::getLocale();
         $products = $this->productService->getAll($locale);
-        echo $products;
         return view('Main.index',compact('products'));
     }
 
