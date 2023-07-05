@@ -17,4 +17,8 @@ class Branch extends Model
         'address',
         'status'
     ];
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

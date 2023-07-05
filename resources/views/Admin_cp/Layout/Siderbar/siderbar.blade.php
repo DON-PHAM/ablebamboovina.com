@@ -85,7 +85,7 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item ">
                             <a href="{{route('product-list')}}" class="nav-link">
-                                <i class="far fa-file-image nav-icon"></i>
+                                <i class="far fa-file nav-icon"></i>
                                 <p>{{trans('home.product')}}</p>
                             </a>
                         </li>
@@ -146,7 +146,26 @@
                             </a>
                         </li>
                     </ul>
+
+
                 </li>
+                <li class="nav-item ">
+                    <a href="" class="nav-link">
+                        <i class="nav-icon fas fa-file-code"></i>
+                        <p>
+                            Sự kiện
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a href="" class="nav-link">
+                        <i class="nav-icon fas fa-video"></i>
+                        <p>
+                            Video
+                        </p>
+                    </a>
+                </li>
+
 
                 <li class="nav-link header">
                     <i class="nav-icon  fas fa-th "></i>
