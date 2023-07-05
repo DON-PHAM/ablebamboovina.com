@@ -14,4 +14,5 @@ interface ProductService
     public function showHomeById(int $id);
 
     public function getAll(string $locale);
+    public function changeStatus(int $id);
 }

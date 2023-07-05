@@ -45,4 +45,13 @@ class ProductData
     {
         return $this->productService->getAll($locale);
     }
+    public function delete($id)
+    {
+        return $this->productService->delete($id);
+    }
+
+    public function changeStatus($id)
+    {
+        return $this->productService->changeStatus($id);
+    }
 }

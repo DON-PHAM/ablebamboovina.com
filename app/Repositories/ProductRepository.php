@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\ProductTranslate;
 use App\Services\ProductService;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProductRepository implements ProductService {
@@ -85,7 +86,20 @@ class ProductRepository implements ProductService {
 
     public function delete(int $id)
     {
-        // TODO: Implement delete() method.
+        $product = $this->product->with(['images', 'translates'])->find($id);
+
+        if (!$product) {
+            return response()->json(['error' => 'Product not found'], 404);
+        }
+        foreach ($product->images as $image) {
+            Storage::delete('upload/product/'.$product->code.'/' . $image->filename); // Use filename instead of path
+        }
+
+        $product->images()->delete();
+        $product->translates()->delete();
+        $product->delete();
+
+        return response()->json(['success' => 'Product deleted successfully']);
     }
     //Sử dụng cho edit
     public function getById(int $id)
@@ -106,5 +120,18 @@ class ProductRepository implements ProductService {
     {
         $products = $this->product->with(['images', 'translate','category','branch'])->find($id);
         return $products;
+    }
+
+    public function changeStatus(int $id)
+    {
+        $product = $this->product->find($id);
+
+        if (!$product)
+        {
+            return response()->json(['status'=>false]);
+        }
+        $product->status = !$product->status;
+        $product->save();
+        return response()->json(['status'=>true,'data'=>$product]);
     }
 }
