@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
+use App\Services\CategoryProductService;
 use App\Services\ProductService;
 use App\Services\SliderService;
 use Illuminate\Http\Request;
@@ -14,11 +15,13 @@ class Homecontroller extends Controller
 
     protected $productService;
     protected $sliderService;
+    protected $categoryService;
 
-    public function __construct(ProductService $productService, SliderService $sliderService)
+    public function __construct(ProductService $productService, SliderService $sliderService, CategoryProductService $categoryProductService)
     {
         $this->productService = $productService;
         $this->sliderService = $sliderService;
+        $this->categoryService = $categoryProductService;
     }
 
     public function index()
@@ -28,7 +31,8 @@ class Homecontroller extends Controller
             $locale = App::getLocale();
         $products = $this->productService->getAll($locale);
         $sliders = $this->sliderService->getAll();
-        return view('Main.index', compact('products', 'sliders'));
+        $categories = $this->categoryService->getAll($locale);
+        return view('Main.index', compact('products', 'sliders', 'categories'));
     }
 
     public function changLanguage($language)
