@@ -1,6 +1,65 @@
 @extends('Admin_cp.Layout.master')
 @section('title',trans('product.title'))
 @section('content')
+    <style>
+        #status{
+            cursor: pointer;
+        }
+
+        #status {
+            display: flex;
+            appearance: none;
+            border-radius: 1rem;
+            background: linear-gradient(to right, #900 25%, transparent 25%, transparent 75%, #090 75%, #090 100%),
+            linear-gradient(to bottom, #555, #876);
+            background-size: 200% 100%, 100% 100%;
+        }
+
+        #status::before,
+        #status::after {
+            display: flex;
+            position: relative;
+            font-size: 11px;
+            line-height: 1.25;
+            margin: .5rem;
+        }
+        #status::before {
+            content: 'OFF';
+        }
+        #status::after {
+            content: 'ON';
+        }
+        #status:not(:checked) {
+            background-position: 0 0;
+            transition: all 250ms ease-out;
+        }
+        #status::before {
+            color: #FC9;
+            text-shadow: 2px 3px 2px rgba(0,0,0,.25);
+            transition: all 75ms ease-in 100ms;
+        }
+
+        #status::after {
+            color: fade(white, 40);
+            transition: all 75ms ease-in 100ms;
+        }
+
+
+        #status:checked {
+            background-position: 100% 0;
+            transition: all 150ms ease-in;
+        #status::before {
+            color: fade(white, 40);
+            transition: all 75ms ease-in 100ms;
+        }
+
+        #status::after {
+            color: #9FC;
+            text-shadow: 2px 3px 2px rgba(0,0,0,.25);
+            transition: all 75ms ease-in 100ms;
+        }
+
+    </style>
 
     <div class="content-header">
         <div class="container-fluid">
@@ -119,59 +178,62 @@
                                         <th>Danh mục</th>
                                         <th>Giá cost</th>
                                         <th>Giá</th>
-                                        <th>Kiểu</th>
+                                        <th>Nhà cung cấp</th>
                                         <th>Trạng thái</th>
-                                        <th>Duyệt</th>
                                         <th>Thao tác</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-
-                                    <tr>
-                                        <td>
-                                            <div class="icheckbox_square-blue" aria-checked="false"
-                                                 aria-disabled="false" style="position: relative;"><input
-                                                    class="checkbox grid-row-checkbox" type="checkbox"
-                                                    data-id="980b670b-3372-4335-ac8c-b4291e99e0f3"
-                                                    style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">
-                                                <ins class="iCheck-helper"
-                                                     style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
-                                            </div>
-                                        </td>
-                                        <td><img alt="Keo Dua Ben Tre" title=""
-                                                 src="https://demo.s-cart.org/data/product/product-17.png"
-                                                 style=" width:50px; height:50px;"></td>
-                                        <td>Keo Dua Ben Tre<br><b>SKU:</b> KEO-DUA-BEN-TRE</td>
-                                        <td>Banh My Sai Gon</td>
-                                        <td>0.00</td>
-                                        <td>80.00</td>
-                                        <td>Sản phẩm đơn</td>
-                                        <td><span class="badge badge-success">ON</span></td>
-                                        <td><span class="badge badge-success">ON</span></td>
-                                        <td><i class="nav-icon fab fa-shopify"></i> <a target="_new"
-                                                                                       href="https://demo.s-cart.org">s-cart</a>
-                                        </td>
-                                        <td>
-                                            <a href="https://demo.s-cart.org/sc_admin/product/edit/980b670b-3372-4335-ac8c-b4291e99e0f3">
+                                    @if($products)
+                                        @foreach($products as $product)
+                                            <tr>
+                                                <td>
+                                                    <div class="icheckbox_square-blue" aria-checked="false"
+                                                         aria-disabled="false" style="position: relative;"><input
+                                                            class="checkbox grid-row-checkbox" type="checkbox"
+                                                            data-id="980b670b-3372-4335-ac8c-b4291e99e0f3"
+                                                            style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">
+                                                        <ins class="iCheck-helper"
+                                                             style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
+                                                    </div>
+                                                </td>
+                                                <td><img alt="{{$product->translate->name}}" title=""
+                                                         src="{{asset('upload/product/'.$product->code.'/'.$product->image)}}"
+                                                         style=" width:50px; height:50px;"></td>
+                                                <td>{{$product->translate->name}}</td>
+                                                <td>{{$product->category->name}}</td>
+                                                <td>{{$product->price}}</td>
+                                                <td>{{$product->$product*$product->discount/100}}</td>
+                                                <td>{{$product->branch->name}}</td>
+                                                <td>
+                                                    <input type="checkbox" class="status" id="status" name="status" data-id="{{$product->id}}" @if($product->status == 1) checked @endif>
+{{--                                                    @if($product->status == 1)--}}
+{{--                                                        <span class="badge badge-success">ON</span>--}}
+{{--                                                        @else--}}
+{{--                                                        <span class="badge badge-danger">OFF</span>--}}
+{{--                                                    @endif--}}
+                                                </td>
+                                                <td>
+                                                    <a href="{{route('get-product-edit',$product->id)}}">
 <span title="Sửa" type="button" class="btn btn-flat btn-sm btn-primary">
 <i class="fa fa-edit"></i>
 </span>
-                                            </a>
-                                            <span onclick="deleteItem('980b670b-3372-4335-ac8c-b4291e99e0f3');" title="Xóa"
-             class="btn btn-flat btn-sm btn-danger">
+                                                    </a>
+                                                    <span onclick="deleteItem({{$product->id}});"
+                                                          title="Xóa"
+                                                          class="btn btn-flat btn-sm btn-danger">
 <i class="fas fa-trash-alt"></i>
 </span>
-                                            <a target="_new"
-                                               href="https://demo.s-cart.org/product/keo-dua-ben-tre.html"><span
-                                                    title="Link" type="button"
-                                                    class="btn btn-flat btn-sm btn-warning"><i
-                                                        class="fas fa-external-link-alt"></i></span></a>
-                                        </td>
-                                    </tr>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+
+
                                     </tbody>
                                 </table>
                             </div>
-{{--                            {{$products->links("pagination::bootstrap-4")}}--}}
+                            {{--                            {{$products->links("pagination::bootstrap-4")}}--}}
                         </div>
 
                         <div class="card-footer clearfix">
@@ -232,5 +294,20 @@
                 }
             })
         }
+        $('.status').change(function() {
+            let id = $('#status').data('id');
+            $.ajax({
+                url:'{{route('change-status-product',':id')}}'.replace(':id',id),
+                dataType:'json',
+                method: 'get',
+                success:function (response)
+                {
+                    if(response.status)
+                    {
+                        toastr.success('Thay đổi trạng thái thành công');
+                    }
+                }
+            })
+        })
     </script>
 @endsection

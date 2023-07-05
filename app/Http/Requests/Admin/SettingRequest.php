@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SliderRequest extends FormRequest
+class SettingRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,17 +24,11 @@ class SliderRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required',
-            'url'=>'required',
-
-        ];
-    }
-    public function messages()
-    {
-        return
-        [
-          'name.required' => 'Tên không được để trống !',
-          'url.required' => 'Url không được để trống'
+            'company' =>'required',
+            'phone' => 'required',
+            'slogan' => 'required',
+            'email' => 'required|email',
+            'tax' => 'required'
         ];
     }
 }

@@ -26,21 +26,20 @@ class SliderController extends Controller
     }
     public function postCreate(SliderRequest $request)
     {
-        $image_new = "";
-        if ($request->hasFile('image'))
-        {
-            $image = $request->file('image');
-            $image_new = rand().'.'.$image->getClientOriginalExtension();
-            $image->move(public_path('upload/slider'),$image_new);
-        }
         $data = [
-            'image' => $image_new,
             'name' => $request->name,
             'description' => $request->description,
             'slug' => Str::slug($request->name),
             'url'=>$request->url,
             'status' => $request->status == 'on' ? 1: 0
         ];
+        if ($request->hasFile('image'))
+        {
+            $image = $request->file('image');
+            $image_new = rand().'.'.$image->getClientOriginalExtension();
+            $image->move(public_path('upload/slider'),$image_new);
+            $data['image'] = $image_new;
+        }
         $this->sliderRepository->create($data);
         return redirect()->route('slider-list');
     }
@@ -50,6 +49,26 @@ class SliderController extends Controller
     }
     public function update($id, SliderRequest $request)
     {
+        $data = [
+            'name' => $request->name,
+            'description' => $request->description,
+            'slug' => Str::slug($request->name),
+            'url'=>$request->url,
+            'status' => $request->status == 'on' ? 1: 0
+        ];
+        if ($request->hasFile('image'))
+        {
+            $image = $request->file('image');
+            $image_new = rand().'.'.$image->getClientOriginalExtension();
+            $image->move(public_path('upload/slider'),$image_new);
+            $data['image'] = $image_new;
+        }
+        $this->sliderRepository->update($id,$data);
+        return redirect()->route('slider-list');
+    }
 
+    public function changeStatus($id)
+    {
+        return $this->sliderRepository->changeStatus($id);
     }
 }
