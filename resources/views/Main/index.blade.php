@@ -147,38 +147,41 @@
     <div class="slider-area">
         <div class="slider-active-3 owl-carousel slider-hm8 owl-dot-style">
             <!-- Slider Single Item Start -->
-            <div
-                class="slider-height-6 d-flex align-items-start justify-content-start bg-img"
-                style="background-image: url(https://htmldemo.net/ecolife/ecolife/assets/images/slider-image/sample-12.jpg)"
-            >
-                <div class="container">
-                    <div class="slider-content-5 slider-animated-1 text-left">
-                        <span class="animated">FRESH FRUIT-NATURAL</span>
-                        <h1 class="animated">
-                            Pro Skin Whitening <br/>
-                            Face Creams
-                        </h1>
-                        <a href="shop-4-column.html" class="shop-btn animated">SHOP NOW</a>
+            @if($sliders)
+                @foreach($sliders as $slider)
+                    <div
+                        class="slider-height-6 d-flex align-items-start justify-content-start bg-img"
+                        style="background-image: url({{asset('upload/slider/'.$slider->image)}})"
+                    >
+                        <div class="container">
+                            <div class="slider-content-5 slider-animated-1 text-left">
+                                <span class="animated">{{$slider->name}}</span>
+                                <h1 class="animated">
+                                    {{$slider->description}}
+                                </h1>
+                                <a href="{{$slider->url}}" class="shop-btn animated">SHOP NOW</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                @endforeach
+            @endif
             <!-- Slider Single Item End -->
             <!-- Slider Single Item Start -->
-            <div
-                class="slider-height-6 d-flex align-items-start justify-content-start bg-img"
-                style="background-image: url(https://htmldemo.net/ecolife/ecolife/assets/images/slider-image/sample-15.jpg)"
-            >
-                <div class="container">
-                    <div class="slider-content-5 slider-animated-1 text-left">
-                        <span class="animated">MOROCCAN ARGAN OIL</span>
-                        <h1 class="animated">
-                            Argan Oil A Beauty<br/>
-                            Secret Dating Back Over
-                        </h1>
-                        <a href="shop-4-column.html" class="shop-btn animated">SHOP NOW</a>
-                    </div>
-                </div>
-            </div>
+            {{--            <div--}}
+            {{--                class="slider-height-6 d-flex align-items-start justify-content-start bg-img"--}}
+            {{--                style="background-image: url(https://htmldemo.net/ecolife/ecolife/assets/images/slider-image/sample-15.jpg)"--}}
+            {{--            >--}}
+            {{--                <div class="container">--}}
+            {{--                    <div class="slider-content-5 slider-animated-1 text-left">--}}
+            {{--                        <span class="animated">MOROCCAN ARGAN OIL</span>--}}
+            {{--                        <h1 class="animated">--}}
+            {{--                            Argan Oil A Beauty<br/>--}}
+            {{--                            Secret Dating Back Over--}}
+            {{--                        </h1>--}}
+            {{--                        <a href="shop-4-column.html" class="shop-btn animated">SHOP NOW</a>--}}
+            {{--                    </div>--}}
+            {{--                </div>--}}
+            {{--            </div>--}}
             <!-- Slider Single Item End -->
         </div>
     </div>

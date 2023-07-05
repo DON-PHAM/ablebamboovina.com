@@ -1,17 +1,47 @@
 @extends('Admin_cp.Layout.master')
 @section('title',trans('product.title'))
 @section('content')
+<style>
+    input[type="file"] {
+        display: block;
+    }
 
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">
-                        <i class="fa fa-plus" aria-hidden="true"></i> Tạo sản phẩm
-                    </h1>
-                    <div class="more_info"></div>
-                </div>
-                <div class="col-sm-6">
+    .imageThumb {
+        max-height: 75px;
+        border: 2px solid;
+        padding: 1px;
+        cursor: pointer;
+    }
+
+    .pip {
+        display: inline-block;
+        margin: 10px 10px 0 0;
+    }
+
+    .remove {
+        display: block;
+        background: #444;
+        border: 1px solid black;
+        color: white;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .remove:hover {
+        background: white;
+        color: black;
+    }
+</style>
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">
+                    <i class="fa fa-plus" aria-hidden="true"></i> Tạo sản phẩm
+                </h1>
+                <div class="more_info"></div>
+            </div>
+            <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="https://demo.s-cart.org/sc_admin"><i
                                     class="fa fa-home fa-1x"></i> Trang chủ</a></li>
@@ -69,7 +99,7 @@
                                                         <span class="input-group-text"><i class="fas fa-pencil-alt"></i></span>
                                                     </div>
                                                     <input type="text" id="ko_name" name="ko_name"
-                                                           value="" class="form-control input-sm ko_name"
+                                                           value="{{old('ko_name')}}" class="form-control input-sm ko_name"
                                                            placeholder="" required>
                                                 </div>
                                                 <span class="form-text">
@@ -87,7 +117,7 @@
                                                         <span class="input-group-text"><i class="fas fa-pencil-alt"></i></span>
                                                     </div>
                                                     <input type="text" id="ko_metakeyword" name="ko_metakeyword"
-                                                           value="" class="form-control input-sm ko_metakeyword"
+                                                           value="{{old('ko_metakeyword')}}" class="form-control input-sm ko_metakeyword"
                                                            placeholder="" required>
                                                 </div>
                                                 <span class="form-text">
@@ -102,7 +132,7 @@
                                             <div class="col-sm-8">
                                                 <textarea id="ko_description" name="ko_description"
                                                           class="form-control input-sm ko_description editor"
-                                                          placeholder=""></textarea>
+                                                          placeholder="">{{old('ko_description')}}</textarea>
                                                 <span class="form-text">
 <i class="fa fa-info-circle"></i> Tối đa 300 kí tự
 </span>
@@ -115,7 +145,7 @@
                                             <div class="col-sm-8">
                                                 <textarea id="ko_content" class="editor"
                                                           name="ko_content"
-                                                          style="visibility: hidden; display: none;"></textarea>
+                                                          style="visibility: hidden; display: none;">{{old('ko_content')}}</textarea>
 
                                             </div>
                                         </div>
@@ -144,7 +174,7 @@
                                                         <span class="input-group-text"><i class="fas fa-pencil-alt"></i></span>
                                                     </div>
                                                     <input type="text" id="vi_name" name="vi_name"
-                                                           value="" class="form-control input-sm vi_name"
+                                                           value="{{old('vi_name')}}" class="form-control input-sm vi_name"
                                                            placeholder="" required>
                                                 </div>
                                                 <span class="form-text">
@@ -161,8 +191,8 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="fas fa-pencil-alt"></i></span>
                                                     </div>
-                                                    <input type="text" id="vi_metakeyword" name="dvi_metakeyword"
-                                                           value="" class="form-control input-sm vi_metakeyword"
+                                                    <input type="text" id="vi_metakeyword" name="vi_metakeyword"
+                                                           value="{{old('vi_metakeyword')}}" class="form-control input-sm vi_metakeyword"
                                                            placeholder="">
                                                 </div>
                                                 <span class="form-text">
@@ -175,9 +205,9 @@
                                                     class="seo" title="SEO"><i class="fa fa-coffee"
                                                                                aria-hidden="true"></i></span></label>
                                             <div class="col-sm-8">
-                                                <textarea id="vi_description" name="dvi_description"
+                                                <textarea id="vi_description" name="vi_description"
                                                           class="form-control input-sm vi_description editor"
-                                                          placeholder=""></textarea>
+                                                          placeholder="">{{old('vi_description')}}</textarea>
                                                 <span class="form-text">
 <i class="fa fa-info-circle"></i> Tối đa 300 kí tự
 </span>
@@ -188,8 +218,7 @@
                                                 Nội dung chính
                                             </label>
                                             <div class="col-sm-8">
-<textarea id="vi_content" class="editor" name="vi_content" style="visibility: hidden; display: none;">
-                                    </textarea>
+<textarea id="vi_content" class="editor" name="vi_content" style="visibility: hidden; display: none;">{{old('vi_content')}} </textarea>
 
                                             </div>
                                         </div>
@@ -208,7 +237,7 @@
                                                 <option selected disabled>Chọn danh mục sản phẩm</option>
                                                 @if($categories)
                                                     @foreach($categories as $category)
-                                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                                        <option value="{{$category->productcategoryid}}">{{$category->name}}</option>
                                                     @endforeach
                                                 @endif
                                             </select>
@@ -223,18 +252,27 @@
                                     </label>
                                     <div class="col-sm-8">
                                         <div class="input-group">
-                                            <input type="text" id="image" name="image" value=""
-                                                   class="form-control input-sm image" placeholder="">
-                                            <div class="input-group-append">
-<span class="btn btn-primary lfm" data-input="image" data-preview="preview_image" data-type="product">
-<i class="fas fa-image"></i> Chọn hình
-</span>
-                                            </div>
+                                            <input type="file" onchange="preview()" name="image">
+                                            <img id="frame" src="" width="100px" height="100px" />
+
                                         </div>
                                         <div id="preview_image" class="img_holder">
                                         </div>
 
                                     </div>
+                                </div>
+                                <div class="form-group row kind  ">
+                                    <label for="image" class="col-sm-2 col-form-label">
+                                        Hình ảnh sản phẩm
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <div class="field" align="left">
+                                            <i>có thể up nhiều</i>
+                                            <input type="file" id="files" name="files[]" multiple/>
+                                        </div>
+                                    </div>
+
+
                                 </div>
                                 <div class="form-group row kind  ">
                                     <label for="code" class="col-sm-2 col-form-label">Mã SKU</label>
@@ -243,7 +281,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fas fa-pencil-alt"></i></span>
                                             </div>
-                                            <input type="text" style="width: 100px;" id="code" name="code" value=""
+                                            <input type="text" style="width: 100px;" id="code" name="code" value="{{old('code')}}"
                                                    class="form-control input-sm code" placeholder="">
                                         </div>
                                         <span class="form-text">
@@ -255,9 +293,7 @@ Chỉ sử dụng kí tự trong nhóm: "A-Z", "a-z", "0-9" and "-_"
                                     <label for="supplier_id" class="col-sm-2 col-form-label">Nhà cung cấp</label>
                                     <div class="col-sm-8">
                                         <div class="input-group">
-                                            <select
-                                                class="form-control input-sm supplier_id select2 "
-                                                name="branchid">
+                                            <select class="form-control input-sm supplier_id select2" name="branchid">
                                                 <option disabled selected>Chọn nhà cung cấp </option>
                                                 @if($branchs)
                                                     @foreach($branchs as $branch)
@@ -324,20 +360,6 @@ Chỉ sử dụng kí tự trong nhóm: "A-Z", "a-z", "0-9" and "-_"
                                         </div>
                                     </div>
                                 </div>
-                                {{--                                <div class="form-group row ">--}}
-                                {{--                                    <label for="approve" class="col-sm-2 col-form-label">Duyệt</label>--}}
-                                {{--                                    <div class="col-sm-8">--}}
-                                {{--                                        <div class="icheckbox_square-blue checked" aria-checked="false"--}}
-                                {{--                                             aria-disabled="false" style="position: relative;"><input class="checkbox"--}}
-                                {{--                                                                                                      type="checkbox"--}}
-                                {{--                                                                                                      name="approve"--}}
-                                {{--                                                                                                      checked=""--}}
-                                {{--                                                                                                      style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">--}}
-                                {{--                                            <ins class="iCheck-helper"--}}
-                                {{--                                                 style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>--}}
-                                {{--                                        </div>--}}
-                                {{--                                    </div>--}}
-                                {{--                                </div>--}}
                                 <hr class="kind ">
 
                             </div>
@@ -375,6 +397,44 @@ Chỉ sử dụng kí tự trong nhóm: "A-Z", "a-z", "0-9" and "-_"
                 filebrowserWindowHeight: '500'
             }
         );
+        $(document).ready(function () {
+            if (window.File && window.FileList && window.FileReader) {
+                $("#files").on("change", function (e) {
+                    var files = e.target.files,
+                        filesLength = files.length;
+                    for (var i = 0; i < filesLength; i++) {
+                        var f = files[i]
+                        var fileReader = new FileReader();
+                        fileReader.onload = (function (e) {
+                            var file = e.target;
+                            $("<span class=\"pip\">" +
+                                "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+                                "<br/><span class=\"remove\">Remove image</span>" +
+                                "</span>").insertAfter("#files");
+                            $(".remove").click(function () {
+                                $(this).parent(".pip").remove();
+                            });
+
+                            // Old code here
+                            /*$("<img></img>", {
+                              class: "imageThumb",
+                              src: e.target.result,
+                              title: file.name + " | Click to remove"
+                            }).insertAfter("#files").click(function(){$(this).remove();});*/
+
+                        });
+                        fileReader.readAsDataURL(f);
+                    }
+                    console.log(files);
+                });
+            } else {
+                alert("Your browser doesn't support to File API")
+            }
+        });
+        function preview() {
+            let frame = document.getElementById('frame');
+            frame.src=URL.createObjectURL(event.target.files[0]);
+        }
 
     </script>
     @if ($errors->any())
