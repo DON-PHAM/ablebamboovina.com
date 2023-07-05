@@ -10,6 +10,8 @@ use App\Repositories\UserRepository;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 use mysql_xdevapi\Exception;
 
 class UserController extends Controller
@@ -83,7 +85,7 @@ class UserController extends Controller
             $image = $request->file('avatar');
             $image_new = rand().'.'.$image->getClientOriginalExtension();
             $image->move(public_path('upload/avatar'),$image_new);
-            $data['image'] = $image_new;
+            $data['avatar'] = $image_new;
         }
 
         $user = $this->userService->updateUser($id,$data);
@@ -103,7 +105,8 @@ class UserController extends Controller
     }
     public function profile()
     {
-
+        $user = Session::get('user');
+        return view('Admin_cp.Users.profile',compact('user'));
     }
     public function postProfile(Request $request)
     {

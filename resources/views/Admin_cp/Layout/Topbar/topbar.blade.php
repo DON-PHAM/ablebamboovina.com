@@ -1,3 +1,4 @@
+
 <nav class="main-header navbar navbar-expand navbar-dark navbar-lightblue">
     <ul class="navbar-nav">
         <li class="nav-item">
@@ -24,22 +25,23 @@
         <a class="nav-link" href="{{route('admin')}}" target="_new">
             <i class="fas fa-home"></i>
         </a>
-
+        @auth()
         <li class="nav-item dropdown user-menu">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
-                <img src="{{asset('backend/assets/admin/avatar/user.jpg')}}" class="user-image" alt="User Image">
+                <img src="{{url('/upload/avatar/'.Auth::user()->avatar)}}" class="user-image" alt="User Image">
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <div class="text-center">
-                    <img src="{{asset('backend/assets/admin/avatar/user.jpg')}}" class="img-circle" alt="Test">
+                    <img src="{{url('/upload/avatar/'.Auth::user()->avatar)}}" class="img-circle" alt="{{Auth::user()->name}}" width="50px" height="50px">
                     <div>
-                        Test<br>
-                        <small>Tham gia từ 2022-12-23 21:47:06</small>
+                        {{Auth::user()->name}}<br>
+                        <small>{{ Auth::user()->created_at->format('Y-m-d H:i:s') }}</small>
                     </div>
                 </div>
                 <div class="user-footer">
                     <div class="float-left">
-                        <a href="" class="btn btn-default btn-flat">{{trans('home.profile')}}</a>
+                        <a href="{{route('get-profile')}}"
+                           class="btn btn-default btn-flat">{{trans('home.profile')}}</a>
                     </div>
                     <div class="float-right">
                         <a href="{{route('logout')}}" class="btn btn-default btn-flat">{{trans('home.logout')}}</a>
@@ -47,5 +49,6 @@
                 </div>
             </div>
         </li>
+        @endauth
     </ul>
 </nav>

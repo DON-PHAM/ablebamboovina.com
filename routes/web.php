@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['prefix' => 'laravel-filemanager', 'middleware'], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
 
 //Route::get('/', function () {
 //    return view('welcome');
@@ -29,10 +32,10 @@ Route::get('logout','LoginController@logout')->name('logout');
 //Route::get('home', 'Main\Homecontroller@index')->name('homepage');
 
 
-Route::group(['prefix'=>'dashboard','middleware'=>['locale']],function () {
+Route::group(['prefix'=>'dashboard','middleware'=>['locale','checkAuth']],function () {
 
     Route::get('/','Dashboard\HomeController@index')->name('admin');
-    Route::get('/logout','LoginController@logout')->name('logout');
+
     //User management
     Route::get('users','Dashboard\UserController@index')->name('user');
     Route::get('users/create','Dashboard\UserController@create')->name('user-create');
