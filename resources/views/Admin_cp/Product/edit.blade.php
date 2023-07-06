@@ -481,16 +481,14 @@ Chỉ sử dụng kí tự trong nhóm: "A-Z", "a-z", "0-9" and "-_"
                                     <div class="form-group row ">
                                         <label for="status" class="col-sm-2 col-form-label">Trạng thái</label>
                                         <div class="col-sm-8">
-                                            <div class="icheckbox_square-blue checked" aria-checked="false"
-                                                 aria-disabled="false" style="position: relative;"><input
-                                                    class="checkbox"
-                                                    type="checkbox"
-                                                    name="status"
-                                                    checked=""
-                                                    style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">
-                                                <ins class="iCheck-helper"
-                                                     style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
-                                            </div>
+                                            <input type="checkbox" id="status" name="status"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row ">
+                                        <label for="approve" class="col-sm-2 col-form-label">Sản phẩm HOT</label>
+                                        <div class="col-sm-8">
+                                            <input class="checkbox" type="checkbox" name="hot" />
                                         </div>
                                     </div>
                                     <hr class="kind ">

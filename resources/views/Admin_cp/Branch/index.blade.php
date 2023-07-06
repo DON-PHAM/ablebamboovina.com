@@ -147,7 +147,7 @@
                                                             <span class="badge badge-danger">on</span>
                                                         @endif</td>
                                                     <td>
-                                                        <a href=""><span
+                                                        <a href="{{route('get-branch-edit',$branch->id)}}"><span
                                                                 title="Chỉnh sửa" type="button"
                                                                 class="btn btn-flat btn-sm btn-primary"><i
                                                                     class="fa fa-edit"></i></span></a>&nbsp;
@@ -201,7 +201,7 @@
                     return new Promise(function(resolve) {
                         $.ajax({
                             method: 'get',
-                            url: '{{route('delete-branch-edit',':id')}}'.replace(':id',ids),
+                            url: '{{route('delete-branch',':id')}}'.replace(':id',ids),
                             success: function (data) {
                                 if(data.error == 1){
                                     location.reload();
@@ -229,5 +229,8 @@
                 }
             })
         }
+        $(document).ready(function() {
+
+        });
     </script>
 @endsection

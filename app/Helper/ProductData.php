@@ -54,4 +54,8 @@ class ProductData
     {
         return $this->productService->changeStatus($id);
     }
+    public function changeProductHot($id)
+    {
+        return $this->productService->changeProductHot($id);
+    }
 }

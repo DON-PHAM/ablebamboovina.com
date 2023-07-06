@@ -38,7 +38,7 @@
                     </ul>
                 </li>
                 <li class="nav-item has-treeview">
-                    <a href="{{route('setting-list')}}" class="nav-link">
+                    <a href="{{route('get-setting-create')}}" class="nav-link">
                         <i class="nav-icon  fab fa-whmcs "></i>
                         <p>
                             {{trans('home.setting')}}
@@ -85,7 +85,7 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item ">
                             <a href="{{route('product-list')}}" class="nav-link">
-                                <i class="far fa-file nav-icon"></i>
+                                <i class="far fa-file-image nav-icon"></i>
                                 <p>{{trans('home.product')}}</p>
                             </a>
                         </li>

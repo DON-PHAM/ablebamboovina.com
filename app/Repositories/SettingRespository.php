@@ -16,8 +16,20 @@ class SettingRespository implements SettingService
 
     public function createOrUpdate($id,SettingRequest $request)
     {
-        $data = [];
-        $setting = $id ? $this->model->find($id) : new Setting;
+        $data = [
+            'logo' => $request->logo,
+            'company' => $request->company,
+            'slogan' => $request->slogan,
+            'tax' => $request->tax,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'facebook' => $request->facebook,
+            'tiktok' => $request->tiktok,
+            'intagram' => $request->intagram,
+            'kakaotalk' => $request->kakaotalk
+        ];
+        $setting = $id != 0 ? $this->model->find($id) : new Setting;
         if (!$setting)
         {
             return redirect()->back()->with('error','Setting not found');
@@ -27,8 +39,8 @@ class SettingRespository implements SettingService
         return  redirect()->back()->with('success','setting saved success fully');
     }
 
-    public function getById($id)
+    public function getSetting()
     {
-        // TODO: Implement getById() method.
+        return $this->model->first();
     }
 }

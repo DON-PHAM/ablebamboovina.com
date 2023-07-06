@@ -10,14 +10,14 @@ use Illuminate\Support\Str;
 
 class BranchController extends Controller
 {
-    protected $branchRepository;
-    public function __construct(BranchService $branchRepository)
+    protected $branchService;
+    public function __construct(BranchService $branchService)
     {
-        $this->branchRepository = $branchRepository;
+        $this->branchService = $branchService;
     }
 
     public function index() {
-        $branchs = $this->branchRepository->getAll();
+        $branchs = $this->branchService->getAll();
         return view('Admin_cp.Branch.index',compact('branchs'));
     }
     public function postCreate(BranchRequest $request)
@@ -31,11 +31,29 @@ class BranchController extends Controller
             'address'=> $request->address,
             'status'=> $request->status == 'on'? 1: 0
         ];
-        $result = $this->branchRepository->create($data);
+        $result = $this->branchService->create($data);
         return redirect()->back();
     }
-
+    public function edit($id)
+    {
+        $bran = $this->branchService->getById($id);
+        return view('Admin_cp.Branch.edit',compact('bran'));
+    }
+    public function update($id, BranchRequest $request)
+    {
+        $data = [
+            'name'=>$request->name,
+            'slug'=> Str::slug($request->name),
+            'phone' => $request->phone,
+            'website' => $request->website,
+            'email' => $request->email,
+            'address'=> $request->address,
+            'status'=> $request->status == 'on'? 1: 0
+        ];
+        $result = $this->branchService->update($id,$data);
+        return redirect()->route('branch-list')->with('success','Sửa thành công');
+    }
     public function delete($id) {
-        return $this->branchRepository->delete($id);
+        return $this->branchService->delete($id);
     }
 }
