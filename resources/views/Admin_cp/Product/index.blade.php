@@ -1,6 +1,65 @@
 @extends('Admin_cp.Layout.master')
 @section('title',trans('product.title'))
 @section('content')
+    <style>
+        #status{
+            cursor: pointer;
+        }
+
+        #status {
+            display: flex;
+            appearance: none;
+            border-radius: 1rem;
+            background: linear-gradient(to right, #900 25%, transparent 25%, transparent 75%, #090 75%, #090 100%),
+            linear-gradient(to bottom, #555, #876);
+            background-size: 200% 100%, 100% 100%;
+        }
+
+        #status::before,
+        #status::after {
+            display: flex;
+            position: relative;
+            font-size: 11px;
+            line-height: 1.25;
+            margin: .5rem;
+        }
+        #status::before {
+            content: 'OFF';
+        }
+        #status::after {
+            content: 'ON';
+        }
+        #status:not(:checked) {
+            background-position: 0 0;
+            transition: all 250ms ease-out;
+        }
+        #status::before {
+            color: #FC9;
+            text-shadow: 2px 3px 2px rgba(0,0,0,.25);
+            transition: all 75ms ease-in 100ms;
+        }
+
+        #status::after {
+            color: fade(white, 40);
+            transition: all 75ms ease-in 100ms;
+        }
+
+
+        #status:checked {
+            background-position: 100% 0;
+            transition: all 150ms ease-in;
+        #status::before {
+            color: fade(white, 40);
+            transition: all 75ms ease-in 100ms;
+        }
+
+        #status::after {
+            color: #9FC;
+            text-shadow: 2px 3px 2px rgba(0,0,0,.25);
+            transition: all 75ms ease-in 100ms;
+        }
+
+    </style>
 
     <div class="content-header">
         <div class="container-fluid">
@@ -147,11 +206,12 @@
                                                 <td>{{$product->$product*$product->discount/100}}</td>
                                                 <td>{{$product->branch->name}}</td>
                                                 <td>
-                                                    @if($product->status == 1)
-                                                        <span class="badge badge-success">ON</span>
-                                                        @else
-                                                        <span class="badge badge-danger">OFF</span>
-                                                    @endif
+                                                    <input type="checkbox" class="status" id="status" name="status" data-id="{{$product->id}}" @if($product->status == 1) checked @endif>
+{{--                                                    @if($product->status == 1)--}}
+{{--                                                        <span class="badge badge-success">ON</span>--}}
+{{--                                                        @else--}}
+{{--                                                        <span class="badge badge-danger">OFF</span>--}}
+{{--                                                    @endif--}}
                                                 </td>
                                                 <td>
                                                     <a href="{{route('get-product-edit',$product->id)}}">
@@ -234,5 +294,20 @@
                 }
             })
         }
+        $('.status').change(function() {
+            let id = $('#status').data('id');
+            $.ajax({
+                url:'{{route('change-status-product',':id')}}'.replace(':id',id),
+                dataType:'json',
+                method: 'get',
+                success:function (response)
+                {
+                    if(response.status)
+                    {
+                        toastr.success('Thay đổi trạng thái thành công');
+                    }
+                }
+            })
+        })
     </script>
 @endsection

@@ -20,7 +20,10 @@ return new class extends Migration
             $table->string('facebook');
             $table->string('tiktok');
             $table->string('address');
+            $table->string('kakaotalk');
             $table->string('intagram');
+            $table->string('tax');
+            $table->string('company');
             $table->string('logo');
             $table->string('slogan');
             $table->timestamps();

@@ -36,4 +36,16 @@ class SliderRepository implements SliderService {
     {
         return $this->model->paginate(15);
     }
+
+    public function changeStatus($id)
+    {
+        $data = $this->model->find($id);
+        if (!$data)
+        {
+            return response()->json(['status'=>false,'data' => 'Item not found'], 404);
+        }
+        $data->status = !$data->status;
+        $data->save();
+        return response()->json(['status'=>true,'data'=>$data]);
+    }
 }
