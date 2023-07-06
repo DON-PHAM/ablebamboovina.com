@@ -62,6 +62,7 @@ Route::group(['prefix'=>'dashboard','middleware'=>['locale','checkAuth']],functi
     Route::get('product/edit/{id}','Dashboard\ProductController@edit')->name('get-product-edit');
     Route::post('product/edit/{id}','Dashboard\ProductController@update')->name('put-product-edit');
     Route::get('product/delete/{id}','Dashboard\ProductController@delete')->name('delete-product');
+    Route::get('product/changestatus/{id}','Dashboard\ProductController@changeStatus')->name('change-status-product');
 
     //New Management
     Route::get('new','Dashboard\NewController@index')->name('new-list');
@@ -86,6 +87,7 @@ Route::group(['prefix'=>'dashboard','middleware'=>['locale','checkAuth']],functi
     Route::get('slider/edit/{id}','Dashboard\SliderController@edit')->name('get-slider-edit');
     Route::post('slider/edit/{id}','Dashboard\SliderController@update')->name('post-slider-edit');
     Route::get('slider/delete/{id}','Dashboard\SliderController@delete')->name('delete-slider');
+    Route::get('slider/changestatus/{id}','Dashboard\SliderController@changeStatus')->name('change-status');
 
     //Branch
     Route::get('branch','Dashboard\BranchController@index')->name('branch-list');

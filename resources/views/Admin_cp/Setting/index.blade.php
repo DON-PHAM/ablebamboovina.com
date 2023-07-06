@@ -7,15 +7,15 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0 text-dark">
-                        <i class="fa fa-edit" aria-hidden="true"></i> Thiết lập tài khoản
+                        <i class="fas fa-cogs" aria-hidden="true"></i> Store infomation
                     </h1>
                     <div class="more_info"></div>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('admin')}}"><i
-                                    class="fa fa-home fa-1x"></i> Trang chủ</a></li>
-                        <li class="breadcrumb-item active">Thiết lập tài khoản</li>
+                                    class="fa fa-home fa-1x"></i> Home</a></li>
+                        <li class="breadcrumb-item active">{{trans('setting.setting')}}</li>
                     </ol>
                 </div>
             </div>
@@ -25,146 +25,116 @@
 
     <section class="content">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header with-border">
-                            <h2 class="card-title"></h2>
-                            <div class="card-tools">
-                                <div class="btn-group float-right mr-5">
-                                    <a href="{{route('')}}" class="btn  btn-flat btn-default"
-                                       title="List"><i class="fa fa-list"></i><span
-                                            class="hidden-xs"> Trở lại danh sách</span></a>
-                                </div>
+            <div class="card card-primary card-outline card-outline-tabs">
+
+                <div class="card-body">
+                    <div class="tab-content" id="custom-tabs-four-tabContent">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <form>
+                                    <table class="table table-hover table-bordered">
+                                        <tbody>
+                                        <tr>
+                                            <td>Logo</td>
+                                            <td>
+                                                <div class="input-group">
+                                                    <input type="file" id="logo" name="logo"
+                                                           value=""
+                                                           class="form-control input-sm logo" placeholder="">
+                                                </div>
+                                                <div id="preview_image" class="img_holder"><img alt="Logo" title=""
+                                                                                                src="https://demo.s-cart.org/data/logo/scart-mid.png"
+                                                                                                style=" width:100px;">
+                                                </div>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Company</td>
+                                            <td>
+                                                <div class="input-group">
+                                                    <input type="text" id="company" name="company" value=""
+                                                           class="form-control input-sm icon" placeholder="">
+                                                </div>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>slogan</td>
+                                            <td>
+                                                <div class="input-group">
+                                                    <input type="text" id="slogan" name="slogan" value=""
+                                                           class="form-control input-sm icon" placeholder="">
+                                                </div>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fas fa-envelope"></i> Tax</td>
+                                            <td><input type="text" id="tax" name="tax" value=""
+                                                       class="form-control input-sm icon" placeholder=""></td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fas fa-envelope"></i> Email</td>
+                                            <td><input type="email" id="Email" name="Email" value=""
+                                                       class="form-control input-sm icon" placeholder=""></td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fas fa-phone-alt"></i> Phone</td>
+                                            <td><input type="text" id="phone" name="phone" value=""
+                                                       class="form-control input-sm icon" placeholder=""></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><i class="far fa-calendar-alt"></i> Địa chỉ</td>
+                                            <td><input type="text" id="address" name="address" value=""
+                                                       class="form-control input-sm icon" placeholder="">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fas fa-map-marked"></i> facebook</td>
+                                            <td><input type="text" id="facebook" name="facebook" value=""
+                                                       class="form-control input-sm icon" placeholder=""></td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fas fa-location-arrow"></i> tiktok</td>
+                                            <td><input type="text" id="tiktok" name="tiktok" value=""
+                                                       class="form-control input-sm icon" placeholder=""></td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fas fa-warehouse"></i> intagram</td>
+                                            <td><input type="text" id="intagram" name="intagram" value=""
+                                                       class="form-control input-sm icon" placeholder="">
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><i class="fab fa-chrome"></i> kakaotalk</td>
+                                            <td><input type="text" id="kakaotalk" name="kakaotalk" value=""
+                                                       class="form-control input-sm icon" placeholder=""></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><i class="nav-icon  fas fab-button "></i>Thực hiện</td>
+                                            <td>
+                                                <input type="submit" id="submit" name="icon" value="Save"
+                                                       class="btn btn-success input-sm icon" placeholder="">
+                                            </td>
+                                        </tr>
+
+
+                                        </tbody>
+                                    </table>
+                                </form>
                             </div>
+
                         </div>
-
-
-                        <form action="" method="post"
-                              accept-charset="UTF-8" class="form-horizontal" id="form-main"
-                              enctype="multipart/form-data">
-                            <div class="card-body">
-                                <div class="fields-group">
-                                    <div class="form-group  row ">
-                                        <label for="name" class="col-sm-2  control-label">Tên đầy đủ</label>
-                                        <div class="col-sm-8">
-                                            <div class="input-group">
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text"><i
-                                                            class="fas fa-pencil-alt"></i></span>
-                                                </div>
-                                                <input type="text" id="name" name="name" value="Test"
-                                                       class="form-control name" placeholder="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group  row ">
-                                        <label for="username" class="col-sm-2  control-label">Tên đăng nhập</label>
-                                        <div class="col-sm-8">
-                                            <div class="input-group">
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text"><i
-                                                            class="fas fa-pencil-alt"></i></span>
-                                                </div>
-                                                <input type="text" disabled="" id="username" value="test"
-                                                       class="form-control username" placeholder="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group  row ">
-                                        <label for="email" class="col-sm-2  control-label">Email</label>
-                                        <div class="col-sm-8">
-                                            <div class="input-group">
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text"><i
-                                                            class="fas fa-pencil-alt"></i></span>
-                                                </div>
-                                                <input type="text" disabled="" id="email" value="test@gmail.com"
-                                                       class="form-control email" placeholder="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group  row ">
-                                        <label for="avatar" class="col-sm-2  control-label">Hình đại diện</label>
-                                        <div class="col-sm-8">
-                                            <div class="input-group">
-                                                <input type="text" id="avatar" name="avatar" value=""
-                                                       class="form-control input-sm avatar" placeholder="">
-                                                <span class="input-group-btn">
-<a data-input="avatar" data-preview="preview_avatar" data-type="avatar" class="btn btn-primary lfm">
-<i class="fa fa-image"></i> Chọn hình
-</a>
-</span>
-                                            </div>
-                                            <div id="preview_avatar" class="img_holder"><img
-                                                    src="https://demo.s-cart.org/"></div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group  row ">
-                                        <label for="password" class="col-sm-2  control-label">Mật khẩu</label>
-                                        <div class="col-sm-8">
-                                            <div class="input-group">
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text"><i
-                                                            class="fas fa-pencil-alt"></i></span>
-                                                </div>
-                                                <input type="password" id="password" name="password" value=""
-                                                       class="form-control password" placeholder="">
-                                            </div>
-                                            <span class="form-text">
-<i class="fa fa-info-circle"></i> Để trống nếu không muốn thay đổi mật khẩu
-</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group  row ">
-                                        <label for="password" class="col-sm-2  control-label">Xác nhận mật khẩu</label>
-                                        <div class="col-sm-8">
-                                            <div class="input-group">
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text"><i
-                                                            class="fas fa-pencil-alt"></i></span>
-                                                </div>
-                                                <input type="password" id="password_confirmation"
-                                                       name="password_confirmation" value=""
-                                                       class="form-control password_confirmation" placeholder="">
-                                            </div>
-                                            <span class="form-text">
-<i class="fa fa-info-circle"></i> Để trống nếu không muốn thay đổi mật khẩu
-</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row ">
-                                        <label for="roles" class="col-sm-2  control-label">Chọn vai trò</label>
-                                        <div class="col-sm-8">
-                                            <span class="badge badge-primary">Group only View</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row ">
-                                        <label for="permission" class="col-sm-2  control-label">Chọn quyền hạn</label>
-                                        <div class="col-sm-8">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card-footer row">
-                                <div class="col-md-2">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="btn-group float-right">
-                                        <button type="submit" class="btn btn-primary">Gửi</button>
-                                    </div>
-                                    <div class="btn-group float-left">
-                                        <button type="reset" class="btn btn-warning">Làm lại</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </form>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
+
 
 @endsection

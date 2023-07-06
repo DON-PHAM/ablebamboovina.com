@@ -52,6 +52,15 @@ class ProductController extends Controller
     {
         return redirect()->route('product-list')->with('success', 'Sửa thành công');
     }
+    public function delete($id)
+    {
+        return $this->productData->delete($id);
+    }
+
+    public function changeStatus($id)
+    {
+        return $this->productData->changeStatus($id);
+    }
 
 
 }
