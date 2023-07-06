@@ -25,6 +25,7 @@ return new class extends Migration
             $table->integer('userid');
             $table->integer('quantity');
             $table->integer('count');
+            $table->boolean('hot');
             $table->boolean('status');
             $table->timestamps();
         });

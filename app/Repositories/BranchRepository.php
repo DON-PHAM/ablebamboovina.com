@@ -20,7 +20,8 @@ class BranchRepository implements BranchService
 
     public function update(int $id, array $data)
     {
-        // TODO: Implement update() method.
+        $bran = $this->model->find($id);
+        return $bran->update($data);
     }
 
     public function delete(int $id)
@@ -30,7 +31,7 @@ class BranchRepository implements BranchService
 
     public function getById(int $id)
     {
-        // TODO: Implement getById() method.
+        return $this->model->find($id);
     }
 
     public function getAll()

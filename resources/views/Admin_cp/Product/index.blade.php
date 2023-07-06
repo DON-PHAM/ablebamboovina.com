@@ -2,11 +2,11 @@
 @section('title',trans('product.title'))
 @section('content')
     <style>
-        #status{
+        .checkbox{
             cursor: pointer;
         }
 
-        #status {
+        .checkbox {
             display: flex;
             appearance: none;
             border-radius: 1rem;
@@ -15,45 +15,45 @@
             background-size: 200% 100%, 100% 100%;
         }
 
-        #status::before,
-        #status::after {
+        .checkbox::before,
+        .checkbox::after {
             display: flex;
             position: relative;
             font-size: 11px;
             line-height: 1.25;
             margin: .5rem;
         }
-        #status::before {
+        .checkbox::before {
             content: 'OFF';
         }
-        #status::after {
+        .checkbox::after {
             content: 'ON';
         }
-        #status:not(:checked) {
+        .checkbox:not(:checked) {
             background-position: 0 0;
             transition: all 250ms ease-out;
         }
-        #status::before {
+        .checkbox::before {
             color: #FC9;
             text-shadow: 2px 3px 2px rgba(0,0,0,.25);
             transition: all 75ms ease-in 100ms;
         }
 
-        #status::after {
+        .checkbox::after {
             color: fade(white, 40);
             transition: all 75ms ease-in 100ms;
         }
 
 
-        #status:checked {
+        .checkbox:checked {
             background-position: 100% 0;
             transition: all 150ms ease-in;
-        #status::before {
+        .checkbox::before {
             color: fade(white, 40);
             transition: all 75ms ease-in 100ms;
         }
 
-        #status::after {
+        .checkbox::after {
             color: #9FC;
             text-shadow: 2px 3px 2px rgba(0,0,0,.25);
             transition: all 75ms ease-in 100ms;
@@ -180,13 +180,14 @@
                                         <th>Giá</th>
                                         <th>Nhà cung cấp</th>
                                         <th>Trạng thái</th>
+                                        <th>Sản phẩm HOT</th>
                                         <th>Thao tác</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @if($products)
                                         @foreach($products as $product)
-                                            <tr>
+                                            <tr data-id="{{$product->id}}">
                                                 <td>
                                                     <div class="icheckbox_square-blue" aria-checked="false"
                                                          aria-disabled="false" style="position: relative;"><input
@@ -206,12 +207,12 @@
                                                 <td>{{$product->$product*$product->discount/100}}</td>
                                                 <td>{{$product->branch->name}}</td>
                                                 <td>
-                                                    <input type="checkbox" class="status" id="status" name="status" data-id="{{$product->id}}" @if($product->status == 1) checked @endif>
-{{--                                                    @if($product->status == 1)--}}
-{{--                                                        <span class="badge badge-success">ON</span>--}}
-{{--                                                        @else--}}
-{{--                                                        <span class="badge badge-danger">OFF</span>--}}
-{{--                                                    @endif--}}
+                                                    <input type="checkbox" class="status checkbox" id="status" name="status"  @if($product->status == 1) checked @endif>
+
+                                                </td>
+                                                <td>
+                                                    <input type="checkbox" class="hot checkbox" id="hot" name="hot"  @if($product->hot == 1) checked @endif>
+
                                                 </td>
                                                 <td>
                                                     <a href="{{route('get-product-edit',$product->id)}}">
@@ -294,10 +295,27 @@
                 }
             })
         }
-        $('.status').change(function() {
-            let id = $('#status').data('id');
+        $('.status').change(function(event) {
+            let row = event.target.closest('tr');
+            let id = row.getAttribute('data-id');
             $.ajax({
                 url:'{{route('change-status-product',':id')}}'.replace(':id',id),
+                dataType:'json',
+                method: 'get',
+                success:function (response)
+                {
+                    if(response.status)
+                    {
+                        toastr.success('Thay đổi trạng thái thành công');
+                    }
+                }
+            })
+        })
+        $('.hot').change(function(event) {
+            let row = event.target.closest('tr');
+            let id = row.getAttribute('data-id');
+            $.ajax({
+                url:'{{route('change-producthot-product',':id')}}'.replace(':id',id),
                 dataType:'json',
                 method: 'get',
                 success:function (response)

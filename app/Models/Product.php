@@ -20,7 +20,8 @@ class Product extends Model
         'quantity',
         'count',
         'status',
-        'image'
+        'image',
+        'hot'
     ];
 
     public function images()

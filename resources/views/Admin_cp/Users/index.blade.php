@@ -180,10 +180,9 @@
                 if (result.value) {
                     toastr.success('Xóa thành công');
                 } else if (
-                    // Read more about handling dismissals
                     result.dismiss === Swal.DismissReason.cancel
                 ) {
-
+                    toastr.error('Xóa không thành công')
                 }
             })
         }
