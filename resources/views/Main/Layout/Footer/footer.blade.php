@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <!-- footer single wedget -->
-                <div class="col-md-6 col-lg-4">
+                <div class="col-md-4 col-lg-4">
                     <!-- footer logo -->
                     <div class="footer-logo">
                         <a href="index.html"
@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <!-- footer single wedget -->
-                <div class="col-md-6 col-lg-2 mt-res-sx-30px mt-res-md-30px">
+                <div class="col-md-4 col-lg-4 mt-res-sx-30px mt-res-md-30px">
                     <div class="single-wedge">
                         <h4 class="footer-herading">Thông tin</h4>
                         <div class="footer-links">
@@ -60,7 +60,7 @@
                     </div>
                 </div>
                 <!-- footer single wedget -->
-                <div class="col-md-6 col-lg-2 mt-res-md-50px mt-res-sx-30px mt-res-md-30px">
+                <div class="col-md-4 col-lg-4 mt-res-md-50px mt-res-sx-30px mt-res-md-30px">
                     <div class="single-wedge">
                         <h4 class="footer-herading">Links</h4>
                         <div class="footer-links">
@@ -68,57 +68,6 @@
                                 <li><a href="#">Đăng nhập</a></li>
                                 <li><a href="#">Tài khoản</a></li>
                             </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- footer single wedget -->
-                <div class="col-md-6 col-lg-4 mt-res-md-50px mt-res-sx-30px mt-res-md-30px">
-                    <div class="single-wedge">
-                        <h4 class="footer-herading">Bản tin</h4>
-                        <div class="subscrib-text">
-                            <p>
-                                Đăng ký để nhận nhiều thông tin khuyến mãi hấp dẫn
-                            </p>
-                        </div>
-
-                        <div id="mc_embed_signup" class="subscribe-form">
-                            <form
-                                id="mc-embedded-subscribe-form"
-                                class="validate"
-                                novalidate=""
-                                target="_blank"
-                                name="mc-embedded-subscribe-form"
-                                method="post"
-                                action=""
-                            >
-                                <div id="mc_embed_signup_scroll" class="mc-form">
-                                    <input
-                                        class="email"
-                                        type="email"
-                                        required=""
-                                        placeholder="Nhập email.."
-                                        name="EMAIL"
-                                        value=""
-                                    />
-                                    <div class="mc-news" aria-hidden="true" style="position: absolute; left: -5000px">
-                                        <input
-                                            type="text"
-                                            value=""
-                                            tabindex="-1"
-                                            name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef"
-                                        />
-                                    </div>
-                                    <div class="clear">
-                                        <input
-                                            id="mc-embedded-subscribe"
-                                            class="button"
-                                            type="submit"
-                                            name="subscribe"
-                                            value="Đăng ký"
-                                        />
-                                    </div>
-                                </div>
-                            </form>
                         </div>
                     </div>
                 </div>
