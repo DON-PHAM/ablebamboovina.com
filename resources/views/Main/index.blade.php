@@ -149,22 +149,24 @@
             <!-- Slider Single Item Start -->
             @if($sliders)
                 @foreach($sliders as $slider)
-                    <div
-                        class="slider-height-6 d-flex align-items-start justify-content-start bg-img"
-                        style="background-image: url({{asset('upload/slider/'.$slider->image)}})"
-                    >
-                        <div class="container">
-                            <div class="slider-content-5 slider-animated-1 text-left">
-                                <span class="animated">{{$slider->name}}</span>
-                                <h1 class="animated">
-                                    {{$slider->description}}
-                                </h1>
-                                @if($slider->url)
-                                    <a href="{{$slider->url}}" class="shop-btn animated">SHOP NOW</a>
-                                @endif
+                    @if($slider->status == 1)
+                        <div
+                            class="slider-height-6 d-flex align-items-start justify-content-start bg-img"
+                            style="background-image: url({{asset('upload/slider/'.$slider->image)}})"
+                        >
+                            <div class="container">
+                                <div class="slider-content-5 slider-animated-1 text-left">
+                                    <span class="animated">{{$slider->name}}</span>
+                                    <h1 class="animated">
+                                        {{$slider->description}}
+                                    </h1>
+                                    @if($slider->url)
+                                        <a href="{{$slider->url}}" class="shop-btn animated">Mua Ngay</a>
+                                    @endif
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
                 @endforeach
             @endif
         </div>
@@ -176,7 +178,7 @@
             <div class="row mb-n-30px">
                 @if($categories)
                     @foreach($categories as $category)
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
                             <div class="banner-wrapper">
                                 <a href="#">
                                     <img src="{{asset('upload/category/'.$category->image)}}" alt=""/>
@@ -190,7 +192,7 @@
     </div>
     <!-- Banner Area End -->
     <!-- Best Sells Area Start -->
-    <section class="best-sells-area">
+    <section class="best-sells-area pt-5">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -249,35 +251,6 @@
         </div>
     </section>
     <!-- Best Sell Area End -->
-    <!-- Banner Area Start -->
-    <div class="banner-area">
-        <div class="container">
-            <div class="row mb-n-30px">
-                <div class="col-lg-3 col-sm-6 mb-30px xs-6 order-1 order-lg-1">
-                    <div class="banner-wrapper">
-                        <a href="shop-4-column.html"
-                        ><img src="https://htmldemo.net/ecolife/ecolife/assets/images/banner-image/14.jpg" alt=""
-                            /></a>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12 mb-30px order-3 order-lg-2">
-                    <div class="banner-wrapper">
-                        <a href="shop-4-column.html"
-                        ><img src="https://htmldemo.net/ecolife/ecolife/assets/images/banner-image/15.jpg" alt=""
-                            /></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mb-30px xs-6 order-2 order-lg-3">
-                    <div class="banner-wrapper">
-                        <a href="shop-4-column.html"
-                        ><img src="https://htmldemo.net/ecolife/ecolife/assets/images/banner-image/16.jpg" alt=""
-                            /></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Banner Area End -->
     <!-- Hot deal area Start -->
     <section class="hot-deal-area">
         <div class="container">
@@ -287,8 +260,7 @@
                         <div class="col-md-12">
                             <!-- Section Title -->
                             <div class="section-title">
-                                <h2>Hot Deals</h2>
-                                <p>Add hot products to weekly line up</p>
+                                <h2>Ưu đãi lớn</h2>
                             </div>
                             <!-- Section Title End-->
                         </div>
@@ -581,8 +553,7 @@
                         <div class="col-md-12">
                             <!-- Section Title -->
                             <div class="section-title ml-0px mt-res-sx-30px">
-                                <h2>New Arrivals</h2>
-                                <p>Add new products to weekly line up</p>
+                                <h2>Hàng mới</h2>
                             </div>
                             <!-- Section Title -->
                         </div>
@@ -1364,8 +1335,8 @@
                                 class="img-responsive"
                             />
                             <div class="single-static-meta">
-                                <h4>Free Shipping</h4>
-                                <p>On all orders over $75.00</p>
+                                <h4>Miễn phí vận chuyển</h4>
+                                <p>Tất cả đơn hàng trên 500.000VNĐ</p>
                             </div>
                         </div>
                     </div>
@@ -1379,8 +1350,8 @@
                                 class="img-responsive"
                             />
                             <div class="single-static-meta">
-                                <h4>Free Returns</h4>
-                                <p>Returns are free within 9 days</p>
+                                <h4>Đổi trả miễn phí</h4>
+                                <p>Trong vòng 9 ngày</p>
                             </div>
                         </div>
                     </div>
@@ -1394,8 +1365,8 @@
                                 class="img-responsive"
                             />
                             <div class="single-static-meta">
-                                <h4>100% Payment Secure</h4>
-                                <p>Your payment are safe with us.</p>
+                                <h4>Thanh toán an toàn 100%</h4>
+                                <p>Thanh toán của bạn được chúng tôi đảm bảo tuyệt đối</p>
                             </div>
                         </div>
                     </div>
@@ -1409,8 +1380,8 @@
                                 class="img-responsive"
                             />
                             <div class="single-static-meta">
-                                <h4>Support 24/7</h4>
-                                <p>Contact us 24 hours a day</p>
+                                <h4>Hỗ trợ 24/7</h4>
+                                <p>Liên hệ chúng tôi 24/7</p>
                             </div>
                         </div>
                     </div>
@@ -1420,809 +1391,6 @@
         </div>
     </section>
     <!-- Static Area End -->
-    <!-- Feature Area Start -->
-    <section class="feature-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <!-- Section Title -->
-                    <div class="section-title">
-                        <h2>Featured Products</h2>
-                        <p>Add products to weekly line up</p>
-                    </div>
-                    <!-- Section Title -->
-                </div>
-            </div>
-            <!-- Feature Slider Start -->
-            <div class="feature-slider owl-carousel owl-nav-style">
-                <!-- Single Item -->
-                <div class="feature-slider-item">
-                    <article class="list-product">
-                        <div class="img-block">
-                            <a href="single-product.html" class="thumbnail">
-                                <img
-                                    class="first-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/18.jpg"
-                                    alt=""
-                                />
-                                <img
-                                    class="second-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/18.jpg"
-                                    alt=""
-                                />
-                            </a>
-                            <div class="quick-view">
-                                <a
-                                    class="quick_view"
-                                    href="#"
-                                    data-link-action="quickview"
-                                    title="Quick view"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal"
-                                >
-                                    <i class="ion-ios-search-strong"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="product-decs">
-                            <a class="inner-link" href="shop-4-column.html"><span>STUDIO DESIGN</span></a>
-                            <h2><a href="single-product.html" class="product-link">Juicy Couture Solid...</a></h2>
-                            <div class="rating-product">
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                            </div>
-                            <div class="pricing-meta">
-                                <ul>
-                                    <li class="old-price not-cut">€29.90</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="list-product">
-                        <div class="img-block">
-                            <a href="single-product.html" class="thumbnail">
-                                <img
-                                    class="first-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/19.jpg"
-                                    alt=""
-                                />
-                                <img
-                                    class="second-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/18.jpg"
-                                    alt=""
-                                />
-                            </a>
-                            <div class="quick-view">
-                                <a
-                                    class="quick_view"
-                                    href="#"
-                                    data-link-action="quickview"
-                                    title="Quick view"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal"
-                                >
-                                    <i class="ion-ios-search-strong"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="product-decs">
-                            <a class="inner-link" href="shop-4-column.html"><span>STUDIO DESIGN</span></a>
-                            <h2><a href="single-product.html" class="product-link">New Balance Fresh...</a></h2>
-                            <div class="rating-product">
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                            </div>
-                            <div class="pricing-meta">
-                                <ul>
-                                    <li class="old-price not-cut">€29.90</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <!-- Single Item -->
-                <div class="feature-slider-item">
-                    <article class="list-product">
-                        <div class="img-block">
-                            <a href="single-product.html" class="thumbnail">
-                                <img
-                                    class="first-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/16.jpg"
-                                    alt=""
-                                />
-                                <img
-                                    class="second-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/17.jpg"
-                                    alt=""
-                                />
-                            </a>
-                            <div class="quick-view">
-                                <a
-                                    class="quick_view"
-                                    href="#"
-                                    data-link-action="quickview"
-                                    title="Quick view"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal"
-                                >
-                                    <i class="ion-ios-search-strong"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="product-decs">
-                            <a class="inner-link" href="shop-4-column.html"><span>STUDIO DESIGN</span></a>
-                            <h2><a href="single-product.html" class="product-link">Originals Kaval Win...</a></h2>
-                            <div class="rating-product">
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                            </div>
-                            <div class="pricing-meta">
-                                <ul>
-                                    <li class="old-price">€23.90</li>
-                                    <li class="current-price">€21.51</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="list-product">
-                        <div class="img-block">
-                            <a href="single-product.html" class="thumbnail">
-                                <img
-                                    class="first-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/11.jpg"
-                                    alt=""
-                                />
-                                <img
-                                    class="second-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/12.jpg"
-                                    alt=""
-                                />
-                            </a>
-                            <div class="quick-view">
-                                <a
-                                    class="quick_view"
-                                    href="#"
-                                    data-link-action="quickview"
-                                    title="Quick view"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal"
-                                >
-                                    <i class="ion-ios-search-strong"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="product-decs">
-                            <a class="inner-link" href="shop-4-column.html"><span>STUDIO DESIGN</span></a>
-                            <h2><a href="single-product.html" class="product-link">Originals Kaval Win...</a></h2>
-                            <div class="rating-product">
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                            </div>
-                            <div class="pricing-meta">
-                                <ul>
-                                    <li class="old-price">€23.90</li>
-                                    <li class="current-price">€21.51</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <!-- Single Item -->
-                <div class="feature-slider-item">
-                    <article class="list-product">
-                        <div class="img-block">
-                            <a href="single-product.html" class="thumbnail">
-                                <img
-                                    class="first-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/2.jpg"
-                                    alt=""
-                                />
-                                <img
-                                    class="second-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/15.jpg"
-                                    alt=""
-                                />
-                            </a>
-                            <div class="quick-view">
-                                <a
-                                    class="quick_view"
-                                    href="#"
-                                    data-link-action="quickview"
-                                    title="Quick view"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal"
-                                >
-                                    <i class="ion-ios-search-strong"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="product-decs">
-                            <a class="inner-link" href="shop-4-column.html"><span>STUDIO DESIGN</span></a>
-                            <h2><a href="single-product.html" class="product-link">Juicy Couture Juicy...</a></h2>
-                            <div class="rating-product">
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                            </div>
-                            <div class="pricing-meta">
-                                <ul>
-                                    <li class="old-price">€35.90</li>
-                                    <li class="current-price">€34.11</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="list-product">
-                        <div class="img-block">
-                            <a href="single-product.html" class="thumbnail">
-                                <img
-                                    class="first-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/1.jpg"
-                                    alt=""
-                                />
-                                <img
-                                    class="second-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/1.jpg"
-                                    alt=""
-                                />
-                            </a>
-                            <div class="quick-view">
-                                <a
-                                    class="quick_view"
-                                    href="#"
-                                    data-link-action="quickview"
-                                    title="Quick view"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal"
-                                >
-                                    <i class="ion-ios-search-strong"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="product-decs">
-                            <a class="inner-link" href="shop-4-column.html"><span>STUDIO DESIGN</span></a>
-                            <h2><a href="single-product.html" class="product-link">Juicy Couture Juicy...</a></h2>
-                            <div class="rating-product">
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                            </div>
-                            <div class="pricing-meta">
-                                <ul>
-                                    <li class="old-price">€35.90</li>
-                                    <li class="current-price">€34.11</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <!-- Single Item -->
-                <div class="feature-slider-item">
-                    <article class="list-product">
-                        <div class="img-block">
-                            <a href="single-product.html" class="thumbnail">
-                                <img
-                                    class="first-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/2.jpg"
-                                    alt=""
-                                />
-                                <img
-                                    class="second-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/17.jpg"
-                                    alt=""
-                                />
-                            </a>
-                            <div class="quick-view">
-                                <a
-                                    class="quick_view"
-                                    href="#"
-                                    data-link-action="quickview"
-                                    title="Quick view"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal"
-                                >
-                                    <i class="ion-ios-search-strong"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="product-decs">
-                            <a class="inner-link" href="shop-4-column.html"><span>STUDIO DESIGN</span></a>
-                            <h2><a href="single-product.html" class="product-link">New Balance Fresh...</a></h2>
-                            <div class="rating-product">
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                            </div>
-                            <div class="pricing-meta">
-                                <ul>
-                                    <li class="old-price">€18.90</li>
-                                    <li class="current-price">€15.12</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="list-product">
-                        <div class="img-block">
-                            <a href="single-product.html" class="thumbnail">
-                                <img
-                                    class="first-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/18.jpg"
-                                    alt=""
-                                />
-                                <img
-                                    class="second-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/18.jpg"
-                                    alt=""
-                                />
-                            </a>
-                            <div class="quick-view">
-                                <a
-                                    class="quick_view"
-                                    href="#"
-                                    data-link-action="quickview"
-                                    title="Quick view"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal"
-                                >
-                                    <i class="ion-ios-search-strong"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="product-decs">
-                            <a class="inner-link" href="shop-4-column.html"><span>STUDIO DESIGN</span></a>
-                            <h2><a href="single-product.html" class="product-link">New Balance Fresh...</a></h2>
-                            <div class="rating-product">
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                            </div>
-                            <div class="pricing-meta">
-                                <ul>
-                                    <li class="old-price not-cut">€29.90</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <!-- Single Item -->
-                <div class="feature-slider-item">
-                    <article class="list-product">
-                        <div class="img-block">
-                            <a href="single-product.html" class="thumbnail">
-                                <img
-                                    class="first-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/5.jpg"
-                                    alt=""
-                                />
-                                <img
-                                    class="second-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/5.jpg"
-                                    alt=""
-                                />
-                            </a>
-                            <div class="quick-view">
-                                <a
-                                    class="quick_view"
-                                    href="#"
-                                    data-link-action="quickview"
-                                    title="Quick view"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal"
-                                >
-                                    <i class="ion-ios-search-strong"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="product-decs">
-                            <a class="inner-link" href="shop-4-column.html"><span>GRAPHIC CORNER</span></a>
-                            <h2><a href="single-product.html" class="product-link">Juicy Couture Trico...</a></h2>
-                            <div class="rating-product">
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                            </div>
-                            <div class="pricing-meta">
-                                <ul>
-                                    <li class="old-price not-cut">€9.90</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="list-product">
-                        <div class="img-block">
-                            <a href="single-product.html" class="thumbnail">
-                                <img
-                                    class="first-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/7.jpg"
-                                    alt=""
-                                />
-                                <img
-                                    class="second-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/8.jpg"
-                                    alt=""
-                                />
-                            </a>
-                            <div class="quick-view">
-                                <a
-                                    class="quick_view"
-                                    href="#"
-                                    data-link-action="quickview"
-                                    title="Quick view"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal"
-                                >
-                                    <i class="ion-ios-search-strong"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="product-decs">
-                            <a class="inner-link" href="shop-4-column.html"><span>GRAPHIC CORNER</span></a>
-                            <h2><a href="single-product.html" class="product-link">Fila Locker Room V...</a></h2>
-                            <div class="rating-product">
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                            </div>
-                            <div class="pricing-meta">
-                                <ul>
-                                    <li class="old-price not-cut">€9.90</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <!-- Single Item -->
-                <div class="feature-slider-item">
-                    <article class="list-product">
-                        <div class="img-block">
-                            <a href="single-product.html" class="thumbnail">
-                                <img
-                                    class="first-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/17.jpg"
-                                    alt=""
-                                />
-                                <img
-                                    class="second-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/16.jpg"
-                                    alt=""
-                                />
-                            </a>
-                            <div class="quick-view">
-                                <a
-                                    class="quick_view"
-                                    href="#"
-                                    data-link-action="quickview"
-                                    title="Quick view"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal"
-                                >
-                                    <i class="ion-ios-search-strong"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="product-decs">
-                            <a class="inner-link" href="shop-4-column.html"><span>STUDIO DESIGN</span></a>
-                            <h2><a href="single-product.html" class="product-link">Trans-Weight Hood...</a></h2>
-                            <div class="rating-product">
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                            </div>
-                            <div class="pricing-meta">
-                                <ul>
-                                    <li class="old-price">€18.90</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="list-product">
-                        <div class="img-block">
-                            <a href="single-product.html" class="thumbnail">
-                                <img
-                                    class="first-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/10.jpg"
-                                    alt=""
-                                />
-                                <img
-                                    class="second-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/1.jpg"
-                                    alt=""
-                                />
-                            </a>
-                            <div class="quick-view">
-                                <a
-                                    class="quick_view"
-                                    href="#"
-                                    data-link-action="quickview"
-                                    title="Quick view"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal"
-                                >
-                                    <i class="ion-ios-search-strong"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="product-decs">
-                            <a class="inner-link" href="shop-4-column.html"><span>STUDIO DESIGN</span></a>
-                            <h2><a href="single-product.html" class="product-link">New Luxury Men's...</a></h2>
-                            <div class="rating-product">
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                            </div>
-                            <div class="pricing-meta">
-                                <ul>
-                                    <li class="old-price">€11.90</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <!-- Single Item -->
-                <div class="feature-slider-item">
-                    <article class="list-product">
-                        <div class="img-block">
-                            <a href="single-product.html" class="thumbnail">
-                                <img
-                                    class="first-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/14.jpg"
-                                    alt=""
-                                />
-                                <img
-                                    class="second-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/15.jpg"
-                                    alt=""
-                                />
-                            </a>
-                            <div class="quick-view">
-                                <a
-                                    class="quick_view"
-                                    href="#"
-                                    data-link-action="quickview"
-                                    title="Quick view"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal"
-                                >
-                                    <i class="ion-ios-search-strong"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="product-decs">
-                            <a class="inner-link" href="shop-4-column.html"><span>GRAPHIC CORNER</span></a>
-                            <h2><a href="single-product.html" class="product-link">Calvin Klein Jeans...</a></h2>
-                            <div class="rating-product">
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                            </div>
-                            <div class="pricing-meta">
-                                <ul>
-                                    <li class="old-price not-cut">€29.90</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="list-product">
-                        <div class="img-block">
-                            <a href="single-product.html" class="thumbnail">
-                                <img
-                                    class="first-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/9.jpg"
-                                    alt=""
-                                />
-                                <img
-                                    class="second-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/9.jpg"
-                                    alt=""
-                                />
-                            </a>
-                            <div class="quick-view">
-                                <a
-                                    class="quick_view"
-                                    href="#"
-                                    data-link-action="quickview"
-                                    title="Quick view"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal"
-                                >
-                                    <i class="ion-ios-search-strong"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="product-decs">
-                            <a class="inner-link" href="shop-4-column.html"><span>STUDIO DESIGN</span></a>
-                            <h2><a href="single-product.html" class="product-link">Water and Wind R...</a></h2>
-                            <div class="rating-product">
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                            </div>
-                            <div class="pricing-meta">
-                                <ul>
-                                    <li class="old-price not-cut">€11.90</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <!-- Single Item -->
-                <div class="feature-slider-item">
-                    <article class="list-product">
-                        <div class="img-block">
-                            <a href="single-product.html" class="thumbnail">
-                                <img
-                                    class="first-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/14.jpg"
-                                    alt=""
-                                />
-                                <img
-                                    class="second-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/14.jpg"
-                                    alt=""
-                                />
-                            </a>
-                            <div class="quick-view">
-                                <a
-                                    class="quick_view"
-                                    href="#"
-                                    data-link-action="quickview"
-                                    title="Quick view"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal"
-                                >
-                                    <i class="ion-ios-search-strong"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="product-decs">
-                            <a class="inner-link" href="shop-4-column.html"><span>GRAPIC CORNER</span></a>
-                            <h2><a href="single-product.html" class="product-link">Madden by Steve...</a></h2>
-                            <div class="rating-product">
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                            </div>
-                            <div class="pricing-meta">
-                                <ul>
-                                    <li class="old-price">€11.90</li>
-                                    <li class="current-price">€10.12</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="list-product">
-                        <div class="img-block">
-                            <a href="single-product.html" class="thumbnail">
-                                <img
-                                    class="first-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/3.jpg"
-                                    alt=""
-                                />
-                                <img
-                                    class="second-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/4.jpg"
-                                    alt=""
-                                />
-                            </a>
-                            <div class="quick-view">
-                                <a
-                                    class="quick_view"
-                                    href="#"
-                                    data-link-action="quickview"
-                                    title="Quick view"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal"
-                                >
-                                    <i class="ion-ios-search-strong"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="product-decs">
-                            <a class="inner-link" href="shop-4-column.html"><span>STUDIO DESIGN</span></a>
-                            <h2><a href="single-product.html" class="product-link">Brixton Patrol All T...</a></h2>
-                            <div class="rating-product">
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                            </div>
-                            <div class="pricing-meta">
-                                <ul>
-                                    <li class="old-price not-cut">€18.90</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <!-- Single Item -->
-                <div class="feature-slider-item">
-                    <article class="list-product">
-                        <div class="img-block">
-                            <a href="single-product.html" class="thumbnail">
-                                <img
-                                    class="first-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/1.jpg"
-                                    alt=""
-                                />
-                                <img
-                                    class="second-img"
-                                    src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/1.jpg"
-                                    alt=""
-                                />
-                            </a>
-                            <div class="quick-view">
-                                <a
-                                    class="quick_view"
-                                    href="#"
-                                    data-link-action="quickview"
-                                    title="Quick view"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal"
-                                >
-                                    <i class="ion-ios-search-strong"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="product-decs">
-                            <a class="inner-link" href="shop-4-column.html"><span>STUDIO DESIGN</span></a>
-                            <h2><a href="single-product.html" class="product-link">Juicy Couture Juicy...</a></h2>
-                            <div class="rating-product">
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                            </div>
-                            <div class="pricing-meta">
-                                <ul>
-                                    <li class="old-price">€18.90</li>
-                                    <li class="current-price">€34.21</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <!-- Single Item -->
-            </div>
-            <!-- Feature Slider End -->
-        </div>
-    </section>
-    <!-- Feature Area End -->
     <!-- Blog area Start -->
     <section class="blog-area mb-30px mt-30">
         <div class="container">
@@ -2335,8 +1503,4 @@
     <!-- Blog Area End -->
 
 @endsection
-@section('scripts')
-    <script src="{{asset('frontend/assets/js/vendor/vendor.min.js')}}"></script>
-    <script src="{{asset('frontend/assets/js/plugins/plugins.min.js')}}"></script>
-    <script src="{{asset('frontend/assets/js/main.js')}}"></script>
-@endsection
+
