@@ -63,6 +63,7 @@ Route::group(['prefix'=>'dashboard','middleware'=>['locale','checkAuth']],functi
     Route::post('product/edit/{id}','Dashboard\ProductController@update')->name('put-product-edit');
     Route::get('product/delete/{id}','Dashboard\ProductController@delete')->name('delete-product');
     Route::get('product/changestatus/{id}','Dashboard\ProductController@changeStatus')->name('change-status-product');
+    Route::get('product/changeProductHot/{id}','Dashboard\ProductController@changeProductHot')->name('change-producthot-product');
 
     //New Management
     Route::get('new','Dashboard\NewController@index')->name('new-list');
@@ -73,12 +74,9 @@ Route::group(['prefix'=>'dashboard','middleware'=>['locale','checkAuth']],functi
     Route::get('new/delete/{id}','Dashboard\NewController@delete')->name('delete-new-edit');
 
     //Setting Management
-    Route::get('setting','Dashboard\SettingController@index')->name('setting-list');
-    Route::get('setting/create','Dashboard\SettingController@create')->name('get-setting-create');
-    Route::post('setting/create','Dashboard\SettingController@create')->name('post-setting-create');
-    Route::get('setting/edit/{id}','Dashboard\SettingController@edit')->name('get-setting-edit');
-    Route::post('setting/edit/{id}','Dashboard\SettingController@edit')->name('put-setting-edit');
-    Route::get('setting/delete/{id}','Dashboard\SettingController@delete')->name('delete-setting-edit');
+    Route::get('setting','Dashboard\SettingController@create')->name('get-setting-create');
+    Route::post('setting/create/{id}','Dashboard\SettingController@CreateOrUpdate')->name('post-setting-create');
+
 
     //Slider Management
     Route::get('slider','Dashboard\SliderController@index')->name('slider-list');
@@ -93,8 +91,8 @@ Route::group(['prefix'=>'dashboard','middleware'=>['locale','checkAuth']],functi
     Route::get('branch','Dashboard\BranchController@index')->name('branch-list');
     Route::post('branch/postCreate','Dashboard\BranchController@postCreate')->name('post-branch-create');
     Route::get('branch/edit/{id}','Dashboard\BranchController@edit')->name('get-branch-edit');
-    Route::post('branch/edit/{id}','Dashboard\BranchController@postEdit')->name('post-branch-edit');
-    Route::get('branch/delete/{id}','Dashboard\BranchController@delete')->name('delete-branch-edit');
+    Route::post('branch/edit/{id}','Dashboard\BranchController@update')->name('post-branch-edit');
+    Route::get('branch/delete/{id}','Dashboard\BranchController@delete')->name('delete-branch');
 
     //Feed Back
     Route::get('feedback','Dashboard\FeedBackController@index')->name('feedback-list');

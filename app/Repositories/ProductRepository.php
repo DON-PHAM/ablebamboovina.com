@@ -35,7 +35,8 @@ class ProductRepository implements ProductService {
             'quantity'=>intval($request->quantity),
             'count'=> 0,
             'status'=> $request->status =='on' ? 1: 0,
-            'image'=>''
+            'image'=>'',
+            'hot' => $request->hot == 'on' ? 1: 0
         ];
         // Xử lý ảnh sản phẩm
         if ($request->hasFile('image'))
@@ -131,6 +132,19 @@ class ProductRepository implements ProductService {
             return response()->json(['status'=>false]);
         }
         $product->status = !$product->status;
+        $product->save();
+        return response()->json(['status'=>true,'data'=>$product]);
+    }
+
+    public function changeProductHot(int $id)
+    {
+        $product = $this->product->find($id);
+
+        if (!$product)
+        {
+            return response()->json(['status'=>false]);
+        }
+        $product->hot = !$product->hot;
         $product->save();
         return response()->json(['status'=>true,'data'=>$product]);
     }

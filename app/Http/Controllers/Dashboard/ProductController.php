@@ -62,5 +62,10 @@ class ProductController extends Controller
         return $this->productData->changeStatus($id);
     }
 
+    public function changeProductHot($id)
+    {
+        return $this->productData->changeProductHot($id);
+    }
+
 
 }

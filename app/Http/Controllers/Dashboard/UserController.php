@@ -9,6 +9,7 @@ use App\Http\Requests\Admin\UserUpdateRequest;
 use App\Repositories\UserRepository;
 use App\Services\UserService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
@@ -96,6 +97,10 @@ class UserController extends Controller
 
     public function delete($id)
     {
+        if ($id == \session()->get('user')->id)
+        {
+            return redirect()->route('user')->with('error','Không thể xóa chính mình');
+        }
         $result = $this->userService->deleteUser($id);
         if ($result) {
             return redirect()->route('user')->with('success', 'Xóa thành công');

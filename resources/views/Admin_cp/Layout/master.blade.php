@@ -372,6 +372,9 @@
         });
         let language = localStorage.getItem('locale');
         $("#language").val(language);
+        setTimeout(function() {
+            $('.alert').fadeOut('slow');
+        }, 2000);
     });
 
 
