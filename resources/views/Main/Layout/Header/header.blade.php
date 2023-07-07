@@ -1,3 +1,26 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#language').change(function () {
+            alert(key)
+            let language = $('#language').find(":selected").val();
+            $.ajax({
+                url: "{{ route('change-language',':language') }}".replace(':language', language),
+                type: "get",
+                success: function (response) {
+                    localStorage.setItem('locale', language);
+                    location.reload();
+                }
+            });
+        });
+        let language = localStorage.getItem('locale');
+        $("#language").val(language);
+        setTimeout(function () {
+            $('.alert').fadeOut('slow');
+        }, 2000);
+    });
+
+</script>
+
 <header class="main-header">
     <!-- Header Top Start -->
     <div class="header-top-nav">
@@ -28,23 +51,23 @@
                             </button>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li>
-                                    <a class="dropdown-item" href="#" style="color: #111111"
-                                    ><img
+                                    <a class="dropdown-item" href="javascript:void(0)" style="color: #111111"
+                                    >
+                                        <img
                                             class="me-2"
                                             style="width: 25px;"
                                             src="{{asset('frontend/assets/images/icon-korea.png')}}"
                                             alt=""
-                                        />Korean</a
-                                    >
+                                        />Korean</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="#" style="color: #111111"
-                                    ><img
+                                    <a class="dropdown-item" href="javascript:void(0)" style="color: #111111"
+                                    >
+                                        <img
                                             class="me-2"
                                             src="{{asset('frontend/assets/images/icon-vi.png')}}"
                                             alt=""
-                                        />Việt Nam</a
-                                    >
+                                        />Việt Nam</a>
                                 </li>
                             </ul>
                         </div>
@@ -231,3 +254,4 @@
         </div>
     </div>
 </div>
+

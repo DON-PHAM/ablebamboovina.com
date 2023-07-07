@@ -101,7 +101,7 @@
     });
 
     /*----------------------------------------
-          Bootstrap dropdown               
+          Bootstrap dropdown
   -------------------------------------------*/
 
     // Add slideDown animation to Bootstrap dropdown when expanding.
@@ -116,7 +116,7 @@
 
 
     /*-----------------------
-     Shop filter active 
+     Shop filter active
  ------------------------- */
     $('.filter-active a').on('click', function (e) {
         e.preventDefault();
@@ -137,7 +137,7 @@
     /*---------------------
 
     /*---------------------
-        Cart Dropdown 
+        Cart Dropdown
     --------------------- */
     var iconCart = $('.mini-cart-warp');
     iconCart.on('click', function () {
@@ -235,7 +235,7 @@
                 items: 4,
             },
             1200: {
-                items: 5,
+                items: 4,
             }
         }
     })
@@ -405,6 +405,7 @@
         dots: false,
         items: 4,
         margin: 30,
+        rows: 2,
         responsive: {
             0: {
                 items: 1,
@@ -1134,19 +1135,19 @@
     })
 
 
-    
+
 	var testi = $(".testimonialsSlide");
 	testi.owlCarousel({
 		autoplay :false,
 		autoplayHoverPause: true,
 		smartSpeed : 1000,
 		nav :false,
-		dots : true, 
+		dots : true,
 		responsiveClass:true,
 		responsive : {
 		  0 : {
 	          items: 1
-	      }, 
+	      },
 		  360 : {
 	          items: 1
 	      },
@@ -1163,7 +1164,7 @@
 	          items: 3
 	      }
 		}
-	}); 
+	});
 
 	var testi = $(".feature-item");
 	testi.owlCarousel({
@@ -1171,12 +1172,12 @@
 		autoplayHoverPause: true,
 		smartSpeed : 1000,
 		nav :true,
-		dots : false, 
+		dots : false,
 		responsiveClass:true,
 		responsive : {
 		  0 : {
 	          items: 1
-	      }, 
+	      },
 		  360 : {
 	          items: 1
 	      },
@@ -1246,8 +1247,8 @@
         $('.open-menu-toggle').slideToggle(500);
     });
 
-    /*--------------------  
-    Category more toggle  
+    /*--------------------
+    Category more toggle
     ----------------------*/
 
     $(".vertical-menu li.hidden").hide();
@@ -1266,8 +1267,8 @@
         }
     });
 
-    /*--------------------  
-    All Category toggle  
+    /*--------------------
+    All Category toggle
     ----------------------*/
 
     $(".category-toggle").click(function () {

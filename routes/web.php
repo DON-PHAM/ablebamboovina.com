@@ -30,7 +30,7 @@ Route::group(['middleware'=>['locale','checkLoggedIn']],function() {
 Route::get('logout','LoginController@logout')->name('logout');
 
 Route::get('shop', 'Main\ShopController@index')->name('shop-page');
-Route::get('detail', 'Main\DetailController@index')->name('detail-page');
+Route::get('detail/{id}', 'Main\DetailController@index')->name('detail-page');
 
 
 Route::group(['prefix'=>'dashboard','middleware'=>['locale','checkAuth']],function () {
