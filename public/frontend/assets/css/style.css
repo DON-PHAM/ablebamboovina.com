@@ -1,0 +1,19 @@
+.breadcrumb-area {
+    text-align: center;
+    position: relative;
+    padding: 110px 0;
+    background: url(../images/breadcrumb-bg.png) no-repeat;
+    background-size: cover;
+}
+.best-sell-slider .thumbnail img {
+    max-height: 250px;
+    max-width: 100%;
+    width: auto;
+    margin: 0 auto;
+}
+.new-product-slider .thumbnail img  {
+    max-height: 200px;
+    max-width: 100%;
+    width: auto;
+    margin: 0 auto;
+}

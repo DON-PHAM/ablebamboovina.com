@@ -12,13 +12,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['prefix' => 'laravel-filemanager', 'middleware'], function () {
-    \UniSharp\LaravelFilemanager\Lfm::routes();
-});
+//Route::group(['prefix' => 'laravel-filemanager', 'middleware'], function () {
+//    \UniSharp\LaravelFilemanager\Lfm::routes();
+//});
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+//Route::get('/', function () {
+//    return view('welcome');
+//})->name('home');
+Route::get('/', 'Main\Homecontroller@index')->name('homepage');
 Route::get('change_language/{language}','Dashboard\HomeController@changLanguage')
     ->name('change-language');
 Route::group(['middleware'=>['locale','checkLoggedIn']],function() {
@@ -28,7 +29,8 @@ Route::group(['middleware'=>['locale','checkLoggedIn']],function() {
 });
 Route::get('logout','LoginController@logout')->name('logout');
 
-
+Route::get('shop', 'Main\ShopController@index')->name('shop-page');
+Route::get('detail/{id}', 'Main\DetailController@index')->name('detail-page');
 
 
 Route::group(['prefix'=>'dashboard','middleware'=>['locale','checkAuth']],function () {
