@@ -224,22 +224,25 @@
                                     </a>
                                 </div>
                                 <div class="product-decs">
-                                    <a class="inner-link" href="shop-4-column.html"><span>STUDIO DESIGN</span></a>
+                                    <a class="inner-link" href="shop-4-column.html"><span>{{$product->category->name}}</span></a>
                                     <h2>
-                                        <a href="single-product.html" class="product-link">Juicy Couture Juicy Quilted
-                                            Ter..</a>
+                                        <a href="single-product.html" class="product-link">{{$product->translate->name}}</a>
                                     </h2>
                                     <div class="pricing-meta">
                                         <ul>
-                                            <li class="old-price">500.000VNĐ</li>
-                                            <li class="current-price">400.000VNĐ</li>
-                                            <li class="discount-price">-20%</li>
+                                            @if($product->discount)
+                                                <li class="old-price">{{$product->price}}</li>
+                                                <li class="current-price">{{$product->price * $product->discount / 100}}</li>
+                                                <li class="discount-price">-{{$product->discount}}%</li>
+                                            @else
+                                                <li class="current-price">{{$product->price}}</li>
+                                            @endif
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="add-to-link">
                                     <ul class="d-flex justify-content-center">
-                                        <li class="cart"><a class="cart-btn" href="#">ADD TO CART </a></li>
+                                        <li class="cart"><a class="cart-btn" href="#">Thêm vào giỏ hàng </a></li>
                                     </ul>
                                 </div>
                             </article>
@@ -267,283 +270,72 @@
                     </div>
                     <!-- Hot Deal Slider Start -->
                     <div class="hot-deal owl-carousel owl-nav-style">
-                        <!--  Single item -->
-                        <article class="list-product">
-                            <div class="img-block">
-                                <a href="single-product.html" class="thumbnail">
-                                    <img
-                                        class="first-img"
-                                        src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/16.jpg"
-                                        alt=""
-                                    />
-                                    <img
-                                        class="second-img"
-                                        src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/16.jpg"
-                                        alt=""
-                                    />
-                                </a>
-                                <div class="quick-view">
-                                    <a
-                                        class="quick_view"
-                                        href="#"
-                                        data-link-action="quickview"
-                                        title="Quick view"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal"
-                                    >
-                                        <i class="ion-ios-search-strong"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <ul class="product-flag">
-                                <li class="new">New</li>
-                            </ul>
-                            <div class="product-decs">
-                                <a class="inner-link" href="shop-4-column.html"><span>STUDIO DESIGN</span></a>
-                                <h2>
-                                    <a href="single-product.html" class="product-link"
-                                    >Originals Kaval Windbreaker Winter Jacket 2</a
-                                    >
-                                </h2>
-                                <div class="rating-product">
-                                    <i class="ion-android-star"></i>
-                                    <i class="ion-android-star"></i>
-                                    <i class="ion-android-star"></i>
-                                    <i class="ion-android-star"></i>
-                                    <i class="ion-android-star"></i>
-                                </div>
-                                <div class="pricing-meta">
-                                    <ul>
-                                        <li class="old-price">€18.90</li>
-                                        <li class="current-price">€34.21</li>
-                                        <li class="discount-price">-5%</li>
-                                    </ul>
-                                </div>
-                                <div class="add-to-link">
-                                    <ul>
-                                        <li class="cart"><a class="cart-btn" href="#">ADD TO CART </a></li>
-                                        <li>
-                                            <a href="wishlist.html"><i class="ion-android-favorite-outline"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href="compare.html"><i class="ion-ios-shuffle-strong"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="in-stock">Availability: <span>300 In Stock</span></div>
-                            <div class="clockdiv">
-                                <div class="title_countdown">Hurry Up! Offers ends in:</div>
-                                <div data-countdown="2021/12/31"></div>
-                            </div>
-                        </article>
-                        <!--  Single item -->
-                        <article class="list-product">
-                            <div class="img-block">
-                                <a href="single-product.html" class="thumbnail">
-                                    <img
-                                        class="first-img"
-                                        src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/11.jpg"
-                                        alt=""
-                                    />
-                                    <img
-                                        class="second-img"
-                                        src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/12.jpg"
-                                        alt=""
-                                    />
-                                </a>
-                                <div class="quick-view">
-                                    <a
-                                        class="quick_view"
-                                        href="#"
-                                        data-link-action="quickview"
-                                        title="Quick view"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal"
-                                    >
-                                        <i class="ion-ios-search-strong"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <ul class="product-flag">
-                                <li class="new">New</li>
-                            </ul>
-                            <div class="product-decs">
-                                <a class="inner-link" href="shop-4-column.html"><span>STUDIO DESIGN</span></a>
-                                <h2>
-                                    <a href="single-product.html" class="product-link"
-                                    >Originals Kaval Windbreaker Winter Jacket</a
-                                    >
-                                </h2>
-                                <div class="rating-product">
-                                    <i class="ion-android-star"></i>
-                                    <i class="ion-android-star"></i>
-                                    <i class="ion-android-star"></i>
-                                    <i class="ion-android-star"></i>
-                                    <i class="ion-android-star"></i>
-                                </div>
-                                <div class="pricing-meta">
-                                    <ul>
-                                        <li class="old-price">€18.90</li>
-                                        <li class="current-price">€34.21</li>
-                                        <li class="discount-price">-5%</li>
-                                    </ul>
-                                </div>
-                                <div class="add-to-link">
-                                    <ul>
-                                        <li class="cart"><a class="cart-btn" href="#">ADD TO CART </a></li>
-                                        <li>
-                                            <a href="wishlist.html"><i class="ion-android-favorite-outline"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href="compare.html"><i class="ion-ios-shuffle-strong"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="in-stock">Availability: <span>300 In Stock</span></div>
-                            <div class="clockdiv">
-                                <div class="title_countdown">Hurry Up! Offers ends in:</div>
-                                <div data-countdown="2021/12/31"></div>
-                            </div>
-                        </article>
-                        <!--  Single item -->
-                        <article class="list-product">
-                            <div class="img-block">
-                                <a href="single-product.html" class="thumbnail">
-                                    <img
-                                        class="first-img"
-                                        src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/15.jpg"
-                                        alt=""
-                                    />
-                                    <img
-                                        class="second-img"
-                                        src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/2.jpg"
-                                        alt=""
-                                    />
-                                </a>
-                                <div class="quick-view">
-                                    <a
-                                        class="quick_view"
-                                        href="#"
-                                        data-link-action="quickview"
-                                        title="Quick view"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal"
-                                    >
-                                        <i class="ion-ios-search-strong"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <ul class="product-flag">
-                                <li class="new">New</li>
-                            </ul>
-                            <div class="product-decs">
-                                <a class="inner-link" href="shop-4-column.html"><span>STUDIO DESIGN</span></a>
-                                <h2>
-                                    <a href="single-product.html" class="product-link">New Balance Fresh Foam Kaymin</a>
-                                </h2>
-                                <div class="rating-product">
-                                    <i class="ion-android-star"></i>
-                                    <i class="ion-android-star"></i>
-                                    <i class="ion-android-star"></i>
-                                    <i class="ion-android-star"></i>
-                                    <i class="ion-android-star"></i>
-                                </div>
-                                <div class="pricing-meta">
-                                    <ul>
-                                        <li class="old-price">€18.90</li>
-                                        <li class="current-price">€34.21</li>
-                                        <li class="discount-price">-5%</li>
-                                    </ul>
-                                </div>
-                                <div class="add-to-link">
-                                    <ul>
-                                        <li class="cart"><a class="cart-btn" href="#">ADD TO CART </a></li>
-                                        <li>
-                                            <a href="wishlist.html"><i class="ion-android-favorite-outline"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href="compare.html"><i class="ion-ios-shuffle-strong"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="in-stock">Availability: <span>299 In Stock</span></div>
-                            <div class="clockdiv">
-                                <div class="title_countdown">Hurry Up! Offers ends in:</div>
-                                <div data-countdown="2021/12/31"></div>
-                            </div>
-                        </article>
-                        <!--  Single item -->
-                        <article class="list-product">
-                            <div class="img-block">
-                                <a href="single-product.html" class="thumbnail">
-                                    <img
-                                        class="first-img"
-                                        src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/14.jpg"
-                                        alt=""
-                                    />
-                                    <img
-                                        class="second-img"
-                                        src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/cosmatic/14.jpg"
-                                        alt=""
-                                    />
-                                </a>
-                                <div class="quick-view">
-                                    <a
-                                        class="quick_view"
-                                        href="#"
-                                        data-link-action="quickview"
-                                        title="Quick view"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal"
-                                    >
-                                        <i class="ion-ios-search-strong"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <ul class="product-flag">
-                                <li class="new">New</li>
-                            </ul>
-                            <div class="product-decs">
-                                <a class="inner-link" href="shop-4-column.html"><span>STUDIO DESIGN</span></a>
-                                <h2>
-                                    <a href="single-product.html" class="product-link">Madden by Steve Madden Cale 6</a>
-                                </h2>
-                                <div class="rating-product">
-                                    <i class="ion-android-star"></i>
-                                    <i class="ion-android-star"></i>
-                                    <i class="ion-android-star"></i>
-                                    <i class="ion-android-star"></i>
-                                    <i class="ion-android-star"></i>
-                                </div>
-                                <div class="pricing-meta">
-                                    <ul>
-                                        <li class="old-price">€18.90</li>
-                                        <li class="current-price">€34.21</li>
-                                        <li class="discount-price">-5%</li>
-                                    </ul>
-                                </div>
-                                <div class="add-to-link">
-                                    <ul>
-                                        <li class="cart"><a class="cart-btn" href="#">ADD TO CART </a></li>
-                                        <li>
-                                            <a href="wishlist.html"><i class="ion-android-favorite-outline"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href="compare.html"><i class="ion-ios-shuffle-strong"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="in-stock">Availability: <span>299 In Stock</span></div>
-                            <div class="clockdiv">
-                                <div class="title_countdown">Hurry Up! Offers ends in:</div>
-                                <div data-countdown="2021/12/31"></div>
-                            </div>
-                        </article>
-                        <!--  Single item -->
+                        @if($products)
+                            @foreach($products as $product)
+                                @if($product->hot == 1)
+                                    <article class="list-product">
+                                        <div class="img-block">
+                                            <a href="single-product.html" class="thumbnail">
+                                                <img
+                                                    class="first-img"
+                                                    src="{{asset('upload/product/'.$product->code.'/'.$product->image)}}"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    class="second-img"
+                                                    src="{{asset('upload/product/'.$product->code.'/'.$product->image)}}"
+                                                    alt=""
+                                                />
+                                            </a>
+                                            <div class="quick-view">
+                                                <a
+                                                    class="quick_view"
+                                                    href="#"
+                                                    data-link-action="quickview"
+                                                    title="Quick view"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#exampleModal"
+                                                >
+                                                    <i class="ion-ios-search-strong"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="product-decs">
+                                            <a class="inner-link" href="shop-4-column.html"><span>{{$product->category->name}}</span></a>
+                                            <h2>
+                                                <a href="single-product.html" class="product-link"
+                                                >{{$product->translate->name}}</a
+                                                >
+                                            </h2>
+                                            <div class="pricing-meta">
+                                                <ul>
+                                                    <li class="old-price">€18.90</li>
+                                                    <li class="current-price">€34.21</li>
+                                                    <li class="discount-price">-5%</li>
+                                                </ul>
+                                            </div>
+                                            <div class="add-to-link">
+                                                <ul>
+                                                    <li class="cart"><a class="cart-btn" href="#">Thêm vào giỏ hàng </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="wishlist.html"><i class="ion-android-favorite-outline"></i></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="compare.html"><i class="ion-ios-shuffle-strong"></i></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="in-stock">Availability: <span>300 In Stock</span></div>
+                                        <div class="clockdiv">
+                                            <div class="title_countdown">Hurry Up! Offers ends in:</div>
+                                            <div data-countdown="2021/12/31"></div>
+                                        </div>
+                                    </article>
+                                @endif
+                            @endforeach
+                        @endif
                     </div>
                     <!-- Hot Deal Slider End -->
                 </div>
@@ -614,7 +406,7 @@
                                 </div>
                                 <div class="add-to-link">
                                     <ul>
-                                        <li class="cart"><a class="cart-btn" href="#">ADD TO CART </a></li>
+                                        <li class="cart"><a class="cart-btn" href="#">Thêm vào giỏ hàng </a></li>
                                         <li>
                                             <a href="wishlist.html"><i class="ion-android-favorite-outline"></i></a>
                                         </li>
@@ -677,7 +469,7 @@
                                 </div>
                                 <div class="add-to-link">
                                     <ul>
-                                        <li class="cart"><a class="cart-btn" href="#">ADD TO CART </a></li>
+                                        <li class="cart"><a class="cart-btn" href="#">Thêm vào giỏ hàng </a></li>
                                         <li>
                                             <a href="wishlist.html"><i class="ion-android-favorite-outline"></i></a>
                                         </li>
@@ -741,7 +533,7 @@
                                 </div>
                                 <div class="add-to-link">
                                     <ul>
-                                        <li class="cart"><a class="cart-btn" href="#">ADD TO CART </a></li>
+                                        <li class="cart"><a class="cart-btn" href="#">Thêm vào giỏ hàng </a></li>
                                         <li>
                                             <a href="wishlist.html"><i class="ion-android-favorite-outline"></i></a>
                                         </li>
@@ -801,7 +593,7 @@
                                 </div>
                                 <div class="add-to-link">
                                     <ul>
-                                        <li class="cart"><a class="cart-btn" href="#">ADD TO CART </a></li>
+                                        <li class="cart"><a class="cart-btn" href="#">Thêm vào giỏ hàng </a></li>
                                         <li>
                                             <a href="wishlist.html"><i class="ion-android-favorite-outline"></i></a>
                                         </li>
@@ -866,7 +658,7 @@
                                 </div>
                                 <div class="add-to-link">
                                     <ul>
-                                        <li class="cart"><a class="cart-btn" href="#">ADD TO CART </a></li>
+                                        <li class="cart"><a class="cart-btn" href="#">Thêm vào giỏ hàng </a></li>
                                         <li>
                                             <a href="wishlist.html"><i class="ion-android-favorite-outline"></i></a>
                                         </li>
@@ -929,7 +721,7 @@
                                 </div>
                                 <div class="add-to-link">
                                     <ul>
-                                        <li class="cart"><a class="cart-btn" href="#">ADD TO CART </a></li>
+                                        <li class="cart"><a class="cart-btn" href="#">Thêm vào giỏ hàng </a></li>
                                         <li>
                                             <a href="wishlist.html"><i class="ion-android-favorite-outline"></i></a>
                                         </li>
@@ -994,7 +786,7 @@
                                 </div>
                                 <div class="add-to-link">
                                     <ul>
-                                        <li class="cart"><a class="cart-btn" href="#">ADD TO CART </a></li>
+                                        <li class="cart"><a class="cart-btn" href="#">Thêm vào giỏ hàng </a></li>
                                         <li>
                                             <a href="wishlist.html"><i class="ion-android-favorite-outline"></i></a>
                                         </li>
@@ -1053,7 +845,7 @@
                                 </div>
                                 <div class="add-to-link">
                                     <ul>
-                                        <li class="cart"><a class="cart-btn" href="#">ADD TO CART </a></li>
+                                        <li class="cart"><a class="cart-btn" href="#">Thêm vào giỏ hàng </a></li>
                                         <li>
                                             <a href="wishlist.html"><i class="ion-android-favorite-outline"></i></a>
                                         </li>
@@ -1116,7 +908,7 @@
                                 </div>
                                 <div class="add-to-link">
                                     <ul>
-                                        <li class="cart"><a class="cart-btn" href="#">ADD TO CART </a></li>
+                                        <li class="cart"><a class="cart-btn" href="#">Thêm vào giỏ hàng </a></li>
                                         <li>
                                             <a href="wishlist.html"><i class="ion-android-favorite-outline"></i></a>
                                         </li>
@@ -1178,7 +970,7 @@
                                 </div>
                                 <div class="add-to-link">
                                     <ul>
-                                        <li class="cart"><a class="cart-btn" href="#">ADD TO CART </a></li>
+                                        <li class="cart"><a class="cart-btn" href="#">Thêm vào giỏ hàng </a></li>
                                         <li>
                                             <a href="wishlist.html"><i class="ion-android-favorite-outline"></i></a>
                                         </li>
@@ -1242,7 +1034,7 @@
                                 </div>
                                 <div class="add-to-link">
                                     <ul>
-                                        <li class="cart"><a class="cart-btn" href="#">ADD TO CART </a></li>
+                                        <li class="cart"><a class="cart-btn" href="#">Thêm vào giỏ hàng </a></li>
                                         <li>
                                             <a href="wishlist.html"><i class="ion-android-favorite-outline"></i></a>
                                         </li>
@@ -1302,7 +1094,7 @@
                                 </div>
                                 <div class="add-to-link">
                                     <ul>
-                                        <li class="cart"><a class="cart-btn" href="#">ADD TO CART </a></li>
+                                        <li class="cart"><a class="cart-btn" href="#">Thêm vào giỏ hàng </a></li>
                                         <li>
                                             <a href="wishlist.html"><i class="ion-android-favorite-outline"></i></a>
                                         </li>
