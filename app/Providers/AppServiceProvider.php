@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Repositories\AboutRepository;
 use App\Repositories\BranchRepository;
 use App\Repositories\CategoryPostRepository;
 use App\Repositories\CategoryProductRepository;
@@ -10,6 +11,7 @@ use App\Repositories\ProductRepository;
 use App\Repositories\SettingRespository;
 use App\Repositories\SliderRepository;
 use App\Repositories\UserRepository;
+use App\Services\AboutService;
 use App\Services\BranchService;
 use App\Services\CategoryPostService;
 use App\Services\CategoryProductService;
@@ -52,6 +54,9 @@ class AppServiceProvider extends ServiceProvider
         );
         $this->app->bind(
             SettingService::class,SettingRespository::class
+        );
+        $this->app->bind(
+            AboutService::class,AboutRepository::class
         );
     }
 

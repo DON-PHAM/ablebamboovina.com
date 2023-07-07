@@ -350,7 +350,7 @@
                                             <div class="product-images">
                                                 <ul>
 
-                                                        <li>
+                                                        <li >
                                                             <div class="image-info">
                                                                 <span class="image-name">{{ $product->image }}</span>
                                                                 <button class="delete-image">Xóa</button>
@@ -385,10 +385,10 @@
                                             <div class="product-images">
                                                 <ul>
                                                     @foreach ($product->images as $image)
-                                                        <li>
+                                                        <li data-id="{{$image->id}}">
                                                             <div class="image-info">
                                                                 <span class="image-name">{{ $image->image }}</span>
-                                                                <button class="delete-image">Xóa</button>
+                                                                <a class="delete-image delete"  >Xóa</a>
                                                             </div>
                                                         </li>
                                                     @endforeach
@@ -481,14 +481,14 @@ Chỉ sử dụng kí tự trong nhóm: "A-Z", "a-z", "0-9" and "-_"
                                     <div class="form-group row ">
                                         <label for="status" class="col-sm-2 col-form-label">Trạng thái</label>
                                         <div class="col-sm-8">
-                                            <input type="checkbox" id="status" name="status"/>
+                                            <input type="checkbox" id="status" @if($product->status == 1) checked @endif name="status"/>
                                         </div>
                                     </div>
 
                                     <div class="form-group row ">
                                         <label for="approve" class="col-sm-2 col-form-label">Sản phẩm HOT</label>
                                         <div class="col-sm-8">
-                                            <input class="checkbox" type="checkbox" name="hot" />
+                                            <input class="checkbox" type="checkbox" @if($product->hot == 1) checked @endif name="hot" />
                                         </div>
                                     </div>
                                     <hr class="kind ">
@@ -561,6 +561,28 @@ Chỉ sử dụng kí tự trong nhóm: "A-Z", "a-z", "0-9" and "-_"
             let frame = document.getElementById('frame');
             frame.src = URL.createObjectURL(event.target.files[0]);
         }
+        $('.delete').click(function(){
+            let li = $(this).closest('li');
+            let idimage = li.data('id')
+
+            $.ajax({
+                url:'{{route('delete-image',':idimage')}}'.replace(':idimage',idimage),
+                method:'GET',
+                dataType:'json',
+                success:function (res){
+                    if(res.status)
+                    {
+                        li.remove();
+                        toastr.success("Xóa thành công ảnh");
+                    }
+                    else {
+                        toastr.error('Xóa thất bại');
+                    }
+
+                }
+            })
+
+        });
 
     </script>
     @if ($errors->any())

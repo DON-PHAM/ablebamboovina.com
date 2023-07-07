@@ -62,6 +62,7 @@ Route::group(['prefix'=>'dashboard','middleware'=>['locale','checkAuth']],functi
     Route::get('product/delete/{id}','Dashboard\ProductController@delete')->name('delete-product');
     Route::get('product/changestatus/{id}','Dashboard\ProductController@changeStatus')->name('change-status-product');
     Route::get('product/changeProductHot/{id}','Dashboard\ProductController@changeProductHot')->name('change-producthot-product');
+    Route::get('product/deleteImage/{idimage}','Dashboard\ProductController@deleteImage')->name('delete-image');
 
     //New Management
     Route::get('new','Dashboard\NewController@index')->name('new-list');
@@ -94,6 +95,10 @@ Route::group(['prefix'=>'dashboard','middleware'=>['locale','checkAuth']],functi
 
     //Feed Back
     Route::get('feedback','Dashboard\FeedBackController@index')->name('feedback-list');
+
+    //About Managerment
+    Route::get('about','Dashboard\AboutController@index')->name('about');
+    Route::post('about/{id}','Dashboard\AboutController@CreateOrUpdate')->name('post-about');
 
 
 });

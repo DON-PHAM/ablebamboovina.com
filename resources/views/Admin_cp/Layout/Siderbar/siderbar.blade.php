@@ -15,6 +15,15 @@
                         </div>
                     </div>
                 </form>
+                <li class="nav-item has-treeview">
+                    <a href="{{route('admin')}}" class="nav-link">
+                        <i class="nav-icon  fas fa-home "></i>
+                        <p>
+                            {{trans('home.general')}}
+                        </p>
+                    </a>
+
+                </li>
 
                 <li class="nav-link header">
                     <i class="nav-icon  fas fa-cogs "></i>
@@ -25,7 +34,7 @@
                         <i class="nav-icon  fas fa-users-cog "></i>
                         <p>
                             {{trans('home.user-manager')}}
-                            <i class="right fas fa-angle-left"></i>
+                            <i class="right fas fa-angle-right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
@@ -55,14 +64,14 @@
                 <li class="nav-link header">
                     <i class="nav-icon  fab fa-shopify "></i>
 
-                    <p class="sub-header">Bán hàng</p>
+                    <p class="sub-header">{{trans('home.online-buy')}}</p>
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon  fas fa-cart-arrow-down "></i>
                         <p>
                             {{trans('home.order-manager')}}
-                            <i class="right fas fa-angle-left"></i>
+                            <i class="right fas fa-angle-right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
@@ -79,7 +88,7 @@
                         <i class="nav-icon  fas fa-folder-open "></i>
                         <p>
                             {{trans('home.product-category-manager')}}
-                            <i class="right fas fa-angle-left"></i>
+                            <i class="right fas fa-angle-right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
@@ -110,6 +119,14 @@
                     </a>
                 </li>
                 <li class="nav-item ">
+                    <a href="{{route('about')}}" class="nav-link">
+                        <i class="nav-icon fas fa-info"></i>
+                        <p>
+                            {{trans('home.about')}}
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item ">
                     <a href="{{route('slider-list')}}" class="nav-link">
                         <i class="nav-icon fas fa-image"></i>
                         <p>
@@ -135,7 +152,7 @@
                         <i class="nav-icon  fas fa-chart-pie "></i>
                         <p>
                             Quản lý báo cáo
-                            <i class="right fas fa-angle-left"></i>
+                            <i class="right fas fa-angle-right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
@@ -177,7 +194,7 @@
                         <i class="nav-icon  fas fa-puzzle-piece "></i>
                         <p>
                             Tiện ích
-                            <i class="right fas fa-angle-left"></i>
+                            <i class="right fas fa-angle-right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">

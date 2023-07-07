@@ -16,4 +16,6 @@ interface ProductService
     public function getAll(string $locale);
     public function changeStatus(int $id);
     public function changeProductHot(int $id);
+
+    public function deleteImage(int $idimage);
 }
