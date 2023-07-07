@@ -214,7 +214,6 @@ class ProductRepository implements ProductService {
             $this->productImage->destroy($idimage);
             return response()->json(['status'=>true,'data'=>$product]);
         }
-
         return response()->json(['status'=>false,'data'=>'']);
     }
 }
