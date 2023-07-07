@@ -1,5 +1,6 @@
 <?php
 return [
+    'general' => '개요',
     'title' => '관리자',
     'home' => '홈페이지',
     'profile' => '프로필',
@@ -24,5 +25,6 @@ return [
     'reset' => '초기화',
     'branch' => '생산자',
     'feedback' => '고객 피드백',
+    'online-buy' =>'온라인 판매'
 
 ];

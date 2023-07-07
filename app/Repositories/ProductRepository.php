@@ -82,7 +82,63 @@ class ProductRepository implements ProductService {
 
     public function update(int $id, ProductRequest $request)
     {
-        // TODO: Implement update() method.
+        $iduser = session()->get('user')->id;
+        $product = $this->product->find($id);
+        $productRequest = [
+            'slug' => Str::slug($request->vi_name),
+            'code'=> $request->code,
+            'discount' => doubleval($request->discount),
+            'price' => $request->price,
+            'categoryid' => $request->categoryid,
+            'branchid' => $request->branchid,
+            'userid' => $iduser,
+            'quantity'=>intval($request->quantity),
+            'count'=> 0,
+            'status'=> $request->status =='on' ? 1: 0,
+            'image'=>$product->image,
+            'hot' => $request->hot == 'on' ? 1: 0
+        ];
+        // Xử lý ảnh sản phẩm
+        if ($request->hasFile('image'))
+        {
+            $image = $request->file('image');
+            $image_new = rand().'_product.'.$image->getClientOriginalExtension();
+            $image->move(public_path('upload/product/'.$request->code.'/'),$image_new);
+            $productRequest['image'] = $image_new;
+        }
+
+        $product->update($productRequest);
+        if ($request->hasFile('files'))
+        {
+            foreach ($files = $request->file('files') as $file)
+            {
+                $image = $file;
+                $image_new = rand().'_product.'.$image->getClientOriginalExtension();
+                $image->move(public_path('upload/product/'.$request->code.'/'),$image_new);
+                $imageProduct = [
+                    'productid' => $id,
+                    'image'=> $image_new,
+                    'status' => 1
+                ];
+                $this->productImage->create($imageProduct);
+            }
+        }
+        // Lưu thông tin sản phẩm theo ngôn ngữ
+        $languages = ['vi', 'ko'];
+        foreach ($languages as $language) {
+            $productTranslate = [
+                'productid' => $id,
+                'languageid' => $language,
+                'name' => $request->{$language.'_name'},
+                'description' => $request->{$language.'_description'},
+                'content' => $request->{$language.'_content'},
+                'metakeyword' => $request->{$language.'_metakeyword'}
+            ];
+            $productTraslate = $this->productTranslate->where('productid','=',$id)->where('languageid',$language)->first();
+            $productTraslate->update($productTranslate);
+        }
+        return $product;
+
     }
 
     public function delete(int $id)
@@ -147,5 +203,18 @@ class ProductRepository implements ProductService {
         $product->hot = !$product->hot;
         $product->save();
         return response()->json(['status'=>true,'data'=>$product]);
+    }
+
+    public function deleteImage(int $idimage)
+    {
+        $image = $this->productImage->find($idimage);
+        $product = $this->product->find($image->productid);
+        $path = 'upload/product/'.$product->code.'/'.$image->image;
+        if (Storage::disk('public')->delete($path)) {
+            $this->productImage->destroy($idimage);
+            return response()->json(['status'=>true,'data'=>$product]);
+        }
+
+        return response()->json(['status'=>false,'data'=>'']);
     }
 }

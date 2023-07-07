@@ -1,14 +1,16 @@
 <?php
 return [
-    'branch-list' => '공급자 목록',
-    'add' => '공급자 생성',
-    'title' => '공급자',
-    'name-branch' => '공급 업체 이름',
-    'phone-number' => '전화 번호',
-    'website' => '웹사이트',
-    'email' => '이메일',
-    'address' => '주소',
-    'status' => '상태'
-
-
+    'branch-list' => 'Danh sách nhà cung cấp',
+    'add' => 'Thêm mới',
+    'title' => 'Nhà cung cấp',
+    'name-branch' => 'Tên nhà cung cấp',
+    'phone-number' => 'Số điện thoại',
+    'website' => 'Website',
+    'email' => 'Email',
+    'address' => 'Địa chỉ',
+    'status' => 'Trạng thái',
+    'action' => 'Hành động',
+    'delete' => 'Bạn có muốn xóa?',
+    'yes' => 'có',
+    'no' => 'Không'
 ];
