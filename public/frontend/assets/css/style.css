@@ -1,0 +1,7 @@
+.breadcrumb-area {
+    text-align: center;
+    position: relative;
+    padding: 110px 0;
+    background: url(../images/breadcrumb-bg.png) no-repeat;
+    background-size: cover;
+}
