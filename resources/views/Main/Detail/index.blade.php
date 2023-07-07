@@ -136,7 +136,7 @@
                             </ul>
                         </div>
                         <p>
-                            {{$product->translate->description}}
+                            {{strip_tags($product->translate->description)}}
                         </p>
                         <div class="pro-details-list"></div>
                         <div class="pro-details-quality mt-0px">
@@ -205,12 +205,12 @@
                 <div class="tab-content description-review-bottom">
                     <div id="des-details2" class="tab-pane active">
                         <div class="product-anotherinfo-wrapper">
-                           {{$product->translate->content}}
+                           {!! $product->translate->description !!}
                         </div>
                     </div>
-                    <div id="des-details1" class="tab-pane">
+                    <div id="des-details1" class="tab-pane" >
                         <div class="product-description-wrapper">
-                            {{$product->translate->content}}
+                            {!! $product->translate->content !!}
                         </div>
                     </div>
                 </div>
