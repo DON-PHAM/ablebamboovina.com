@@ -1,9 +1,31 @@
 <?php
 return [
-    "general" => "Tổng quan",
-    "home" => "Trang chủ",
+    'general' => 'Hệ thống',
+    'title' => 'Quản trị viên',
+    'home' => 'Trang chủ',
     'profile' => 'Thông tin',
     'setting' => 'Cài đặt',
     'logout' => 'Đăng xuất',
+    'user-manager' => 'Quản lý người dùng',
+    'user' => 'Tài khoản',
+    'add' => 'Thêm mới',
+    'edit' => 'Sửa',
+    'delete' => 'Xóa',
+    'save' => 'Lưu',
+    'close'=> 'Đóng',
+    'online' => 'Online',
+    'product-category-manager' => 'Quản lý sản phẩm',
+    'category-product' => 'Danh mục sản phẩm',
+    'product' => 'Sản phẩm',
+    'categoryPost' => 'Danh mục bài viết',
+    'post' => 'Bài viết',
+    'order-manager' => 'Quản lý hóa đơn',
+    'order' => 'Đơn hàng',
+    'slider' => 'Slider',
+    'reset' => 'Đặt lại',
+    'branch' => 'Nhà cung cấp',
+    'feedback' => 'Phản hồi',
+    'online-buy' =>'Mua online',
+    'about' => 'Giới thiệu'
 
 ];

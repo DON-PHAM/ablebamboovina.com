@@ -29,4 +29,16 @@ class FeedbackRepository implements FeedbackService
     {
         return $this->model->paginate(15);
     }
+
+    public function changeStatus($id)
+    {
+        $feedBack = $this->model->find($id);
+        if (!$feedBack)
+        {
+            return response()->json(['status'=>false]);
+        }
+        $feedBack->status = !$feedBack->status;
+        $feedBack->save();
+        return response()->json(['status'=> true, 'data'=>$feedBack]);
+    }
 }

@@ -7,6 +7,7 @@ use App\Repositories\BranchRepository;
 use App\Repositories\CategoryPostRepository;
 use App\Repositories\CategoryProductRepository;
 use App\Repositories\FeedbackRepository;
+use App\Repositories\PostRepository;
 use App\Repositories\ProductRepository;
 use App\Repositories\SettingRespository;
 use App\Repositories\SliderRepository;
@@ -16,6 +17,7 @@ use App\Services\BranchService;
 use App\Services\CategoryPostService;
 use App\Services\CategoryProductService;
 use App\Services\FeedbackService;
+use App\Services\PostService;
 use App\Services\ProductService;
 use App\Services\SettingService;
 use App\Services\SliderService;
@@ -38,9 +40,6 @@ class AppServiceProvider extends ServiceProvider
             CategoryProductService::class,CategoryProductRepository::class
         );
         $this->app->bind(
-            CategoryPostService::class,CategoryPostRepository::class
-        );
-        $this->app->bind(
             ProductService::class,ProductRepository::class
         );
         $this->app->bind(
@@ -57,6 +56,9 @@ class AppServiceProvider extends ServiceProvider
         );
         $this->app->bind(
             AboutService::class,AboutRepository::class
+        );
+        $this->app->bind(
+            PostService::class,PostRepository::class
         );
     }
 

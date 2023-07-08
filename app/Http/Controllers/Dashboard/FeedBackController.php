@@ -18,4 +18,9 @@ class FeedBackController extends Controller
         $feedbacks = $this->feedbackService->getAll();
         return view('Admin_cp.Feedback.index',compact('feedbacks'));
     }
+
+    public function changeStatus($id)
+    {
+        return $this->feedbackService->changeStatus($id);
+    }
 }

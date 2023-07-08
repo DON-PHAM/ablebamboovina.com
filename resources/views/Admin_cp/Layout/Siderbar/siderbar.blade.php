@@ -38,12 +38,19 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
+                        <li>
+                            <a href="{{route('user-create')}}" class="nav-link">
+                                <i class="fas fa-user-circle nav-icon"></i>
+                                <p>Đăng ký</p>
+                            </a>
+                        </li>
                         <li class="nav-item ">
                             <a href="{{route('user')}}" class="nav-link">
                                 <i class="fas fa-users nav-icon"></i>
                                 <p>{{trans('home.user')}}</p>
                             </a>
                         </li>
+
                     </ul>
                 </li>
                 <li class="nav-item has-treeview">
