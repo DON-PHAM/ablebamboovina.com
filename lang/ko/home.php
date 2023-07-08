@@ -25,6 +25,7 @@ return [
     'reset' => '초기화',
     'branch' => '생산자',
     'feedback' => '고객 피드백',
-    'online-buy' =>'온라인 판매'
+    'online-buy' =>'온라인 판매',
+    'about' => '소개하다'
 
 ];
