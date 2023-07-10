@@ -1,4 +1,3 @@
-
 <header class="main-header">
     <!-- Header Top Start -->
     <div class="header-top-nav">
@@ -107,7 +106,7 @@
                             <div class="contact-link">
                                 <div class="phone">
                                     <p>Gọi ngay:</p>
-                                    <a href="tel:(+800)345678">(+84)345678</a>
+                                    <a href="tel:{{ session('setting')->tax }}">{{ session('setting')->tax }}</a>
                                 </div>
                             </div>
                             <!--Contact info End -->
@@ -150,7 +149,7 @@
                         <div class="main-navigation">
                             <ul>
                                 <li class="menu-dropdown">
-                                    <a href="#">Cửa hàng</a>
+                                    <a href="{{ route('shop-page') }}">Cửa hàng</a>
                                 </li>
                                 <li class="menu-dropdown">
                                     <a href="#">Trang <i class="ion-ios-arrow-down"></i></a>
@@ -162,7 +161,7 @@
                                 <li class="menu-dropdown">
                                     <a href="#">Blog</a>
                                 </li>
-                                <li><a href="">Liên hệ</a></li>
+                                <li><a href="{{ route('contact-page') }}">Liên hệ</a></li>
                             </ul>
                         </div>
                         <!--Main Navigation End -->
