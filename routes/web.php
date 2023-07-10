@@ -31,6 +31,8 @@ Route::get('logout','LoginController@logout')->name('logout');
 
 Route::get('shop', 'Main\ShopController@index')->name('shop-page');
 Route::get('detail/{id}', 'Main\DetailController@index')->name('detail-page');
+Route::get('contact', 'Main\ContactController@index')->name('contact-page');
+Route::post('contact/postCreate','Main\ContactController@postCreate')->name('post-contact-create');
 
 
 Route::group(['prefix'=>'dashboard','middleware'=>['locale','checkAuth']],function () {
