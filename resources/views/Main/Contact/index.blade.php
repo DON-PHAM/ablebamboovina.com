@@ -19,6 +19,7 @@
     </section>
     <!-- Breadcrumb Area End -->
 
+    @include('Error.message')
     <div class="contact-area mtb-60px">
         <div class="container">
             <div class="contact-map mb-10">
@@ -106,25 +107,25 @@
                         <div class="contact-title mb-30">
                             <h2>Liên hệ</h2>
                         </div>
-                        <form class="contact-form-style" id="contact-form"
-                              action="https://whizthemes.com/nazmul/php/mail.php" method="post">
+                        <form class="contact-form-style" id="contact-form" accept-charset="UTF-8"
+                              action="{{route('post-contact-create')}}" method="post" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <input name="name" placeholder="Tên*" type="text">
+                                    <input name="fullname" placeholder="Tên*" type="text">
                                 </div>
                                 <div class="col-lg-6">
                                     <input name="email" placeholder="Email*" type="email">
                                 </div>
                                 <div class="col-lg-12">
-                                    <input name="subject" placeholder="Tiêu đề*" type="text">
+                                    <input name="phonenumber" placeholder="Số điện thoại*" type="text">
                                 </div>
                                 <div class="col-lg-12">
-                                    <textarea name="message" placeholder="Nội dung*"></textarea>
+                                    <textarea name="contents" placeholder="Nội dung*"></textarea>
                                     <button class="submit" type="submit">Gửi</button>
                                 </div>
                             </div>
                         </form>
-                        <p class="form-messege"></p>
+{{--                        <p class="form-messege"></p>--}}
                     </div>
                 </div>
             </div>

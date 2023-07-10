@@ -3,16 +3,33 @@
 namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Session;
+use App\Http\Requests\Admin\FeedBackRequest;
+use App\Services\FeedbackService;
 
 class ContactController extends Controller
 {
+    protected $feedbackService;
+
+    public function __construct(FeedbackService $feedbackService)
+    {
+        $this->feedbackService = $feedbackService;
+    }
+
     public function index()
     {
-        $locale = session()->get('locale');
-        if ($locale == null)
-            $locale = App::getLocale();
         return view('Main.Contact.index');
+    }
+
+    public function postCreate(FeedBackRequest $request)
+    {
+        try {
+            $result = $this->feedbackService->create($request);
+            $message = $result ? 'Thêm mới thành công' : 'Thất bại';
+
+            return redirect()->route('contact-page')->with($result ? 'success' : 'false', $message);
+        } catch (\Exception $ex) {
+            return redirect()->route('contact-page')->with('false', 'Thất bại');
+        }
+
     }
 }
