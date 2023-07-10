@@ -12,6 +12,7 @@ class AboutTranslate extends Model
         'languageid',
         'aboutid',
         'title',
+        'contents',
         'description'
     ];
     public function about()

@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class About extends Model
 {
     use HasFactory;
-    protected $fillable = ['image'];
+    protected $fillable = ['image','status'];
     public function translates()
     {
-        return $this->hasMany(ProductTranslate::class,'aboutid','id');
+        return $this->hasMany(AboutTranslate::class,'aboutid','id');
     }
     public function translate()
     {
-        return $this->hasOne(ProductTranslate::class,'aboutid','id');
+        return $this->hasOne(AboutTranslate::class,'aboutid','id');
     }
 }
