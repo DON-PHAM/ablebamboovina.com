@@ -24,8 +24,19 @@ class AboutRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
-            'description' => 'required'
+            'ko_name' => 'required',
+            'vi_name' => 'required',
+            'ko_contents' => 'required',
+            'vi_contents' => 'required'
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'ko_name.required' => trans('about.name-required'),
+            'vi_name.required' => trans('about.name-required'),
+            'ko_contents.required' => trans('about.contents-required'),
+            'vi_contents.required' => trans('about.contents-required')
         ];
     }
 }

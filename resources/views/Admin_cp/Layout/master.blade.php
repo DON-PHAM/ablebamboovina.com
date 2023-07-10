@@ -371,7 +371,15 @@
             });
         });
         let language = localStorage.getItem('locale');
-        $("#language").val(language);
+        $.ajax({
+            url: "{{ route('change-language',':language') }}".replace(':language',language),
+            type: "get",
+            success: function(response) {
+                // reload trang để hiển thị nội dung mới
+                localStorage.setItem('locale',language);
+                $("#language").val(language);
+            }
+        })
         setTimeout(function() {
             $('.alert').fadeOut('slow');
         }, 2000);

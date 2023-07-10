@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Http\Requests\Admin\FeedBackRequest;
 use App\Models\Branch;
 use App\Models\Contact;
 use App\Services\BranchService;
@@ -22,7 +23,7 @@ class FeedbackRepository implements FeedbackService
 
     public function getById(int $id)
     {
-        // TODO: Implement getById() method.
+        return $this->model->find($id);
     }
 
     public function getAll()
@@ -40,5 +41,17 @@ class FeedbackRepository implements FeedbackService
         $feedBack->status = !$feedBack->status;
         $feedBack->save();
         return response()->json(['status'=> true, 'data'=>$feedBack]);
+    }
+
+    public function create(FeedBackRequest $request)
+    {
+        $data = [
+            'phonenumber' => $request->phonenumber,
+            'email' => $request->email,
+            'fullname' => $request->fullname,
+            'contents' => $request->contents,
+            'status' => 0,
+        ];
+        return $this->model->create($data);
     }
 }
