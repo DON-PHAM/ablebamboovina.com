@@ -50,6 +50,7 @@ class ProductController extends Controller
 
     public function update($id, ProductRequest $request)
     {
+        $this->productData->update($id,$request);
         return redirect()->route('product-list')->with('success', 'Sửa thành công');
     }
     public function delete($id)
@@ -65,6 +66,11 @@ class ProductController extends Controller
     public function changeProductHot($id)
     {
         return $this->productData->changeProductHot($id);
+    }
+
+    public function deleteImage($idmage)
+    {
+        return $this->productData->deleteImage($idmage);
     }
 
 

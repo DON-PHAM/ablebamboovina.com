@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
+            $table->integer('orderid');
+            $table->dateTime('invoicedate');
+            $table->decimal('total_amount',15,0);
+            $table->boolean('status');
             $table->timestamps();
         });
     }

@@ -1,25 +1,3 @@
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#language').change(function () {
-            alert(key)
-            let language = $('#language').find(":selected").val();
-            $.ajax({
-                url: "{{ route('change-language',':language') }}".replace(':language', language),
-                type: "get",
-                success: function (response) {
-                    localStorage.setItem('locale', language);
-                    location.reload();
-                }
-            });
-        });
-        let language = localStorage.getItem('locale');
-        $("#language").val(language);
-        setTimeout(function () {
-            $('.alert').fadeOut('slow');
-        }, 2000);
-    });
-
-</script>
 
 <header class="main-header">
     <!-- Header Top Start -->
@@ -102,7 +80,7 @@
                 <!-- Logo Start -->
                 <div class="col-md-2 col-sm-2">
                     <div class="logo">
-                        <a href="index.html"
+                        <a href="{{route('homepage')}}"
                         ><img
                                 src="{{asset('frontend/assets/images/logo.png')}}"
                                 alt=""

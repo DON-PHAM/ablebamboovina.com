@@ -37,6 +37,10 @@ class ProductData
         $product_vi = $product->translates->firstWhere('languageid', 'vi');
         return compact('product', 'categories', 'branchs', 'product_ko', 'product_vi');
     }
+    public function update($id,ProductRequest $request)
+    {
+        return $this->productService->update($id,$request);
+    }
     public function create(ProductRequest $request)
     {
         return  $this->productService->create($request);
@@ -57,5 +61,9 @@ class ProductData
     public function changeProductHot($id)
     {
         return $this->productService->changeProductHot($id);
+    }
+    public function deleteImage($id)
+    {
+        return $this->productService->deleteImage($id);
     }
 }

@@ -151,7 +151,7 @@
                                     <tbody>
                                     @if($sliders)
                                         @foreach($sliders as $slider)
-                                            <tr>
+                                            <tr data-id="{{$slider->id}}">
                                                 <td><img alt="Banner" title=""
                                                          src="{{asset('upload/slider/'.$slider->image)}}"
                                                          style=" height:50px;"></td>
@@ -160,11 +160,6 @@
                                                 <td>
                                                     <input type="checkbox" id="status" class="status" name="status" data-id="{{$slider->id}}" @if($slider->status == 1) checked @endif>
 
-{{--                                                    @if($slider->status == 1)--}}
-{{--                                                        <span class="badge badge-success">On</span>--}}
-{{--                                                    @else--}}
-{{--                                                        <span class="badge badge-success">Off</span>--}}
-{{--                                                    @endif--}}
                                                 </td>
                                                 <td>
                                                     <a href="{{route('get-slider-edit',$slider->id)}}"><span
@@ -252,8 +247,9 @@
                 }
             })
         }
-        $('.status').change(function () {
-            let id = $('#status').data('id');
+        $('.status').change(function (event) {
+            let row = event.target.closest('tr');
+            let id = row.getAttribute('data-id');
             $.ajax({
                 url:'{{route('change-status',':id')}}'.replace(':id',id),
                 method:'get',

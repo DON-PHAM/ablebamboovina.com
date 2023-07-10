@@ -177,7 +177,7 @@
                                         <th>Tên</th>
                                         <th>Danh mục</th>
                                         <th>Giá cost</th>
-                                        <th>Giá</th>
+                                        <th>Giá sau giảm</th>
                                         <th>Nhà cung cấp</th>
                                         <th>Trạng thái</th>
                                         <th>Sản phẩm HOT</th>
@@ -203,8 +203,8 @@
                                                          style=" width:50px; height:50px;"></td>
                                                 <td>{{$product->translate->name}}</td>
                                                 <td>{{$product->category->name}}</td>
-                                                <td>{{$product->price}}</td>
-                                                <td>{{$product->$product*$product->discount/100}}</td>
+                                                <td>{{ number_format(round($product->price), 0, ',', '.') }}</td>
+                                                <td>{{number_format($product->price - ($product->price*$product->discount/100), 0, ',', '.')}}</td>
                                                 <td>{{$product->branch->name}}</td>
                                                 <td>
                                                     <input type="checkbox" class="status checkbox" id="status" name="status"  @if($product->status == 1) checked @endif>

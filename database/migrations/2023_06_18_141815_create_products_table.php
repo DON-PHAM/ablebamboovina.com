@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('code');
             $table->double('discount');
-            $table->decimal('price');
+            $table->decimal('price',15,2);
             $table->integer('categoryid');
             $table->integer('branchid');
             $table->integer('userid');

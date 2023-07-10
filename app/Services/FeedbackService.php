@@ -8,4 +8,6 @@ interface FeedbackService
     public function getById(int $id);
 
     public function getAll();
+
+    public function changeStatus($id);
 }

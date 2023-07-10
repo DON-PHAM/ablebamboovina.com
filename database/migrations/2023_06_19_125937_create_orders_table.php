@@ -15,6 +15,15 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->integer('customerid');
+            $table->decimal('discount',15,0);
+            $table->dateTime('orderdate');
+            $table->boolean('status');
+            $table->string('payment');
+            $table->text('note');
+            $table->decimal('totalmoney',15,0);
+            $table->decimal('shipper',15,0);
+            $table->boolean('shippingstatus');
             $table->timestamps();
         });
     }

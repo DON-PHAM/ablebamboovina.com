@@ -19,6 +19,12 @@
     <link rel="stylesheet" href="{{asset('frontend/assets/css/responsive.min.css')}}"/>
 
     <link rel="stylesheet" href="{{asset('frontend/assets/css/style.css')}}"/>
+    <style>
+        .main-navigation li:hover {
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
 </head>
 
 <body class="home-5 home-6 home-8 home-cosmatics">
@@ -107,8 +113,8 @@
                             <li>
                                 <a href="#"><span class="menu-text">Home Organic</span></a>
                                 <ul class="sub-menu">
-                                    <li><a href="index.html">Organic 1</a></li>
-                                    <li><a href="index-2.html">Organic 2</a></li>
+                                    <li><a href="">Organic 1</a></li>
+                                    <li><a href="">Organic 2</a></li>
                                     <li><a href="index-3.html">Organic 3</a></li>
                                     <li><a href="index-4.html">Organic 4</a></li>
                                 </ul>
@@ -250,6 +256,28 @@
 
 <!-- Main Activation JS -->
 <script src="{{asset('frontend/assets/js/main.js')}}"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#language').change(function () {
+            alert(key)
+            let language = $('#language').find(":selected").val();
+            $.ajax({
+                url: "{{ route('change-language',':language') }}".replace(':language', language),
+                type: "get",
+                success: function (response) {
+                    localStorage.setItem('locale', language);
+                    location.reload();
+                }
+            });
+        });
+        let language = localStorage.getItem('locale');
+        $("#language").val(language);
+        setTimeout(function () {
+            $('.alert').fadeOut('slow');
+        }, 2000);
+    });
+
+</script>
 @yield('script')
 </body>
 </html>
