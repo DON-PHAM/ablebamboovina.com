@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('aboutid');
             $table->string('languageid');
             $table->text('title');
+            $table->text('contents');
             $table->text('description');
             $table->timestamps();
         });

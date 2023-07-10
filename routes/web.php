@@ -101,7 +101,11 @@ Route::group(['prefix'=>'dashboard','middleware'=>['locale','checkAuth']],functi
 
     //About Managerment
     Route::get('about','Dashboard\AboutController@index')->name('about');
-    Route::post('about/{id}','Dashboard\AboutController@CreateOrUpdate')->name('post-about');
+    Route::get('about/create','Dashboard\AboutController@create')->name('get-about-create');
+    Route::post('about/create','Dashboard\AboutController@postCreate')->name('post-about-create');
+    Route::get('about/edit/{id}','Dashboard\AboutController@edit')->name('get-about-edit');
+    Route::post('about/edit/{id}','Dashboard\AboutController@update')->name('post-about-edit');
+    Route::get('about/delete/{id}','Dashboard\AboutController@delete')->name('delete-about');
 
 
 });
