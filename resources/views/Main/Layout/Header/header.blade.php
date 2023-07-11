@@ -156,7 +156,7 @@
                                 <li class="menu-dropdown">
                                     <a href="#">Trang <i class="ion-ios-arrow-down"></i></a>
                                     <ul class="sub-menu">
-                                        <li><a href="">Giới thiệu</a></li>
+                                        <li><a href="{{ route('about-page') }}">Giới thiệu</a></li>
                                         <li><a href="">Chính sách</a></li>
                                     </ul>
                                 </li>
