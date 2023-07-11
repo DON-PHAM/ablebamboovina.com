@@ -9,5 +9,7 @@ interface  VideoService
     public function edit($id);
     public function update($id,VideoRequest $request);
     public function delete($id);
+    public function changeStatus($id);
+
 
 }

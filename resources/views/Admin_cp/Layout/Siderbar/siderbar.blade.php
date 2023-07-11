@@ -174,7 +174,7 @@
 
                 </li>
                 <li class="nav-item ">
-                    <a href="" class="nav-link">
+                    <a href="{{route('event')}}" class="nav-link">
                         <i class="nav-icon fas fa-file-code"></i>
                         <p>
                             Sự kiện
@@ -182,7 +182,7 @@
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a href="" class="nav-link">
+                    <a href="{{route('video')}}" class="nav-link">
                         <i class="nav-icon fas fa-video"></i>
                         <p>
                             Video

@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('event_translates', function (Blueprint $table) {
             $table->id();
+            $table->integer('eventid');
+            $table->string('languageid');
+            $table->string('name');
+            $table->text('contents');
             $table->timestamps();
         });
     }

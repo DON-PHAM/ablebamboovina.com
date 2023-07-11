@@ -24,7 +24,15 @@ class VideoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required',
+            'link' => 'required'
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'name.required' => 'required',
+            'link.required' => 'required'
         ];
     }
 }
