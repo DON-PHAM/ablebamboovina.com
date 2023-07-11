@@ -104,12 +104,16 @@
                 </div>
                 <div class="col-lg-8 col-md-7">
                     <div class="contact-form">
+                        <div class="alert alert-danger print-error-msg" style="display:none">
+                            <ul></ul>
+                        </div>
                         <div class="contact-title mb-30">
                             <h2>Liên hệ</h2>
                         </div>
-                        <form class="contact-form-style" id="contact-form" accept-charset="UTF-8"
-                              action="{{route('post-contact-create')}}" method="post" enctype="multipart/form-data">
+                        <form class="contact-form-style" id="contact-form">
+                            {{ csrf_field() }}
                             <div class="row">
+                                <input name="status" hidden="" type="text" value="0">
                                 <div class="col-lg-6">
                                     <input name="fullname" placeholder="Tên*" type="text">
                                 </div>
@@ -121,11 +125,10 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <textarea name="contents" placeholder="Nội dung*"></textarea>
-                                    <button class="submit" type="submit">Gửi</button>
+                                    <button class="submit contact-submit" type="submit">Gửi</button>
                                 </div>
                             </div>
                         </form>
-{{--                        <p class="form-messege"></p>--}}
                     </div>
                 </div>
             </div>
@@ -134,4 +137,52 @@
 
 @endsection
 
+@section('script')
+    <script src="{{asset('backend/assets/admin/plugin/jquery.pjax.js')}}"></script>
+    <script>
+        $(document).ready(function () {
+            $(".contact-submit").click(function (e) {
+                e.preventDefault();
+                var _token = $("input[name='_token']").val();
+                var fullname = $("input[name='fullname']").val();
+                var email = $("input[name='email']").val();
+                var phonenumber = $("input[name='phonenumber']").val();
+                var contents = $("textarea[name='contents']").val();
 
+                $.ajax({
+                    url: "contact/postCreate",
+                    type: 'POST',
+                    data: {
+                        _token: _token,
+                        fullname: fullname,
+                        phonenumber: phonenumber,
+                        email: email,
+                        contents: contents,
+                        status: 0,
+                    },
+                    success: function (data) {
+                        if (data) {
+                            toastr.success('Gửi thông tin thành công!');
+                            document.getElementById("contact-form").reset();
+                        } else {
+                            console.log(data);
+                            // printErrorMsg(data);
+                        }
+                    },
+                    error: function (err) {
+                        console.log(err.responseJSON.errors)
+                        // printErrorMsg(err.responseJSON.errors);
+                    }
+                });
+
+                function printErrorMsg(msg) {
+                    $(".print-error-msg").find("ul").html('');
+                    $(".print-error-msg").css('display', 'block');
+                    $.each(msg, function (key, value) {
+                        $(".print-error-msg").find("ul").append('<li>' + "<b>" + key + "</b>" + " " + value + '</li>');
+                    });
+                }
+            });
+        });
+    </script>
+@endsection

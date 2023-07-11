@@ -23,10 +23,7 @@ class ContactController extends Controller
     public function postCreate(FeedBackRequest $request)
     {
         try {
-            $result = $this->feedbackService->create($request);
-            $message = $result ? 'Thêm mới thành công' : 'Thất bại';
-
-            return redirect()->route('contact-page')->with($result ? 'success' : 'false', $message);
+            return $this->feedbackService->create($request);
         } catch (\Exception $ex) {
             return redirect()->route('contact-page')->with('false', 'Thất bại');
         }
