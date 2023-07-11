@@ -100,13 +100,31 @@ Route::group(['prefix'=>'dashboard','middleware'=>['locale','checkAuth']],functi
     //Feed Back
     Route::get('feedback','Dashboard\FeedBackController@index')->name('feedback-list');
 
-    //About Managerment
+    //About Management
     Route::get('about','Dashboard\AboutController@index')->name('about');
     Route::get('about/create','Dashboard\AboutController@create')->name('get-about-create');
     Route::post('about/create','Dashboard\AboutController@postCreate')->name('post-about-create');
     Route::get('about/edit/{id}','Dashboard\AboutController@edit')->name('get-about-edit');
     Route::post('about/edit/{id}','Dashboard\AboutController@update')->name('post-about-edit');
     Route::get('about/delete/{id}','Dashboard\AboutController@delete')->name('delete-about');
+
+    //Video Management
+    Route::get('video','Dashboard\VideoController@index')->name('video');
+    Route::get('video/create','Dashboard\VideoController@create')->name('get-video-create');
+    Route::post('video/create','Dashboard\VideoController@postCreate')->name('post-video-create');
+    Route::get('video/edit/{id}','Dashboard\VideoController@edit')->name('get-video-edit');
+    Route::post('video/edit/{id}','Dashboard\VideoController@update')->name('post-video-edit');
+    Route::get('video/delete/{id}','Dashboard\VideoController@delete')->name('delete-video');
+    Route::get('video/changeStatus/{id}','Dashboard\VideoController@changeStatus')->name('changeStatus');
+
+    //Event Management
+    Route::get('event','Dashboard\EventController@index')->name('event');
+    Route::get('event/create','Dashboard\EventController@create')->name('get-event-create');
+    Route::post('event/create','Dashboard\EventController@postCreate')->name('post-event-create');
+    Route::get('event/edit/{id}','Dashboard\EventController@edit')->name('get-event-edit');
+    Route::post('event/edit/{id}','Dashboard\EventController@update')->name('post-event-edit');
+    Route::get('event/delete/{id}','Dashboard\EventController@delete')->name('delete-event');
+    Route::get('event/changeStatus/{id}','Dashboard\EventController@changeStatus')->name('changeStatus');
 
 
 });

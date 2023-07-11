@@ -12,16 +12,19 @@ use App\Repositories\ProductRepository;
 use App\Repositories\SettingRespository;
 use App\Repositories\SliderRepository;
 use App\Repositories\UserRepository;
+use App\Repositories\VideoRepository;
 use App\Services\AboutService;
 use App\Services\BranchService;
 use App\Services\CategoryPostService;
 use App\Services\CategoryProductService;
+use App\Services\EventService;
 use App\Services\FeedbackService;
 use App\Services\PostService;
 use App\Services\ProductService;
 use App\Services\SettingService;
 use App\Services\SliderService;
 use App\Services\UserService;
+use App\Services\VideoService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -59,6 +62,12 @@ class AppServiceProvider extends ServiceProvider
         );
         $this->app->bind(
             PostService::class,PostRepository::class
+        );
+        $this->app->bind(
+            VideoService::class,VideoRepository::class
+        );
+        $this->app->bind(
+            EventService::class,VideoRepository::class
         );
     }
 

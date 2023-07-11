@@ -27,8 +27,8 @@ class FeedBackRequest extends FormRequest
             'phonenumber' =>'required',
             'email' => 'required|email',
             'fullname' => 'required',
-            'contents' => 'required',
-            'status' => 'required'
+            'contents' => 'required'
+
         ];
     }
     public function messages()
@@ -37,8 +37,7 @@ class FeedBackRequest extends FormRequest
             'phonenumber.required' =>'required',
             'email.required' => 'required|email',
             'fullname.required' => 'required',
-            'contents.required' => 'required',
-            'status.required' => 'required'
+            'contents.required' => 'required'
         ];
     }
 }
