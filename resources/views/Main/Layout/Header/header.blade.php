@@ -106,7 +106,9 @@
                             <div class="contact-link">
                                 <div class="phone">
                                     <p>Gọi ngay:</p>
-                                    <a href="tel:{{ session('setting')->tax }}">{{ session('setting')->tax }}</a>
+                                    @if(session('setting'))
+                                        <a href="tel:{{ session('setting')->tax }}">{{ session('setting')->tax }}</a>
+                                    @endif
                                 </div>
                             </div>
                             <!--Contact info End -->

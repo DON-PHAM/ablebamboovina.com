@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{asset('frontend/assets/css/plugins/plugins.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('frontend/assets/css/style.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('frontend/assets/css/responsive.min.css')}}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="{{asset('frontend/assets/css/style.css')}}"/>
     <style>
@@ -316,13 +317,13 @@
 
 <script src="{{asset('frontend/assets/js/vendor/vendor.min.js')}}"></script>
 <script src="{{asset('frontend/assets/js/plugins/plugins.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <!-- Main Activation JS -->
 <script src="{{asset('frontend/assets/js/main.js')}}"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         $('#language').change(function () {
-            alert(key)
             let language = $('#language').find(":selected").val();
             $.ajax({
                 url: "{{ route('change-language',':language') }}".replace(':language', language),
