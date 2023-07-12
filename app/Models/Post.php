@@ -9,7 +9,13 @@ use Illuminate\Support\Facades\App;
 class Post extends Model
 {
     use HasFactory;
-    protected $fillable = [];
+    protected $fillable = [
+        'categoryid',
+        'image',
+        'slug',
+        'hot',
+        'status'
+    ];
 
     public function category()
     {
@@ -18,11 +24,11 @@ class Post extends Model
             ->where('languageid',$locale);
     }
 
-    public function tranlsates()
+    public function translates()
     {
         return $this->hasMany(PostTranslate::class,'postid','id');
     }
-    public function tranlsate()
+    public function translate()
     {
         return $this->hasOne(PostTranslate::class,'postid','id');
     }

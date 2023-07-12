@@ -127,5 +127,4 @@ Route::group(['prefix'=>'dashboard','middleware'=>['locale','checkAuth']],functi
     Route::get('event/delete/{id}','Dashboard\EventController@delete')->name('delete-event');
     Route::get('event/changeStatus/{id}','Dashboard\EventController@changeStatus')->name('changeStatus');
 
-
 });

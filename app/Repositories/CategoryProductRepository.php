@@ -110,11 +110,11 @@ class CategoryProductRepository implements CategoryProductService {
         return $category;
     }
 
-    public function getCategoryProduct($locale)
+    public function getCategoryProduct($locale,$typeid)
     {
         $category = ProductCategory::join('product_category_translates', 'product_categories.id', '=', 'product_category_translates.productcategoryid')
             ->where('product_category_translates.languageid', '=', $locale)
-            ->where('product_categories.typeid','=',1)
+            ->where('product_categories.typeid','=',$typeid)
             ->where('product_categories.status','=',1)
             ->paginate(15, ['product_categories.*', 'product_category_translates.*']);
         return $category;
