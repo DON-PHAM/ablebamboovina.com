@@ -1,5 +1,5 @@
 @extends('Admin_cp.Layout.master')
-@section('title',trans('product.title'))
+@section('title',trans('post.title'))
 @section('content')
 
         <div class="content-header">
@@ -7,14 +7,14 @@
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <h1 class="m-0 text-dark">
-                            <i class="fa fa-indent" aria-hidden="true"></i> Danh sách
+                            <i class="fa fa-indent" aria-hidden="true"></i> {{trans('post.list')}}
                         </h1>
                         <div class="more_info"></div>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="h"><i class="fa fa-home fa-1x"></i> Trang chủ</a></li>
-                            <li class="breadcrumb-item active">Danh sách</li>
+                            <li class="breadcrumb-item"><a href="h"><i class="fa fa-home fa-1x"></i> {{trans('home.home')}}</a></li>
+                            <li class="breadcrumb-item active">{{trans('post.list')}}</li>
                         </ol>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                             <div class="card-header with-border">
                                 <div class="card-tools">
                                     <div class="menu-right">
-                                        <a href="" class="btn  btn-success  btn-flat" title="New" id="button_create_new">
+                                        <a href="{{route('get-new-create')}}" class="btn  btn-success  btn-flat" title="New" id="button_create_new">
                                             <i class="fa fa-plus" title="Thêm mới"></i>
                                         </a>
                                     </div>
@@ -83,25 +83,35 @@
                                             <th></th>
                                             <th>Tiêu đề</th>
                                             <th>Hình ảnh</th>
-                                            <th>Sắp xếp</th>
                                             <th>Trạng thái</th>
-                                            <th>Danh sách cửa hàng</th>
                                             <th>Thao tác</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr>
                                             <td>
-                                                <div class="icheckbox_square-blue" aria-checked="false" aria-disabled="false" style="position: relative;"><input class="checkbox grid-row-checkbox" type="checkbox" data-id="980b670b-16ad-4f50-9a25-00aba5d45c1d" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+                                                <div class="icheckbox_square-blue" aria-checked="false"
+                                                     aria-disabled="false" style="position: relative;"><input
+                                                        class="checkbox grid-row-checkbox" type="checkbox"
+                                                        data-id="980b670b-16ad-4f50-9a25-00aba5d45c1d"
+                                                        style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">
+                                                    <ins class="iCheck-helper"
+                                                         style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
+                                                </div>
                                             </td>
                                             <td>Easy Polo Black Edition 1</td>
-                                            <td><img alt="Easy Polo Black Edition 1" title="" src="https://demo.s-cart.org/data/content/blog-1.jpg" style=" width:50px;"></td>
-                                            <td>0</td>
+                                            <td><img alt="Easy Polo Black Edition 1" title=""
+                                                     src="https://demo.s-cart.org/data/content/blog-1.jpg"
+                                                     style=" width:50px;"></td>
+
                                             <td><span class="badge badge-success">ON</span></td>
-                                            <td><i class="nav-icon fab fa-shopify"></i> <a target="_new" href="">s-cart</a><br><i class="nav-icon fab fa-shopify"></i> <a target="_new" href="http://s-cart-template-pro.s-cart.org">demo-store2</a></td>
-                                            <td><a href=""><span title="Chỉnh sửa" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
-                                                <span onclick="deleteItem();" title="Xóa" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>&nbsp;
-                                                <a target="_new" href=""><span title="Link" type="button" class="btn btn-flat btn-sm btn-warning"><i class="fas fa-external-link-alt"></i></span></a>
+                                            <td><a href=""><span title="Chỉnh sửa" type="button"
+                                                                 class="btn btn-flat btn-sm btn-primary"><i
+                                                            class="fa fa-edit"></i></span></a>
+                                                <span onclick="deleteItem();" title="Xóa"
+                                                      class="btn btn-flat btn-sm btn-danger"><i
+                                                        class="fas fa-trash-alt"></i></span>
+
                                             </td>
                                         </tr>
 

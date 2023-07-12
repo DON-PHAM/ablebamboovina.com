@@ -22,7 +22,7 @@ class ProductData
     public function getDataCreate()
     {
         $locale = session()->get('locale') ?? App::getLocale();
-        $categories = $this->categoryService->getCategoryProduct($locale);
+        $categories = $this->categoryService->getCategoryProduct($locale,1);
         $branchs = $this->branchService->getAll();
         return compact('categories', 'branchs');
     }
@@ -30,7 +30,7 @@ class ProductData
     public function getDataEdit($id)
     {
         $locale = session()->get('locale') ?? App::getLocale();
-        $categories = $this->categoryService->getCategoryProduct($locale);
+        $categories = $this->categoryService->getCategoryProduct($locale,1);
         $branchs = $this->branchService->getAll();
         $product = $this->productService->getById($id);
         $product_ko = $product->translates->firstWhere('languageid', 'ko');

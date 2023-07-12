@@ -17,9 +17,10 @@ return new class extends Migration
             $table->id();
             $table->integer('postid');
             $table->string('languageid');
+            $table->string('name');
             $table->text('description');
             $table->text('content');
-            $table->string('keywork');
+            $table->string('metakeyword');
             $table->timestamps();
         });
     }
