@@ -74,8 +74,9 @@ Route::group(['prefix'=>'dashboard','middleware'=>['locale','checkAuth']],functi
     Route::get('new/create','Dashboard\NewController@create')->name('get-new-create');
     Route::post('new/postCreate','Dashboard\NewController@postCreate')->name('post-new-create');
     Route::get('new/edit/{id}','Dashboard\NewController@edit')->name('get-new-edit');
-    Route::post('new/edit/{id}','Dashboard\NewController@update')->name('put-new-edit');
-    Route::get('new/delete/{id}','Dashboard\NewController@delete')->name('delete-new-edit');
+    Route::post('new/edit/{id}','Dashboard\NewController@update')->name('post-new-edit');
+    Route::get('new/delete/{id}','Dashboard\NewController@delete')->name('delete-new');
+    Route::get('new/changeStatus/{id}','Dashboard\NewController@changeStatus')->name('change-status-new');
 
     //Setting Management
     Route::get('setting','Dashboard\SettingController@create')->name('get-setting-create');

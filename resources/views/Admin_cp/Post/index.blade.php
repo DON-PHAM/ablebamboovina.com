@@ -88,32 +88,44 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="icheckbox_square-blue" aria-checked="false"
-                                                     aria-disabled="false" style="position: relative;"><input
-                                                        class="checkbox grid-row-checkbox" type="checkbox"
-                                                        data-id="980b670b-16ad-4f50-9a25-00aba5d45c1d"
-                                                        style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">
-                                                    <ins class="iCheck-helper"
-                                                         style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
-                                                </div>
-                                            </td>
-                                            <td>Easy Polo Black Edition 1</td>
-                                            <td><img alt="Easy Polo Black Edition 1" title=""
-                                                     src="https://demo.s-cart.org/data/content/blog-1.jpg"
-                                                     style=" width:50px;"></td>
+                                        @if($posts)
+                                            @foreach($posts as $post)
+                                                <tr>
+                                                    <td>
+                                                        <div class="icheckbox_square-blue" aria-checked="false"
+                                                             aria-disabled="false" style="position: relative;"><input
+                                                                class="checkbox grid-row-checkbox" type="checkbox"
+                                                                data-id="980b670b-16ad-4f50-9a25-00aba5d45c1d"
+                                                                style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">
+                                                            <ins class="iCheck-helper"
+                                                                 style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
+                                                        </div>
+                                                    </td>
+                                                    <td>{{$post->translate->name}}</td>
+                                                    <td><img alt="{{$post->translate->name}}" title="{{$post->translate->name}}"
+                                                             src="{{asset('upload/post/'.$post->image)}}"
+                                                             style=" width:50px;"></td>
 
-                                            <td><span class="badge badge-success">ON</span></td>
-                                            <td><a href=""><span title="Chỉnh sửa" type="button"
-                                                                 class="btn btn-flat btn-sm btn-primary"><i
-                                                            class="fa fa-edit"></i></span></a>
-                                                <span onclick="deleteItem();" title="Xóa"
-                                                      class="btn btn-flat btn-sm btn-danger"><i
-                                                        class="fas fa-trash-alt"></i></span>
+                                                    <td>
+                                                        @if($post->status == 1)
+                                                            <span class="badge badge-success">ON</span>
+                                                        @else
+                                                            <span class="badge badge-success">OFF</span>
+                                                        @endif
 
-                                            </td>
-                                        </tr>
+                                                    </td>
+                                                    <td><a href="{{route('get-new-edit',$post->id)}}"><span title="Chỉnh sửa" type="button"
+                                                                         class="btn btn-flat btn-sm btn-primary"><i
+                                                                    class="fa fa-edit"></i></span></a>
+                                                        <span onclick="deleteItem({{$post->id}});" title="Xóa"
+                                                              class="btn btn-flat btn-sm btn-danger"><i
+                                                                class="fas fa-trash-alt"></i></span>
+
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
+
 
                                         </tbody>
                                     </table>
@@ -131,4 +143,86 @@
         </section>
 
 
+@endsection
+@section('script')
+    <script src="{{asset('backend/assets/admin/plugin/jquery.pjax.js')}}"></script>
+    <script>
+        $('.grid-trash').on('click', function() {
+            let ids = selectedRows().join();
+            deleteItem(ids);
+        });
+
+        function deleteItem(ids){
+            Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: true,
+            }).fire({
+                title: '{{trans('post.delete')}}?',
+                text: "",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: '{{trans('post.yes')}}',
+                confirmButtonColor: "#DD6B55",
+                cancelButtonText: '{{trans('$post.no')}}',
+                reverseButtons: true,
+
+                preConfirm: function() {
+                    return new Promise(function(resolve) {
+                        $.ajax({
+                            method: 'get',
+                            url: '{{route('delete-new',':id')}}'.replace(':id',ids),
+                            success: function (data) {
+                                location.reload();
+                            }
+                        });
+                    });
+                }
+
+            }).then((result) => {
+                if (result.value) {
+                    toastr.success('Xóa thành công');
+                } else if (
+                    // Read more about handling dismissals
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+
+                }
+            })
+        }
+        $('.status').change(function(event) {
+            let row = event.target.closest('tr');
+            let id = row.getAttribute('data-id');
+            $.ajax({
+                url:'{{route('change-status-new',':id')}}'.replace(':id',id),
+                dataType:'json',
+                method: 'get',
+                success:function (response)
+                {
+                    if(response.status)
+                    {
+                        toastr.success('Thay đổi trạng thái thành công');
+                    }
+                }
+            })
+        })
+        $('.hot').change(function(event) {
+            let row = event.target.closest('tr');
+            let id = row.getAttribute('data-id');
+            $.ajax({
+                url:'{{route('change-producthot-product',':id')}}'.replace(':id',id),
+                dataType:'json',
+                method: 'get',
+                success:function (response)
+                {
+                    if(response.status)
+                    {
+                        toastr.success('Thay đổi trạng thái thành công');
+                    }
+                }
+            })
+        })
+    </script>
 @endsection

@@ -20,7 +20,9 @@ class NewController extends Controller
     }
 
     public function index() {
-        return view('Admin_cp.Post.index');
+        $locale = session()->get('locale') ?? App::getLocale();
+        $posts = $this->postService->getAll($locale);
+        return view('Admin_cp.Post.index',compact('posts'));
     }
     public function create()
     {
@@ -35,8 +37,12 @@ class NewController extends Controller
     }
     public function edit($id)
     {
-        $this->postService->getById($id);
-        return view('Admin_cp.Post.edit');
+        $locale = session()->get('locale') ?? App::getLocale();
+        $post = $this->postService->getById($id);
+        $post_ko = $post->translates->where('languageid','ko')->first();
+        $post_vi = $post->translates->where('languageid','vi')->first();
+        $categories = $this->categoryService->getCategoryProduct($locale,0);
+        return view('Admin_cp.Post.edit',compact(['post','post_ko','post_vi','categories']));
     }
     public function update($id, PostRequest $request)
     {
