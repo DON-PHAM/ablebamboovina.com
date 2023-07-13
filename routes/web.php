@@ -34,6 +34,9 @@ Route::get('detail/{id}', 'Main\DetailController@index')->name('detail-page');
 Route::get('contact', 'Main\ContactController@index')->name('contact-page');
 Route::post('contact/postCreate','Main\ContactController@postCreate')->name('post-contact-create');
 Route::get('about', 'Main\AboutController@index')->name('about-page');
+Route::get('cart', 'Main\CartController@index')->name('cart-page');
+Route::get('checkout', 'Main\CheckoutController@index')->name('checkout-page');
+Route::get('invoice', 'Main\InvoiceController@index')->name('invoice-page');
 
 
 Route::group(['prefix'=>'dashboard','middleware'=>['locale','checkAuth']],function () {

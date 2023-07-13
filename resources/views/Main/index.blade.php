@@ -179,8 +179,11 @@
                                     </div>
                                     <div class="add-to-link">
                                         <ul class="d-flex justify-content-center">
-                                            <li class="cart"><a class="cart-btn" href="javascript:void(0)">Thêm vào giỏ
-                                                    hàng </a></li>
+                                            <li class="cart">
+                                                <button class="cart-btn add-to-cart" onclick="addToCart({{$product}})">
+                                                    Thêm vào giỏ hàng
+                                                </button>
+                                            </li>
                                         </ul>
                                     </div>
                                 </article>
@@ -255,8 +258,10 @@
                                             </div>
                                             <div class="add-to-link">
                                                 <ul class="d-flex justify-content-center">
-                                                    <li class="cart"><a class="cart-btn" href="javascript:void(0)">Thêm
-                                                            vào giỏ hàng </a>
+                                                    <li class="cart">
+                                                        <button class="cart-btn add-to-cart" onclick="addToCart({{$product}})">
+                                                            Thêm vào giỏ hàng
+                                                        </button>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -333,8 +338,11 @@
                                         </div>
                                         <div class="add-to-link">
                                             <ul>
-                                                <li class="cart"><a class="cart-btn" href="javascript:void(0)">Thêm vào
-                                                        giỏ hàng </a></li>
+                                                <li class="cart">=
+                                                    <button class="cart-btn add-to-cart" onclick="addToCart({{$product}})">
+                                                        Thêm vào giỏ hàng
+                                                    </button>
+                                                </li>
                                             </ul>
                                         </div>
                                     </article>
@@ -531,4 +539,26 @@
     <!-- Blog Area End -->
 
 @endsection
-
+@section('script')
+    <script>
+        function addToCart(e) {
+            const listProductInCart = localStorage.getItem('listProductInCart')
+            if (!listProductInCart) {
+                const temp = []
+                temp.push(e)
+                localStorage.setItem('listProductInCart', JSON.stringify(temp))
+                toastr.success('Thêm vào giỏ hàng thành công');
+            } else {
+                const temp = JSON.parse(listProductInCart)
+                const check = temp.find(item => item.id === e.id)
+                if (!check) {
+                    temp.push(e)
+                    localStorage.setItem('listProductInCart', JSON.stringify(temp))
+                    toastr.success('Thêm vào giỏ hàng thành công');
+                } else {
+                    toastr.warning('Sản phẩm đã có trong giỏ hàng');
+                }
+            }
+        }
+    </script>
+@endsection
