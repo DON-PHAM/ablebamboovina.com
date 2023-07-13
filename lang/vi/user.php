@@ -21,7 +21,17 @@ return [
     'back' => 'Quay lại',
     'avatar' => 'Avatar',
     'profile' => 'Thông tin',
-    'setting-user' => 'Cài đặt tài khoản'
+    'setting-user' => 'Cài đặt tài khoản',
+    'message-name' => 'Tên người dùng không được để trống',
+    'message-email' => 'Email không được để trống',
+    'message-pass' => 'Mật khẩu không được để trống',
+    'message-email-confirm' => 'Email không đúng định dạng',
+    'message-pass-min' => 'Mật khẩu tối thiểu 6 ký tự',
+    'success' => 'Thành công',
+    'delete'=>'Xóa',
+    'fails' => 'Thất bại',
+    'active'=> 'Kích hoạt',
+    'inactive' => 'Chưa kích hoạt'
 
 
 ];

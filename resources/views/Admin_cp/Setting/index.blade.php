@@ -36,7 +36,7 @@
                                     <table class="table table-hover table-bordered">
                                         <tbody>
                                         <tr>
-                                            <td>Logo</td>
+                                            <td>{{trans('setting.logo')}}</td>
                                             <td>
                                                 <div class="input-group">
                                                     <input type="hidden" id="logo" name="logo" value="{{ isset($setting['logo']) ? $setting['logo'] : ''}}" class="form-control input-sm logo" placeholder="">
@@ -48,7 +48,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Company</td>
+                                            <td>{{trans('setting.company')}}</td>
                                             <td>
                                                 <div class="input-group">
                                                     <input type="text" id="company" name="company" value="{{ isset($setting['company']) ? $setting['company'] : ''}}"
@@ -58,7 +58,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>slogan</td>
+                                            <td>{{trans('setting.slogan')}}</td>
                                             <td>
                                                 <div class="input-group">
                                                     <input type="text" id="slogan" name="slogan" value="{{ isset($setting['slogan']) ? $setting['slogan'] : ''}}"
@@ -68,23 +68,23 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><i class="fas fa-envelope"></i> Tax</td>
+                                            <td><i class="fas fa-envelope"></i> {{trans('setting.tax')}}</td>
                                             <td><input type="text" id="tax" name="tax" value="{{ isset($setting['tax']) ? $setting['tax'] : ''}}"
                                                        class="form-control input-sm icon" placeholder=""></td>
                                         </tr>
                                         <tr>
-                                            <td><i class="fas fa-envelope"></i> Email</td>
+                                            <td><i class="fas fa-envelope"></i> {{trans('setting.email')}}</td>
                                             <td><input type="email" id="email" name="email" value="{{ isset($setting['email']) ? $setting['email'] : ''}}"
                                                        class="form-control input-sm icon" placeholder=""></td>
                                         </tr>
                                         <tr>
-                                            <td><i class="fas fa-phone-alt"></i> Phone</td>
+                                            <td><i class="fas fa-phone-alt"></i> {{trans('setting.phone')}}</td>
                                             <td><input type="text" id="phone" name="phone" value="{{ isset($setting['phone']) ? $setting['phone'] : ''}}"
                                                        class="form-control input-sm icon" placeholder=""></td>
                                         </tr>
 
                                         <tr>
-                                            <td><i class="far fa-calendar-alt"></i> Địa chỉ</td>
+                                            <td><i class="far fa-calendar-alt"></i> {{trans('setting.address')}}</td>
                                             <td><input type="text" id="address" name="address" value="{{ isset($setting['address']) ? $setting['address'] : ''}}"
                                                        class="form-control input-sm icon" placeholder="">
                                             </td>
@@ -113,9 +113,9 @@
                                         </tr>
 
                                         <tr>
-                                            <td><i class="nav-icon  fas fab-button "></i>Thực hiện</td>
+                                            <td><i class="nav-icon  fas fab-button "></i>{{trans('setting.action')}}</td>
                                             <td>
-                                                <input type="submit" id="submit" name="icon" value="Save"
+                                                <input type="submit" id="submit" name="icon" value="{{trans('setting.save')}}"
                                                        class="btn btn-success input-sm icon" placeholder="">
                                             </td>
                                         </tr>

@@ -26,6 +26,7 @@ return [
     'branch' => 'Nhà cung cấp',
     'feedback' => 'Phản hồi',
     'online-buy' =>'Mua online',
-    'about' => 'Giới thiệu'
+    'about' => 'Giới thiệu',
+    'back' => 'Trở lại'
 
 ];

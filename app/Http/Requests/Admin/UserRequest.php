@@ -24,6 +24,7 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
+            'name' => 'required',
             'email' => 'required | email',
             'password' => 'required | min: 6',
             'username' => 'required',
@@ -33,11 +34,12 @@ class UserRequest extends FormRequest
     public function messages()
     {
         return [
-            'username.required' => 'Vui lòng nhập tên.',
-            'email.required' => 'Vui lòng nhập email.',
-            'email.email' => 'Email không đúng định dạng.',
-            'password.required' => 'Vui lòng nhập mật khẩu.',
-            'password.min' => 'Mật khẩu tối thiểu 6 ký tự',
+            'name.required' => trans('user.message-name'),
+            'username.required' =>trans('user.message-username'),
+            'email.required' => trans('user.message-email'),
+            'email.email' => trans('user.message-email-confirm'),
+            'password.required' => trans('user.message-pass'),
+            'password.min' => trans('user.message-pass-min'),
             // Thêm các message validate khác vào đây
         ];
     }

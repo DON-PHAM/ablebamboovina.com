@@ -17,15 +17,15 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0 text-dark">
-                        <i class="fa fa-plus" aria-hidden="true"></i> Add new category
+                        <i class="fa fa-plus" aria-hidden="true"></i> {{trans('category.edit')}}
                     </h1>
                     <div class="more_info"></div>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href=""><i
-                                    class="fa fa-home fa-1x"></i> Home</a></li>
-                        <li class="breadcrumb-item active">Add new category</li>
+                                    class="fa fa-home fa-1x"></i> {{trans('home.home')}}</a></li>
+                        <li class="breadcrumb-item active">{{trans('category.edit')}}</li>
                     </ol>
                 </div>
             </div>
@@ -39,12 +39,12 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header with-border">
-                            <h2 class="card-title">Add new</h2>
+                            <h2 class="card-title">{{trans('category.edit')}}</h2>
                             <div class="card-tools">
                                 <div class="btn-group float-right mr-5">
-                                    <a href=""
+                                    <a href="{{route('admin')}}"
                                        class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span
-                                            class="hidden-xs"> Back list</span></a>
+                                            class="hidden-xs">{{trans('home.back')}}</span></a>
                                 </div>
                             </div>
                         </div>
@@ -70,8 +70,8 @@
                                             </div>
                                             <div class="card-body">
                                                 <div class="form-group row  ">
-                                                    <label for="ko_name" class="col-sm-2 col-form-label">Name <span
-                                                            class="seo" title="SEO"><i class="fa fa-coffee"
+                                                    <label for="ko_name" class="col-sm-2 col-form-label">카테고리 이름 <span
+                                                            class="ko_name" title="ko_name"><i class="fa fa-coffee"
                                                                                        aria-hidden="true"></i></span></label>
                                                     <div class="col-sm-8">
                                                         <div class="input-group">
@@ -88,7 +88,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row  ">
-                                                    <label for="ko_keyword" class="col-sm-2 col-form-label">Keyword
+                                                    <label for="ko_keyword" class="col-sm-2 col-form-label">키워드
                                                         <span
                                                             class="seo" title="SEO"><i class="fa fa-coffee"
                                                                                        aria-hidden="true"></i></span></label>
@@ -108,7 +108,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row  ">
-                                                    <label for="ko_description" class="col-sm-2 col-form-label">Description
+                                                    <label for="ko_description" class="col-sm-2 col-form-label">카테고리 설명
                                                         <span class="seo" title="SEO"><i class="fa fa-coffee"
                                                                                          aria-hidden="true"></i></span></label>
                                                     <div class="col-sm-8">
@@ -138,7 +138,7 @@
                                             </div>
                                             <div class="card-body">
                                                 <div class="form-group row  ">
-                                                    <label for="vi_name" class="col-sm-2 col-form-label">Name <span
+                                                    <label for="vi_name" class="col-sm-2 col-form-label">Tên danh mục <span
                                                             class="seo" title="SEO"><i class="fa fa-coffee"
                                                                                        aria-hidden="true"></i></span></label>
                                                     <div class="col-sm-8">
@@ -156,7 +156,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row  ">
-                                                    <label for="vi_keyword" class="col-sm-2 col-form-label">Keyword
+                                                    <label for="vi_keyword" class="col-sm-2 col-form-label">Từ khóa
                                                         <span
                                                             class="seo" title="SEO"><i class="fa fa-coffee"
                                                                                        aria-hidden="true"></i></span></label>
@@ -176,7 +176,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row  ">
-                                                    <label for="vi_description" class="col-sm-2 col-form-label">Description
+                                                    <label for="vi_description" class="col-sm-2 col-form-label">Mô tả
                                                         <span class="seo" title="SEO"><i class="fa fa-coffee"
                                                                                          aria-hidden="true"></i></span></label>
                                                     <div class="col-sm-8">
@@ -192,27 +192,29 @@
                                             </div>
                                         </div>
                                         <div class="form-group row  ">
-                                            <label for="image" class="col-sm-2 col-form-label">Image</label>
+                                            <label for="image" class="col-sm-2 col-form-label">{{trans('category.image')}}</label>
                                             <div class="col-sm-8">
                                                 <input type="file" onchange="readURL(this);" name="image"/>
                                                 <img id="blah" src="{{asset('upload/category/'.$result[0]['image'])}}" alt="your image"/>
                                             </div>
                                         </div>
                                         <div class="form-group row  ">
-                                            <label for="sort" class="col-sm-2 col-form-label">Type</label>
+                                            <label for="sort" class="col-sm-2 col-form-label">{{trans('category.type')}}</label>
                                             <div class="col-sm-8">
                                                 <div class="input-group">
 
                                                     <select class="form-control" name="type">
-                                                        <option value="1" @if($result[0]['typeid'] == 1) selected @endif>Product</option>
-                                                        <option value="0" @if($result[0]['typeid'] == 0) selected @endif>New</option>
+                                                        <option value="1" @if($result[0]['typeid'] == 1) selected @endif>
+                                                            {{trans('category.product')}}</option>
+                                                        <option value="0" @if($result[0]['typeid'] == 0) selected @endif>
+                                                            {{trans('category.new')}}</option>
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="form-group  row">
-                                            <label for="status" class="col-sm-2 col-form-label">Status</label>
+                                            <label for="status" class="col-sm-2 col-form-label">{{trans('category.status')}}</label>
                                             <div class="col-sm-8">
                                                 <input name="status" id="status" @if($result[0]['status'] == 1) checked @endif type="checkbox">
                                             </div>
@@ -224,10 +226,10 @@
                                         </div>
                                         <div class="col-md-8">
                                             <div class="btn-group float-right">
-                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                <button type="submit" class="btn btn-primary">{{trans('home.save')}}</button>
                                             </div>
                                             <div class="btn-group float-left">
-                                                <button type="reset" class="btn btn-warning">Reset</button>
+                                                <button type="reset" class="btn btn-warning">{{trans('home.reset')}}</button>
                                             </div>
                                         </div>
                                     </div>

@@ -21,7 +21,17 @@ return [
     'back' => '다시 목록으로',
     'avatar' => '화신',
     'profile' => '프로필',
-    'setting-user' => '계정 설정'
+    'setting-user' => '계정 설정',
+    'message-name' => '',
+    'message-email' => '',
+    'message-pass' => '',
+    'message-email-confirm' => '',
+    'message-pass-min' => '',
+    'success' => '',
+    'delete'=>'',
+    'fails' => '',
+    'active'=> '',
+    'inactive' => ''
 
 
 ];
