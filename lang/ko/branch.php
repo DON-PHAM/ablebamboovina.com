@@ -12,5 +12,11 @@ return [
     'action' => '행동',
     'delete' => '삭제하시겠습니까?',
     'yes' => '예',
-    'no' => '아니요'
+    'no' => '아니요',
+    'message-bran-name' => '공급 업체 이름을 비워 둘 수 없습니다',
+    'message-bran-phone' => '공급 업체 전화 번호를 비워 둘 수 없습니다',
+    'message-bran-address' => '공급 업체 주소를 비워 둘 수 없습니다',
+    'message-bran-email' => '공급 업체 이메일을 비워 둘 수 없습니다',
+    'message-bran-success' => '성공',
+    'message-bran-fail' => '실패'
 ];

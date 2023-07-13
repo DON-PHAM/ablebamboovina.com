@@ -105,14 +105,14 @@
                                                 <td>{{$user->email}}</td>
                                                 <td>{{$user->name}}</td>
                                                 <td>{{$user->role == 1 ? "Admin" : "User"}}</td>
-                                                <td>{{$user->status == 1 ? "Kích hoạt" : "Chưa kích hoạt"}}</td>
+                                                <td>{{$user->status == 1 ? trans('user.active') : trans('user.inactive')}}</td>
                                                 <td>
                                                     <a href="{{route('get-user-edit',['id'=>$user->id])}}">
 <span title="Edit" type="button" class="btn btn-flat btn-sm btn-primary">
 <i class="fa fa-edit"></i>
 </span>
                                                     </a>
-                                                    <span onclick="deleteItem({{$user->id}});" title="Xóa" class="btn btn-flat btn-sm btn-danger">
+                                                    <span onclick="deleteItem({{$user->id}});" title="{{trans('user.delete')}}" class="btn btn-flat btn-sm btn-danger">
 <i class="fas fa-trash-alt"></i>
 </span>
 
@@ -178,11 +178,11 @@
 
             }).then((result) => {
                 if (result.value) {
-                    toastr.success('Xóa thành công');
+                    toastr.success({{trans('user.success')}});
                 } else if (
                     result.dismiss === Swal.DismissReason.cancel
                 ) {
-                    toastr.error('Xóa không thành công')
+                    toastr.error({{trans('user.fails')}})
                 }
             })
         }
