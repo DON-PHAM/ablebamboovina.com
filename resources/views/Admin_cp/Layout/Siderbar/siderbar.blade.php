@@ -68,6 +68,12 @@
                         <p>{{trans('home.branch')}}</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('category-list')}}" class="nav-link">
+                        <i class="fas fa-folder-open nav-icon"></i>
+                        <p>{{trans('home.category-product')}}</p>
+                    </a>
+                </li>
                 <li class="nav-link header">
                     <i class="nav-icon  fab fa-shopify "></i>
 
@@ -88,31 +94,15 @@
                                 <p>{{trans('home.order')}}</p>
                             </a>
                         </li>
-                    </ul>
-                </li>
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon  fas fa-folder-open "></i>
-                        <p>
-                            {{trans('home.product-category-manager')}}
-                            <i class="right fas fa-angle-right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
                         <li class="nav-item ">
                             <a href="{{route('product-list')}}" class="nav-link">
                                 <i class="far fa-file-image nav-icon"></i>
                                 <p>{{trans('home.product')}}</p>
                             </a>
                         </li>
-                        <li class="nav-item ">
-                            <a href="{{route('category-list')}}" class="nav-link">
-                                <i class="fas fa-folder-open nav-icon"></i>
-                                <p>{{trans('home.category-product')}}</p>
-                            </a>
-                        </li>
                     </ul>
                 </li>
+
                 <li class="nav-link header">
                     <i class="nav-icon  fas fa-file-signature "></i>
                     <p class="sub-header"> {{trans('home.post')}}</p>

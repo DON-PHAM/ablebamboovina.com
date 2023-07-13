@@ -18,11 +18,11 @@ class PostRepository implements PostService {
 
     public function delete(int $id)
     {
-        $post = $this->post->find($id);
+        $post = $this->post->with(['translates'])->find($id);
         if (!$post) {
             return response()->json(['status' => false], 404);
         }
-        $post->translates->delete();
+        $post->translates()->delete();
         $post->delete();
         return  response()->json(['status'=>true,trans('post.success')]);
     }
@@ -44,8 +44,8 @@ class PostRepository implements PostService {
         $data = [
             'categoryid' => $request->categoryid,
             'slug' => Str::slug($request->vi_name),
-            'hot' => $request->hot == ' on' ? 1 : 0,
-            'status' => $request->status == ' on' ? 1 : 0
+            'hot' => $request->hot == 'on' ? 1 : 0,
+            'status' => $request->status == 'on' ? 1 : 0
         ];
         // Xử lý ảnh sản phẩm
         if ($request->hasFile('image'))
@@ -73,7 +73,36 @@ class PostRepository implements PostService {
 
     public function update(int $id, PostRequest $request)
     {
-        // TODO: Implement update() method.
+        $data = [
+            'categoryid' => $request->categoryid,
+            'slug' => Str::slug($request->vi_name),
+            'hot' => $request->hot == 'on' ? 1 : 0,
+            'status' => $request->status == 'on' ? 1 : 0
+        ];
+        // Xử lý ảnh sản phẩm
+        if ($request->hasFile('image'))
+        {
+            $image = $request->file('image');
+            $image_new = rand().'_product.'.$image->getClientOriginalExtension();
+            $image->move(public_path('upload/post/'),$image_new);
+            $data['image'] = $image_new;
+        }
+        $post = $this->post->find($id);
+        $post->update($data);
+        $languages = ['vi', 'ko'];
+        foreach ($languages as $language) {
+            $postTranslate = [
+                'postid' => $id,
+                'languageid' => $language,
+                'name' => $request->{$language.'_name'},
+                'description' => $request->{$language.'_description'},
+                'content' => $request->{$language.'_content'},
+                'metakeyword' => $request->{$language.'_metakeyword'}
+            ];
+            $update =  $this->postTranslate->where('postid',$id)->where('languageid',$language)->first();
+            $update->update($postTranslate);
+        }
+        return $post;
     }
 
     public function changeStatus(int $id)

@@ -186,6 +186,20 @@
                                 </div>
 
                                 <div class="form-group  row ">
+                                    <label for="image" class="col-sm-2 col-form-label">Danh mục</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" name="categoryid">
+                                            <option disabled >Chọn danh mục</option>
+                                            @if($categories)
+                                                @foreach($categories as $category)
+                                                    <option value="{{$category->id}}">{{$category->name}} </option>
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group  row ">
                                     <label for="image" class="col-sm-2 col-form-label">Hình ảnh</label>
                                     <div class="col-sm-8">
                                         <div class="input-group">
