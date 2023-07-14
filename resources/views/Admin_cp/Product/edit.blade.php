@@ -99,15 +99,15 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0 text-dark">
-                        <i class="fa fa-plus" aria-hidden="true"></i> Tạo sản phẩm
+                        <i class="fa fa-plus" aria-hidden="true"></i>{{trans('product.edit')}}
                     </h1>
                     <div class="more_info"></div>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="https://demo.s-cart.org/sc_admin"><i
-                                    class="fa fa-home fa-1x"></i> Trang chủ</a></li>
-                        <li class="breadcrumb-item active">Tạo sản phẩm</li>
+                        <li class="breadcrumb-item"><a href="{{route('admin')}}"><i
+                                    class="fa fa-home fa-1x"></i>{{trans('home.home')}}</a></li>
+                        <li class="breadcrumb-item active">{{trans('product.edit')}}</li>
                     </ol>
                 </div>
             </div>
@@ -121,12 +121,12 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header with-border">
-                            <h2 class="card-title">Tạo mới một sản phẩm</h2>
+                            <h2 class="card-title">{{trans('product.edit')}}</h2>
                             <div class="card-tools">
                                 <div class="btn-group float-right mr-5">
                                     <a target="_new" href="{{route('admin')}}"
                                        class="btn  btn-flat btn-default" title="List">
-                                        <i class="fa fa-list"></i><span class="hidden-xs"> Trở lại danh sách</span>
+                                        <i class="fa fa-list"></i><span class="hidden-xs"> {{trans('home.back')}}</span>
                                     </a>
                                 </div>
                             </div>
@@ -151,7 +151,7 @@
                                         </div>
                                         <div class="card-body">
                                             <div class="form-group row ">
-                                                <label for="en__name" class="col-sm-2 col-form-label">Tên <span
+                                                <label for="en__name" class="col-sm-2 col-form-label">이름 <span
                                                         class="seo"
                                                         title="SEO"><i
                                                             class="fa fa-coffee" aria-hidden="true"></i></span>
@@ -173,7 +173,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group row   ">
-                                                <label for="ko_metakeyword" class="col-sm-2 col-form-label">Từ khóa
+                                                <label for="ko_metakeyword" class="col-sm-2 col-form-label">키워드
                                                     <span
                                                         class="seo" title="SEO"><i class="fa fa-coffee"
                                                                                    aria-hidden="true"></i></span></label>
@@ -194,7 +194,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group row ">
-                                                <label for="ko_description" class="col-sm-2 col-form-label">Mô tả <span
+                                                <label for="ko_description" class="col-sm-2 col-form-label">설명하다<span
                                                         class="seo" title="SEO"><i class="fa fa-coffee"
                                                                                    aria-hidden="true"></i></span></label>
                                                 <div class="col-sm-8">

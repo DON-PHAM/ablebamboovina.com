@@ -37,22 +37,20 @@
         <div class="row mb-2">
             <div class="col-sm-6">
                 <h1 class="m-0 text-dark">
-                    <i class="fa fa-plus" aria-hidden="true"></i> Tạo sản phẩm
+                    <i class="fa fa-plus" aria-hidden="true"></i>{{trans('product.list-product')}}
                 </h1>
                 <div class="more_info"></div>
             </div>
             <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="https://demo.s-cart.org/sc_admin"><i
-                                    class="fa fa-home fa-1x"></i> Trang chủ</a></li>
-                        <li class="breadcrumb-item active">Tạo sản phẩm</li>
+                        <li class="breadcrumb-item"><a href="{{route('admin')}}"><i
+                                    class="fa fa-home fa-1x"></i> {{trans('home.home')}}</a></li>
+                        <li class="breadcrumb-item active">{{trans('product.add')}}</li>
                     </ol>
                 </div>
             </div>
         </div>
     </div>
-
-
     <section class="content">
         <div class="container-fluid">
             <div class="row">
