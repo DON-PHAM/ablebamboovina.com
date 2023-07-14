@@ -71,7 +71,7 @@
                                                 <a href="{{route('homepage')}}">Tiếp tục mua hàng</a>
                                             </div>
                                             <div class="cart-clear">
-                                                <button type="button">Xóa giỏ hàng</button>
+                                                <button type="button" onclick="deleteCart()">Xóa giỏ hàng</button>
                                             </div>
                                         </div>
                                     </div>
@@ -101,4 +101,11 @@
         </div>
     </div>
 
+@endsection
+@section('script')
+    <script>
+        function deleteCart() {
+            localStorage.removeItem('listProductInCart')
+        }
+    </script>
 @endsection

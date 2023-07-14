@@ -548,6 +548,7 @@
                 temp.push(e)
                 localStorage.setItem('listProductInCart', JSON.stringify(temp))
                 toastr.success('Thêm vào giỏ hàng thành công');
+                $(".item-quantity-tag").html(1)
             } else {
                 const temp = JSON.parse(listProductInCart)
                 const check = temp.find(item => item.id === e.id)
@@ -555,6 +556,7 @@
                     temp.push(e)
                     localStorage.setItem('listProductInCart', JSON.stringify(temp))
                     toastr.success('Thêm vào giỏ hàng thành công');
+                    $(".item-quantity-tag").html(JSON.parse(listProductInCart).length + 1)
                 } else {
                     toastr.warning('Sản phẩm đã có trong giỏ hàng');
                 }
