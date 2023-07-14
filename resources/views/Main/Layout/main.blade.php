@@ -283,6 +283,19 @@
 
 <!-- Main Activation JS -->
 <script src="{{asset('frontend/assets/js/main.js')}}"></script>
+<script>
+    function removeItemFromCart(id) {
+        const idRemove = `#${id}`
+        $(idRemove).remove();
+        const listProductInCart = localStorage.getItem('listProductInCart')
+        if (listProductInCart) {
+            const listProduct = JSON.parse(listProductInCart)
+            let temp = listProduct.filter( el => el.id !== id );
+            localStorage.setItem('listProductInCart', JSON.stringify(temp))
+            $(".item-quantity-tag").html(temp.length)
+        }
+    }
+</script>
 <script type="text/javascript">
     $(document).ready(function () {
         $('#language').change(function () {
@@ -319,14 +332,14 @@
                 var total = 0
                 for (let i = 0; i < listProduct.length; i++) {
                     total = total + parseFloat(listProduct[i].price)
-                    var container = `<li>
+                    var container = `<li id="${listProduct[i].id}">
                         <a href="javascript:void(0)" class="image">
-                            <img  src="{{asset('upload/product')}}/${ listProduct[i].code}/${listProduct[i].image}" alt="Cart product Image">
+                            <img  src="{{asset('upload/product')}}/${listProduct[i].code}/${listProduct[i].image}" alt="Cart product Image">
                         </a>
                         <div class="content">
                             <a href="javascript:void(0)" class="title">${listProduct[i].translate.name}</a>
                             <span class="quantity-price">1 x <span class="amount">${listProduct[i].price}</span></span>
-                            <a href="javascript:void(0)" class="remove">×</a>
+                            <a href="javascript:void(0)" class="remove" onclick="removeItemFromCart(${listProduct[i].id})">×</a>
                         </div>
                     </li>`;
                     $("#offcanvas-cart .minicart-product-list").append(container)
