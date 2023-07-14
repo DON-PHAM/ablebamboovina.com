@@ -17,7 +17,8 @@
     <link rel="stylesheet" href="{{asset('frontend/assets/css/plugins/plugins.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('frontend/assets/css/style.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('frontend/assets/css/responsive.min.css')}}"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
     <link rel="stylesheet" href="{{asset('frontend/assets/css/style.css')}}"/>
     <style>
@@ -249,54 +250,14 @@
     <div id="offcanvas-cart" class="offcanvas offcanvas-cart hover-style-cosmatics">
         <div class="inner">
             <div class="head">
-                <span class="title">Cart</span>
+                <span class="title">Giỏ hàng</span>
                 <button class="offcanvas-close">×</button>
             </div>
             <div class="body customScroll">
-                <ul class="minicart-product-list">
-                    <li>
-                        <a href="javascript:void(0)" class="image"
-                        ><img
-                                src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/mini-cart/1.jpg"
-                                alt="Cart product Image"
-                            /></a>
-                        <div class="content">
-                            <a href="javascript:void(0)" class="title">Juicy Couture...</a>
-                            <span class="quantity-price">1 x <span class="amount">$18.86</span></span>
-                            <a href="javascript:void(0)" class="remove">×</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)" class="image"
-                        ><img
-                                src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/mini-cart/2.jpg"
-                                alt="Cart product Image"
-                            /></a>
-                        <div class="content">
-                            <a href="javascript:void(0)" class="title">Water and Wind...</a>
-                            <span class="quantity-price">1 x <span class="amount">$43.28</span></span>
-                            <a href="javascript:void(0)" class="remove">×</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)" class="image"
-                        ><img
-                                src="https://htmldemo.net/ecolife/ecolife/assets/images/product-image/mini-cart/1.jpg"
-                                alt="Cart product Image"
-                            /></a>
-                        <div class="content">
-                            <a href="javascript:void(0)" class="title">Fila Locker Room...</a>
-                            <span class="quantity-price">1 x <span class="amount">$37.34</span></span>
-                            <a href="javascript:void(0)" class="remove">×</a>
-                        </div>
-                    </li>
-                </ul>
+                <ul class="minicart-product-list"></ul>
             </div>
             <div class="shopping-cart-total">
-                <h4>Subtotal : <span>$20.00</span></h4>
-                <h4>Shipping : <span>$7.00</span></h4>
-                <h4>Taxes : <span>$0.00</span></h4>
-                <h4 class="shop-total">Total : <span>$27.00</span></h4>
+                <h4 class="shop-total">Total : <span class="header-cart-total">00</span></h4>
             </div>
             <div class="foot">
                 <div class="buttons">
@@ -317,7 +278,8 @@
 
 <script src="{{asset('frontend/assets/js/vendor/vendor.min.js')}}"></script>
 <script src="{{asset('frontend/assets/js/plugins/plugins.min.js')}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" crossorigin="anonymous"
+        referrerpolicy="no-referrer"></script>
 
 <!-- Main Activation JS -->
 <script src="{{asset('frontend/assets/js/main.js')}}"></script>
@@ -339,6 +301,39 @@
         setTimeout(function () {
             $('.alert').fadeOut('slow');
         }, 2000);
+
+        // count cart
+        const listProductInCart = localStorage.getItem('listProductInCart')
+        if (!listProductInCart) {
+            $(".item-quantity-tag").html(0)
+        } else {
+            $(".item-quantity-tag").html(JSON.parse(listProductInCart).length)
+        }
+
+        // show popup cart
+        $('.mini-cart-warp').on('click', function () {
+            const listProductInCart = localStorage.getItem('listProductInCart')
+            $("#offcanvas-cart .minicart-product-list").html("")
+            if (listProductInCart) {
+                const listProduct = JSON.parse(listProductInCart)
+                var total = 0
+                for (let i = 0; i < listProduct.length; i++) {
+                    total = total + parseFloat(listProduct[i].price)
+                    var container = `<li>
+                        <a href="javascript:void(0)" class="image">
+                            <img  src="{{asset('upload/product')}}/${ listProduct[i].code}/${listProduct[i].image}" alt="Cart product Image">
+                        </a>
+                        <div class="content">
+                            <a href="javascript:void(0)" class="title">${listProduct[i].translate.name}</a>
+                            <span class="quantity-price">1 x <span class="amount">${listProduct[i].price}</span></span>
+                            <a href="javascript:void(0)" class="remove">×</a>
+                        </div>
+                    </li>`;
+                    $("#offcanvas-cart .minicart-product-list").append(container)
+                }
+                $(".header-cart-total").html(total)
+            }
+        });
     });
 
 </script>

@@ -117,7 +117,7 @@
                                 <div class="mini-cart-warp">
                                     <a href="#offcanvas-cart" class="count-cart color-black offcanvas-toggle">
                                         <span class="amount-tag">100000VNĐ</span>
-                                        <span class="item-quantity-tag">02</span>
+                                        <span class="item-quantity-tag">0</span>
                                     </a>
                                 </div>
                             </div>
@@ -210,7 +210,7 @@
                         <div class="mini-cart-warp">
                             <a href="#offcanvas-cart" class="count-cart color-black offcanvas-toggle">
                                 <span class="amount-tag">$20.00</span>
-                                <span class="item-quantity-tag">02</span>
+                                <span class="item-quantity-tag">0</span>
                             </a>
                         </div>
                     </div>
