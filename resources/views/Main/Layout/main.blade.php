@@ -300,8 +300,8 @@
             </div>
             <div class="foot">
                 <div class="buttons">
-                    <a href="cart.html" class="btn btn-dark btn-hover-primary mb-30px">view cart</a>
-                    <a href="checkout.html" class="btn btn-outline-dark current-btn">checkout</a>
+                    <a href="{{route('cart-page')}}" class="btn btn-dark btn-hover-primary mb-30px">view cart</a>
+                    <a href="{{route('checkout-page')}}" class="btn btn-outline-dark current-btn">checkout</a>
                 </div>
             </div>
         </div>
