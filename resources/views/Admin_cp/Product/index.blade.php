@@ -92,24 +92,7 @@
                                 <div class="menu-right">
                                     <form action="#" id="button_search">
                                         <div class="input-group input-group float-left">
-                                            <select class="form-control rounded-0 select2 select2-hidden-accessible"
-                                                    name="category_id" id="category_id" data-select2-id="category_id"
-                                                    tabindex="-1" aria-hidden="true">
 
-                                            </select><span class="select2 select2-container select2-container--default"
-                                                           dir="ltr" data-select2-id="1" style="width: 195px;"><span
-                                                    class="selection"><span
-                                                        class="select2-selection select2-selection--single"
-                                                        role="combobox" aria-haspopup="true" aria-expanded="false"
-                                                        tabindex="0" aria-disabled="false"
-                                                        aria-labelledby="select2-category_id-container"><span
-                                                            class="select2-selection__rendered"
-                                                            id="select2-category_id-container" role="textbox"
-                                                            aria-readonly="true"
-                                                            title="Chọn danh mục">Chọn danh mục</span><span
-                                                            class="select2-selection__arrow" role="presentation"><b
-                                                                role="presentation"></b></span></span></span><span
-                                                    class="dropdown-wrapper" aria-hidden="true"></span></span> &nbsp;
                                             <input type="text" name="keyword" class="form-control rounded-0 float-right"
                                                    placeholder="Tìm tên và SKU" value="">
                                             <div class="input-group-append">
@@ -173,15 +156,15 @@
                                     <thead>
                                     <tr>
                                         <th></th>
-                                        <th>Hình ảnh</th>
-                                        <th>Tên</th>
-                                        <th>Danh mục</th>
-                                        <th>Giá cost</th>
-                                        <th>Giá sau giảm</th>
-                                        <th>Nhà cung cấp</th>
-                                        <th>Trạng thái</th>
-                                        <th>Sản phẩm HOT</th>
-                                        <th>Thao tác</th>
+                                        <th>{{trans('product.image')}}</th>
+                                        <th>{{trans('product.name')}}</th>
+                                        <th>{{trans('product.category')}}</th>
+                                        <th>{{trans('product.cost-price')}}</th>
+                                        <th>{{trans('product.promotion-price')}}</th>
+                                        <th>{{trans('product.bran')}}</th>
+                                        <th>{{trans('product.status')}}</th>
+                                        <th>{{trans('product.hot')}}</th>
+                                        <th>{{trans('product.action')}}</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -216,9 +199,9 @@
                                                 </td>
                                                 <td>
                                                     <a href="{{route('get-product-edit',$product->id)}}">
-<span title="Sửa" type="button" class="btn btn-flat btn-sm btn-primary">
-<i class="fa fa-edit"></i>
-</span>
+                                                        <span title="Sửa" type="button" class="btn btn-flat btn-sm btn-primary">
+                                                        <i class="fa fa-edit"></i>
+                                                        </span>
                                                     </a>
                                                     <span onclick="deleteItem({{$product->id}});"
                                                           title="Xóa"
@@ -263,13 +246,13 @@
                 },
                 buttonsStyling: true,
             }).fire({
-                title: 'Bạn có chắc chắn sẽ xóa người dùng này?',
+                title: '{{trans('product.message-delete')}}?',
                 text: "",
                 type: 'warning',
                 showCancelButton: true,
-                confirmButtonText: 'Có',
+                confirmButtonText: '{{trans('product.yes')}}',
                 confirmButtonColor: "#DD6B55",
-                cancelButtonText: 'Không',
+                cancelButtonText: '{{trans('product.no')}}',
                 reverseButtons: true,
 
                 preConfirm: function() {

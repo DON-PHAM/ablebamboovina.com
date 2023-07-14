@@ -7,15 +7,15 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0 text-dark">
-                        <i class="fa fa-indent" aria-hidden="true"></i> Page list
+                        <i class="fa fa-indent" aria-hidden="true"></i> {{trans('event.list-event')}}
                     </h1>
                     <div class="more_info"></div>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="https://demo.s-cart.org/sc_admin"><i
-                                    class="fa fa-home fa-1x"></i> Home</a></li>
-                        <li class="breadcrumb-item active">Page list</li>
+                        <li class="breadcrumb-item"><a href="{{route('admin')}}"><i
+                                    class="fa fa-home fa-1x"></i> {{trans('home.home')}}</a></li>
+                        <li class="breadcrumb-item active">{{trans('event.title')}}</li>
                     </ol>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                         <div class="card-header with-border">
                             <div class="card-tools">
                                 <div class="menu-right">
-                                    <form action="https://demo.s-cart.org/sc_admin/page" id="button_search">
+                                    <form action="" id="button_search">
                                         <div class="input-group input-group" style="width: 350px;">
                                             <select class="form-control rounded-0 select2 select2-hidden-accessible"
                                                     name="sort_order" id="sort_order" data-select2-id="sort_order"
