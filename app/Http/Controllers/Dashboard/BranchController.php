@@ -51,7 +51,7 @@ class BranchController extends Controller
             'status'=> $request->status == 'on'? 1: 0
         ];
         $result = $this->branchService->update($id,$data);
-        return redirect()->route('branch-list')->with('success','Sửa thành công');
+        return redirect()->route('branch-list')->with('success',trans('branch.success'));
     }
     public function delete($id) {
         return $this->branchService->delete($id);

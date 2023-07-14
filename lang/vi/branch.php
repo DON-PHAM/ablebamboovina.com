@@ -12,5 +12,11 @@ return [
     'action' => 'Hành động',
     'delete' => 'Bạn có muốn xóa?',
     'yes' => 'có',
-    'no' => 'Không'
+    'no' => 'Không',
+    'message-bran-name' => 'Tên nhà cung cấp không được để trống',
+    'message-bran-phone' => 'số điện thoaại không được để trống',
+    'message-bran-address' => 'Địa chỉ không được để trống',
+    'message-bran-email' => 'Email không được để trống',
+    'message-bran-success' => 'Thành công',
+    'message-bran-fail' => 'Thất bại'
 ];

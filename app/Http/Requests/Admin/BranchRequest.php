@@ -33,10 +33,10 @@ class BranchRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required'=>'Tên nhà cung cấp không được để trống',
-            'phone.required' => 'Số điện thoại nhà cung cấp không được để trống',
-            'address.required' =>'Địa chỉ nhà cung cấp không được để trống',
-            'email.required' => 'Email nhà cung cấp không được để trống',
+            'name.required'=> trans('branch.message-bran-name'),
+            'phone.required' => trans('branch.message-bran-phone'),
+            'address.required' =>trans('branch.message-bran-address'),
+            'email.required' => trans('branch.message-bran-email'),
             'email.email' => 'Email không đúng định dạng!'
         ];
     }
