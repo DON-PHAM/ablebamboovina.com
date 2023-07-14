@@ -2,6 +2,23 @@
 @section('title',trans('Ablebamboovina'))
 @section('content')
 
+    <!-- Breadcrumb Area start -->
+    <section class="breadcrumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="breadcrumb-content">
+                        <h1 class="breadcrumb-hrading">Giới thiệu</h1>
+                        <ul class="breadcrumb-links">
+                            <li><a href="index.html">Trang chủ</a></li>
+                            <li>Giới thiệu</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Area End -->
     <section class="about-area">
         <div class="container">
             <div class="row">
