@@ -235,7 +235,7 @@
                                                 <option selected disabled>Chọn danh mục sản phẩm</option>
                                                 @if($categories)
                                                     @foreach($categories as $category)
-                                                        <option value="{{$category->productcategoryid}}">{{$category->name}}</option>
+                                                        <option value="{{$category->id}}">{{$category->translate->name}}</option>
                                                     @endforeach
                                                 @endif
                                             </select>

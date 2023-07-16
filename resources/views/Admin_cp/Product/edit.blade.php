@@ -314,8 +314,8 @@
                                                     @if($categories)
                                                         @foreach($categories as $category)
                                                             <option
-                                                                @if($product->categoryid == $category->productcategoryid) selected
-                                                                @endif value="{{$category->productcategoryid}}">{{$category->name}}</option>
+                                                                @if($product->categoryid == $category->id) selected
+                                                                @endif value="{{$category->id}}">{{$category->translate->name}}</option>
                                                         @endforeach
                                                     @endif
                                                 </select>

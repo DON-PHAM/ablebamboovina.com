@@ -50,8 +50,8 @@
                         </div>
 
                         @include('Error.message')
-                        @if(count($result) > 1)
-                                <form action="{{route('put-category-edit',$result[0]['productcategoryid'])}}" method="POST"
+                        @if($result)
+                                <form action="{{route('put-category-edit',$result->id)}}" method="POST"
                                       enctype="multipart/form-data">
                                     @csrf
                                     <div class="card-body">
@@ -80,7 +80,7 @@
                                                                     class="fas fa-pencil-alt"></i></span>
                                                             </div>
                                                             <input type="text" id="ko_name" name="ko_name"
-                                                                   value="{{$result[1]['name']}}" class="form-control ko_name" placeholder="">
+                                                                   value="{{$result_ko->name}}" class="form-control ko_name" placeholder="">
                                                         </div>
                                                         <span class="form-text">
 <i class="fa fa-info-circle"></i> Maximum 200 characters
@@ -99,7 +99,7 @@
                                                                     class="fas fa-pencil-alt"></i></span>
                                                             </div>
                                                             <input type="text" id="ko_keyword" name="ko_keyword"
-                                                                   value="{{$result[1]['keyword']}}" class="form-control ko_keyword"
+                                                                   value="{{$result_ko->keyword}}" class="form-control ko_keyword"
                                                                    placeholder="">
                                                         </div>
                                                         <span class="form-text">
@@ -115,7 +115,7 @@
                                                 <textarea type="text" id="ko_description"
                                                           name="ko_description"
                                                           class="form-control ko_description"
-                                                          placeholder="">{{$result[1]['description']}}</textarea>
+                                                          placeholder="">{{$result_ko->description}}</textarea>
                                                         <span class="form-text">
 <i class="fa fa-info-circle"></i> Maximum 300 characters
 </span>
@@ -148,7 +148,7 @@
                                                                     class="fas fa-pencil-alt"></i></span>
                                                             </div>
                                                             <input type="text" id="vi_name" name="vi_name"
-                                                                   value="{{$result[0]['name']}}" class="form-control vi_name" placeholder="">
+                                                                   value="{{$result_vi->name}}" class="form-control vi_name" placeholder="">
                                                         </div>
                                                         <span class="form-text">
 <i class="fa fa-info-circle"></i> Maximum 200 characters
@@ -167,7 +167,7 @@
                                                                     class="fas fa-pencil-alt"></i></span>
                                                             </div>
                                                             <input type="text" id="vi_keyword" name="vi_keyword"
-                                                                   value="{{$result[0]['keyword']}}" class="form-control vi_keyword"
+                                                                   value="{{$result_vi->keyword}}" class="form-control vi_keyword"
                                                                    placeholder="">
                                                         </div>
                                                         <span class="form-text">
@@ -183,7 +183,7 @@
                                                 <textarea type="text" id="vi_description"
                                                           name="vi_description"
                                                           class="form-control vi_description"
-                                                          placeholder="">{{$result[0]['description']}}</textarea>
+                                                          placeholder="">{{$result_vi->description}}</textarea>
                                                         <span class="form-text">
 <i class="fa fa-info-circle"></i> Maximum 300 characters
 </span>
@@ -195,7 +195,35 @@
                                             <label for="image" class="col-sm-2 col-form-label">{{trans('category.image')}}</label>
                                             <div class="col-sm-8">
                                                 <input type="file" onchange="readURL(this);" name="image"/>
-                                                <img id="blah" src="{{asset('upload/category/'.$result[0]['image'])}}" alt="your image"/>
+                                                <img id="blah" src="{{asset('upload/category/'.$result->image)}}" alt="your image"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row  ">
+                                            <label for="image"
+                                                   class="col-sm-2 col-form-label">{{trans('category.banner')}}</label>
+                                            <div class="col-sm-8">
+                                                <input type="file" onchange="readURLBanner(this);" name="banner"/>
+                                                <img id="banner" src="{{asset('upload/category/'.$result->banner)}}" alt="your image"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row  ">
+                                            <label for="sort"
+                                                   class="col-sm-2 col-form-label">{{trans('category.parent')}}</label>
+                                            <div class="col-sm-8">
+                                                <div class="input-group">
+
+                                                    <select class="form-control" name="parentid">
+                                                        <option value="0">{{trans('category.parent-select')}}</option>
+                                                        @if($categories->isNotEmpty())
+                                                            @foreach($categories as $category)
+                                                                <option
+                                                                    value="{{$category->id}}" @if($result->parentid == $category->id) selected @endif>{{$category->translate->name}}</option>
+                                                            @endforeach
+                                                        @endif
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="form-group row  ">
@@ -204,9 +232,9 @@
                                                 <div class="input-group">
 
                                                     <select class="form-control" name="type">
-                                                        <option value="1" @if($result[0]['typeid'] == 1) selected @endif>
+                                                        <option value="1" @if($result->typeid == 1) selected @endif>
                                                             {{trans('category.product')}}</option>
-                                                        <option value="0" @if($result[0]['typeid'] == 0) selected @endif>
+                                                        <option value="0" @if($result->typeid == 0) selected @endif>
                                                             {{trans('category.new')}}</option>
                                                     </select>
                                                 </div>
@@ -216,7 +244,7 @@
                                         <div class="form-group  row">
                                             <label for="status" class="col-sm-2 col-form-label">{{trans('category.status')}}</label>
                                             <div class="col-sm-8">
-                                                <input name="status" id="status" @if($result[0]['status'] == 1) checked @endif type="checkbox">
+                                                <input name="status" id="status" @if($result->status == 1) checked @endif type="checkbox">
                                             </div>
                                         </div>
                                     </div>
@@ -252,6 +280,18 @@
 
                 reader.onload = function (e) {
                     $('#blah')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        function readURLBanner(input) {
+            if (input.files && input.files[0]) {
+                let reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#banner')
                         .attr('src', e.target.result);
                 };
 

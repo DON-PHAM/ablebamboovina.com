@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('slug');
             $table->string('image');
-            $table->integer('categoryid');
+            $table->integer('parentid');
+            $table->string('banner');
             $table->integer('typeid');
             $table->boolean('status');
             $table->timestamps();
