@@ -23,7 +23,9 @@ class CategoryProductRepository implements CategoryProductService {
             'slug' => Str::Slug($data['vi_name']),
             'status'=> $data['status'] == 'on' ? 1: 0,
             'image'=> $data['image'],
-            'typeid'=>$data['typeid']
+            'typeid'=>$data['typeid'],
+            'banner'=>$data['banner'],
+            'parentid'=>$data['parentid']
         ];
         $result = $this->category->create($category);
 
@@ -53,11 +55,15 @@ class CategoryProductRepository implements CategoryProductService {
         $category = [
             'slug' => Str::Slug($data['vi_name']),
             'status' => isset($data['status']) && $data['status'] == 'on' ? 1 : 0,
-            'typeid' => $data['typeid']
+            'typeid' => $data['typeid'],
+            'parentid'=>$data['parentid']
         ];
 
         if (isset($data['image'])) {
             $category['image'] = $data['image'];
+        }
+        if (isset($data['banner'])) {
+            $category['banner'] = $data['banner'];
         }
 
         $result = $this->category->find($id)->update($category);
@@ -96,9 +102,7 @@ class CategoryProductRepository implements CategoryProductService {
 
     public function getById(int $id)
     {
-        $category = ProductCategory::join('product_category_translates','product_categories.id','=','product_category_translates.productcategoryid')
-            ->where('product_category_translates.productcategoryid','=',$id)
-            ->get(['product_categories.*','product_category_translates.*']);
+        $category = $this->category->with(['translates'])->find($id);
         return $category;
     }
 
@@ -112,12 +116,21 @@ class CategoryProductRepository implements CategoryProductService {
 
     public function getCategoryProduct($locale,$typeid)
     {
-        $category = ProductCategory::join('product_category_translates', 'product_categories.id', '=', 'product_category_translates.productcategoryid')
-            ->where('product_category_translates.languageid', '=', $locale)
-            ->where('product_categories.typeid','=',$typeid)
-            ->where('product_categories.status','=',1)
-            ->paginate(15, ['product_categories.*', 'product_category_translates.*']);
+        $category = $this->category->where('parentid','!=',0)
+            ->where('status',1)
+            ->where('typeid',$typeid)
+            ->with(['translate' => function ($query) use ($locale) {
+                $query->where('languageid', $locale);
+            }])->get();
         return $category;
 
+    }
+
+    public function getCategoryParent($locale)
+    {
+        $category = $this->category->where('parentid',0)->where('status',1)->with(['translate' => function ($query) use ($locale) {
+            $query->where('languageid', $locale);
+        }])->get();
+        return $category;
     }
 }

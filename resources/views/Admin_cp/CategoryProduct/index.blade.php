@@ -87,26 +87,64 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @if($categories)
-                                        <?php $i = 1; ?>
-                                        @foreach($categories as $caterory)
+                                    @if($parentCategories->isNotEmpty())
+                                            <?php $i = 1; ?>
+                                        @foreach($parentCategories as $category)
                                             <tr>
                                                 <td>{{$i}}</td>
-                                                <td><img alt="Toi Ly Son" title="" src="{{asset('upload/category/'.$caterory->image)}}" style=" width:50px; height:50px;"></td>
-                                                <td>{{$caterory->name}}</td>
-                                                <td>{{$caterory->status == 1 ? "Kích hoạt" : "Chưa kích hoạt"}}</td>
-                                                <td>{{$caterory->description}}</td>
-                                                <td>{{$caterory->typeid ==1 ? "Sản phẩm" : "Tin tức"}}</td>
+                                                <td><img alt="Toi Ly Son" title=""
+                                                         src="{{asset('upload/category/'.$category->image)}}"
+                                                         style=" width:50px; height:50px;"></td>
+                                                <td>{{$category->name}}</td>
+                                                <td>{{$category->status == 1 ? "Kích hoạt" : "Chưa kích hoạt"}}</td>
+                                                <td>{{$category->description}}</td>
+                                                <td>{{$category->typeid ==1 ? "Sản phẩm" : "Tin tức"}}</td>
                                                 <td>
-                                                    <a href="{{route('get-category-edit',$caterory->productcategoryid)}}">
+                                                    <a href="{{route('get-category-edit',$category->productcategoryid)}}">
 <span title="Edit" type="button" class="btn btn-flat btn-sm btn-primary">
 <i class="fa fa-edit"></i>
 </span>
                                                     </a>
-                                                    <a href="{{route('delete-category-edit',$caterory->productcategoryid)}}" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                                    <a href="{{route('delete-category-edit',$category->productcategoryid)}}"
+                                                       class="btn btn-flat btn-sm btn-danger"><i
+                                                            class="fas fa-trash-alt"></i></a>
 
                                                 </td>
                                             </tr>
+                                            @if($subCategories->isNotEmpty())
+                                                    <?php
+                                                        $subcategory = $subCategories->where('parentid', $category->productcategoryid);
+                                                    ?>
+
+                                                @if($subcategory->isNotEmpty())
+
+                                                    @foreach($subcategory as $sub)
+
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><img alt="Toi Ly Son" title=""
+                                                                     src="{{asset('upload/category/'.$sub->image)}}"
+                                                                     style=" width:50px; height:50px;"></td>
+                                                            <td>----- {{$sub->name}}</td>
+                                                            <td>{{$sub->status == 1 ? "Kích hoạt" : "Chưa kích hoạt"}}</td>
+                                                            <td>{{$sub->description}}</td>
+                                                            <td>{{$sub->typeid ==1 ? "Sản phẩm" : "Tin tức"}}</td>
+                                                            <td>
+                                                                <a href="{{route('get-category-edit',$sub->productcategoryid)}}">
+<span title="Edit" type="button" class="btn btn-flat btn-sm btn-primary">
+<i class="fa fa-edit"></i>
+</span>
+                                                                </a>
+                                                                <a href="{{route('delete-category-edit',$sub->productcategoryid)}}"
+                                                                   class="btn btn-flat btn-sm btn-danger"><i
+                                                                        class="fas fa-trash-alt"></i></a>
+
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                @endif
+                                            @endif
+                                            {{$i++}}
                                         @endforeach
                                     @endif
 

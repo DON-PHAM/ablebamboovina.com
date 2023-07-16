@@ -178,12 +178,42 @@
                                     </div>
                                 </div>
                                 <div class="form-group row  ">
-                                    <label for="image" class="col-sm-2 col-form-label">{{trans('category.image')}}</label>
+                                    <label for="image"
+                                           class="col-sm-2 col-form-label">{{trans('category.image')}}</label>
                                     <div class="col-sm-8">
                                         <input type="file" onchange="readURL(this);" name="image"/>
                                         <img id="blah" src="http://placehold.it/180" alt="your image"/>
                                     </div>
                                 </div>
+
+                                <div class="form-group row  ">
+                                    <label for="image"
+                                           class="col-sm-2 col-form-label">{{trans('category.banner')}}</label>
+                                    <div class="col-sm-8">
+                                        <input type="file" onchange="readURLBanner(this);" name="banner"/>
+                                        <img id="banner" src="http://placehold.it/180" alt="your image"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row  ">
+                                    <label for="sort"
+                                           class="col-sm-2 col-form-label">{{trans('category.parent')}}</label>
+                                    <div class="col-sm-8">
+                                        <div class="input-group">
+
+                                            <select class="form-control" name="parentid">
+                                                <option value="0">{{trans('category.parent-select')}}</option>
+                                                @if($categories->isNotEmpty())
+                                                    @foreach($categories as $category)
+                                                        <option
+                                                            value="{{$category->id}}">{{$category->translate->name}}</option>
+                                                    @endforeach
+                                                @endif
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="form-group row  ">
                                     <label for="sort" class="col-sm-2 col-form-label">{{trans('category.type')}}</label>
                                     <div class="col-sm-8">
@@ -234,6 +264,19 @@
 
                 reader.onload = function (e) {
                     $('#blah')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function readURLBanner(input) {
+            if (input.files && input.files[0]) {
+                let reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#banner')
                         .attr('src', e.target.result);
                 };
 
