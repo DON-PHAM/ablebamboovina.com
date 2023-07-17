@@ -133,4 +133,12 @@ class CategoryProductRepository implements CategoryProductService {
         }])->get();
         return $category;
     }
+
+    public function getCategoryChildren($locale, $parentId)
+    {
+        $category = $this->category->where('parentid', $parentId)->where('status',1)->with(['translate' => function ($query) use ($locale) {
+            $query->where('languageid', $locale);
+        }])->get();
+        return $category;
+    }
 }

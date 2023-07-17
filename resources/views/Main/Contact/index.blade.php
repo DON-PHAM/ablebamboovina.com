@@ -9,7 +9,7 @@
                     <div class="breadcrumb-content">
                         <h1 class="breadcrumb-hrading">Contact Page</h1>
                         <ul class="breadcrumb-links">
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="{{route('homepage')}}">Home</a></li>
                             <li>Contact Us</li>
                         </ul>
                     </div>

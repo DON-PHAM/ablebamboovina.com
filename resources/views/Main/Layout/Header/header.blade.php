@@ -139,7 +139,19 @@
                         <div class="beauty-category vertical-menu">
                             <h3 class="vertical-menu-heading vertical-menu-toggle">Danh mục</h3>
                             <ul class="vertical-menu-wrap open-menu-toggle">
-                                <li><a href="#">Sắc đẹp & Sức khỏe</a></li>
+                                <li class="menu-dropdown">
+                                    <a href="#">Sắc đẹp & Sức khỏe<i class="ion-ios-arrow-down"></i></a>
+                                    <ul class="mega-menu-wrap">
+                                        <li>
+                                            <ul>
+                                                <li><a href="#">Mắt</a></li>
+                                                <li><a href="#">Môi</a></li>
+                                                <li><a href="#">Mặt</a></li>
+                                                <li><a href="#">Dụng cụ trang điểm</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
                                 <li><a href="#">Massage & Thư giãn</a></li>
                                 <li><a href="#">Sơn Móng Gel</a></li>
                                 <li><a href="#">Dụng cụ trang điểm</a></li>
@@ -154,16 +166,20 @@
                                     <a href="{{ route('shop-page') }}">Cửa hàng</a>
                                 </li>
                                 <li class="menu-dropdown">
-                                    <a href="#">Trang <i class="ion-ios-arrow-down"></i></a>
-                                    <ul class="sub-menu">
-                                        <li><a href="{{ route('about-page') }}">Giới thiệu</a></li>
-                                        <li><a href="">Chính sách</a></li>
-                                    </ul>
+                                    <a href="{{ route('promotion-client-page') }}">Khuyến mãi</a>
                                 </li>
                                 <li class="menu-dropdown">
-                                    <a href="#">Blog</a>
+                                    <a href="{{ route('review-client-page') }}">Đánh giá</a>
                                 </li>
-                                <li><a href="{{ route('contact-page') }}">Liên hệ</a></li>
+                                <li class="menu-dropdown">
+                                    <a href="{{ route('event-client-page') }}">Sự kiện</a>
+                                </li>
+                                <li class="menu-dropdown">
+                                    <a href="{{ route('about-page') }}">Giới thiệu</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('contact-page') }}">Liên hệ</a>
+                                </li>
                             </ul>
                         </div>
                         <!--Main Navigation End -->

@@ -29,3 +29,23 @@
 .contact-form {
     padding: 40px 110px 40px 110px;
 }
+.category-slider.owl-nav-style .owl-nav>div.owl-next {
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.category-slider.owl-nav-style .owl-nav>div.owl-prev {
+    top: 50%;
+    transform: translateY(-50%);
+    right: auto;
+    left: -40px;
+}
+.vertical-menu ul li ul.mega-menu-wrap {
+    width: 270px;
+}
+.vertical-menu ul li ul.mega-menu-wrap>li {
+    width: 100%;
+}
+.offcanvas .inner .offcanvas-menu ul li .sub-menu li a {
+    color: #fff;
+}

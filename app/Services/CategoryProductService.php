@@ -14,4 +14,6 @@ interface CategoryProductService
     public function getAll(string $locale);
     public function getCategoryProduct($locale,$typeid);
     public function getCategoryParent($locale);
+
+    public function getCategoryChildren($locale, $parentId);
 }
