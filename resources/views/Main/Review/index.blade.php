@@ -22,20 +22,19 @@
     <section class="about-area">
         <div class="container">
             <div class="row">
-                @if($products)
-                    @foreach($products as $product)
-                        @if($product->status == 1)
+                @if($videos)
+                    @foreach($videos as $video)
+                        @if($video->status == 1)
                             <div class="col-6 col-sm-4 col-md-3 mb-3">
                                 <article class="list-product mb-30px">
-                                    <div class="img-block">
-                                        <a href="{{route('detail-page',$product->id)}}" class="thumbnail">
-                                            <img
-                                                style="max-width: 100%"
-                                                class="first-img"
-                                                src="{{asset('upload/product/'.$product->code.'/'.$product->image)}}"
-                                                alt=""
-                                            />
-                                        </a>
+                                    <div class="img-block text-center">
+                                        <video id="video" autoplay width="300"
+                                               src="{{asset('upload/video/'.$video->video)}}" height="300"
+                                               controls></video>
+                                        <div class="mt-1 mb-3 px-2"
+                                             style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; height: 48px">
+                                            {{$video->name}}
+                                        </div>
                                     </div>
                                 </article>
                             </div>

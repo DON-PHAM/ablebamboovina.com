@@ -163,9 +163,6 @@
                         <div class="main-navigation">
                             <ul>
                                 <li class="menu-dropdown">
-                                    <a href="{{ route('shop-page') }}">Cửa hàng</a>
-                                </li>
-                                <li class="menu-dropdown">
                                     <a href="{{ route('promotion-client-page') }}">Khuyến mãi</a>
                                 </li>
                                 <li class="menu-dropdown">
