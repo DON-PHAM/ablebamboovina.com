@@ -1,7 +1,13 @@
 @extends('Admin_cp.Layout.master')
 @section('title',trans('video.title'))
 @section('content')
-
+    <style>
+        video
+        {
+            border: 1px solid black;
+            display: block;
+        }
+    </style>
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -38,7 +44,7 @@
                             </div>
                         </div>
 
-
+                        @include('Error.message')
                         <form action="{{route('post-video-create')}}" method="post" accept-charset="UTF-8"
                               class="form-horizontal" id="form-main" enctype="multipart/form-data">
                             @csrf
@@ -56,24 +62,12 @@
                                     </div>
                                 </div>
                                 <div class="form-group  row ">
-                                    <label for="username" class="col-sm-2  control-label">{{trans('video.link')}}</label>
-                                    <div class="col-sm-8">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fas fa-pencil-alt"></i></span>
-                                            </div>
-                                            <input type="text" id="link" name="link" value="{{old('link')}}"
-                                                   class="form-control link" placeholder="">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group  row ">
                                     <label for="username" class="col-sm-2  control-label">{{trans('video.status')}}</label>
                                     <div class="col-sm-8">
                                         <div class="input-group">
-                                            <input type="checkbox" id="status" name="status"
-                                                   class="form-control link" placeholder="">
+                                            <input id="file-input" type="file" name="video" accept="video/*">
+
+                                            <video id="video" width="300" height="300" controls></video>
                                         </div>
                                     </div>
                                 </div>
@@ -101,4 +95,30 @@
 
 @endsection
 @section('script')
+    <script>
+        const input = document.getElementById('file-input');
+        const video = document.getElementById('video');
+        const videoSource = document.createElement('source');
+
+        input.addEventListener('change', function() {
+            const files = this.files || [];
+
+            if (!files.length) return;
+
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                videoSource.setAttribute('src', e.target.result);
+                video.appendChild(videoSource);
+                video.load();
+                video.play();
+            };
+
+            reader.onprogress = function (e) {
+                console.log('progress: ', Math.round((e.loaded * 100) / e.total));
+            };
+
+            reader.readAsDataURL(files[0]);
+        });
+    </script>
 @endsection

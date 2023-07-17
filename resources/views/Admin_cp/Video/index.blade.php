@@ -1,22 +1,10 @@
 @extends('Admin_cp.Layout.master')
 @section('content')
     <style>
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            padding-top: 30px;
-            height: 0;
-            overflow: hidden;
-        }
-
-        .video-container iframe,
-        .video-container object,
-        .video-container embed {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        video
+        {
+            border: 1px solid black;
+            display: block;
         }
     </style>
     <div class="content-header">
@@ -120,7 +108,7 @@
                                                 <td>{{$video->name}}</td>
                                                 <td>
                                                     <div class="video-container">
-                                                        <iframe src="{{$video->link}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                        <video id="video" autoplay width="300" src="{{asset('upload/video/'.$video->video)}}" height="300" controls></video>
                                                     </div>
                                                 </td>
                                                 <td>{{$video->status == 1 ? "Kích hoạt" : "Chưa kích hoạt"}}</td>
