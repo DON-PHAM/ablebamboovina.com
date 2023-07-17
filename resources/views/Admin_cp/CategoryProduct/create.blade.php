@@ -191,7 +191,7 @@
                                            class="col-sm-2 col-form-label">{{trans('category.banner')}}</label>
                                     <div class="col-sm-8">
                                         <input type="file" onchange="readURLBanner(this);" name="banner"/>
-                                        <img id="banner" src="http://placehold.it/180" alt="your image"/>
+                                        <img id="banner" src="" alt="your image"/>
                                     </div>
                                 </div>
 
