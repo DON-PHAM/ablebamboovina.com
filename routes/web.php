@@ -37,6 +37,10 @@ Route::get('about', 'Main\AboutController@index')->name('about-page');
 Route::get('cart', 'Main\CartController@index')->name('cart-page');
 Route::get('checkout', 'Main\CheckoutController@index')->name('checkout-page');
 Route::get('invoice', 'Main\InvoiceController@index')->name('invoice-page');
+Route::get('list-category/{id}', 'Main\CategoryController@index')->name('category-client-page');
+Route::get('product-event', 'Main\EventController@index')->name('event-client-page');
+Route::get('product-review', 'Main\ReviewController@index')->name('review-client-page');
+Route::get('product-promotion', 'Main\PromotionController@index')->name('promotion-client-page');
 
 
 Route::group(['prefix'=>'dashboard','middleware'=>['locale','checkAuth']],function () {

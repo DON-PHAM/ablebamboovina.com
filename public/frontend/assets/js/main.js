@@ -289,32 +289,32 @@
         loop: false,
         nav: true,
         dots: false,
-        margin: 30,
+        margin: 10,
         responsive: {
             0: {
-                items: 1,
+                items: 2,
                 autoplay: true,
                 loop: true,
             },
             360: {
-                items: 1,
+                items: 2,
                 autoplay: true,
                 loop: true,
             },
             576: {
-                items: 1,
+                items: 2,
                 autoplay: true,
                 loop: true,
 
             },
             767: {
-                items: 2,
+                items: 4,
             },
             992: {
-                items: 3,
+                items: 4,
             },
             1200: {
-                items: 3,
+                items: 4,
             }
         }
     })
@@ -381,7 +381,7 @@
                 loop: true,
             },
             576: {
-                items: 2,
+                items: 1,
                 autoplay: true,
                 loop: true,
                 margin: 30,

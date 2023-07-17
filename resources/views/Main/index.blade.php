@@ -2,86 +2,6 @@
 @section('title',trans('Ablebamboovina'))
 @section('content')
 
-    <!-- Beauty Category -->
-    <div class="container-fluid d-lg-none hover-style-cosmatics">
-        <!--=======  category menu  =======-->
-        <div class="hero-side-category">
-            <!-- Category Toggle Wrap -->
-            <div class="category-toggle-wrap">
-                <!-- Category Toggle -->
-                <button class="category-toggle"><i class="fa fa-bars"></i> All Categories</button>
-            </div>
-
-            <!-- Category Menu -->
-            <nav class="category-menu">
-                <ul>
-                    <li class="menu-item-has-children menu-item-has-children-1">
-                        <a href="javascript:void(0)">Beauty & Health<i class="ion-ios-arrow-down"></i></a>
-                        <!-- category submenu -->
-                        <ul class="category-mega-menu category-mega-menu-1">
-                            <li><a href="javascript:void(0)">Makeup</a></li>
-                            <li><a href="javascript:void(0)">Eyes</a></li>
-                            <li><a href="javascript:void(0)">Lips</a></li>
-                            <li><a href="javascript:void(0)">Face</a></li>
-                            <li><a href="javascript:void(0)">Makeup Tools</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children menu-item-has-children-2">
-                        <a href="javascript:void(0)">Skin Care Tools <i class="ion-ios-arrow-down"></i></a>
-                        <!-- category submenu -->
-                        <ul class="category-mega-menu category-mega-menu-2">
-                            <li><a href="javascript:void(0)">Skin Care</a></li>
-                            <li><a href="javascript:void(0)">Face</a></li>
-                            <li><a href="javascript:void(0)">Eyes</a></li>
-                            <li><a href="javascript:void(0)">Body</a></li>
-                            <li><a href="javascript:void(0)">Skin Care Tools</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children menu-item-has-children-3">
-                        <a href="javascript:void(0)">Health Care Tools <i class="ion-ios-arrow-down"></i></a>
-                        <!-- category submenu -->
-                        <ul class="category-mega-menu category-mega-menu-3">
-                            <li><a href="javascript:void(0)">Health Care</a></li>
-                            <li><a href="javascript:void(0)">Massage & Relaxation</a></li>
-                            <li><a href="javascript:void(0)">Household Health Monitors</a></li>
-                            <li><a href="javascript:void(0)">Chinese Medicine</a></li>
-                            <li><a href="javascript:void(0)">Personal Health Care Items</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children menu-item-has-children-4">
-                        <a href="javascript:void(0)">Nail Care Tools <i class="ion-ios-arrow-down"></i></a>
-                        <!-- category submenu -->
-                        <ul class="category-mega-menu category-mega-menu-4">
-                            <li><a href="javascript:void(0)">Nail Art & Tools</a></li>
-                            <li><a href="javascript:void(0)">Gel Nail Polish</a></li>
-                            <li><a href="javascript:void(0)">Nail Drills</a></li>
-                            <li><a href="javascript:void(0)">Nail Dryers</a></li>
-                            <li><a href="javascript:void(0)">Nail Glitter</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="javascript:void(0)">Massage & Relaxation</a></li>
-                    <li><a href="javascript:void(0)">Household Health Monitors</a></li>
-                    <li><a href="javascript:void(0)">Chinese Medicine</a></li>
-                    <li><a href="javascript:void(0)">Gel Nail Polish</a></li>
-                    <li><a href="javascript:void(0)">Makeup Tools</a></li>
-                    <li class="hidden"><a href="javascript:void(0)">Skin Care Tools</a></li>
-                    <li>
-                        <a href="javascript:void(0)" id="more-btn"
-                        ><i class="ion-ios-plus-empty" aria-hidden="true"></i> More Categories</a
-                        >
-                    </li>
-                </ul>
-            </nav>
-        </div>
-
-        <!--=======  End of category menu =======-->
-    </div>
-    <!-- Beauty Category -->
-    <!-- offcanvas overlay start -->
-    <div class="offcanvas-overlay"></div>
-    <!-- offcanvas overlay end -->
-
-    <!-- Header End -->
     <!-- Slider Arae Start -->
     <div class="slider-area">
         <div class="slider-active-3 owl-carousel slider-hm8 owl-dot-style">
@@ -114,16 +34,16 @@
     <!-- Banner Area Start -->
     <div class="banner-3-area">
         <div class="container">
-            <div class="row mb-n-30px">
+            <div class="row mb-n-30px category-slider owl-carousel owl-nav-style">
                 @if($categories)
                     @foreach($categories as $category)
-                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        @if($category->status == 1)
                             <div class="banner-wrapper">
-                                <a href="javascript:void(0)">
+                                <a href="{{route('category-client-page',$category->productcategoryid)}}">
                                     <img src="{{asset('upload/category/'.$category->image)}}" alt=""/>
                                 </a>
                             </div>
-                        </div>
+                        @endif
                     @endforeach
                 @endif
             </div>

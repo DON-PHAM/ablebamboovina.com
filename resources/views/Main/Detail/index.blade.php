@@ -10,7 +10,7 @@
                     <div class="breadcrumb-content">
                         <h1 class="breadcrumb-hrading">Chi tiết sản phẩm</h1>
                         <ul class="breadcrumb-links">
-                            <li><a href="index.html">Trang chủ</a></li>
+                            <li><a href="{{route('homepage')}}">Trang chủ</a></li>
                             <li>{{$product->translate->name}}</li>
                         </ul>
                     </div>
@@ -131,15 +131,9 @@
         <div class="container">
             <div class="description-review-wrapper">
                 <div class="description-review-topbar nav">
-                    <a data-bs-toggle="tab" href="#des-details1">Mô tả</a>
-                    <a class="active" data-bs-toggle="tab" href="#des-details2">Chi tết sản phẩm</a>
+                    <a class="active"  data-bs-toggle="tab" href="#des-details1">Mô tả</a>
                 </div>
                 <div class="tab-content description-review-bottom">
-                    <div id="des-details2" class="tab-pane active">
-                        <div class="product-anotherinfo-wrapper">
-                           {!! $product->translate->description !!}
-                        </div>
-                    </div>
                     <div id="des-details1" class="tab-pane" >
                         <div class="product-description-wrapper">
                             {!! $product->translate->content !!}

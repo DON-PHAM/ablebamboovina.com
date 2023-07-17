@@ -10,7 +10,7 @@
                     <div class="breadcrumb-content">
                         <h1 class="breadcrumb-hrading">Hóa đơn</h1>
                         <ul class="breadcrumb-links">
-                            <li><a href="index.html">Trang chủ</a></li>
+                            <li><a href="{{route('homepage')}}">Trang chủ</a></li>
                             <li>Hóa đơn</li>
                         </ul>
                     </div>

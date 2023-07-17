@@ -10,7 +10,7 @@
                     <div class="breadcrumb-content">
                         <h1 class="breadcrumb-hrading">Shop Page</h1>
                         <ul class="breadcrumb-links">
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="{{route('homepage')}}">Home</a></li>
                             <li>Shop Grid</li>
                         </ul>
                     </div>
