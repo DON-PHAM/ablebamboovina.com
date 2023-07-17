@@ -74,7 +74,6 @@
                             <ul>
                                 <li><a href="#">Giới thiệu</a></li>
                                 <li><a href="#">Liên hệ</a></li>
-                                <li><a href="#">Cửa hàng</a></li>
                             </ul>
                         </div>
                     </div>
