@@ -3,16 +3,16 @@
 namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
-use App\Services\ProductService;
+use App\Services\EventService;
 use Illuminate\Support\Facades\App;
 
 class EventController extends Controller
 {
-    protected $productService;
+    protected $eventService;
 
-    public function __construct(ProductService $productService)
+    public function __construct(EventService $eventService)
     {
-        $this->productService = $productService;
+        $this->eventService = $eventService;
     }
 
     public function index()
@@ -20,7 +20,7 @@ class EventController extends Controller
         $locale = session()->get('locale');
         if ($locale == null)
             $locale = App::getLocale();
-        $products = $this->productService->getAll($locale);
-        return view('Main.Event.index', compact('products'));
+        $events = $this->eventService->getAll($locale);
+        return view('Main.Event.index', compact('events'));
     }
 }

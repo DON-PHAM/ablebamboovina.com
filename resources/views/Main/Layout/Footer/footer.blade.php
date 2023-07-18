@@ -69,11 +69,11 @@
                 <!-- footer single wedget -->
                 <div class="col-md-4 col-lg-4 mt-res-sx-30px mt-res-md-30px">
                     <div class="single-wedge">
-                        <h4 class="footer-herading">Thông tin</h4>
+                        <h4 class="footer-herading">{{trans('homepage.info')}}</h4>
                         <div class="footer-links">
                             <ul>
-                                <li><a href="#">Giới thiệu</a></li>
-                                <li><a href="#">Liên hệ</a></li>
+                                <li><a href="#">{{trans('homepage.intro')}}</a></li>
+                                <li><a href="#">{{trans('homepage.contact')}}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -84,8 +84,8 @@
                         <h4 class="footer-herading">Links</h4>
                         <div class="footer-links">
                             <ul>
-                                <li><a href="#">Đăng nhập</a></li>
-                                <li><a href="#">Tài khoản</a></li>
+                                <li><a href="#">{{trans('homepage.login')}}</a></li>
+                                <li><a href="#">{{trans('homepage.account')}}</a></li>
                             </ul>
                         </div>
                     </div>
