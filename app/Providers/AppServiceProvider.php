@@ -8,6 +8,7 @@ use App\Repositories\CategoryPostRepository;
 use App\Repositories\CategoryProductRepository;
 use App\Repositories\EventRepository;
 use App\Repositories\FeedbackRepository;
+use App\Repositories\PaymentRepository;
 use App\Repositories\PostRepository;
 use App\Repositories\ProductRepository;
 use App\Repositories\SettingRespository;
@@ -20,6 +21,9 @@ use App\Services\CategoryPostService;
 use App\Services\CategoryProductService;
 use App\Services\EventService;
 use App\Services\FeedbackService;
+use App\Services\IPaymentDetailService;
+use App\Services\PaymentDetailService;
+use App\Services\PaymentService;
 use App\Services\PostService;
 use App\Services\ProductService;
 use App\Services\SettingService;
@@ -69,6 +73,12 @@ class AppServiceProvider extends ServiceProvider
         );
         $this->app->bind(
             EventService::class,EventRepository::class
+        );
+        $this->app->bind(
+            PaymentService::class,PaymentRepository::class
+        );
+        $this->app->bind(
+            IPaymentDetailService::class,PaymentDetailService::class
         );
     }
 

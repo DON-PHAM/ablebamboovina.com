@@ -175,7 +175,7 @@ class ProductRepository implements ProductService {
 
     public function showHomeById(int $id)
     {
-        $products = $this->product->with(['images', 'translate','category','branch'])->find($id);
+        $products = $this->product->with(['images', 'translate','category','branch','review'])->find($id);
         return $products;
     }
 

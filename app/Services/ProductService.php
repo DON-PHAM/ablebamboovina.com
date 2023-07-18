@@ -18,4 +18,5 @@ interface ProductService
     public function changeProductHot(int $id);
 
     public function deleteImage(int $idimage);
+
 }
