@@ -57,7 +57,7 @@
                 <div class="col-md-12">
                     <!-- Section Title -->
                     <div class="section-title">
-                        <h2>Bán chạy nhất</h2>
+                        <h2>{{trans('homepage.bestseller')}}</h2>
                     </div>
                     <!-- Section Title -->
                 </div>
@@ -101,7 +101,7 @@
                                         <ul class="d-flex justify-content-center">
                                             <li class="cart">
                                                 <button class="cart-btn add-to-cart" onclick="addToCart({{$product}})">
-                                                    Thêm vào giỏ hàng
+                                                    {{trans('homepage.addToCart')}}
                                                 </button>
                                             </li>
                                         </ul>
@@ -125,7 +125,7 @@
                         <div class="col-md-12">
                             <!-- Section Title -->
                             <div class="section-title">
-                                <h2>Ưu đãi lớn</h2>
+                                <h2>{{trans('homepage.greatDeals')}}</h2>
                             </div>
                             <!-- Section Title End-->
                         </div>
@@ -180,7 +180,7 @@
                                                 <ul class="d-flex justify-content-center">
                                                     <li class="cart">
                                                         <button class="cart-btn add-to-cart" onclick="addToCart({{$product}})">
-                                                            Thêm vào giỏ hàng
+                                                            {{trans('homepage.addToCart')}}
                                                         </button>
                                                     </li>
                                                 </ul>
@@ -199,7 +199,7 @@
                         <div class="col-md-12">
                             <!-- Section Title -->
                             <div class="section-title ml-0px mt-res-sx-30px">
-                                <h2>Hàng mới</h2>
+                                <h2>{{trans('homepage.greatDeals')}}</h2>
                             </div>
                             <!-- Section Title -->
                         </div>
@@ -258,9 +258,9 @@
                                         </div>
                                         <div class="add-to-link">
                                             <ul>
-                                                <li class="cart">=
+                                                <li class="cart">
                                                     <button class="cart-btn add-to-cart" onclick="addToCart({{$product}})">
-                                                        Thêm vào giỏ hàng
+                                                        {{trans('homepage.addToCart')}}
                                                     </button>
                                                 </li>
                                             </ul>
@@ -290,8 +290,8 @@
                                 class="img-responsive"
                             />
                             <div class="single-static-meta">
-                                <h4>Miễn phí vận chuyển</h4>
-                                <p>Tất cả đơn hàng trên 500.000VNĐ</p>
+                                <h4>{{trans('homepage.freeShipping')}}</h4>
+                                <p>{{trans('homepage.freeShipping2')}}</p>
                             </div>
                         </div>
                     </div>
@@ -305,8 +305,8 @@
                                 class="img-responsive"
                             />
                             <div class="single-static-meta">
-                                <h4>Đổi trả miễn phí</h4>
-                                <p>Trong vòng 9 ngày</p>
+                                <h4>{{trans('homepage.freeReturn')}}</h4>
+                                <p>{{trans('homepage.freeReturn2')}}</p>
                             </div>
                         </div>
                     </div>
@@ -320,8 +320,8 @@
                                 class="img-responsive"
                             />
                             <div class="single-static-meta">
-                                <h4>Thanh toán an toàn 100%</h4>
-                                <p>Thanh toán của bạn được chúng tôi đảm bảo tuyệt đối</p>
+                                <h4>{{trans('homepage.securePayment')}}</h4>
+                                <p>{{trans('homepage.securePayment2')}}</p>
                             </div>
                         </div>
                     </div>
@@ -335,8 +335,8 @@
                                 class="img-responsive"
                             />
                             <div class="single-static-meta">
-                                <h4>Hỗ trợ 24/7</h4>
-                                <p>Liên hệ chúng tôi 24/7</p>
+                                <h4>{{trans('homepage.support247')}}</h4>
+                                <p>{{trans('homepage.support247Contact')}}</p>
                             </div>
                         </div>
                     </div>
@@ -353,7 +353,7 @@
                 <div class="col-md-12">
                     <!-- Section title -->
                     <div class="section-title">
-                        <h2>bài viết mới</h2>
+                        <h2>{{trans('homepage.postNew')}}</h2>
                     </div>
                     <!-- Section title -->
                 </div>
@@ -378,7 +378,7 @@
                                 has been the industrys ...
                             </p>
                             <a class="read-more-btn" href="blog-single-left-sidebar.html">
-                                Xem thêm <i class="ion-android-arrow-dropright-circle"></i
+                                {{trans('homepage.readMore')}} <i class="ion-android-arrow-dropright-circle"></i
                                 ></a>
                         </div>
                     </div>
@@ -401,7 +401,7 @@
                                 has been the industrys ...
                             </p>
                             <a class="read-more-btn" href="blog-single-left-sidebar.html">
-                                Xem thêm <i class="ion-android-arrow-dropright-circle"></i
+                                {{trans('homepage.readMore')}} <i class="ion-android-arrow-dropright-circle"></i
                                 ></a>
                         </div>
                     </div>
@@ -424,7 +424,7 @@
                                 has been the industrys ...
                             </p>
                             <a class="read-more-btn" href="blog-single-left-sidebar.html">
-                                Xem thêm <i class="ion-android-arrow-dropright-circle"></i
+                                {{trans('homepage.readMore')}} <i class="ion-android-arrow-dropright-circle"></i
                                 ></a>
                         </div>
                     </div>
@@ -447,7 +447,7 @@
                                 has been the industrys ...
                             </p>
                             <a class="read-more-btn" href="blog-single-left-sidebar.html">
-                                Xem thêm <i class="ion-android-arrow-dropright-circle"></i
+                                {{trans('homepage.readMore')}} <i class="ion-android-arrow-dropright-circle"></i
                                 ></a>
                         </div>
                     </div>
@@ -467,7 +467,7 @@
                 const temp = []
                 temp.push(e)
                 localStorage.setItem('listProductInCart', JSON.stringify(temp))
-                toastr.success('Thêm vào giỏ hàng thành công');
+                toastr.success('{{trans('homepage.addToCart')}} thành công');
                 $(".item-quantity-tag").html(1)
             } else {
                 const temp = JSON.parse(listProductInCart)
@@ -475,7 +475,7 @@
                 if (!check) {
                     temp.push(e)
                     localStorage.setItem('listProductInCart', JSON.stringify(temp))
-                    toastr.success('Thêm vào giỏ hàng thành công');
+                    toastr.success('{{trans('homepage.addToCart')}} thành công');
                     $(".item-quantity-tag").html(JSON.parse(listProductInCart).length + 1)
                 } else {
                     toastr.warning('Sản phẩm đã có trong giỏ hàng');

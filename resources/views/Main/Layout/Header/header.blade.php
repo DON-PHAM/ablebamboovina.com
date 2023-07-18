@@ -6,7 +6,7 @@
                 <!--Left Start-->
                 <div class="col-lg-4 col-md-12">
                     <div class="text-lg-start text-center">
-                        <p class="color-white">Chào mừng tới Ablebamboovina store!</p>
+                        <p class="color-white">{{trans('homepage.welcome')}}</p>
                     </div>
                 </div>
                 <!--Left End-->
@@ -28,7 +28,7 @@
                             </button>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li>
-                                    <a class="dropdown-item" href="javascript:void(0)" style="color: #111111"
+                                    <a class="dropdown-item change-language-fe" data-value="ko" href="javascript:void(0)" style="color: #111111"
                                     >
                                         <img
                                             class="me-2"
@@ -38,7 +38,7 @@
                                         />Korean</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="javascript:void(0)" style="color: #111111"
+                                    <a class="dropdown-item change-language-fe" data-value="vi" href="javascript:void(0)" style="color: #111111"
                                     >
                                         <img
                                             class="me-2"
@@ -55,12 +55,12 @@
                                     class="dropdown-toggle header-action-btn hover-style-cosmatics color-white"
                                     data-bs-toggle="dropdown"
                                 >
-                                    Thiết lập <i class="ion-ios-arrow-down"></i>
+                                    {{trans('homepage.config')}} <i class="ion-ios-arrow-down"></i>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="">Tài khoản</a></li>
-                                    <li><a class="dropdown-item" href="">Thanh toán</a></li>
-                                    <li><a class="dropdown-item" href="">Đăng xuất</a></li>
+                                    <li><a class="dropdown-item" href="">{{trans('homepage.account')}}</a></li>
+                                    <li><a class="dropdown-item" href="">{{trans('homepage.payment')}}</a></li>
+                                    <li><a class="dropdown-item" href="">{{trans('homepage.logout')}}</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -95,7 +95,7 @@
                             <a href="javascript:void(0)"><i class="ion-ios-search-strong"></i></a>
                             <div class="dropdown_search">
                                 <form action="#">
-                                    <input placeholder="Search entire store here ..." type="text"/>
+                                    <input placeholder="{{trans('homepage.searchPlaceholder')}} ..." type="text"/>
                                     <button type="submit"><i class="ion-ios-search-strong"></i></button>
                                 </form>
                             </div>
@@ -105,7 +105,7 @@
                         <div class="contact-link-wrap">
                             <div class="contact-link">
                                 <div class="phone">
-                                    <p>Gọi ngay:</p>
+                                    <p>{{trans('homepage.callNow')}}:</p>
                                     @if(session('setting'))
                                         <a href="tel:{{ session('setting')->tax }}">{{ session('setting')->tax }}</a>
                                     @endif
@@ -239,7 +239,7 @@
         <div class="header-account-list">
             <div class="dropdown-search">
                 <form action="#">
-                    <input placeholder="Search entire store here ..." type="text"/>
+                    <input placeholder="{{trans('homepage.productNew')}} ..." type="text"/>
                     <button type="submit"><i class="ion-ios-search-strong"></i></button>
                 </form>
             </div>
