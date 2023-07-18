@@ -6,6 +6,7 @@ use App\Repositories\AboutRepository;
 use App\Repositories\BranchRepository;
 use App\Repositories\CategoryPostRepository;
 use App\Repositories\CategoryProductRepository;
+use App\Repositories\EventRepository;
 use App\Repositories\FeedbackRepository;
 use App\Repositories\PostRepository;
 use App\Repositories\ProductRepository;
@@ -67,7 +68,7 @@ class AppServiceProvider extends ServiceProvider
             VideoService::class,VideoRepository::class
         );
         $this->app->bind(
-            EventService::class,VideoRepository::class
+            EventService::class,EventRepository::class
         );
     }
 

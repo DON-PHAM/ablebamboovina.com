@@ -18,7 +18,9 @@ return new class extends Migration
             $table->integer('eventid');
             $table->string('languageid');
             $table->string('name');
-            $table->text('contents');
+            $table->text('description');
+            $table->text('content');
+            $table->string('metakeyword');
             $table->timestamps();
         });
     }

@@ -16,6 +16,13 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->string('slug');
+            $table->string('image');
+            $table->string('code');
+            $table->double('discount');
+            $table->decimal('price',15,2);
+            $table->integer('userid');
+            $table->integer('quantity');
+            $table->integer('count');
             $table->boolean('status');
             $table->timestamps();
         });
