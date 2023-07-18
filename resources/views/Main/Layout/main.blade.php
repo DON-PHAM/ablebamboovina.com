@@ -170,8 +170,8 @@
 </script>
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#language').change(function () {
-            let language = $('#language').find(":selected").val();
+        $('.change-language-fe').on('click', function () {
+            let language = $(this).data("value");
             $.ajax({
                 url: "{{ route('change-language',':language') }}".replace(':language', language),
                 type: "get",
@@ -180,12 +180,12 @@
                     location.reload();
                 }
             });
-        });
-        let language = localStorage.getItem('locale');
-        $("#language").val(language);
-        setTimeout(function () {
-            $('.alert').fadeOut('slow');
-        }, 2000);
+        })
+        // let language = localStorage.getItem('locale');
+        // $("#language").val(language);
+        // setTimeout(function () {
+        //     $('.alert').fadeOut('slow');
+        // }, 2000);
 
         // count cart
         const listProductInCart = localStorage.getItem('listProductInCart')
