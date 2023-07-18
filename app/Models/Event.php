@@ -14,39 +14,25 @@ class Event extends Model
         'code',
         'discount',
         'price',
-        'categoryid',
-        'branchid',
         'userid',
         'quantity',
         'count',
         'status',
-        'image',
-        'hot'
+        'image'
     ];
 
     public function images()
     {
-        return $this->hasMany(EventImage::class,'productid');
+        return $this->hasMany(EventImage::class,'eventid');
     }
     public function translate()
     {
-        return $this->hasOne(EventTranslate::class,'productid','id');
+        return $this->hasOne(EventTranslate::class,'eventid','id');
     }
 
     public function translates()
     {
-        return $this->hasMany(EventTranslate::class,'productid','id');
+        return $this->hasMany(EventTranslate::class,'eventid','id');
     }
 
-    public function category()
-    {
-        $locale = session()->get('locale') ?? App::getLocale();
-        return $this->belongsTo(ProductCategoryTranslate::class,'categoryid','productcategoryid')
-            ->where('languageid',$locale);
-    }
-
-    public function branch()
-    {
-        return $this->belongsTo(Branch::class,'branchid');
-    }
 }

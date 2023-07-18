@@ -133,6 +133,6 @@ Route::group(['prefix'=>'dashboard','middleware'=>['locale','checkAuth']],functi
     Route::get('event/edit/{id}','Dashboard\EventController@edit')->name('get-event-edit');
     Route::post('event/edit/{id}','Dashboard\EventController@update')->name('post-event-edit');
     Route::get('event/delete/{id}','Dashboard\EventController@delete')->name('delete-event');
-    Route::get('event/changeStatus/{id}','Dashboard\EventController@changeStatus')->name('changeStatus');
-
+    Route::get('event/changeStatus/{id}','Dashboard\EventController@changeStatus')->name('change-status-event');
+    Route::get('event/deleteImage/{idimage}','Dashboard\EventController@deleteImage')->name('delete-event-image');
 });

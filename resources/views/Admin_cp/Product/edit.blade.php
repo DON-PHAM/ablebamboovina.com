@@ -132,7 +132,7 @@
                             </div>
                         </div>
                         @if($product)
-                            <form action="" method="POST" name="form_name"
+                            <form action="{{route('post-product-edit',$product->id)}}" method="POST" name="form_name"
                                   accept-charset="UTF-8" class="form-horizontal" id="form-main"
                                   enctype="multipart/form-data">
                                 @csrf
