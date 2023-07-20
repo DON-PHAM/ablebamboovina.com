@@ -25,13 +25,13 @@ Route::get('change_language/{language}','Dashboard\HomeController@changLanguage'
 Route::group(['middleware'=>['locale','checkLoggedIn']],function() {
     Route::post('/login','LoginController@login')->name('post-login');
     Route::get('/login','LoginController@show')->name('login');
-    Route::get('/login-fe','Main\LoginController@index')->name('login-page');
-    Route::get('/my-account','Main\MyAccountController@index')->name('my-account-page');
 
 });
 Route::get('logout','LoginController@logout')->name('logout');
 
 //Client
+Route::get('/login-fe','Main\LoginController@index')->name('login-page');
+Route::get('/my-account','Main\MyAccountController@index')->name('my-account-page');
 Route::get('shop', 'Main\ShopController@index')->name('shop-page');
 Route::get('shop', 'Main\ShopController@index')->name('shop-page');
 Route::get('detail/{id}', 'Main\DetailController@index')->name('detail-page');
