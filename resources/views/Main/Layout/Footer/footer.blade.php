@@ -84,8 +84,8 @@
                         <h4 class="footer-herading">Links</h4>
                         <div class="footer-links">
                             <ul>
-                                <li><a href="#">{{trans('homepage.login')}}</a></li>
-                                <li><a href="#">{{trans('homepage.account')}}</a></li>
+                                <li><a href="{{route('login-page')}}">{{trans('homepage.login')}}</a></li>
+                                <li><a href="{{route('my-account-page')}}">{{trans('homepage.account')}}</a></li>
                             </ul>
                         </div>
                     </div>

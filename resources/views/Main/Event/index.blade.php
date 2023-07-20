@@ -10,7 +10,7 @@
                     <div class="breadcrumb-content">
                         <h1 class="breadcrumb-hrading">Sự kiện</h1>
                         <ul class="breadcrumb-links">
-                            <li><a href="{{route('homepage')}}">Trang chủ</a></li>
+                            <li><a href="{{route('homepage')}}">{{trans('home.home')}}</a></li>
                             <li>Sự kiện</li>
                         </ul>
                     </div>
