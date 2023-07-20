@@ -58,7 +58,8 @@
                                     {{trans('homepage.config')}} <i class="ion-ios-arrow-down"></i>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="">{{trans('homepage.account')}}</a></li>
+                                    <li><a class="dropdown-item" href="{{route('login-page')}}">{{trans('homepage.login')}}</a></li>
+                                    <li><a class="dropdown-item" href="{{route('my-account-page')}}">{{trans('homepage.account')}}</a></li>
                                     <li><a class="dropdown-item" href="">{{trans('homepage.payment')}}</a></li>
                                     <li><a class="dropdown-item" href="">{{trans('homepage.logout')}}</a></li>
                                 </ul>

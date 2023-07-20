@@ -6,6 +6,7 @@ return [
     'payment' => 'Thanh toán',
     'logout' => 'Đăng xuất',
     'login' => 'Đăng nhập',
+    'register' => 'Đăng ký',
     'callNow' => 'Gọi ngay',
     'searchPlaceholder' => 'Tìm kiếm',
     'bestseller' => 'Bán chạy nhất',

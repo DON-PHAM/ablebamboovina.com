@@ -6,6 +6,7 @@ return [
     'payment' => '결제',
     'logout' => '로그아웃',
     'login' => '로그인',
+    'register' => '등록하다',
     'callNow' => '지금 전화',
     'searchPlaceholder' => '검색',
     'bestseller' => '베스트셀러',
