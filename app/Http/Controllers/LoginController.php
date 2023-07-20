@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Admin\LoginRequest;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
+use App\Http\Requests\RegisterRequest;
+use App\Mail\VerifyEmail;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
+
 
 class LoginController extends Controller
 {
@@ -27,11 +31,18 @@ class LoginController extends Controller
         {
             return redirect()->to('login')->withErrors(trans('message.inactive'));
         }
+        else if($user->email_verification_token != null)
+        {
+            return redirect()->to('login')->withErrors(trans('message.inverify'));
+        }
         Auth::login($user);
-        // Store user information in session
         Session::put('user', $user);
-        //Log::info('Login success with user:', $user);
-        return redirect()->route('admin');
+        if ($user->role == 1)
+        {
+            return redirect()->route('admin');
+        }
+        return  redirect()->route('homepage');
+
     }
 
     public function logOut() {
@@ -39,8 +50,41 @@ class LoginController extends Controller
         Auth::logout();
         return redirect('login');
     }
-    protected function authenticated(Request $request, $user)
+
+    public function register()
     {
-        return redirect()->intended();
+        return view('User.register');
     }
+    public function postRegister(RegisterRequest $request)
+    {
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'username' => $request->username,
+            'phonenumber' => $request->phonenumber ? $request->phonenumber : '',
+            'avatar' => '',
+            'status' => 1,
+            'role' => 0,
+            'email_verification_token'=>Str::random()
+        ]);
+        $url = url('/verify-email/'.$user->id.'/'.$user->email_verification_token);
+        Mail::to($user->email)->send(new VerifyEmail($user,$url));
+        return redirect()->route('login')->with(['success'=>trans('user.register-success')]);
+    }
+    public function verifyEmail($id, $token)
+    {
+        $user = User::find($id);
+
+        if ($user && $user->email_verification_token == $token) {
+            $user->email_verified_at = now();
+            $user->email_verification_token = null;
+            $user->save();
+            return redirect('/login')->with('success', 'Your email has been verified. Please log in.');
+        } else {
+            return redirect('/register')->with('error', 'Invalid verification link.');
+        }
+    }
+
+
 }
