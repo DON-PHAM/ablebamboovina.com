@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder
              'password' => Hash::make('admin@123'),
              'status' => 1,
              'role' => 1,
-             'avatar' => ''
+             'avatar' => '',
+             'email_verification_token' => ''
          ]);
     }
 }

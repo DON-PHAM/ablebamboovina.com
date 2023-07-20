@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('password');
             $table->boolean('status');
             $table->integer('role');
+            $table->string('email_verification_token')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

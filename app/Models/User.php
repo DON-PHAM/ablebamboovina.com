@@ -26,7 +26,8 @@ class User extends Authenticatable
         'phonenumber',
         'avatar',
         'status',
-        'role'
+        'role',
+        'email_verification_token'
     ];
 
     /**

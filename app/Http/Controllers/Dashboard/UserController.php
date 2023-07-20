@@ -108,14 +108,32 @@ class UserController extends Controller
             return redirect()->route('user')->with('error', 'Xóa thất bại');
         }
     }
+
     public function profile()
     {
         $user = Session::get('user');
-        return view('Admin_cp.Users.profile',compact('user'));
+        return view('Admin_cp.Users.profile', compact('user'));
     }
+
     public function postProfile(Request $request)
     {
 
+    }
+
+    public function changePassword(Request $request)
+    {
+        $user = Auth::user();
+        $currentPassword = $user->password;
+        $newPassword = Hash::make($request->password);
+        if (Hash::check($request->password, $currentPassword)) {
+            $user->password = $newPassword;
+            $user->save();
+            return redirect()->back()->with('success', 'Password changed successfully!');
+        }
+        else
+        {
+            return redirect()->back()->with('error', 'Your current password is incorrect.');
+        }
     }
 
 

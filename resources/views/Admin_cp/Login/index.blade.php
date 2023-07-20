@@ -81,6 +81,7 @@
 
 
         </div>
+        <a href="{{route('register')}}">Đăng ký</a>
     </form>
 </div>
 

@@ -16,32 +16,33 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware'], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
-//Route::get('/', function () {
-//    return view('welcome');
-//})->name('home');
-Route::get('/', 'Main\Homecontroller@index')->name('homepage');
+
 Route::get('change_language/{language}','Dashboard\HomeController@changLanguage')
     ->name('change-language');
-Route::group(['middleware'=>['locale','checkLoggedIn']],function() {
-    Route::post('/login','LoginController@login')->name('post-login');
-    Route::get('/login','LoginController@show')->name('login');
-
+Route::group(['middleware'=>'locale'],function () {
+    Route::get('/', 'Main\Homecontroller@index')->name('homepage');
+    Route::get('shop', 'Main\ShopController@index')->name('shop-page');
+    Route::get('detail/{id}', 'Main\DetailController@index')->name('detail-page');
+    Route::get('contact', 'Main\ContactController@index')->name('contact-page');
+    Route::post('contact/postCreate','Main\ContactController@postCreate')->name('post-contact-create');
+    Route::get('about', 'Main\AboutController@index')->name('about-page');
+    Route::get('cart', 'Main\CartController@index')->name('cart-page');
+    Route::get('checkout', 'Main\CheckoutController@index')->name('checkout-page');
+    Route::get('invoice', 'Main\InvoiceController@index')->name('invoice-page');
+    Route::get('list-category/{id}', 'Main\CategoryController@index')->name('category-client-page');
+    Route::get('product-event', 'Main\EventController@index')->name('event-client-page');
+    Route::get('product-review', 'Main\ReviewController@index')->name('review-client-page');
+    Route::get('product-promotion', 'Main\PromotionController@index')->name('promotion-client-page');
+    Route::get('create-user','LoginController@register')->name('register');
+    Route::post('postCreateUser','LoginController@postRegister')->name('post-register');
+    Route::get('verify-email/{id}/{token}','LoginController@verifyEmail')->name('verifyEmail');
 });
+ Route::group(['middleware'=>['locale','checkLoggedIn']],function() {
+     Route::post('/login','LoginController@login')->name('post-login');
+     Route::get('/login','LoginController@show')->name('login');
+
+ });
 Route::get('logout','LoginController@logout')->name('logout');
-
-Route::get('shop', 'Main\ShopController@index')->name('shop-page');
-Route::get('detail/{id}', 'Main\DetailController@index')->name('detail-page');
-Route::get('contact', 'Main\ContactController@index')->name('contact-page');
-Route::post('contact/postCreate','Main\ContactController@postCreate')->name('post-contact-create');
-Route::get('about', 'Main\AboutController@index')->name('about-page');
-Route::get('cart', 'Main\CartController@index')->name('cart-page');
-Route::get('checkout', 'Main\CheckoutController@index')->name('checkout-page');
-Route::get('invoice', 'Main\InvoiceController@index')->name('invoice-page');
-Route::get('list-category/{id}', 'Main\CategoryController@index')->name('category-client-page');
-Route::get('product-event', 'Main\EventController@index')->name('event-client-page');
-Route::get('product-review', 'Main\ReviewController@index')->name('review-client-page');
-Route::get('product-promotion', 'Main\PromotionController@index')->name('promotion-client-page');
-
 
 Route::group(['prefix'=>'dashboard','middleware'=>['locale','checkAuth']],function () {
 
