@@ -10,7 +10,7 @@
                     <div class="breadcrumb-content">
                         <h1 class="breadcrumb-hrading">Chi tiết sản phẩm</h1>
                         <ul class="breadcrumb-links">
-                            <li><a href="{{route('homepage')}}">Trang chủ</a></li>
+                            <li><a href="{{route('homepage')}}">{{trans('home.home')}}</a></li>
                             <li>{{$product->translate->name}}</li>
                         </ul>
                     </div>
