@@ -23,7 +23,7 @@ class CheckLoggedIn
             {
                 return redirect()->route('admin');
             }
-            return redirect()->route('home'); // Chuyển hướng người dùng đến trang dashboard nếu đã đăng nhập
+            return redirect()->route('homepage'); // Chuyển hướng người dùng đến trang dashboard nếu đã đăng nhập
         }
 
         return $next($request);

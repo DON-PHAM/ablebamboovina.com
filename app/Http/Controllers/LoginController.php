@@ -46,9 +46,16 @@ class LoginController extends Controller
     }
 
     public function logOut() {
+        if (Auth::user()->role == 1)
+        {
+            Session::flush();
+            Auth::logout();
+            return redirect('login');
+        }
         Session::flush();
         Auth::logout();
-        return redirect('login');
+        return redirect()->back();
+
     }
 
     public function register()

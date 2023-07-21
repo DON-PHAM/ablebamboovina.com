@@ -39,7 +39,7 @@
                     @foreach($categories as $category)
                         @if($category->status == 1)
                             <div class="banner-wrapper">
-                                <a href="{{route('category-client-page',$category->productcategoryid)}}">
+                                <a href="{{route('category-client-page',$category->translate->productcategoryid)}}">
                                     <img src="{{asset('upload/category/'.$category->image)}}" alt=""/>
                                 </a>
                             </div>

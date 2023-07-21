@@ -35,7 +35,7 @@ class Homecontroller extends Controller
             $locale = App::getLocale();
         $products = $this->productService->getAll($locale);
         $sliders = $this->sliderService->getAll();
-        $categories = $this->categoryService->getAll($locale);
+        $categories = $this->categoryService->getCategoryParent($locale);
         return view('Main.index', compact('products', 'sliders', 'categories'));
     }
 

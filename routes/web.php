@@ -36,6 +36,8 @@ Route::group(['middleware'=>'locale'],function () {
     Route::get('create-user','LoginController@register')->name('register');
     Route::post('postCreateUser','LoginController@postRegister')->name('post-register');
     Route::get('verify-email/{id}/{token}','LoginController@verifyEmail')->name('verifyEmail');
+    Route::get('/login-fe','Main\LoginController@index')->name('login-page');
+    Route::get('/my-account','Main\MyAccountController@index')->name('my-account-page');
 });
  Route::group(['middleware'=>['locale','checkLoggedIn']],function() {
      Route::post('/login','LoginController@login')->name('post-login');
