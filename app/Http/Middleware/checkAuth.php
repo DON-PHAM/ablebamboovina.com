@@ -27,7 +27,7 @@ class checkAuth
         if ($this->auth->check())
         {
             if (Auth::user()->role != 1)
-                return redirect()->route('home');
+                return redirect()->route('homepage');
             return $next($request);
         }
         return  redirect('/login');

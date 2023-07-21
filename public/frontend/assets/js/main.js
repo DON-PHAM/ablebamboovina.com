@@ -1243,9 +1243,16 @@
     });
 
 
-    $('.vertical-menu-toggle').on('click', function () {
-        $('.open-menu-toggle').slideToggle(500);
-    });
+    // $('.vertical-menu-toggle').on('click', function () {
+    //     $('.open-menu-toggle').slideToggle(500);
+    // });
+    $('.beauty-category.vertical-menu').hover(
+        function() {
+            $('.open-menu-toggle').slideDown(500);
+        }, function() {
+            $('.open-menu-toggle').slideUp(500);
+        }
+    );
 
     /*--------------------
     Category more toggle
