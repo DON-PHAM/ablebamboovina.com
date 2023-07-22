@@ -3,7 +3,7 @@
 @section('content')
 
     <!-- Breadcrumb Area start -->
-    <section class="breadcrumb-area">
+    <section class="breadcrumb-area 111">
 {{--        <div class="container">--}}
 {{--            <div class="row">--}}
 {{--                <div class="col-md-12">--}}
