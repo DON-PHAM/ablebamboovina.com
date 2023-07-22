@@ -1,9 +1,10 @@
 .breadcrumb-area {
     text-align: center;
     position: relative;
-    padding: 260px 0;
+    padding: 240px 0;
     background: url(../images/breadcrumb-bg.png) no-repeat;
-    background-size: cover;
+    background-size: contain;
+    background-position: center;
 }
 .best-sell-slider .thumbnail img {
     max-height: 250px;
@@ -49,3 +50,31 @@
 .offcanvas .inner .offcanvas-menu ul li .sub-menu li a {
     color: #fff;
 }
+
+@media only screen and (max-width: 1400px) {
+    .breadcrumb-area {
+        padding: 160px 0;
+        background-size: 100%;
+    }
+}
+@media only screen and (max-width: 1199px) {
+    .breadcrumb-area {
+        padding: 150px 0;
+    }
+}
+@media only screen and (max-width: 767px) {
+    .breadcrumb-area {
+        padding: 120px 0;
+    }
+}
+@media only screen and (max-width: 639px) {
+    .breadcrumb-area {
+        padding: 90px 0;
+    }
+}
+@media only screen and (max-width: 480px) {
+    .breadcrumb-area {
+        padding: 70px 0 50px;
+    }
+}
+

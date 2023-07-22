@@ -213,12 +213,12 @@
         margin: 30,
         responsive: {
             0: {
-                items: 1,
+                items: 2,
                 autoplay: true,
                 loop: true,
             },
             360: {
-                items: 1,
+                items: 2,
                 autoplay: true,
                 loop: true,
             },
@@ -371,25 +371,25 @@
         margin: 0,
         responsive: {
             0: {
-                items: 1,
+                items: 2,
                 autoplay: true,
-                loop: true,
+                loop: false,
             },
             360: {
-                items: 1,
+                items: 2,
                 autoplay: true,
-                loop: true,
+                loop: false,
             },
             576: {
-                items: 1,
+                items: 2,
                 autoplay: true,
-                loop: true,
+                loop: false,
                 margin: 30,
             },
             768: {
                 items: 1,
                 autoplay: true,
-                loop: true,
+                loop: false,
             },
         }
     })
@@ -408,13 +408,13 @@
         rows: 2,
         responsive: {
             0: {
-                items: 1,
+                items: 2,
                 autoplay: true,
                 loop: true,
             },
 
             360: {
-                items: 1,
+                items: 2,
                 autoplay: true,
                 loop: true,
             },

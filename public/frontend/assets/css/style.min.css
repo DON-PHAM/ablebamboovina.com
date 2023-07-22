@@ -5,3 +5,8 @@ body{font-family:"Open Sans",sans-serif;font-size:14px;color:#666;line-height:24
     height: 100px;
     object-fit: contain;
 }
+@media only screen and (max-width: 639px) {
+    .cart-btn {
+        border: 0;
+    }
+}
