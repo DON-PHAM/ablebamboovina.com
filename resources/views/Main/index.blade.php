@@ -105,7 +105,7 @@
                                     <div class="add-to-link">
                                         <ul class="d-flex justify-content-center">
                                             <li class="cart">
-                                                <button class="cart-btn add-to-cart" onclick="addToCart({{$product}})">
+                                                <button class="cart-btn add-to-cart" onclick="addToCart({{$product}}, document.getElementById('mess-success').value, document.getElementById('mess-exist').value)">
                                                     {{trans('homepage.addToCart')}}
                                                 </button>
                                             </li>
@@ -184,7 +184,7 @@
                                             <div class="add-to-link">
                                                 <ul class="d-flex justify-content-center">
                                                     <li class="cart">
-                                                        <button class="cart-btn add-to-cart" onclick="addToCart({{$product}})">
+                                                        <button class="cart-btn add-to-cart" onclick="addToCart({{$product}}, document.getElementById('mess-success').value, document.getElementById('mess-exist').value)">
                                                             {{trans('homepage.addToCart')}}
                                                         </button>
                                                     </li>
@@ -264,7 +264,7 @@
                                         <div class="add-to-link">
                                             <ul>
                                                 <li class="cart">
-                                                    <button class="cart-btn add-to-cart" onclick="addToCart({{$product}})">
+                                                    <button class="cart-btn add-to-cart" onclick="addToCart({{$product}}, document.getElementById('mess-success').value, document.getElementById('mess-exist').value)">
                                                         {{trans('homepage.addToCart')}}
                                                     </button>
                                                 </li>
@@ -464,28 +464,4 @@
     <!-- Blog Area End -->
 
 @endsection
-@section('script')
-    <script>
-        function addToCart(e) {
-            const listProductInCart = localStorage.getItem('listProductInCart')
-            if (!listProductInCart) {
-                const temp = []
-                temp.push(e)
-                localStorage.setItem('listProductInCart', JSON.stringify(temp))
-                toastr.success('{{trans('homepage.addToCart')}} thành công');
-                $(".item-quantity-tag").html(1)
-            } else {
-                const temp = JSON.parse(listProductInCart)
-                const check = temp.find(item => item.id === e.id)
-                if (!check) {
-                    temp.push(e)
-                    localStorage.setItem('listProductInCart', JSON.stringify(temp))
-                    toastr.success('{{trans('homepage.addToCart')}} thành công');
-                    $(".item-quantity-tag").html(JSON.parse(listProductInCart).length + 1)
-                } else {
-                    toastr.warning('Sản phẩm đã có trong giỏ hàng');
-                }
-            }
-        }
-    </script>
-@endsection
+

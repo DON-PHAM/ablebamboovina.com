@@ -14,6 +14,8 @@ return [
     'productNew' => 'Hàng mới',
     'readMore' => 'Xem thêm',
     'addToCart' => 'Thêm vào giỏ hàng',
+    'addToCartSuccess' => 'Thêm vào giỏ hàng thành công',
+    'addToCartExist' => 'Sản phẩm đã có trong giỏ hàng',
     'freeShipping' => 'Miễn Phí Vận Chuyển',
     'freeShipping2' => 'Tất cả đơn hàng trên 500.000VNĐ',
     'freeReturn' => 'Đổi trả miễn phí',

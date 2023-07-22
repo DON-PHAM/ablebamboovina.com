@@ -95,7 +95,7 @@
                                 <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1"/>
                             </div>
                             <div class="pro-details-cart btn-hover">
-                                <a href="#"> + Thêm vào giỏ hàng</a>
+                                <a href="javascript:void(0)" onclick="addToCart({{$product}}, document.getElementById('mess-success').value, document.getElementById('mess-exist').value)"> + {{trans('homepage.addToCart')}}</a>
                             </div>
                         </div>
                         <div class="pro-details-social-info">
@@ -307,8 +307,9 @@
                             </div>
                             <div class="add-to-link">
                                 <ul>
-                                    <li class="cart"><a class="cart-btn" href="javascript:void(0)">Thêm vào giỏ
-                                            hàng </a></li>
+                                    <li class="cart">
+                                        <a class="cart-btn" href="javascript:void(0)" onclick="addToCart({{$product}}, document.getElementById('mess-success').value, document.getElementById('mess-exist').value)"> + {{trans('homepage.addToCart')}}</a>
+                                    </li>
                                 </ul>
                             </div>
                         </article>
@@ -367,7 +368,9 @@
                             </div>
                             <div class="add-to-link">
                                 <ul>
-                                    <li class="cart"><a class="cart-btn" href="#">Thêm vào giỏ hàng </a></li>
+                                    <li class="cart">
+                                        <a class="cart-btn" href="javascript:void(0)" onclick="addToCart({{$product}}, document.getElementById('mess-success').value, document.getElementById('mess-exist').value)"> + {{trans('homepage.addToCart')}}</a>
+                                    </li>
                                 </ul>
                             </div>
                         </article>
