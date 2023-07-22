@@ -185,10 +185,7 @@ class ProductRepository implements ProductService {
             'translate' => function ($query) use ($locale) {
                 $query->where('languageid', $locale);
             },
-            'category' => function ($query) use ($id) {
-                $query->where('id', $id);
-            },
-            'branch','review'])->paginate(12);
+            'category', 'branch','review'])->where('categoryid','=',$id)->paginate(12);
         return $products;
     }
 
