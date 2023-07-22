@@ -126,6 +126,18 @@ class CategoryProductRepository implements CategoryProductService {
 
     }
 
+    public function getCategoryProductNoParent($locale,$typeid)
+    {
+        $category = $this->category->where('parentid','!=',0)
+            ->where('status',1)
+            ->where('typeid',$typeid)
+            ->with(['translate' => function ($query) use ($locale) {
+                $query->where('languageid', $locale);
+            }])->get();
+        return $category;
+
+    }
+
     public function getCategoryParent($locale)
     {
         $category = $this->category->where('parentid',0)->where('status',1)->with(['translate' => function ($query) use ($locale) {

@@ -14,9 +14,9 @@ class CategoryComposer
     public function compose(View $view)
     {
         $locale = session()->get('locale') ?? App::getLocale();
-        $categories = $this->categoryProduct->getCategoryProduct($locale,1);
-        $parentCategories = $categories->where('parentid',0);
-        $subCategories = $categories->where('parentid','!=',0);
-        $view->with(['categories'=>$categories,'parentCategories'=>$parentCategories, 'subCategories' => $subCategories]);
+        $categories_compose = $this->categoryProduct->getCategoryProduct($locale,1);
+        $parentCategories_compose = $categories_compose->where('parentid',0);
+        $subCategories_compose = $categories_compose->where('parentid','!=',0);
+        $view->with(['categories_compose'=>$categories_compose,'parentCategories_compose'=>$parentCategories_compose, 'subCategories_compose' => $subCategories_compose]);
     }
 }

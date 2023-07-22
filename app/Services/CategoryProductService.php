@@ -16,4 +16,5 @@ interface CategoryProductService
     public function getCategoryParent($locale);
 
     public function getCategoryChildren($locale, $parentId);
+    public function getCategoryProductNoParent($locale,$typeid);
 }
