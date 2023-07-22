@@ -2,5 +2,7 @@
 return [
     'email' => 'Tài khoản email',
     'password' => 'Mật khẩu',
-    'login' => 'Đăng nhập'
+    'passwordConfirm' => 'Xác nhận mật khẩu',
+    'login' => 'Đăng nhập',
+    'phone' => 'Số điện thoại',
 ];

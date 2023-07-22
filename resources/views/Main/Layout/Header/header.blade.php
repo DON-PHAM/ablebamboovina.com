@@ -86,11 +86,14 @@
                 <!-- Logo Start -->
                 <div class="col-md-2 col-sm-2">
                     <div class="logo">
-                        <a href="{{route('homepage')}}"
-                        ><img style="width: 100%"
-                              src="{{ session('setting')->logo  }}"
-                              alt="{{session('setting')->company}}"
-                            /></a>
+                        <a href="{{route('homepage')}}">
+                            @if(session('setting'))
+                                <img style="width: 100%"
+                                     src="{{ session('setting')->logo  }}"
+                                     alt="{{session('setting')->company}}"
+                                />
+                            @endif
+                        </a>
                     </div>
                 </div>
                 <!-- Logo End -->
@@ -143,10 +146,8 @@
                     <div class="d-flex align-items-start justify-content-start">
                         <!-- Beauty Category -->
                         <div class="beauty-category vertical-menu">
-
-                            <h3 class="vertical-menu-heading vertical-menu-toggle">Danh mục</h3>
+                            <h3 class="vertical-menu-heading vertical-menu-toggle">{{trans('homepage.category')}}</h3>
                             @if($categories_compose)
-
                                 <ul class="vertical-menu-wrap open-menu-toggle">
                                     @foreach($parentCategories_compose as $item_parent)
                                         <li class="menu-dropdown">
@@ -160,7 +161,7 @@
                                                 @if( $subcategory->isNotEmpty())
                                                     <ul class="mega-menu-wrap">
                                                         @foreach($subcategory as $item_sub)
-                                                        <li><a href="#">{{$item_sub->translate->name}}</a></li>
+                                                        <li><a href="{{route('shop-page', $item_sub->id)}}">{{$item_sub->translate->name}}</a></li>
                                                         @endforeach
                                                     </ul>
                                                 @endif
@@ -175,19 +176,19 @@
                         <div class="main-navigation">
                             <ul>
                                 <li class="menu-dropdown">
-                                    <a href="{{ route('promotion-client-page') }}">Khuyến mãi</a>
+                                    <a href="{{ route('promotion-client-page') }}">{{trans('homepage.promotion')}}</a>
                                 </li>
                                 <li class="menu-dropdown">
-                                    <a href="{{ route('review-client-page') }}">Đánh giá</a>
+                                    <a href="{{ route('review-client-page') }}">{{trans('homepage.review')}}</a>
                                 </li>
                                 <li class="menu-dropdown">
-                                    <a href="{{ route('event-client-page') }}">Sự kiện</a>
+                                    <a href="{{ route('event-client-page') }}">{{trans('homepage.event')}}</a>
                                 </li>
                                 <li class="menu-dropdown">
-                                    <a href="{{ route('about-page') }}">Giới thiệu</a>
+                                    <a href="{{ route('about-page') }}">{{trans('homepage.intro')}}</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('contact-page') }}">Liên hệ</a>
+                                    <a href="{{ route('contact-page') }}">{{trans('homepage.contact')}}</a>
                                 </li>
                             </ul>
                         </div>
@@ -209,11 +210,14 @@
                 </div>
                 <div class="col-md-6 col-sm-4 d-flex justify-content-center">
                     <div class="logo m-0">
-                        <a href="{{route('homepage')}}"
-                        ><img style="max-width: 150px;"
-                              src="{{session()->get('setting')->logo}}"
-                              alt=""
-                            /></a>
+                        <a href="{{route('homepage')}}">
+                            @if(session('setting'))
+                                <img style="max-width: 150px;"
+                                     src="{{session()->get('setting')->logo}}"
+                                     alt=""
+                                />
+                            @endif
+                        </a>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-5">

@@ -6,11 +6,14 @@
                 <div class="col-md-3 col-lg-3">
                     <!-- footer logo -->
                     <div class="footer-logo">
-                        <a href="{{route('homepage')}}"
-                        ><img style="width: 100%"
-                                src="{{session()->get('setting')->logo}}"
-                                alt="{{session('setting')->slogan}}"
-                            /></a>
+                        <a href="{{route('homepage')}}">
+                            @if(session('setting'))
+                                <img style="width: 100%"
+                                     src="{{session()->get('setting')->logo}}"
+                                     alt="{{session('setting')->slogan}}"
+                                />
+                            @endif
+                        </a>
                     </div>
                     <!-- footer logo -->
                     <div class="about-footer">
