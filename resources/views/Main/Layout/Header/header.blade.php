@@ -161,7 +161,7 @@
                                                 @if( $subcategory->isNotEmpty())
                                                     <ul class="mega-menu-wrap">
                                                         @foreach($subcategory as $item_sub)
-                                                        <li><a href="#">{{$item_sub->translate->name}}</a></li>
+                                                        <li><a href="{{route('shop-page', $item_sub->id)}}">{{$item_sub->translate->name}}</a></li>
                                                         @endforeach
                                                     </ul>
                                                 @endif
