@@ -5,15 +5,18 @@ namespace App\Http\Controllers\Main;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
+use Spatie\FlareClient\Http\Exceptions\NotFound;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class LoginController extends Controller
 {
     public function index()
     {
-//        $locale = session()->get('locale');
-//        if ($locale == null)
-//            $locale = App::getLocale();
-//        $abouts = $this->aboutService->getAll($locale);
+        if (Auth::check())
+        {
+            throw new NotFoundHttpException();
+        }
         return view('Main.Login.index');
     }
 }

@@ -13,17 +13,17 @@
                             class="slider-height-6 d-flex align-items-start justify-content-start bg-img"
                             style="background-image: url({{asset('upload/slider/'.$slider->image)}})"
                         >
-                            <div class="container">
-                                <div class="slider-content-5 slider-animated-1 text-left">
-                                    <span class="animated">{{$slider->name}}</span>
-                                    <h1 class="animated">
-                                        {{$slider->description}}
-                                    </h1>
-                                    @if($slider->url)
-                                        <a href="{{$slider->url}}" class="shop-btn animated">Mua Ngay</a>
-                                    @endif
-                                </div>
-                            </div>
+{{--                            <div class="container">--}}
+{{--                                <div class="slider-content-5 slider-animated-1 text-left">--}}
+{{--                                    <span class="animated">{{$slider->name}}</span>--}}
+{{--                                    <h1 class="animated">--}}
+{{--                                        {{$slider->description}}--}}
+{{--                                    </h1>--}}
+{{--                                    @if($slider->url)--}}
+{{--                                        <a href="{{$slider->url}}" class="shop-btn animated">Mua Ngay</a>--}}
+{{--                                    @endif--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                         </div>
                     @endif
                 @endforeach
@@ -34,7 +34,12 @@
     <!-- Banner Area Start -->
     <div class="banner-3-area">
         <div class="container">
-            <div class="row mb-n-30px category-slider owl-carousel owl-nav-style">
+            <h1 style="font-weight: 800">Danh mục sản phẩm</h1>
+        </div>
+    </div>
+    <div class="banner-2-area">
+        <div class="container">
+            <div class="row mb-n-20px category-slider owl-carousel owl-nav-style">
                 @if($categories)
                     @foreach($categories as $category)
                         @if($category->status == 1)
