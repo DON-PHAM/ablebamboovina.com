@@ -21,7 +21,7 @@ Route::get('change_language/{language}','Dashboard\HomeController@changLanguage'
     ->name('change-language');
 Route::group(['middleware'=>'locale'],function () {
     Route::get('/', 'Main\Homecontroller@index')->name('homepage');
-    Route::get('shop', 'Main\ShopController@index')->name('shop-page');
+    Route::get('shop/{id}', 'Main\ShopController@index')->name('shop-page');
     Route::get('detail/{id}', 'Main\DetailController@index')->name('detail-page');
     Route::get('contact', 'Main\ContactController@index')->name('contact-page');
     Route::post('contact/postCreate','Main\ContactController@postCreate')->name('post-contact-create');

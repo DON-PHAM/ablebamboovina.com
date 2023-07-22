@@ -58,10 +58,16 @@
                                     {{trans('homepage.config')}} <i class="ion-ios-arrow-down"></i>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="{{route('login-page')}}">{{trans('homepage.login')}}</a></li>
-                                    <li><a class="dropdown-item" href="{{route('my-account-page')}}">{{trans('homepage.account')}}</a></li>
-                                    <li><a class="dropdown-item" href="">{{trans('homepage.payment')}}</a></li>
-                                    <li><a class="dropdown-item" href="{{route('logout')}}">{{trans('homepage.logout')}}</a></li>
+                                    @if(!\Illuminate\Support\Facades\Auth::check())
+                                        <li><a class="dropdown-item"
+                                               href="{{route('login-page')}}">{{trans('homepage.login')}}</a></li>
+                                    @else
+                                        <li><a class="dropdown-item"
+                                               href="{{route('my-account-page')}}">{{trans('homepage.account')}}</a>
+                                        </li>
+                                        <li><a class="dropdown-item"
+                                               href="{{route('logout')}}">{{trans('homepage.logout')}}</a></li>
+                                    @endif
                                 </ul>
                             </div>
                         </div>
@@ -80,11 +86,14 @@
                 <!-- Logo Start -->
                 <div class="col-md-2 col-sm-2">
                     <div class="logo">
-                        <a href="{{route('homepage')}}"
-                        ><img
-                                src="{{asset('frontend/assets/images/logo.png')}}"
-                                alt=""
-                            /></a>
+                        <a href="{{route('homepage')}}">
+                            @if(session('setting'))
+                                <img style="width: 100%"
+                                     src="{{ session('setting')->logo  }}"
+                                     alt="{{session('setting')->company}}"
+                                />
+                            @endif
+                        </a>
                     </div>
                 </div>
                 <!-- Logo End -->
@@ -108,7 +117,7 @@
                                 <div class="phone">
                                     <p>{{trans('homepage.callNow')}}:</p>
                                     @if(session('setting'))
-                                        <a href="tel:{{ session('setting')->tax }}">{{ session('setting')->tax }}</a>
+                                        <a href="tel:{{ session('setting')->phone }}">{{ session('setting')->phone }}</a>
                                     @endif
                                 </div>
                             </div>
@@ -117,7 +126,6 @@
                             <div class="cart-info d-flex">
                                 <div class="mini-cart-warp">
                                     <a href="#offcanvas-cart" class="count-cart color-black offcanvas-toggle">
-                                        <span class="amount-tag">100000VNĐ</span>
                                         <span class="item-quantity-tag">0</span>
                                     </a>
                                 </div>
@@ -139,25 +147,29 @@
                         <!-- Beauty Category -->
                         <div class="beauty-category vertical-menu">
                             <h3 class="vertical-menu-heading vertical-menu-toggle">{{trans('homepage.category')}}</h3>
-                            <ul class="vertical-menu-wrap open-menu-toggle">
-                                <li class="menu-dropdown">
-                                    <a href="#">Sắc đẹp & Sức khỏe<i class="ion-ios-arrow-down"></i></a>
-                                    <ul class="mega-menu-wrap">
-                                        <li>
-                                            <ul>
-                                                <li><a href="#">Mắt</a></li>
-                                                <li><a href="#">Môi</a></li>
-                                                <li><a href="#">Mặt</a></li>
-                                                <li><a href="#">Dụng cụ trang điểm</a></li>
-                                            </ul>
+                            @if($categories_compose)
+                                <ul class="vertical-menu-wrap open-menu-toggle">
+                                    @foreach($parentCategories_compose as $item_parent)
+                                        <li class="menu-dropdown">
+                                            <a href="{{route('category-client-page',$item_parent->id)}}">{{$item_parent->translate->name}}<i
+                                                    class="ion-ios-arrow-down"></i></a>
+                                            @if($subCategories_compose->isNotEmpty())
+                                                    <?php
+                                                    $subcategory = $subCategories_compose->where('parentid', $item_parent->id);
+                                                    ?>
+
+                                                @if( $subcategory->isNotEmpty())
+                                                    <ul class="mega-menu-wrap">
+                                                        @foreach($subcategory as $item_sub)
+                                                        <li><a href="#">{{$item_sub->translate->name}}</a></li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                            @endif
                                         </li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Massage & Thư giãn</a></li>
-                                <li><a href="#">Sơn Móng Gel</a></li>
-                                <li><a href="#">Dụng cụ trang điểm</a></li>
-                                <li><a href="#">Chăm sóc da</a></li>
-                            </ul>
+                                    @endforeach
+                                </ul>
+                            @endif
                         </div>
                         <!-- Beauty Category -->
                         <!--Main Navigation Start -->
@@ -198,11 +210,14 @@
                 </div>
                 <div class="col-md-6 col-sm-4 d-flex justify-content-center">
                     <div class="logo m-0">
-                        <a href="index.html"
-                        ><img style="max-width: 150px;"
-                              src="{{asset('frontend/assets/images/logo.png')}}"
-                              alt=""
-                            /></a>
+                        <a href="{{route('homepage')}}">
+                            @if(session('setting'))
+                                <img style="max-width: 150px;"
+                                     src="{{session()->get('setting')->logo}}"
+                                     alt=""
+                                />
+                            @endif
+                        </a>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-5">

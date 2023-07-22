@@ -12,7 +12,7 @@
     Off Canvas Function
 -----------------------------------*/
     (function () {
-        var $offCanvasToggle = $(".offcanvas-toggle"),
+        let $offCanvasToggle = $(".offcanvas-toggle"),
             $offCanvas = $(".offcanvas"),
             $offCanvasOverlay = $(".offcanvas-overlay"),
             $mobileMenuToggle = $(".mobile-menu-toggle");
@@ -308,13 +308,13 @@
 
             },
             767: {
-                items: 4,
+                items: 6,
             },
             992: {
-                items: 4,
+                items: 6,
             },
             1200: {
-                items: 4,
+                items: 6,
             }
         }
     })
@@ -875,7 +875,6 @@
     $('.slider-main').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
-        arrows: false,
         asNavFor: '.slider-nav',
         autoplay: false,
         vertical: true,
@@ -1136,8 +1135,8 @@
 
 
 
-	var testi = $(".testimonialsSlide");
-	testi.owlCarousel({
+	let testi1 = $(".testimonialsSlide");
+	testi1.owlCarousel({
 		autoplay :false,
 		autoplayHoverPause: true,
 		smartSpeed : 1000,

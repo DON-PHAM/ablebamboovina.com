@@ -179,6 +179,19 @@ class ProductRepository implements ProductService {
         return $products;
     }
 
+    public function showShopById(string $locale, int $id)
+    {
+        $products = $this->product->with(['images',
+            'translate' => function ($query) use ($locale) {
+                $query->where('languageid', $locale);
+            },
+            'category' => function ($query) use ($id) {
+                $query->where('id', $id);
+            },
+            'branch','review'])->paginate(12);
+        return $products;
+    }
+
     public function changeStatus(int $id)
     {
         $product = $this->product->find($id);
