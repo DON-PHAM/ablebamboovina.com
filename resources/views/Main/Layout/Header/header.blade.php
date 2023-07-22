@@ -1,3 +1,5 @@
+<input type="hidden" id="mess-success" value="{{trans('homepage.addToCartSuccess')}}">
+<input type="hidden" id="mess-exist" value="{{trans('homepage.addToCartExist')}}">
 <header class="main-header">
     <!-- Header Top Start -->
     <div class="header-top-nav">
