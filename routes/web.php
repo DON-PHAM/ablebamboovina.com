@@ -23,6 +23,7 @@ Route::group(['middleware'=>'locale'],function () {
     Route::get('/', 'Main\Homecontroller@index')->name('homepage');
     Route::get('shop/{id}', 'Main\ShopController@index')->name('shop-page');
     Route::get('detail/{id}', 'Main\DetailController@index')->name('detail-page');
+    Route::get('detail/event/{id}', 'Main\DetailController@event')->name('detail-event-page');
     Route::get('contact', 'Main\ContactController@index')->name('contact-page');
     Route::post('contact/postCreate','Main\ContactController@postCreate')->name('post-contact-create');
     Route::get('about', 'Main\AboutController@index')->name('about-page');

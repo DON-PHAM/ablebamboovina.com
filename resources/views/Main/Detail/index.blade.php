@@ -1,6 +1,25 @@
 @extends('Main.Layout.main')
 @section('title',trans('Ablebamboovina'))
 @section('content')
+    <style>
+        @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+        #rating{border:none;float:left;}
+        #rating>input{display:none;}/*ẩn input radio - vì chúng ta đã có label là GUI*/
+        #rating>label:before{margin:5px;font-size:1.25em;font-family:FontAwesome;display:inline-block;content:"\f005";}/*1 ngôi sao*/
+        #rating>.half:before{content:"\f089";position:absolute;}/*0.5 ngôi sao*/
+        #rating>label{color:#ddd;float:right;}/*float:right để lật ngược các ngôi sao lại đúng theo thứ tự trong thực tế*/
+        /*thêm màu cho sao đã chọn và các ngôi sao phía trước*/
+        #rating>input:checked~label,
+        #rating:not(:checked)>label:hover,
+        #rating:not(:checked)>label:hover~label{color:#FFD700;}
+        /* Hover vào các sao phía trước ngôi sao đã chọn*/
+        #rating>input:checked+label:hover,
+        #rating>input:checked~label:hover,
+        #rating>label:hover~input:checked~label,
+        #rating>input:checked~label:hover~label{color:#FFED85;}
+
+        /* Modified from: https://github.com/mukulkant/Star-rating-using-pure-css */
+    </style>
 
     <!-- Breadcrumb Area start -->
     <section class="breadcrumb-area">
@@ -30,7 +49,7 @@
                                 <img
                                     class="zoompro"
                                     src="{{asset('upload/product/'.$product->code.'/'.$product->image)}}"
-                                    data-zoom-image="assets/images/product-image/organic/zoom/1.jpg"
+                                    data-zoom-image="{{asset('upload/product/'.$product->code.'/'.$product->image)}}"
                                     alt=""
                                 />
                             </div>
@@ -39,8 +58,8 @@
                             @foreach($product->images as $thumb)
                                 <a
                                     class="active"
-                                    data-image="assets/images/product-image/organic/display/1.jpg"
-                                    data-zoom-image="assets/images/product-image/organic/zoom/1.jpg"
+                                    data-image="{{asset('upload/product/'.$product->code.'/'.$thumb->image)}}"
+                                    data-zoom-image="{{asset('upload/product/'.$product->code.'/'.$thumb->image)}}"
                                 >
                                     <img
                                         style="max-width: 100px"
@@ -131,12 +150,108 @@
         <div class="container">
             <div class="description-review-wrapper">
                 <div class="description-review-topbar nav">
-                    <a class="active"  data-bs-toggle="tab" href="#des-details1">Mô tả</a>
+                    <a class="active" data-bs-toggle="tab" href="#des-details1">Mô tả</a>
+                    <a data-bs-toggle="tab" href="#des-details3" >Reviews </a>
                 </div>
                 <div class="tab-content description-review-bottom">
-                    <div id="des-details1" class="tab-pane" >
+                    <div id="des-details1" class="tab-pane active" >
                         <div class="product-description-wrapper">
                             {!! $product->translate->content !!}
+                        </div>
+                    </div>
+                    <div id="des-details3" class="tab-pane">
+                        <div class="row">
+                            <div class="col-lg-7">
+                                <div class="review-wrapper">
+                                    <div class="single-review">
+                                        <div class="review-img">
+                                            <img src="" alt="">
+                                        </div>
+                                        <div class="review-content">
+                                            <div class="review-top-wrap">
+                                                <div class="review-left">
+                                                    <div class="review-name">
+                                                        <h4>White Lewis</h4>
+                                                    </div>
+                                                    <div class="rating-product">
+                                                        <i class="ion-android-star"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="review-left">
+                                                    <a href="#">Reply</a>
+                                                </div>
+                                            </div>
+                                            <div class="review-bottom">
+                                                <p>
+                                                    Vestibulum ante ipsum primis aucibus orci luctustrices posuere cubilia Curae Suspendisse viverra ed viverra. Mauris ullarper euismod vehicula. Phasellus quam nisi, congue id nulla.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="ratting-form-wrapper pl-50">
+                                    <h3>Add a Review</h3>
+                                    <div class="ratting-form">
+                                        <form action="#">
+                                            <div class="star-box">
+                                                <span>Your rating:</span>
+                                                <div id="rating">
+                                                    <input type="radio" id="star5" name="rating" value="5" />
+                                                    <label class = "full" for="star5" title="Awesome - 5 stars"></label>
+
+                                                    <input type="radio" id="star4half" name="rating" value="4 and a half" />
+                                                    <label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+
+                                                    <input type="radio" id="star4" name="rating" value="4" />
+                                                    <label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+
+                                                    <input type="radio" id="star3half" name="rating" value="3 and a half" />
+                                                    <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+
+                                                    <input type="radio" id="star3" name="rating" value="3" />
+                                                    <label class = "full" for="star3" title="Meh - 3 stars"></label>
+
+                                                    <input type="radio" id="star2half" name="rating" value="2 and a half" />
+                                                    <label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+
+                                                    <input type="radio" id="star2" name="rating" value="2" />
+                                                    <label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+
+                                                    <input type="radio" id="star1half" name="rating" value="1 and a half" />
+                                                    <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+
+                                                    <input type="radio" id="star1" name="rating" value="1" />
+                                                    <label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+
+                                                    <input type="radio" id="starhalf" name="rating" value="half" />
+                                                    <label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="rating-form-style mb-10">
+                                                        <input placeholder="Name" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="rating-form-style mb-10">
+                                                        <input placeholder="Email" type="email">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="rating-form-style form-submit">
+                                                        <textarea name="Your Review" placeholder="Message"></textarea>
+                                                        <input type="submit" value="Submit">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

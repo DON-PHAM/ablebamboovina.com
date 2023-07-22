@@ -39,7 +39,7 @@ class EventRepository implements EventService
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $image_new = rand() . '_product.' . $image->getClientOriginalExtension();
-            $image->move(public_path('upload/product/' . $request->code . '/'), $image_new);
+            $image->move(public_path('upload/event/' . $request->code . '/'), $image_new);
             $productRequest['image'] = $image_new;
         }
 
@@ -157,9 +157,11 @@ class EventRepository implements EventService
         return $event;
     }
 
-    public function showHomeById(int $id)
+    public function showHomeById(int $id, string $locale)
     {
-        $events = $this->event->with(['images', 'translate'])->find($id);
+        $events = $this->event->with(['images', 'translate' => function ($query) use ($locale) {
+            $query->where('languageid', $locale);
+        }])->find($id);
         return $events;
     }
 

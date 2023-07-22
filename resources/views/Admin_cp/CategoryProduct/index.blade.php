@@ -95,17 +95,17 @@
                                                 <td><img alt="Toi Ly Son" title=""
                                                          src="{{asset('upload/category/'.$category->image)}}"
                                                          style=" width:50px; height:50px;"></td>
-                                                <td>{{$category->name}}</td>
+                                                <td>{{$category->translate->name}}</td>
                                                 <td>{{$category->status == 1 ? "Kích hoạt" : "Chưa kích hoạt"}}</td>
-                                                <td>{{$category->description}}</td>
+                                                <td>{{$category->translate->description}}</td>
                                                 <td>{{$category->typeid ==1 ? "Sản phẩm" : "Tin tức"}}</td>
                                                 <td>
-                                                    <a href="{{route('get-category-edit',$category->productcategoryid)}}">
+                                                    <a href="{{route('get-category-edit',$category->id)}}">
 <span title="Edit" type="button" class="btn btn-flat btn-sm btn-primary">
 <i class="fa fa-edit"></i>
 </span>
                                                     </a>
-                                                    <a href="{{route('delete-category-edit',$category->productcategoryid)}}"
+                                                    <a href="{{route('delete-category-edit',$category->id)}}"
                                                        class="btn btn-flat btn-sm btn-danger"><i
                                                             class="fas fa-trash-alt"></i></a>
 
@@ -113,7 +113,7 @@
                                             </tr>
                                             @if($subCategories->isNotEmpty())
                                                     <?php
-                                                        $subcategory = $subCategories->where('parentid', $category->productcategoryid);
+                                                        $subcategory = $subCategories->where('parentid', $category->id);
                                                     ?>
 
                                                 @if($subcategory->isNotEmpty())
@@ -125,17 +125,17 @@
                                                             <td><img alt="Toi Ly Son" title=""
                                                                      src="{{asset('upload/category/'.$sub->image)}}"
                                                                      style=" width:50px; height:50px;"></td>
-                                                            <td>----- {{$sub->name}}</td>
+                                                            <td>----- {{$sub->translate->name}}</td>
                                                             <td>{{$sub->status == 1 ? "Kích hoạt" : "Chưa kích hoạt"}}</td>
-                                                            <td>{{$sub->description}}</td>
+                                                            <td>{{$sub->translate->description}}</td>
                                                             <td>{{$sub->typeid ==1 ? "Sản phẩm" : "Tin tức"}}</td>
                                                             <td>
-                                                                <a href="{{route('get-category-edit',$sub->productcategoryid)}}">
+                                                                <a href="{{route('get-category-edit',$sub->id)}}">
 <span title="Edit" type="button" class="btn btn-flat btn-sm btn-primary">
 <i class="fa fa-edit"></i>
 </span>
                                                                 </a>
-                                                                <a href="{{route('delete-category-edit',$sub->productcategoryid)}}"
+                                                                <a href="{{route('delete-category-edit',$sub->id)}}"
                                                                    class="btn btn-flat btn-sm btn-danger"><i
                                                                         class="fas fa-trash-alt"></i></a>
 
@@ -150,7 +150,7 @@
 
                                     </tbody>
                                 </table>
-                                {{$categories->links("pagination::bootstrap-4")}}
+{{--                                {{$categories->links("pagination::bootstrap-4")}}--}}
                             </div>
 
                         </div>
