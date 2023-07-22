@@ -22,7 +22,7 @@ class ProductData
     public function getDataCreate()
     {
         $locale = session()->get('locale') ?? App::getLocale();
-        $categories = $this->categoryService->getCategoryProduct($locale,1);
+        $categories = $this->categoryService->getCategoryProductNoParent($locale,1);
         $branchs = $this->branchService->getAll();
         return compact('categories', 'branchs');
     }

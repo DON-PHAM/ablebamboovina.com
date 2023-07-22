@@ -145,16 +145,16 @@
                         <div class="beauty-category vertical-menu">
 
                             <h3 class="vertical-menu-heading vertical-menu-toggle">Danh mục</h3>
-                            @if($categories)
+                            @if($categories_compose)
 
                                 <ul class="vertical-menu-wrap open-menu-toggle">
-                                    @foreach($parentCategories as $item_parent)
+                                    @foreach($parentCategories_compose as $item_parent)
                                         <li class="menu-dropdown">
                                             <a href="{{route('category-client-page',$item_parent->id)}}">{{$item_parent->translate->name}}<i
                                                     class="ion-ios-arrow-down"></i></a>
-                                            @if($subCategories->isNotEmpty())
+                                            @if($subCategories_compose->isNotEmpty())
                                                     <?php
-                                                    $subcategory = $subCategories->where('parentid', $item_parent->id);
+                                                    $subcategory = $subCategories_compose->where('parentid', $item_parent->id);
                                                     ?>
 
                                                 @if( $subcategory->isNotEmpty())
