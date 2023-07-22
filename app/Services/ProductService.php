@@ -12,6 +12,7 @@ interface ProductService
 
     public function getById(int $id);
     public function showHomeById(int $id);
+    public function showShopById(string $locale, int $id);
 
     public function getAll(string $locale);
     public function changeStatus(int $id);

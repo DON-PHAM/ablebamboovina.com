@@ -28,7 +28,7 @@
                     <div class="shop-top-bar">
                         <!-- Left Side start -->
                         <div class="shop-tab nav mb-res-sm-15">
-                            <p>There Are 17 Products.</p>
+                            <p>{{count($products)}} {{trans('home.product')}}</p>
                         </div>
                         <!-- Left Side End -->
                         <!-- Right Side Start -->
@@ -54,65 +54,52 @@
                         <div class="tab-content jump">
                             <!-- Tab One Start -->
                             <div id="shop-1" class="tab-pane active">
-                                <div class="row">
+                                <div class="row w-100">
                                     @if($products)
                                         @foreach($products as $product)
-                                            <div class="col-xl-3 col-md-4 col-sm-6">
-                                                <article class="list-product">
-                                                    <div class="img-block">
-                                                        <a href="{{route('detail-page',$product->id)}}"
-                                                           class="thumbnail">
-                                                            <img
-                                                                class="first-img"
-                                                                src="{{asset('upload/product/'.$product->code.'/'.$product->image)}}"
-                                                                alt=""
-                                                            />
-                                                        </a>
-                                                        <div class="quick-view">
-                                                            <a
-                                                                class="quick_view"
-                                                                href="javascript:void(0)"
-                                                                data-link-action="quickview"
-                                                                title="Quick view"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#exampleModal"
-                                                            >
-                                                                <i class="ion-ios-search-strong"></i>
+                                            @if($product->status == 1)
+                                                <div class="col-xl-3 col-md-4 col-sm-6">
+                                                    <article class="list-product">
+                                                        <div class="img-block text-center">
+                                                            <a href="{{route('detail-page',$product->id)}}" class="thumbnail">
+                                                                <img
+                                                                    class="first-img"
+                                                                    src="{{asset('upload/product/'.$product->code.'/'.$product->image)}}"
+                                                                    alt=""
+                                                                />
                                                             </a>
                                                         </div>
-                                                    </div>
-                                                    <div class="product-decs">
-                                                        <a class="inner-link"
-                                                           href="javascript:void(0)"><span>{{$product->category->name}}</span></a>
-                                                        <h2>
-                                                            <a href="javascript:void(0)" class="product-link"
-                                                            >{{$product->translate->name}}</a
-                                                            >
-                                                        </h2>
-                                                        <div class="pricing-meta">
-                                                            <ul>
-                                                                @if($product->discount)
-                                                                    <li class="old-price">{{$product->price}}</li>
-                                                                    <li class="current-price">{{$product->price * $product->discount / 100}}</li>
-                                                                    <li class="discount-price">
-                                                                        -{{$product->discount}}%
-                                                                    </li>
-                                                                @else
-                                                                    <li class="current-price">{{$product->price}}</li>
-                                                                @endif
-                                                            </ul>
+                                                        <div class="product-decs">
+                                                            <a class="inner-link"
+                                                               href="javascript:void(0)"><span>{{$product->translate->name}}</span></a>
+                                                            <h2>
+                                                                <a href="javascript:void(0)"
+                                                                   class="product-link">{{$product->translate->name}}</a>
+                                                            </h2>
+                                                            <div class="pricing-meta">
+                                                                <ul>
+                                                                    @if($product->discount)
+                                                                        <li class="old-price">{{$product->price}}</li>
+                                                                        <li class="current-price">{{$product->price * $product->discount / 100}}</li>
+                                                                        <li class="discount-price">-{{$product->discount}}%</li>
+                                                                    @else
+                                                                        <li class="current-price">{{$product->price}}</li>
+                                                                    @endif
+                                                                </ul>
+                                                            </div>
                                                         </div>
                                                         <div class="add-to-link">
                                                             <ul class="d-flex justify-content-center">
-                                                                <li class="cart"><a class="cart-btn"
-                                                                                    href="javascript:void(0)">Thêm
-                                                                        vào giỏ hàng </a>
+                                                                <li class="cart">
+                                                                    <button class="cart-btn add-to-cart" onclick="addToCart({{$product}})">
+                                                                        {{trans('homepage.addToCart')}}
+                                                                    </button>
                                                                 </li>
                                                             </ul>
                                                         </div>
-                                                    </div>
-                                                </article>
-                                            </div>
+                                                    </article>
+                                                </div>
+                                            @endif
                                         @endforeach
                                     @endif
                                     {{$products->links("pagination::bootstrap-4")}}
@@ -121,20 +108,6 @@
                             <!-- Tab One End -->
                         </div>
                         <!-- Shop Tab Content End -->
-                        <!--  Pagination Area Start -->
-                        <div class="pro-pagination-style text-center">
-                            <ul>
-                                <li>
-                                    <a class="prev" href="#"><i class="ion-ios-arrow-left"></i></a>
-                                </li>
-                                <li><a class="active" href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li>
-                                    <a class="next" href="#"><i class="ion-ios-arrow-right"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                        <!--  Pagination Area End -->
                     </div>
                     <!-- Shop Bottom Area End -->
                 </div>

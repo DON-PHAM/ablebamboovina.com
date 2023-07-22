@@ -26,4 +26,8 @@ return [
     'info' => 'Thông tin',
     'intro' => 'Giới thiệu',
     'contact' => 'Liên hệ',
+    'category' => 'Danh mục',
+    'promotion' => 'Khuyến mãi',
+    'review' => 'Đánh giá',
+    'event' => 'Sự kiện',
 ];

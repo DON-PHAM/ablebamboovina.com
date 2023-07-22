@@ -18,14 +18,13 @@ class ShopController extends Controller
         $this->categoryService = $categoryProductService;
     }
 
-    public function index()
+    public function index($id)
     {
         $locale = session()->get('locale');
         if ($locale == null)
             $locale = App::getLocale();
-        $products = $this->productService->getAll($locale);
-        $categories = $this->categoryService->getAll($locale);
-        return view('Main.Shop.index', compact('products', 'categories'));
+        $products = $this->productService->showShopById($locale, $id);
+        return view('Main.Shop.index', compact('products', ));
     }
 
 }

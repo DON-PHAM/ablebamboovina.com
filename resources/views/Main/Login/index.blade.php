@@ -32,10 +32,14 @@
                             <div id="lg2" class="tab-pane">
                                 <div class="login-form-container">
                                     <div class="login-register-form">
-                                        <form action="#" method="post">
-                                            <input type="text" name="username" placeholder="{!! trans('login.email') !!}">
+                                        <form action="{{route('post-register')}}" method="Post">
+                                            @csrf
+                                            <input type="email" name="email" placeholder="{!! trans('login.email') !!}">
+                                            <input type="text" name="username" placeholder="Tên người dùng">
+                                            <input type="text" name="name" placeholder="Tên hiển thị">
                                             <input type="password" name="password" placeholder="{!! trans('login.password') !!}">
-                                            <input type="password" name="confirm-password" placeholder="{!! trans('login.password') !!}">
+                                            <input type="password" name="confirm" placeholder="{!! trans('login.passwordConfirm') !!}">
+                                            <input type="text" name="phonenumber" placeholder="{{trans('login.phone')}}">
                                             <div class="button-box text-center">
                                                 <button type="submit"><span>{{trans('homepage.register')}}</span></button>
                                             </div>
