@@ -26,4 +26,8 @@ return [
     'info' => '정보',
     'intro' => '소개',
     'contact' => '연락처',
+    'category' => '카테고리',
+    'promotion' => '프로모션',
+    'review' => '검토',
+    'event' => '이벤트',
 ];

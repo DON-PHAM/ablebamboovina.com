@@ -1248,9 +1248,9 @@
     // });
     $('.beauty-category.vertical-menu').hover(
         function() {
-            $('.open-menu-toggle').slideDown(500);
+            $('.open-menu-toggle').show();
         }, function() {
-            $('.open-menu-toggle').slideUp(500);
+            $('.open-menu-toggle').hide();
         }
     );
 
