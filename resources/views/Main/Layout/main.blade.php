@@ -26,6 +26,9 @@
             background-color: #000;
             color: #fff;
         }
+        .active_menu {
+            background-color: black;
+        }
     </style>
 </head>
 
@@ -43,7 +46,7 @@
 <!--====== PRELOADER PART ENDS ======-->
 <div id="main">
     <!-- Header Start -->
-    @include('Main.Layout.Header.header')
+    @include('Main.Layout.header.header')
     <!-- Header End -->
 
     <div id="offcanvas-mobile-menu" class="offcanvas offcanvas-mobile-menu">
@@ -156,6 +159,15 @@
 <!-- Main Activation JS -->
 <script src="{{asset('frontend/assets/js/main.js')}}"></script>
 <script>
+    $(document).ready(function() {
+        let currentPath = "{{\Illuminate\Support\Facades\Request::capture()->url()}}";
+        $('.main-navigation a').each(function() {
+            let linkPath = $(this).attr('href');
+            if(currentPath === linkPath) {
+                $(this).addClass('active_menu');
+            }
+        });
+    });
     function removeItemFromCart(id) {
         const idRemove = `#${id}`
         $(idRemove).remove();
@@ -181,11 +193,6 @@
                 }
             });
         })
-        // let language = localStorage.getItem('locale');
-        // $("#language").val(language);
-        // setTimeout(function () {
-        //     $('.alert').fadeOut('slow');
-        // }, 2000);
 
         // count cart
         const listProductInCart = localStorage.getItem('listProductInCart')

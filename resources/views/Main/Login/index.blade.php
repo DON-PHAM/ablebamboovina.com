@@ -2,24 +2,6 @@
 @section('title',trans('Ablebamboovina'))
 @section('content')
 
-    <!-- Breadcrumb Area start -->
-    <section class="breadcrumb-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="breadcrumb-content">
-                        <h1 class="breadcrumb-hrading">{{trans('homepage.login')}} / {{trans('homepage.register')}}</h1>
-                        <ul class="breadcrumb-links">
-                            <li><a href="{{route('homepage')}}">{{trans('home.home')}}</a></li>
-                            <li>{{trans('homepage.login')}} / {{trans('homepage.register')}}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Breadcrumb Area End -->
-
     <div class="login-register-area mb-60px mt-53px">
         <div class="container">
             <div class="row">
@@ -64,6 +46,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>

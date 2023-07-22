@@ -197,6 +197,7 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        App\Providers\ComposerServiceProvider::class,
 
     ],
 

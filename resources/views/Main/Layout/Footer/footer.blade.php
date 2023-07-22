@@ -3,13 +3,13 @@
         <div class="container">
             <div class="row">
                 <!-- footer single wedget -->
-                <div class="col-md-4 col-lg-4">
+                <div class="col-md-3 col-lg-3">
                     <!-- footer logo -->
                     <div class="footer-logo">
-                        <a href="index.html"
-                        ><img
-                                src="{{asset('frontend/assets/images/logo.png')}}"
-                                alt=""
+                        <a href="{{route('homepage')}}"
+                        ><img style="width: 100%"
+                                src="{{session()->get('setting')->logo}}"
+                                alt="{{session('setting')->slogan}}"
                             /></a>
                     </div>
                     <!-- footer logo -->
@@ -24,7 +24,7 @@
                             <p class="phone-info">
                                 NEED HELP?
                                 @if(session('setting'))
-                                    <span>{{ session('setting')->tax }}</span>
+                                    <span>{{ session('setting')->phone }}</span>
                                 @endif
                             </p>
                         </div>
@@ -67,7 +67,19 @@
                     </div>
                 </div>
                 <!-- footer single wedget -->
-                <div class="col-md-4 col-lg-4 mt-res-sx-30px mt-res-md-30px">
+                <div class="col-md-3 col-lg-3 mt-res-sx-30px mt-res-md-30px">
+                    <div class="single-wedge">
+                        <h4 class="footer-herading">{{trans('homepage.info')}}</h4>
+                        <div class="footer-links">
+                            <ul>
+                                <li><a href="#">{{trans('homepage.intro')}}</a></li>
+                                <li><a href="#">{{trans('homepage.contact')}}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-lg-3 mt-res-sx-30px mt-res-md-30px">
                     <div class="single-wedge">
                         <h4 class="footer-herading">{{trans('homepage.info')}}</h4>
                         <div class="footer-links">
@@ -79,7 +91,7 @@
                     </div>
                 </div>
                 <!-- footer single wedget -->
-                <div class="col-md-4 col-lg-4 mt-res-md-50px mt-res-sx-30px mt-res-md-30px">
+                <div class="col-md-3 col-lg-3 mt-res-md-50px mt-res-sx-30px mt-res-md-30px">
                     <div class="single-wedge">
                         <h4 class="footer-herading">Links</h4>
                         <div class="footer-links">

@@ -4,19 +4,19 @@
 
     <!-- Breadcrumb Area start -->
     <section class="breadcrumb-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="breadcrumb-content">
-                        <h1 class="breadcrumb-hrading">Chi tiết sản phẩm</h1>
-                        <ul class="breadcrumb-links">
-                            <li><a href="{{route('homepage')}}">{{trans('home.home')}}</a></li>
-                            <li>{{$product->translate->name}}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+{{--        <div class="container">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-md-12">--}}
+{{--                    <div class="breadcrumb-content">--}}
+{{--                        <h1 class="breadcrumb-hrading">Chi tiết sản phẩm</h1>--}}
+{{--                        <ul class="breadcrumb-links">--}}
+{{--                            <li><a href="{{route('homepage')}}">{{trans('home.home')}}</a></li>--}}
+{{--                            <li>{{$product->translate->name}}</li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
     </section>
     <!-- Breadcrumb Area End -->
     <!-- Shop details Area start -->
