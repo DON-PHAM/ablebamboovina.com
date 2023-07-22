@@ -11,7 +11,7 @@
                     @if($slider->status == 1)
                         <div
                             class="slider-height-6 d-flex align-items-start justify-content-start bg-img"
-                            style="background-image: url({{asset('upload/slider/'.$slider->image)}})"
+                            style="background-image: url({{asset('upload/slider/'.$slider->image)}}); background-size: contain; background-repeat: no-repeat"
                         >
 {{--                            <div class="container">--}}
 {{--                                <div class="slider-content-5 slider-animated-1 text-left">--}}
@@ -125,7 +125,7 @@
     <section class="hot-deal-area">
         <div class="container">
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 col-xl-4">
+                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 col-xl-4">
                     <div class="row">
                         <div class="col-md-12">
                             <!-- Section Title -->

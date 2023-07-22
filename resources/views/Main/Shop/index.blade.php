@@ -54,7 +54,7 @@
                         <div class="tab-content jump">
                             <!-- Tab One Start -->
                             <div id="shop-1" class="tab-pane active">
-                                <div class="row w-100">
+                                <div class="row w-100 justify-content-center">
                                     @if($products)
                                         @foreach($products as $product)
                                             @if($product->status == 1)
