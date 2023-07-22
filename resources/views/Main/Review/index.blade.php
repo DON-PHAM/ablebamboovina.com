@@ -25,10 +25,10 @@
                 @if($videos)
                     @foreach($videos as $video)
                         @if($video->status == 1)
-                            <div class="col-6 col-sm-4 col-md-3 mb-3">
+                            <div class="col-6 col-sm-4 col-md-3 mb-3 video-container">
                                 <article class="list-product mb-30px">
                                     <div class="img-block text-center">
-                                        <video id="video" autoplay width="300"
+                                        <video id="video" class="video" autoplay width="300"
                                                src="{{asset('upload/video/'.$video->video)}}" height="300"
                                                controls></video>
                                         <div class="mt-1 mb-3 px-2"
@@ -44,5 +44,32 @@
             </div>
         </div>
     </section>
+    <script>
+
+        let videoContainers = document.querySelectorAll(".video-container");
+
+        for (let i = 0; i < videoContainers.length; i++) {
+            let video = videoContainers[i].querySelector(".video");
+            let isPlaying = false;
+
+            // Pause the video on page load
+            video.pause();
+
+            // Play the video on hover
+            videoContainers[i].onmouseover = function() {
+                if (!isPlaying) {
+                    video.play();
+                    isPlaying = true;
+                }
+            };
+
+            // Pause the video when the mouse leaves the video element
+            videoContainers[i].onmouseleave = function() {
+                video.pause();
+                isPlaying = false;
+            };
+        }
+
+    </script>
 
 @endsection

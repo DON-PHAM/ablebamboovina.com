@@ -27,10 +27,10 @@
                         <div class="col-xl-3 col-md-4 col-sm-6">
                             <article class="list-product">
                                 <div class="img-block">
-                                    <a href="{{route('detail-page',$product->id)}}"
+                                    <a href="{{route('detail-event-page',$product->id)}}"
                                        class="thumbnail">
                                         <img
-                                            class="first-img"
+                                            class="img-thumbnail"
                                             src="{{asset('upload/event/'.$product->code.'/'.$product->image)}}"
                                             alt=""
                                         />

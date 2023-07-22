@@ -108,9 +108,9 @@ class CategoryProductRepository implements CategoryProductService {
 
     public function getAll($locale)
     {
-        $category = ProductCategory::join('product_category_translates', 'product_categories.id', '=', 'product_category_translates.productcategoryid')
-            ->where('product_category_translates.languageid', '=', $locale)
-            ->paginate(15, ['product_categories.*', 'product_category_translates.*']);
+        $category = $this->category->with(['translate' => function ($query) use ($locale) {
+                $query->where('languageid', $locale);
+            }])->get();
         return $category;
     }
 

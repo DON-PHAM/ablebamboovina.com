@@ -11,7 +11,7 @@ interface EventService
     public function delete(int $id);
 
     public function getById(int $id);
-    public function showHomeById(int $id);
+    public function showHomeById(int $id,string $local);
 
     public function getAll(string $locale);
     public function changeStatus(int $id);

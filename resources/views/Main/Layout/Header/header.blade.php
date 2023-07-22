@@ -20,11 +20,19 @@
                                 class="dropdown-toggle header-action-btn hover-style-cosmatics color-white border-0"
                                 data-bs-toggle="dropdown"
                             >
+                                @if(\Illuminate\Support\Facades\App::getLocale() == 'vi')
                                 <img
                                     class="me-2"
                                     src="{{asset('frontend/assets/images/icon-vi.png')}}"
                                     alt=""
                                 />Việt Nam<i class="ion-ios-arrow-down ms-1"></i>
+                                    @else
+                                        <img style="width: 25px;"
+                                            class="me-2"
+                                            src="{{asset('frontend/assets/images/icon-korea.png')}}"
+                                            alt=""
+                                        />Korean<i class="ion-ios-arrow-down ms-1"></i>
+                                    @endif
                             </button>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li>
@@ -176,6 +184,9 @@
                             <ul>
                                 <li class="menu-dropdown">
                                     <a href="{{ route('promotion-client-page') }}">Khuyến mãi</a>
+                                </li>
+                                <li class="menu-dropdown">
+                                    <a href="">Trailer</a>
                                 </li>
                                 <li class="menu-dropdown">
                                     <a href="{{ route('review-client-page') }}">Đánh giá</a>
