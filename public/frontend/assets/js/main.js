@@ -128,7 +128,7 @@
     /*---------------------
         Nice Select
     --------------------- */
-    $('select').niceSelect();
+    // $('select').niceSelect();
 
     /*---------------------
         venobox
@@ -159,7 +159,7 @@
         nav: false,
         dots: true,
         autoplay: true,
-        autoplayTimeout: 5000,
+        autoplayTimeout: 2000,
         animateOut: 'fadeOut',
         animateIn: 'fadeIn',
         item: 1,
@@ -184,7 +184,7 @@
         nav: true,
         dots: false,
         autoplay: true,
-        autoplayTimeout: 5000,
+        autoplayTimeout: 2000,
         animateOut: 'fadeOut',
         animateIn: 'fadeIn',
         item: 1,

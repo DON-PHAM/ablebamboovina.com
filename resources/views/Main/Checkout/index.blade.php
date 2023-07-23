@@ -4,19 +4,6 @@
 
     <!-- Breadcrumb Area start -->
     <section class="breadcrumb-area">
-{{--        <div class="container">--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-md-12">--}}
-{{--                    <div class="breadcrumb-content">--}}
-{{--                        <h1 class="breadcrumb-hrading">Thanh toán</h1>--}}
-{{--                        <ul class="breadcrumb-links">--}}
-{{--                            <li><a href="{{route('homepage')}}">{{trans('home.home')}}</a></li>--}}
-{{--                            <li>Thanh toán</li>--}}
-{{--                        </ul>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
     </section>
     <!-- Breadcrumb Area End -->
 
@@ -29,82 +16,41 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6">
                                 <div class="billing-info mb-20px">
-                                    <label>Họ</label>
-                                    <input type="text">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6">
-                                <div class="billing-info mb-20px">
-                                    <label>Tên</label>
-                                    <input type="text">
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="billing-info mb-20px">
-                                    <label>Công ty</label>
-                                    <input type="text">
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="billing-select mb-20px">
-                                    <label>Quốc gia</label>
-                                    <select style="display: none;">
-                                        <option>Chọn quốc gia</option>
-                                        <option>Azerbaijan</option>
-                                        <option>Bahamas</option>
-                                        <option>Bahrain</option>
-                                        <option>Bangladesh</option>
-                                        <option>Barbados</option>
-                                    </select>
-                                    <div class="nice-select" tabindex="0"><span class="current">Chọn quốc gia</span>
-                                        <ul class="list">
-                                            <li data-value="Select a country" class="option selected">Chọn quốc gia</li>
-                                            <li data-value="Azerbaijan" class="option">Azerbaijan</li>
-                                            <li data-value="Bahamas" class="option">Bahamas</li>
-                                            <li data-value="Bahrain" class="option">Bahrain</li>
-                                            <li data-value="Bangladesh" class="option">Bangladesh</li>
-                                            <li data-value="Barbados" class="option">Barbados</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="billing-info mb-20px">
-                                    <label>Địa chỉ</label>
-                                    <input class="billing-address" placeholder="Số nhà, tên đường"
-                                           type="text">
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="billing-info mb-20px">
-                                    <label>Tỉnh / Thành phố</label>
-                                    <input type="text">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6">
-                                <div class="billing-info mb-20px">
-                                    <label>Quận / Huyện</label>
-                                    <input type="text">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6">
-                                <div class="billing-info mb-20px">
-                                    <label>Postcode / ZIP</label>
-                                    <input type="text">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6">
-                                <div class="billing-info mb-20px">
-                                    <label>Số điện thoại</label>
-                                    <input type="text">
+                                    <label>Họ và tên</label>
+                                    <input type="text" name="name"
+                                           value="{{\Illuminate\Support\Facades\Auth::user()->name ?? ""}}">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6">
                                 <div class="billing-info mb-20px">
                                     <label>Email</label>
-                                    <input type="text">
+                                    <input type="email"
+                                           value="{{\Illuminate\Support\Facades\Auth::user()->email ?? ""}}">
                                 </div>
                             </div>
+                            <div class="col-lg-12">
+                                <div class="billing-info mb-20px">
+                                    <label>Điện thoại</label>
+                                    <input type="text" name="phone"
+                                           value="{{\Illuminate\Support\Facades\Auth::user()->phone ?? ""}}">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <label>Tỉnh/TP</label>
+                                <select id="province" class="nice-select"></select>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <label>Quận/Huyện</label>
+                                <select id="district" class="nice-select"></select>
+                            </div>
+                            <div class="col-lg-12">
+                                <label>Phường/xã</label>
+                                <select id="ward" class="nice-select"></select>
+                            </div>
+
+
                         </div>
                         <div class="additional-info-wrap">
                             <h4>Thông tin thêm</h4>
@@ -128,22 +74,56 @@
                                 </div>
                                 <div class="your-order-middle">
                                     <ul>
-                                        <li><span class="order-middle-left">Sản phẩm X 1</span> <span
-                                                class="order-price">100.000VNĐ </span></li>
-                                        <li><span class="order-middle-left">Sản phẩm X 1</span> <span
-                                                class="order-price">100.000VNĐ </span></li>
+                                        @php $total_product = 0 @endphp
+                                        @if(session('cart'))
+                                            @foreach(session('cart') as $id => $details)
+                                                @php $total_product = $details['price'] * $details['quantity'] @endphp
+                                                <li><span
+                                                        class="order-middle-left">{{$details['name']}} X {{$details['quantity']}}</span>
+                                                    <span
+                                                        class="order-price">{{number_format($total_product)}}VNĐ </span>
+                                                </li>
+                                            @endforeach
+                                        @endif
                                     </ul>
                                 </div>
                                 <div class="your-order-bottom">
-                                    <ul>
-                                        <li class="your-order-shipping">Phí ship</li>
-                                        <li>Miễn phí</li>
-                                    </ul>
+                                    @php $total = 0 @endphp
+                                    @foreach((array)session('cart') as $id => $details)
+                                        @php $total += $details['price'] * $details['quantity'] @endphp
+                                    @endforeach
+                                    @if($ships)
+
+                                        <div class="total-shipping">
+                                            <h5>{{trans('cart.totalShipping')}}</h5>
+                                        </div>
+                                        @if($ships)
+
+                                            @foreach($ships as $ship)
+
+                                                <div class="total-shipping form-group">
+                                                    <ul>
+                                                    <li><input type="radio"
+                                                                                   name="ship"> {{$ship->translate->name}}</li>
+                                                    @if(intval($total) > intval($ship->price_free))
+                                                       <li>Miễn phí</li>
+                                                    @else
+                                                        <li>{{number_format($ship->price)}}VNĐ</li>
+                                                    @endif
+                                                    </ul>
+                                                </div>
+                                            @endforeach
+
+                                        @endif
+
+                                    @endif
+
                                 </div>
                                 <div class="your-order-total">
+
                                     <ul>
                                         <li class="order-total">Tổng</li>
-                                        <li>200.000VNĐ</li>
+                                        <li>{{number_format($total)}}0VNĐ</li>
                                     </ul>
                                 </div>
                             </div>
@@ -193,4 +173,62 @@
         </div>
     </div>
 
+@endsection
+@section('script')
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.ajax({
+                url: '{{route('province')}}',
+                dataType: 'JSON',
+                success: function (res) {
+                    let html = '<option>Chọn tỉnh/thành phố</option>'
+                    if (res.status) {
+                        $.each((res.data), function (index, value) {
+                            html += '<option value="' + value.code + '">' + value.name + '</option>'
+                        });
+                        $('#province').append(html);
+                    }
+                }
+            });
+            $('#province').change(function () {
+                let province_code = $('#province option:selected').val();
+                $('#district').empty();
+                $('#ward').empty();
+                $.ajax({
+                    url: '{{route('district',':province_code')}}'.replace(':province_code', province_code),
+                    method: 'get',
+                    dataType: 'json',
+                    success: function (res) {
+                        let html = '<option>Chọn quận huyện</option>'
+                        if (res.status) {
+                            $.each((res.data), function (index, value) {
+                                html += '<option value="' + value.code + '">' + value.name + '</option>'
+                            });
+                            console.log(html)
+                            $('#district').append(html);
+                        }
+                    }
+                })
+            });
+            $('#district').change(function () {
+                let district_code = $('#district option:selected').val();
+                $('#ward').empty();
+                $.ajax({
+                    url: '{{route('ward',':district_code')}}'.replace(':district_code', district_code),
+                    method: 'get',
+                    dataType: 'json',
+                    success: function (res) {
+                        let html = '<option>Chọn xã/phường</option>'
+                        if (res.status) {
+                            $.each((res.data), function (index, value) {
+                                html += '<option value="' + value.code + '">' + value.name + '</option>'
+                            });
+                            console.log(html)
+                            $('#ward').append(html);
+                        }
+                    }
+                })
+            });
+        });
+    </script>
 @endsection
