@@ -14,6 +14,8 @@ return [
     'productNew' => '신규 재고',
     'readMore' => '더 보기',
     'addToCart' => '장바구니에 담기',
+    'addToCartSuccess' => '장바구니에 성공적으로 추가됨',
+    'addToCartExist' => '장바구니에 이미 있는 제품',
     'freeShipping' => '무료 배송',
     'freeShipping2' => '500,000VND 이상의 모든 주문',
     'freeReturn' => '무료 반품',
