@@ -4,19 +4,6 @@
 
     <!-- Breadcrumb Area start -->
     <section class="breadcrumb-area">
-{{--        <div class="container">--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-md-12">--}}
-{{--                    <div class="breadcrumb-content">--}}
-{{--                        <h1 class="breadcrumb-hrading">{{trans('cart.title')}}</h1>--}}
-{{--                        <ul class="breadcrumb-links">--}}
-{{--                            <li><a href="{{route('homepage')}}">{{trans('home.home')}}</a></li>--}}
-{{--                            <li>{{trans('cart.title')}}</li>--}}
-{{--                        </ul>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
     </section>
     <!-- Breadcrumb Area End -->
     <div class="cart-main-area mtb-60px">
@@ -40,7 +27,40 @@
                                         </tr>
                                         </thead>
                                         <tbody class="render-cart">
-{{--                                            render cart--}}
+                                        @php $total = 0 @endphp
+                                        @if(session('cart'))
+                                            @foreach(session('cart') as $id => $details)
+                                                @php $total = $details['price'] * $details['quantity'] @endphp
+                                                <tr class="cart-item" data-id="{{$id}}">
+                                                    <td class="product-thumbnail">
+                                                        <a href="javascript:void(0)">
+                                                            <img width="100"
+                                                                 src="{{asset('upload/product/'.$details['code'].'/'.$details['image'])}}"
+                                                                 alt="Cart product Image">
+                                                        </a>
+                                                    </td>
+                                                    <td class="product-name"><a
+                                                            href="javascript:void(0)">{{$details['name']}}</a></td>
+                                                    <td class="product-price-cart">
+                                                        <input type="hidden" class="amount-value"
+                                                               value="{{$details['price']}}">
+                                                        <span class="amount">{{number_format($details['price'])}}</span>
+                                                    </td>
+                                                    <td class="product-quantity">
+                                                        <div class="cart-plus-minus">
+                                                            <input class="cart-plus-minus-box update-cart quantity"
+                                                                   type="text" name="qtybutton"
+                                                                   value="{{$details['quantity']}}">
+                                                        </div>
+                                                    </td>
+                                                    <td class="product-subtotal">{{number_format($total)}}</td>
+                                                    <td class="product-remove ">
+                                                        <i class="fa fa-times remove-cart"></i>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -49,10 +69,6 @@
                                         <div class="cart-shiping-update-wrapper">
                                             <div class="cart-shiping-update">
                                                 <a href="{{route('homepage')}}">{{trans('cart.continueShopping')}}</a>
-                                            </div>
-                                            <div class="cart-clear">
-                                                <button type="button"
-                                                        onclick="deleteAllCart()">{{trans('cart.removeCart')}}</button>
                                             </div>
                                         </div>
                                     </div>
@@ -64,18 +80,32 @@
                                 <div class="title-wrap">
                                     <h4 class="cart-bottom-title section-bg-gary-cart">{{trans('cart.total')}}</h4>
                                 </div>
-                                <h5>{{trans('cart.totalProduct')}}<span>1000VNĐ</span></h5>
+                                @php $total = 0 @endphp
+                                @foreach((array)session('cart') as $id => $details)
+                                    @php $total += $details['price'] * $details['quantity'] @endphp
+                                @endforeach
+                                <h5>{{trans('cart.totalProduct')}} <input type="hidden" class="totalMoneyProduct"
+                                                                          value="{{number_format($total)}}"
+                                                                          name="totalMoneyProduct"><span
+                                        class="totalMoneyProduct">{{number_format($total)}}</span></h5>
                                 <div class="total-shipping">
                                     <h5>{{trans('cart.totalShipping')}}</h5>
-                                    <ul>
-                                        <li><input type="checkbox">{{trans('cart.shipBasic')}} <span>10.000VNĐ</span>
-                                        </li>
-                                        <li><input type="checkbox"> {{trans('cart.shipFast')}} <span>30.000VNĐ</span>
-                                        </li>
-                                    </ul>
+                                    @if($ships)
+                                        <ul>
+                                            @foreach($ships as $ship)
+                                                <li><input type="radio" value="{{$ship->price}}"
+                                                           name="shipping">{{$ship->translate->name}} <span>{{number_format($ship->price)}}VNĐ</span>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
                                 </div>
-                                <h4 class="grand-totall-title">{{trans('cart.totalSum')}} <span>500.000VNĐ</span></h4>
-                                <a href="#">{{trans('cart.payment')}}</a>
+                                <h4 class="grand-totall-title">{{trans('cart.totalSum')}}<input type="hidden"
+                                                                                                name="totalMoney"
+                                                                                                value=""
+                                                                                                class="totalMoney">
+                                    <span class="totalMoney"></span></h4>
+                                <a href="{{route('checkout-page')}}">{{trans('cart.payment')}}</a>
                             </div>
                         </div>
                     </div>
@@ -86,88 +116,58 @@
 
 @endsection
 @section('script')
-    <script>
-        var container = `<tr class="cart-item">
-                        <td class="product-thumbnail"></td>
-                        <td class="product-name"></td>
-                        <td class="product-price-cart"></td>
-                        <td class="product-quantity"></td>
-                        <td class="product-subtotal"></td>
-                        <td class="product-remove"></td>
-                    </tr>`;
-        $(".cart-table-content .render-cart").html(container)
-
-        function deleteAllCart() {
-            localStorage.removeItem('listProductInCart')
-            $(".mini-cart-warp .item-quantity-tag").html(0)
-            $(".cart-table-content .render-cart").html(container)
-        }
-
-        $(document).ready(function () {
-            const listProductInCart = localStorage.getItem('listProductInCart')
-            if (listProductInCart) {
-                const listProduct = JSON.parse(listProductInCart)
-                var total = 0
-                for (let i = 0; i < listProduct.length; i++) {
-                    total = total + parseFloat(listProduct[i].price)
-                    var container = `<tr class="cart-item" id="cart-${listProduct[i].id}">
-                        <td class="product-thumbnail">
-                            <a href=javascript:void(0)">
-                                <img width="100" src="{{asset('upload/product')}}/${listProduct[i].code}/${listProduct[i].image}" alt="Cart product Image">
-                            </a>
-                        </td>
-                        <td class="product-name"><a href="javascript:void(0)">${listProduct[i].translate.name}</a></td>
-                        <td class="product-price-cart">
-                            <input type="hidden" class="amount-value" value="${listProduct[i].price}">
-                            <span class="amount">${listProduct[i].price}</span>
-                        </td>
-                        <td class="product-quantity">
-                            <div class="cart-plus-minus">
-                                <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
-                            </div>
-                        </td>
-                        <td class="product-subtotal">${listProduct[i].price}</td>
-                        <td class="product-remove">
-                            <a href="#"><i class="fa fa-times"></i></a>
-                        </td>
-                    </tr>`;
-
-                    $(".cart-table-content .render-cart").append(container)
+    <script type="text/javascript">
+        $('.update-cart').change(function (e) {
+            e.preventDefault();
+            let ele = $(this);
+            $.ajax({
+                url: '{{route('update-cart')}}',
+                method: 'get',
+                data: {
+                    _token: '{{csrf_token()}}',
+                    id: ele.parents("tr").attr("data-id"),
+                    quantity: ele.parents("tr").find(".quantity").val()
+                },
+                success: function (res) {
+                    location.reload();
                 }
-            }
+            })
+        });
+        $('.qtybutton').click(function (e) {
+            e.preventDefault();
+            let ele = $(this);
+            $.ajax({
+                url: '{{route('update-cart')}}',
+                method: 'get',
+                data: {
+                    _token: '{{csrf_token()}}',
+                    id: ele.parents("tr").attr("data-id"),
+                    quantity: ele.parents("tr").find(".quantity").val()
+                },
+                success: function (res) {
+                    location.reload();
+                }
+            })
+        });
 
-            var CartPlusMinus = $('.cart-plus-minus');
-            CartPlusMinus.prepend('<div class="dec qtybutton">-</div>');
-            CartPlusMinus.append('<div class="inc qtybutton">+</div>');
-            $(".qtybutton").on("click", function () {
-                var $button = $(this);
-                var oldQuantity = $button.parent().find("input").val();
-                var idCheck = $button.parents(".cart-item").attr('id');
-                var priceProduct = $(`#${idCheck} .product-price-cart .amount-value`).val()
-                if ($button.text() === "+") {
-                    var newQuantity = parseFloat(oldQuantity) + 1;
-                    $(`#${idCheck} .product-subtotal`).html(parseFloat(priceProduct) * newQuantity)
-                    $button.parent().find("input").val(newQuantity);
-                } else {
-                    // Don't allow decrementing below zero
-                    if (oldQuantity > 1) {
-                        var newQuantity = parseFloat(oldQuantity) - 1;
-                        $(`#${idCheck} .product-subtotal`).html(parseFloat(priceProduct) * newQuantity)
-                        $button.parent().find("input").val(newQuantity);
-                    } else {
-                        $(`#${idCheck} .product-subtotal`).html(parseFloat(priceProduct))
-                        $button.parent().find("input").val(1);
+        $('.remove-cart').click(function (e) {
+            e.preventDefault();
+            let ele = $(this);
+            if (confirm('{{trans('cart.confirm-delete')}}')) {
+                $.ajax({
+                    url: '{{route('remove-cart')}}',
+                    method: 'get',
+                    data: {
+                        _token: '{{csrf_token()}}',
+                        id: ele.parents("tr").attr("data-id")
+                    },
+                    success: function (res) {
+                        location.reload();
                     }
-                }
-            });
+                })
+            }
+        });
 
-            $(".cart-plus-minus-box").on("change", function () {
-                var idCheck = $(this).parents(".cart-item").attr('id');
-                var priceProduct = $(`#${idCheck} .product-price-cart .amount-value`).val()
-                var newQuantity = $(this).val();
-                $(`#${idCheck} .product-subtotal`).html(parseFloat(priceProduct) * newQuantity)
-                $button.parent().find("input").val(newQuantity);
-            });
-        })
+
     </script>
 @endsection

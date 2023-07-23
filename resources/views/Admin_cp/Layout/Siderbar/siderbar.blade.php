@@ -198,28 +198,15 @@
                         <li class="nav-item ">
                             <a href="" class="nav-link">
                                 <i class="far fa-money-bill-alt nav-icon"></i>
-                                <p>Thanh toán <span class="right badge badge-warning">2</span></p>
+                                <p>Thanh toán </p>
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a href="" class="nav-link">
+                            <a href="{{route('ship')}}" class="nav-link">
                                 <i class="fas fa-ambulance nav-icon"></i>
-                                <p>Vận chuyển <span class="right badge badge-warning">1</span></p>
+                                <p>{{trans('home.ship')}}</p>
                             </a>
                         </li>
-                        <li class="nav-item ">
-                            <a href="" class="nav-link">
-                                <i class="fas fa-atom nav-icon"></i>
-                                <p>Giá trị đơn hàng <span class="right badge badge-warning">1</span></p>
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a href="" class="nav-link">
-                                <i class="fas fa-box nav-icon"></i>
-                                <p>Phí đơn hàng <span class="right badge badge-warning">0</span></p>
-                            </a>
-                        </li>
-
                     </ul>
                 </li>
 

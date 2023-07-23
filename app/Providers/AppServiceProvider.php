@@ -12,6 +12,7 @@ use App\Repositories\PaymentRepository;
 use App\Repositories\PostRepository;
 use App\Repositories\ProductRepository;
 use App\Repositories\SettingRespository;
+use App\Repositories\ShipRepository;
 use App\Repositories\SliderRepository;
 use App\Repositories\UserRepository;
 use App\Repositories\VideoRepository;
@@ -22,6 +23,7 @@ use App\Services\CategoryProductService;
 use App\Services\EventService;
 use App\Services\FeedbackService;
 use App\Services\IPaymentDetailService;
+use App\Services\IShipService;
 use App\Services\PaymentDetailService;
 use App\Services\PaymentService;
 use App\Services\PostService;
@@ -79,6 +81,9 @@ class AppServiceProvider extends ServiceProvider
         );
         $this->app->bind(
             IPaymentDetailService::class,PaymentDetailService::class
+        );
+        $this->app->bind(
+            IShipService::class,ShipRepository::class
         );
     }
 

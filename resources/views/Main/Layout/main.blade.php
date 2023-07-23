@@ -94,45 +94,68 @@
         <!-- offcanvas menu -->
         <div class="inner customScroll">
             <div class="offcanvas-menu mb-4">
+                @if($categories_compose)
                 <ul>
+                    @foreach($parentCategories_compose as $item_parent)
                     <li>
-                        <a href="#"><span class="menu-text">Sắc đẹp & Sức khỏe</span></a>
+                        <a href="{{route('category-client-page',$item_parent->id)}}"><span class="menu-text">{{$item_parent->translate->name}}</span></a>
+                        @if($subCategories_compose->isNotEmpty())
+                                <?php
+                                $subcategory = $subCategories_compose->where('parentid', $item_parent->id);
+                                ?>
+
+                            @if( $subcategory->isNotEmpty())
                         <ul class="sub-menu">
-                            <li>
-                                <a href="#"><span class="menu-text">Mắt</span></a>
-                            </li>
-                            <li>
-                                <a href="#"><span class="menu-text">Môi</span></a>
-                            </li>
-                            <li>
-                                <a href="#"><span class="menu-text">Mặt</span></a>
-                            </li>
-                            <li>
-                                <a href="#"><span class="menu-text">Dụng cụ trang điểm</span></a>
-                            </li>
+                            @foreach($subcategory as $item_sub)
+                                <li><a href="{{route('shop-page', $item_sub->id)}}"><span class="menu-text">{{$item_sub->translate->name}}</span></a></a></li>
+                            @endforeach
                         </ul>
+                            @endif
+                        @endif
                     </li>
-                    <li><a href="#">Massage & Thư giãn</a></li>
-                    <li><a href="#">Sơn Móng Gel</a></li>
-                    <li><a href="#">Dụng cụ trang điểm</a></li>
-                    <li><a href="#">Chăm sóc da</a></li>
+                    @endforeach
                 </ul>
+                @endif
             </div>
         </div>
     </div>
 
     <!-- OffCanvas Cart Start -->
     <div id="offcanvas-cart" class="offcanvas offcanvas-cart hover-style-cosmatics">
+        @php $total = 0 @endphp
+        @foreach((array)session('cart') as $id => $details)
+            @php $total += $details['price'] * $details['quantity'] @endphp
+        @endforeach
         <div class="inner">
             <div class="head">
-                <span class="title">Giỏ hàng</span>
+                <span class="title">{{trans('cart.cart')}}</span>
                 <button class="offcanvas-close">×</button>
             </div>
             <div class="body customScroll">
-                <ul class="minicart-product-list"></ul>
+                <ul class="minicart-product-list">
+                    @if(session('cart'))
+                        @foreach(session('cart') as $id => $details)
+                            <li id="${listProduct[i].id}">
+                                <a href="javascript:void(0)" class="image">
+                                    <img
+                                        src="{{asset('upload/product/'.$details['code'].'/'.$details['image'])}}"
+                                        alt="Cart product Image">
+                                </a>
+                                <div class="content">
+                                    <a href="javascript:void(0)" class="title">{{$details['name']}}</a>
+                                    <span class="quantity-price">{{$details['quantity']}} x <span
+                                            class="amount">{{$details['price']}}</span></span>
+                                    <a href="javascript:void(0)" class="remove-cart"
+                                       >×</a>
+
+                                </div>
+                            </li>
+                        @endforeach
+                    @endif
+                </ul>
             </div>
             <div class="shopping-cart-total">
-                <h4 class="shop-total">Total : <span class="header-cart-total">00</span></h4>
+                <h4 class="shop-total">{{trans('cart.total')}} : <span class="header-cart-total">{{$total}}</span></h4>
             </div>
             <div class="foot">
                 <div class="buttons">
@@ -150,7 +173,11 @@
     @include('Main.Layout.Footer.footer')
     <!--  Footer Area End -->
 </div>
-
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 <script src="{{asset('frontend/assets/js/vendor/vendor.min.js')}}"></script>
 <script src="{{asset('frontend/assets/js/plugins/plugins.min.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" crossorigin="anonymous"
@@ -159,7 +186,7 @@
 <!-- Main Activation JS -->
 <script src="{{asset('frontend/assets/js/main.js')}}"></script>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         let currentPath = "{{\Illuminate\Support\Facades\Request::capture()->url()}}";
         $('.main-navigation a').each(function() {
             let linkPath = $(this).attr('href');
@@ -167,18 +194,9 @@
                 $(this).addClass('active_menu');
             }
         });
+
     });
-    function removeItemFromCart(id) {
-        const idRemove = `#${id}`
-        $(idRemove).remove();
-        const listProductInCart = localStorage.getItem('listProductInCart')
-        if (listProductInCart) {
-            const listProduct = JSON.parse(listProductInCart)
-            let temp = listProduct.filter( el => el.id !== id );
-            localStorage.setItem('listProductInCart', JSON.stringify(temp))
-            $(".item-quantity-tag").html(temp.length)
-        }
-    }
+
 </script>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -193,39 +211,6 @@
                 }
             });
         })
-
-        // count cart
-        const listProductInCart = localStorage.getItem('listProductInCart')
-        if (!listProductInCart) {
-            $(".item-quantity-tag").html(0)
-        } else {
-            $(".item-quantity-tag").html(JSON.parse(listProductInCart).length)
-        }
-
-        // show popup cart
-        $('.mini-cart-warp').on('click', function () {
-            const listProductInCart = localStorage.getItem('listProductInCart')
-            $("#offcanvas-cart .minicart-product-list").html("")
-            if (listProductInCart) {
-                const listProduct = JSON.parse(listProductInCart)
-                var total = 0
-                for (let i = 0; i < listProduct.length; i++) {
-                    total = total + parseFloat(listProduct[i].price)
-                    var container = `<li id="${listProduct[i].id}">
-                        <a href="javascript:void(0)" class="image">
-                            <img  src="{{asset('upload/product')}}/${listProduct[i].code}/${listProduct[i].image}" alt="Cart product Image">
-                        </a>
-                        <div class="content">
-                            <a href="javascript:void(0)" class="title">${listProduct[i].translate.name}</a>
-                            <span class="quantity-price">1 x <span class="amount">${listProduct[i].price}</span></span>
-                            <a href="javascript:void(0)" class="remove" onclick="removeItemFromCart(${listProduct[i].id})">×</a>
-                        </div>
-                    </li>`;
-                    $("#offcanvas-cart .minicart-product-list").append(container)
-                }
-                $(".header-cart-total").html(total)
-            }
-        });
     });
 
 </script>

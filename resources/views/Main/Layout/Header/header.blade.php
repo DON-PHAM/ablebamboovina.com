@@ -134,7 +134,7 @@
                             <div class="cart-info d-flex">
                                 <div class="mini-cart-warp">
                                     <a href="#offcanvas-cart" class="count-cart color-black offcanvas-toggle">
-                                        <span class="item-quantity-tag">0</span>
+                                        <span class="item-quantity-tag">{{count((array) session('cart'))}}</span>
                                     </a>
                                 </div>
                             </div>
@@ -243,9 +243,11 @@
                                 <i class="ion-person"></i>
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="my-account.html">My account</a></li>
-                                <li><a class="dropdown-item" href="checkout.html">Checkout</a></li>
-                                <li><a class="dropdown-item" href="login.html">Sign in</a></li>
+                                @if(\Illuminate\Support\Facades\Auth::check())
+                                    <li><a class="dropdown-item" href="{{route('my-account-page')}}">My account</a></li>
+                                @else
+                                    <li><a class="dropdown-item" href="{{route('login-page')}}">Sign in</a></li>
+                                @endif
                             </ul>
                         </div>
                         <div class="mini-cart-warp">

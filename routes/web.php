@@ -27,9 +27,7 @@ Route::group(['middleware'=>'locale'],function () {
     Route::get('contact', 'Main\ContactController@index')->name('contact-page');
     Route::post('contact/postCreate','Main\ContactController@postCreate')->name('post-contact-create');
     Route::get('about', 'Main\AboutController@index')->name('about-page');
-    Route::get('cart', 'Main\CartController@index')->name('cart-page');
-    Route::get('checkout', 'Main\CheckoutController@index')->name('checkout-page');
-    Route::get('invoice', 'Main\InvoiceController@index')->name('invoice-page');
+
     Route::get('list-category/{id}', 'Main\CategoryController@index')->name('category-client-page');
     Route::get('product-event', 'Main\EventController@index')->name('event-client-page');
     Route::get('product-review', 'Main\ReviewController@index')->name('review-client-page');
@@ -39,6 +37,19 @@ Route::group(['middleware'=>'locale'],function () {
     Route::get('verify-email/{id}/{token}','LoginController@verifyEmail')->name('verifyEmail');
     Route::get('/login-fe','Main\LoginController@index')->name('login-page');
     Route::get('/my-account','Main\MyAccountController@index')->name('my-account-page');
+    // Add to Cart
+    Route::get('cart', 'Main\CartController@index')->name('cart-page');
+    Route::get('add-to-cart/{id}','Main\CartController@addToCart')->name('add-to-cart');
+    Route::get('update-cart','Main\CartController@updateCart')->name('update-cart');
+    Route::get('remove-from-cart', 'Main\CartController@remove')->name('remove-cart');
+
+    Route::get('checkout', 'Main\CheckoutController@index')->name('checkout-page');
+    Route::get('invoice', 'Main\InvoiceController@index')->name('invoice-page');
+
+    //địa chỉ
+    Route::get('province','Main\CheckoutController@getProvince')->name('province');
+    Route::get('district/{province_code}','Main\CheckoutController@getDistrict')->name('district');
+    Route::get('ward/{district_code}','Main\CheckoutController@getWard')->name('ward');
 });
  Route::group(['middleware'=>['locale','checkLoggedIn']],function() {
      Route::post('/login','LoginController@login')->name('post-login');
@@ -139,4 +150,13 @@ Route::group(['prefix'=>'dashboard','middleware'=>['locale','checkAuth']],functi
     Route::get('event/delete/{id}','Dashboard\EventController@delete')->name('delete-event');
     Route::get('event/changeStatus/{id}','Dashboard\EventController@changeStatus')->name('change-status-event');
     Route::get('event/deleteImage/{idimage}','Dashboard\EventController@deleteImage')->name('delete-event-image');
+
+    //Ship
+    Route::get('ship','Dashboard\ShipController@index')->name('ship');
+    Route::get('ship/create','Dashboard\ShipController@create')->name('get-ship-create');
+    Route::post('ship/create','Dashboard\ShipController@postCreate')->name('post-ship-create');
+    Route::get('ship/edit/{id}','Dashboard\ShipController@edit')->name('get-ship-edit');
+    Route::post('ship/edit/{id}','Dashboard\ShipController@update')->name('post-ship-edit');
+    Route::get('ship/delete/{id}','Dashboard\ShipController@delete')->name('delete-ship');
+
 });
