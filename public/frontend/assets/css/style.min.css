@@ -10,3 +10,20 @@ body{font-family:"Open Sans",sans-serif;font-size:14px;color:#666;line-height:24
         border: 0;
     }
 }
+.home-8 .header-buttom-nav,
+h3.vertical-menu-heading {
+    background: #1c7478;
+}
+.beauty-category {
+    width: auto;
+}
+.beauty-category h3.vertical-menu-heading:before,
+h3.vertical-menu-heading:after {
+    display: none;
+}
+.home-8 .main-navigation {
+    margin: 0;
+}
+.vertical-menu ul li ul.mega-menu-wrap>li:last-child a {
+    border-bottom: none
+}
