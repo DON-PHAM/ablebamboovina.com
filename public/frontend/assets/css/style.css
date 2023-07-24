@@ -50,6 +50,9 @@
 .offcanvas .inner .offcanvas-menu ul li .sub-menu li a {
     color: #fff;
 }
+.d-flex.align-items-start.justify-content-start {
+    font-size: 19px;
+}
 
 @media only screen and (max-width: 1400px) {
     .breadcrumb-area {

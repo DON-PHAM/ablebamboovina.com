@@ -26,10 +26,11 @@ return [
     'support247Contact' => 'Liên hệ chúng tôi 24/7',
     'postNew' => 'Bài miết mới',
     'info' => 'Thông tin',
-    'intro' => 'Giới thiệu',
-    'contact' => 'Liên hệ',
-    'category' => 'Danh mục',
-    'promotion' => 'Khuyến mãi',
-    'review' => 'Đánh giá',
-    'event' => 'Sự kiện',
+    'intro' => 'Company introduction',
+    'contact' => 'Contact',
+    'category' => 'Product category',
+    'promotion' => 'Product promotion',
+    'review' => 'Product review',
+    'event' => 'Product Event',
+    'trailer' => 'Trailer'
 ];
