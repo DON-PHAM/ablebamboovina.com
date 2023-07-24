@@ -34,7 +34,9 @@
     <!-- Banner Area Start -->
     <div class="banner-3-area">
         <div class="container">
-            <h1 style="font-weight: 800">Danh mục sản phẩm</h1>
+            <div class="section-title">
+                <h2>{{trans('homepage.category')}}</h2>
+            </div>
         </div>
     </div>
     <div class="banner-2-area">
