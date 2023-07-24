@@ -297,12 +297,12 @@
                 loop: true,
             },
             360: {
-                items: 2,
+                items: 4,
                 autoplay: true,
                 loop: true,
             },
             576: {
-                items: 2,
+                items: 4,
                 autoplay: true,
                 loop: true,
 

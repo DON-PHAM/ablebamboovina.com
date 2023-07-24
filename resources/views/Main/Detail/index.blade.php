@@ -55,6 +55,17 @@
                             </div>
                         </div>
                         <div id="gallery" class="product-dec-slider-2 mt-3">
+                            <a
+                                class="active"
+                                data-image="{{asset('upload/product/'.$product->code.'/'.$product->image)}}"
+                                data-zoom-image="{{asset('upload/product/'.$product->code.'/'.$product->image)}}"
+                            >
+                                <img
+                                    style="max-width: 100px"
+                                    src="{{asset('upload/product/'.$product->code.'/'.$product->image)}}"
+                                    alt=""
+                                />
+                            </a>
                             @foreach($product->images as $thumb)
                                 <a
                                     class="active"
