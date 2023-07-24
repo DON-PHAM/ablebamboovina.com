@@ -32,4 +32,5 @@ return [
     'promotion' => 'Khuyến mãi',
     'review' => 'Đánh giá',
     'event' => 'Sự kiện',
+    'needHelp' => 'Trợ giúp?',
 ];
