@@ -32,4 +32,5 @@ return [
     'promotion' => '프로모션',
     'review' => '검토',
     'event' => '이벤트',
+    'needHelp' => '도움이 필요하다?',
 ];
