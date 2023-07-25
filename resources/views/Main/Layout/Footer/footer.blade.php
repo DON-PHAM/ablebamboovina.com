@@ -25,7 +25,7 @@
 
                         <div class="need-help">
                             <p class="phone-info">
-                                NEED HELP?
+                                {{trans('homepage.needHelp')}}?
                                 @if(session('setting'))
                                     <span>{{ session('setting')->phone }}</span>
                                 @endif

@@ -128,7 +128,7 @@
         @endforeach
         <div class="inner">
             <div class="head">
-                <span class="title">{{trans('cart.cart')}}</span>
+                <span class="title">{{trans('cart.title')}}</span>
                 <button class="offcanvas-close">×</button>
             </div>
             <div class="body customScroll">
