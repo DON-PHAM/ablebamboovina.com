@@ -13,17 +13,6 @@
                             class="slider-height-6 d-flex align-items-start justify-content-start bg-img"
                             style="background-image: url({{asset('upload/slider/'.$slider->image)}}); background-size: contain; background-repeat: no-repeat"
                         >
-{{--                            <div class="container">--}}
-{{--                                <div class="slider-content-5 slider-animated-1 text-left">--}}
-{{--                                    <span class="animated">{{$slider->name}}</span>--}}
-{{--                                    <h1 class="animated">--}}
-{{--                                        {{$slider->description}}--}}
-{{--                                    </h1>--}}
-{{--                                    @if($slider->url)--}}
-{{--                                        <a href="{{$slider->url}}" class="shop-btn animated">Mua Ngay</a>--}}
-{{--                                    @endif--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
                         </div>
                     @endif
                 @endforeach
@@ -34,9 +23,7 @@
     <!-- Banner Area Start -->
     <div class="banner-3-area">
         <div class="container">
-            <div class="section-title">
-                <h2>{{trans('homepage.category')}}</h2>
-            </div>
+            <h1 style="font-weight: 800">Danh mục sản phẩm</h1>
         </div>
     </div>
     <div class="banner-2-area">
@@ -107,7 +94,7 @@
                                     <div class="add-to-link">
                                         <ul class="d-flex justify-content-center">
                                             <li class="cart">
-                                                <button class="cart-btn add-to-cart" onclick="addToCart({{$product}}, document.getElementById('mess-success').value, document.getElementById('mess-exist').value)">
+                                                <button class="cart-btn add-to-cart" onclick="addToCart({{$product->id}})">
                                                     {{trans('homepage.addToCart')}}
                                                 </button>
                                             </li>
@@ -186,7 +173,7 @@
                                             <div class="add-to-link">
                                                 <ul class="d-flex justify-content-center">
                                                     <li class="cart">
-                                                        <button class="cart-btn add-to-cart" onclick="addToCart({{$product}}, document.getElementById('mess-success').value, document.getElementById('mess-exist').value)">
+                                                        <button class="cart-btn add-to-cart" onclick="addToCart({{$product->id}})">
                                                             {{trans('homepage.addToCart')}}
                                                         </button>
                                                     </li>
@@ -266,7 +253,7 @@
                                         <div class="add-to-link">
                                             <ul>
                                                 <li class="cart">
-                                                    <button class="cart-btn add-to-cart" onclick="addToCart({{$product}}, document.getElementById('mess-success').value, document.getElementById('mess-exist').value)">
+                                                    <button class="cart-btn add-to-cart" onclick="addToCart({{$product->id}})">
                                                         {{trans('homepage.addToCart')}}
                                                     </button>
                                                 </li>
@@ -466,4 +453,18 @@
     <!-- Blog Area End -->
 
 @endsection
-
+@section('script')
+    <script>
+        function addToCart(id) {
+            $.ajax({
+                url:'{{route('add-to-cart',':id')}}'.replace(':id',id),
+                dataType:'json',
+                method:'get',
+                success:function (response){
+                   location.reload();
+                   toastr.success('Thêm thành công giỏ hàng');
+                }
+            })
+        }
+    </script>
+@endsection
