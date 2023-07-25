@@ -1,6 +1,6 @@
 <input type="hidden" id="mess-success" value="{{trans('homepage.addToCartSuccess')}}">
 <input type="hidden" id="mess-exist" value="{{trans('homepage.addToCartExist')}}">
-<header class="main-header">
+<header class="main-header tesssst 222222">
     <!-- Header Top Start -->
     <div class="header-top-nav">
         <div class="container-fluid">
@@ -155,7 +155,7 @@
                 <div class="col-md-12 text-left">
                     <div class="d-flex align-items-start justify-content-start">
                         <!-- Beauty Category -->
-                        <div class="beauty-category vertical-menu">
+                        <div class="beauty-category vertical-menu 1111 3333">
                             <h3 class="vertical-menu-heading vertical-menu-toggle">{{trans('homepage.category')}}</h3>
                             @if($categories_compose)
                                 <ul class="vertical-menu-wrap open-menu-toggle">
@@ -201,9 +201,9 @@
                                 <li class="menu-dropdown">
                                     <a href="{{ route('about-page') }}">{{trans('homepage.intro')}}</a>
                                 </li>
-                                <li>
-                                    <a href="{{ route('contact-page') }}">{{trans('homepage.contact')}}</a>
-                                </li>
+{{--                                <li>--}}
+{{--                                    <a href="{{ route('contact-page') }}">{{trans('homepage.contact')}}</a>--}}
+{{--                                </li>--}}
                             </ul>
                         </div>
                         <!--Main Navigation End -->
