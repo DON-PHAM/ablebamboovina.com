@@ -32,5 +32,6 @@ return [
     'promotion' => 'Product promotion',
     'review' => 'Product review',
     'event' => 'Product Event',
-    'trailer' => 'Trailer'
+    'trailer' => 'Trailer',
+    'needHelp' => 'Trợ giúp?'
 ];
