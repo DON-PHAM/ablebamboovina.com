@@ -41,6 +41,13 @@ h3.vertical-menu-heading:after {
 .zoompro-wrap .zoompro-span img {
     width: 85%;
 }
+.product-description-wrapper img {
+    max-width: 100%;
+}
+.product-dec-slider-2 {
+    width: 85%;
+    margin: 0;
+}
 @media only screen and (max-width: 1440px) {
     .home-5 .slider-height-6 {
         height: 360px;
@@ -55,6 +62,12 @@ h3.vertical-menu-heading:after {
     .home-5 .slider-height-6 {
         height: 250px;
     }
+    .zoompro-wrap .zoompro-span img {
+        width: 100%;
+    }
+    .product-dec-slider-2 {
+        width: 100%;
+    }
 }
 @media only screen and (max-width: 768px) {
     .home-5 .slider-height-6 {
@@ -62,6 +75,9 @@ h3.vertical-menu-heading:after {
     }
     .slider-area .owl-dot-style .owl-dots {
         bottom: 10px;
+    }
+    .pro-details-policy li {
+        font-size: 12px;
     }
 }
 @media only screen and (max-width: 639px) {
