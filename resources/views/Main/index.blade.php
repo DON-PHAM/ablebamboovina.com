@@ -84,11 +84,11 @@
                                         <div class="pricing-meta">
                                             <ul>
                                                 @if($product->discount)
-                                                    <li class="old-price">{{$product->price}}</li>
+                                                    <li class="old-price">{{number_format($product->price)}}</li>
                                                     <li class="current-price">{{$product->price * $product->discount / 100}}</li>
                                                     <li class="discount-price">-{{$product->discount}}%</li>
                                                 @else
-                                                    <li class="current-price">{{$product->price}}</li>
+                                                    <li class="current-price">{{number_format($product->price)}}</li>
                                                 @endif
                                             </ul>
                                         </div>
@@ -164,11 +164,11 @@
                                             <div class="pricing-meta">
                                                 <ul>
                                                     @if($product->discount)
-                                                        <li class="old-price">{{$product->price}}</li>
+                                                        <li class="old-price">{{number_format($product->price)}}</li>
                                                         <li class="current-price">{{$product->price * $product->discount / 100}}</li>
                                                         <li class="discount-price">-{{$product->discount}}%</li>
                                                     @else
-                                                        <li class="current-price">{{$product->price}}</li>
+                                                        <li class="current-price">{{number_format($product->price)}}</li>
                                                     @endif
                                                 </ul>
                                             </div>
@@ -243,11 +243,11 @@
                                             <div class="pricing-meta">
                                                 <ul>
                                                     @if($product->discount)
-                                                        <li class="old-price">{{$product->price}}</li>
+                                                        <li class="old-price">{{number_format($product->price)}}</li>
                                                         <li class="current-price">{{$product->price * $product->discount / 100}}</li>
                                                         <li class="discount-price">-{{$product->discount}}%</li>
                                                     @else
-                                                        <li class="current-price">{{$product->price}}</li>
+                                                        <li class="current-price">{{number_format($product->price)}}</li>
                                                     @endif
                                                 </ul>
                                             </div>
