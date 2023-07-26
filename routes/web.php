@@ -85,7 +85,7 @@ Route::group(['prefix'=>'dashboard','middleware'=>['locale','checkAuth']],functi
     Route::get('product/create','Dashboard\ProductController@create')->name('get-product-create');
     Route::post('product/postCreate','Dashboard\ProductController@postCreate')->name('post-product-create');
     Route::get('product/edit/{id}','Dashboard\ProductController@edit')->name('get-product-edit');
-    Route::post('product/edit/{id}','Dashboard\ProductController@update')->name('put-product-edit');
+    Route::post('product/edit/{id}','Dashboard\ProductController@update')->name('post-product-edit');
     Route::get('product/delete/{id}','Dashboard\ProductController@delete')->name('delete-product');
     Route::get('product/changestatus/{id}','Dashboard\ProductController@changeStatus')->name('change-status-product');
     Route::get('product/changeProductHot/{id}','Dashboard\ProductController@changeProductHot')->name('change-producthot-product');
