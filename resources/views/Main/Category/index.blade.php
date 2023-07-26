@@ -72,9 +72,12 @@
                 @if($categoryChildren)
                     @foreach($categoryChildren as $category)
                         <div class="col-6 col-sm-3 col-md-3 mb-4">
-                            <a href="{{route('shop-page', $category->id)}}" class="item">
-                                <img style="max-width: 100%" src="{{asset('upload/category/'.$category->image)}}" alt=""/>
-                            </a>
+                            <div class="col-category border">
+                                <a href="{{route('shop-page', $category->id)}}" class="item">
+                                    <img style="max-width: 100%" src="{{asset('upload/category/'.$category->image)}}" alt=""/>
+                                </a>
+                                <div class="name text-center mt-1 mb-2">{{$category->translate->name}}</div>
+                            </div>
                         </div>
                     @endforeach
                 @endif
