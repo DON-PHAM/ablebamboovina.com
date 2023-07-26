@@ -25,7 +25,7 @@
     margin: 0 auto;
 }
 .home-5.home-6 .main-navigation ul li a {
-    padding: 18px 10px;
+    padding: 18px 20px;
     font-size: 16px;
 }
 .contact-form {
@@ -64,6 +64,9 @@
 @media only screen and (max-width: 1199px) {
     .breadcrumb-area {
         padding: 150px 0;
+    }
+    .home-5.home-6 .main-navigation ul li a {
+        padding: 18px 10px;
     }
 }
 @media only screen and (max-width: 767px) {
