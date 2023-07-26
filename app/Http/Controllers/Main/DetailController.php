@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Main;
 use App\Http\Controllers\Controller;
 use App\Services\EventService;
 use App\Services\ProductService;
+use App\Services\SliderService;
 use Illuminate\Support\Facades\App;
 
 class DetailController extends Controller
@@ -12,10 +13,13 @@ class DetailController extends Controller
     protected $productService;
     protected $eventService;
 
-    public function __construct(ProductService $productService, EventService $eventService)
+    protected $sliderService;
+
+    public function __construct(ProductService $productService, EventService $eventService,SliderService $sliderService)
     {
         $this->productService = $productService;
         $this->eventService = $eventService;
+        $this->sliderService = $sliderService;
     }
 
     public function index($id)
@@ -25,7 +29,8 @@ class DetailController extends Controller
             $locale = App::getLocale();
         $products = $this->productService->getAll($locale);
         $product = $this->productService->showHomeById($id);
-        return view('Main.Detail.index', compact('product', 'products'));
+        $sliders = $this->sliderService->getAll();
+        return view('Main.Detail.index', compact('product', 'products','sliders'));
     }
 
     public function event($id)

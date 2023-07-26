@@ -16,6 +16,11 @@ class ProductCategory extends Model
         return $this->hasMany(Product::class,'categoryid','id');
     }
 
+    public function product()
+    {
+        return $this->hasOne(Product::class,'categoryid','id');
+    }
+
     public function posts()
     {
         return $this->hasMany(Post::class,'categoryid','id');

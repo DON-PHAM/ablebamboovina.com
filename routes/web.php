@@ -78,7 +78,7 @@ Route::group(['prefix'=>'dashboard','middleware'=>['locale','checkAuth']],functi
     Route::post('category/postCreate','Dashboard\CategoryProductController@postCreate')->name('post-category-create');
     Route::get('category/edit/{id}','Dashboard\CategoryProductController@edit')->name('get-category-edit');
     Route::post('category/edit/{id}','Dashboard\CategoryProductController@update')->name('put-category-edit');
-    Route::get('category/delete/{id}','Dashboard\CategoryProductController@delete')->name('delete-category-edit');
+    Route::get('category/delete/{id}','Dashboard\CategoryProductController@delete')->name('delete-category');
 
     //Product Management
     Route::get('product','Dashboard\ProductController@index')->name('product-list');

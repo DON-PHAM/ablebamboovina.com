@@ -102,7 +102,6 @@ class CategoryProductController extends Controller
 
     public function delete($id)
     {
-        $this->categoryProduct->delete($id);
-        return redirect()->route('category-list')->with('success', 'Xóa thành công');
+        return $this->categoryProduct->delete($id);
     }
 }
