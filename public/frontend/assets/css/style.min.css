@@ -13,6 +13,10 @@ body{font-family:"Open Sans",sans-serif;font-size:14px;color:#666;line-height:24
 .home-8 .header-buttom-nav,
 h3.vertical-menu-heading {
     background: #1c7478;
+    text-transform: none;
+}
+h3.vertical-menu-heading {
+    font-size: 16px;
 }
 .beauty-category {
     width: auto;

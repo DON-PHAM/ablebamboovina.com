@@ -76,6 +76,8 @@
                             <a href="{{route('detail-page', $category->product->id)}}" class="item">
                                 <img style="max-width: 100%" src="{{asset('upload/category/'.$category->image)}}" alt=""/>
                             </a>
+                           <div class="name text-center mt-1 mb-2">{{$category->translate->name}}</div>
+
                         </div>
                         @endif
                     @endforeach
