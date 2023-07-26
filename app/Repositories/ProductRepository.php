@@ -169,7 +169,7 @@ class ProductRepository implements ProductService {
     {
         $products = $this->product->with(['images', 'translate' => function ($query) use ($locale) {
             $query->where('languageid', $locale);
-        },'category','branch'])->paginate(15);
+        },'category','branch'])->paginate(50);
         return $products;
     }
 
