@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Models\ProductCategory;
 use App\Models\ProductCategoryTranslate;
 use App\Services\CategoryProductService;
+use http\Env\Response;
 use Illuminate\Support\Str;
 
 class CategoryProductRepository implements CategoryProductService {
@@ -93,11 +94,13 @@ class CategoryProductRepository implements CategoryProductService {
 
     public function delete(int $id)
     {
-        $categoryTranslate = $this->categoryTranslate->where('productcategoryid','=',$id)->take(2)->get();
-        foreach ($categoryTranslate as $item)
-        {
-            $item->delete();
+        $category = $this->category->with(['translates'])->find($id);
+        if (!$category) {
+            return response()->json(['error' => 'Product not found'], 404);
         }
+        $category->translates()->delete();
+        $category->delete();
+        rresponse()->json(['success' => 'Product deleted successfully']);
     }
 
     public function getById(int $id)
@@ -119,7 +122,7 @@ class CategoryProductRepository implements CategoryProductService {
         $category = $this->category
             ->where('status',1)
             ->where('typeid',$typeid)
-            ->with(['translate' => function ($query) use ($locale) {
+            ->with(['product','translate' => function ($query) use ($locale) {
                 $query->where('languageid', $locale);
             }])->get();
         return $category;
@@ -148,7 +151,7 @@ class CategoryProductRepository implements CategoryProductService {
 
     public function getCategoryChildren($locale, $parentId)
     {
-        $category = $this->category->where('parentid', $parentId)->where('status',1)->with(['translate' => function ($query) use ($locale) {
+        $category = $this->category->where('parentid', $parentId)->where('status',1)->with(['product','translate' => function ($query) use ($locale) {
             $query->where('languageid', $locale);
         }])->get();
         return $category;

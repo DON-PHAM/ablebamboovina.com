@@ -166,12 +166,13 @@
                                             @if($subCategories_compose->isNotEmpty())
                                                     <?php
                                                     $subcategory = $subCategories_compose->where('parentid', $item_parent->id);
+
                                                     ?>
 
                                                 @if( $subcategory->isNotEmpty())
                                                     <ul class="mega-menu-wrap">
                                                         @foreach($subcategory as $item_sub)
-                                                        <li><a href="{{route('shop-page', $item_sub->id)}}">{{$item_sub->translate->name}}</a></li>
+                                                        <li><a @if(isset($item_sub->product))  href="{{route('detail-page', $item_sub->product->id)}}" @endif>{{$item_sub->translate->name ?? ""}}</a></li>
                                                         @endforeach
                                                     </ul>
                                                 @endif
@@ -186,20 +187,17 @@
                         <div class="main-navigation">
                             <ul>
                                 <li class="menu-dropdown">
-                                    <a href="{{ route('promotion-client-page') }}">{{trans('homepage.promotion')}}</a>
+                                    <a href="{{ route('review-client-page') }}">{{trans('homepage.promotion')}}</a>
                                 </li>
                                 <li class="menu-dropdown">
-                                    <a href="">Trailer</a>
-                                </li>
-                                <li class="menu-dropdown">
-                                    <a href="{{ route('review-client-page') }}">{{trans('homepage.review')}}</a>
+                                    <a href="{{ route('promotion-client-page') }}">{{trans('homepage.review')}}</a>
 
                                 </li>
                                 <li class="menu-dropdown">
                                     <a href="{{ route('event-client-page') }}">{{trans('homepage.event')}}</a>
                                 </li>
                                 <li class="menu-dropdown">
-                                    <a href="{{ route('about-page') }}">{{trans('homepage.intro')}}</a>
+                                    <a href="{{ route('contact-page') }}">{{trans('homepage.intro')}}</a>
                                 </li>
 {{--                                <li>--}}
 {{--                                    <a href="{{ route('contact-page') }}">{{trans('homepage.contact')}}</a>--}}

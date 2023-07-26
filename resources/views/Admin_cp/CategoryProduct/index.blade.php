@@ -105,9 +105,12 @@
 <i class="fa fa-edit"></i>
 </span>
                                                     </a>
-                                                    <a href="{{route('delete-category-edit',$category->id)}}"
-                                                       class="btn btn-flat btn-sm btn-danger"><i
-                                                            class="fas fa-trash-alt"></i></a>
+
+                                                    <span onclick="deleteItem({{$category->id}});"
+                                                          title="Xóa"
+                                                          class="btn btn-flat btn-sm btn-danger">
+<i class="fas fa-trash-alt"></i>
+</span>
 
                                                 </td>
                                             </tr>
@@ -135,9 +138,11 @@
 <i class="fa fa-edit"></i>
 </span>
                                                                 </a>
-                                                                <a href="{{route('delete-category-edit',$sub->id)}}"
-                                                                   class="btn btn-flat btn-sm btn-danger"><i
-                                                                        class="fas fa-trash-alt"></i></a>
+                                                                <span onclick="deleteItem({{$sub->id}});"
+                                                                      title="Xóa"
+                                                                      class="btn btn-flat btn-sm btn-danger">
+<i class="fas fa-trash-alt"></i>
+</span>
 
                                                             </td>
                                                         </tr>
@@ -164,6 +169,54 @@
         </div>
     </section>
 @endsection
-@section('scripts')
+@section('script')
+    <script src="{{asset('backend/assets/admin/plugin/jquery.pjax.js')}}"></script>
+    <script>
+        $('.grid-trash').on('click', function() {
+            let ids = selectedRows().join();
+            deleteItem(ids);
+        });
 
+        function deleteItem(ids){
+            Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: true,
+            }).fire({
+                title: '{{trans('category.message-delete')}}?',
+                text: "",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: '{{trans('category.yes')}}',
+                confirmButtonColor: "#DD6B55",
+                cancelButtonText: '{{trans('category.no')}}',
+                reverseButtons: true,
+
+                preConfirm: function() {
+                    return new Promise(function(resolve) {
+                        $.ajax({
+                            method: 'get',
+                            url: '{{route('delete-category',':id')}}'.replace(':id',ids),
+                            success: function (data) {
+                                location.reload();
+                            }
+                        });
+                    });
+                }
+
+            }).then((result) => {
+                if (result.value) {
+                    toastr.success('Xóa thành công');
+                } else if (
+                    // Read more about handling dismissals
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+
+                }
+            })
+        }
+
+    </script>
 @endsection

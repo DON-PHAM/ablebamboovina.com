@@ -22,21 +22,23 @@
     </style>
 
     <!-- Breadcrumb Area start -->
-    <section class="breadcrumb-area">
-{{--        <div class="container">--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-md-12">--}}
-{{--                    <div class="breadcrumb-content">--}}
-{{--                        <h1 class="breadcrumb-hrading">Chi tiết sản phẩm</h1>--}}
-{{--                        <ul class="breadcrumb-links">--}}
-{{--                            <li><a href="{{route('homepage')}}">{{trans('home.home')}}</a></li>--}}
-{{--                            <li>{{$product->translate->name}}</li>--}}
-{{--                        </ul>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-    </section>
+    <!-- Slider Arae Start -->
+    <div class="slider-area">
+        <div class="slider-active-3 owl-carousel slider-hm8 owl-dot-style">
+            <!-- Slider Single Item Start -->
+            @if($sliders)
+                @foreach($sliders as $slider)
+                    @if($slider->status == 1)
+                        <div
+                            class="slider-height-6 d-flex align-items-start justify-content-start bg-img"
+                            style="background-image: url({{asset('upload/slider/'.$slider->image)}}); background-size: contain; background-repeat: no-repeat"
+                        >
+                        </div>
+                    @endif
+                @endforeach
+            @endif
+        </div>
+    </div>
     <!-- Breadcrumb Area End -->
     <!-- Shop details Area start -->
     <section class="product-details-area mtb-60px">
@@ -89,11 +91,11 @@
                         <div class="pricing-meta">
                             <ul>
                                 @if($product->discount)
-                                    <li class="old-price not-cut pe-2">{{$product->price}}</li>
+                                    <li class="old-price not-cut pe-2">{{number_format($product->price)}}</li>
                                     <li class="current-price old-price">{{$product->price * $product->discount / 100}}</li>
                                     <li class="discount-price">-{{$product->discount}}%</li>
                                 @else
-                                    <li class="old-price not-cut">{{$product->price}}</li>
+                                    <li class="old-price not-cut">{{number_format($product->price)}} VNĐ</li>
                                 @endif
                             </ul>
                         </div>
