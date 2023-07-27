@@ -187,10 +187,10 @@
                         <div class="main-navigation">
                             <ul>
                                 <li class="menu-dropdown">
-                                    <a href="{{ route('review-client-page') }}">{{trans('homepage.promotion')}}</a>
+                                    <a href="{{ route('promotion-client-page') }}">{{trans('homepage.promotion')}}</a>
                                 </li>
                                 <li class="menu-dropdown">
-                                    <a href="{{ route('promotion-client-page') }}">{{trans('homepage.review')}}</a>
+                                    <a href="{{ route('review-client-page') }}">{{trans('homepage.review')}}</a>
 
                                 </li>
                                 <li class="menu-dropdown">

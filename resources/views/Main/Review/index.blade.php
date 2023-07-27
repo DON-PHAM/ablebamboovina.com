@@ -4,46 +4,54 @@
 
     <!-- Breadcrumb Area start -->
     <section class="breadcrumb-area">
-{{--        <div class="container">--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-md-12">--}}
-{{--                    <div class="breadcrumb-content">--}}
-{{--                        <h1 class="breadcrumb-hrading">Đánh giá</h1>--}}
-{{--                        <ul class="breadcrumb-links">--}}
-{{--                            <li><a href="{{route('homepage')}}">{{trans('home.home')}}</a></li>--}}
-{{--                            <li>Đánh giá</li>--}}
-{{--                        </ul>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
+        {{--        <div class="container">--}}
+        {{--            <div class="row">--}}
+        {{--                <div class="col-md-12">--}}
+        {{--                    <div class="breadcrumb-content">--}}
+        {{--                        <h1 class="breadcrumb-hrading">Đánh giá</h1>--}}
+        {{--                        <ul class="breadcrumb-links">--}}
+        {{--                            <li><a href="{{route('homepage')}}">{{trans('home.home')}}</a></li>--}}
+        {{--                            <li>Đánh giá</li>--}}
+        {{--                        </ul>--}}
+        {{--                    </div>--}}
+        {{--                </div>--}}
+        {{--            </div>--}}
+        {{--        </div>--}}
     </section>
     <!-- Breadcrumb Area End -->
     <section class="about-area review pt-3">
         <div class="section-title border-bottom">
             <div class="container">
-                <h2 class="pb-3">Promotion</h2>
+                <h2 class="pb-3">Review</h2>
             </div>
         </div>
         <div class="container">
             <div class="row">
                 @if($videos)
                     @foreach($videos as $video)
-                        @if($video->status == 1)
-                            <div class="col-6 col-sm-4 col-md-3 mb-3 video-container">
-                                <article class="list-product mb-30px">
-                                    <div class="img-block text-center">
+                        <div class="col-6 col-sm-4 col-md-3 mb-3 video-container">
+                            <article class="list-product mb-30px">
+                                <div class="img-block text-center">
+                                    @php
+                                        $path = public_path('upload/review/'.$video->video);
+                                        $extension = \Illuminate\Support\Facades\File::extension($path);
+                                        $videoExtensions = ['mp4', 'avi', 'mov', 'wmv'];
+                                    @endphp
+                                    @if(in_array($extension,$videoExtensions))
                                         <video id="video" class="video" autoplay width="300"
-                                               src="{{asset('upload/video/'.$video->video)}}" height="300"
+                                               src="{{asset('upload/review/'.$video->video)}}" height="300"
                                                controls></video>
                                         <div class="mt-1 mb-3 px-2"
                                              style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; height: 48px">
                                             {{$video->name}}
                                         </div>
-                                    </div>
-                                </article>
-                            </div>
-                        @endif
+                                    @else
+                                        <img src="{{asset('upload/review/'.$video->video)}}" width="300">
+                                    @endif
+                                </div>
+                            </article>
+                        </div>
+
                     @endforeach
                 @endif
             </div>

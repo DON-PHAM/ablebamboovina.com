@@ -3,20 +3,16 @@
 namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
+use App\Models\Review;
+use App\Services\ProductService;
 use App\Services\VideoService;
+use Illuminate\Support\Facades\App;
 
 class ReviewController extends Controller
 {
-    protected $videoService;
-
-    public function __construct(VideoService $videoService)
-    {
-        $this->videoService = $videoService;
-    }
-
     public function index()
     {
-        $videos = $this->videoService->getAll();
+        $videos = Review::all();
         return view('Main.Review.index', compact('videos'));
     }
 }

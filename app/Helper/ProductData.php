@@ -66,4 +66,8 @@ class ProductData
     {
         return $this->productService->deleteImage($id);
     }
+    public function review($id,$request)
+    {
+        return $this->productService->review($id,$request);
+    }
 }

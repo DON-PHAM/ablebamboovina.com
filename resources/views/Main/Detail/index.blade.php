@@ -3,42 +3,60 @@
 @section('content')
     <style>
         @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
-        #rating{border:none;float:left;}
-        #rating>input{display:none;}/*ẩn input radio - vì chúng ta đã có label là GUI*/
-        #rating>label:before{margin:5px;font-size:1.25em;font-family:FontAwesome;display:inline-block;content:"\f005";}/*1 ngôi sao*/
-        #rating>.half:before{content:"\f089";position:absolute;}/*0.5 ngôi sao*/
-        #rating>label{color:#ddd;float:right;}/*float:right để lật ngược các ngôi sao lại đúng theo thứ tự trong thực tế*/
+
+        #rating {
+            border: none;
+            float: left;
+        }
+
+        #rating > input {
+            display: none;
+        }
+
+        /*ẩn input radio - vì chúng ta đã có label là GUI*/
+        #rating > label:before {
+            margin: 5px;
+            font-size: 1.25em;
+            font-family: FontAwesome;
+            display: inline-block;
+            content: "\f005";
+        }
+
+        /*1 ngôi sao*/
+        #rating > .half:before {
+            content: "\f089";
+            position: absolute;
+        }
+
+        /*0.5 ngôi sao*/
+        #rating > label {
+            color: #ddd;
+            float: right;
+        }
+
+        /*float:right để lật ngược các ngôi sao lại đúng theo thứ tự trong thực tế*/
         /*thêm màu cho sao đã chọn và các ngôi sao phía trước*/
-        #rating>input:checked~label,
-        #rating:not(:checked)>label:hover,
-        #rating:not(:checked)>label:hover~label{color:#FFD700;}
+        #rating > input:checked ~ label,
+        #rating:not(:checked) > label:hover,
+        #rating:not(:checked) > label:hover ~ label {
+            color: #FFD700;
+        }
+
         /* Hover vào các sao phía trước ngôi sao đã chọn*/
-        #rating>input:checked+label:hover,
-        #rating>input:checked~label:hover,
-        #rating>label:hover~input:checked~label,
-        #rating>input:checked~label:hover~label{color:#FFED85;}
+        #rating > input:checked + label:hover,
+        #rating > input:checked ~ label:hover,
+        #rating > label:hover ~ input:checked ~ label,
+        #rating > input:checked ~ label:hover ~ label {
+            color: #FFED85;
+        }
 
         /* Modified from: https://github.com/mukulkant/Star-rating-using-pure-css */
     </style>
 
     <!-- Breadcrumb Area start -->
     <!-- Slider Arae Start -->
-    <div class="slider-area">
-        <div class="slider-active-3 owl-carousel slider-hm8 owl-dot-style">
-            <!-- Slider Single Item Start -->
-            @if($sliders)
-                @foreach($sliders as $slider)
-                    @if($slider->status == 1)
-                        <div
-                            class="slider-height-6 d-flex align-items-start justify-content-start bg-img"
-                            style="background-image: url({{asset('upload/slider/'.$slider->image)}}); background-size: contain; background-repeat: no-repeat"
-                        >
-                        </div>
-                    @endif
-                @endforeach
-            @endif
-        </div>
-    </div>
+    <section class="breadcrumb-area"
+             style="background-image: url({{asset('upload/category/'.$product->getCategory->banner)}})"></section>
     <!-- Breadcrumb Area End -->
     <!-- Shop details Area start -->
     <section class="product-details-area mtb-60px">
@@ -108,7 +126,9 @@
                                 <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1"/>
                             </div>
                             <div class="pro-details-cart btn-hover">
-                                <a href="javascript:void(0)" onclick="addToCart({{$product}}, document.getElementById('mess-success').value, document.getElementById('mess-exist').value)"> + {{trans('homepage.addToCart')}}</a>
+                                <a href="javascript:void(0)"
+                                   onclick="addToCart({{$product}}, document.getElementById('mess-success').value, document.getElementById('mess-exist').value)">
+                                    + {{trans('homepage.addToCart')}}</a>
                             </div>
                         </div>
                         <div class="pro-details-social-info">
@@ -164,10 +184,10 @@
             <div class="description-review-wrapper">
                 <div class="description-review-topbar nav">
                     <a class="active" data-bs-toggle="tab" href="#des-details1">Mô tả</a>
-                    <a data-bs-toggle="tab" href="#des-details3" >Reviews </a>
+                    <a data-bs-toggle="tab" href="#des-details3">Reviews </a>
                 </div>
                 <div class="tab-content description-review-bottom">
-                    <div id="des-details1" class="tab-pane active" >
+                    <div id="des-details1" class="tab-pane active">
                         <div class="product-description-wrapper">
                             {!! $product->translate->content !!}
                         </div>
@@ -176,94 +196,142 @@
                         <div class="row">
                             <div class="col-lg-7">
                                 <div class="review-wrapper">
-                                    <div class="single-review">
-                                        <div class="review-img">
-                                            <img src="" alt="">
-                                        </div>
-                                        <div class="review-content">
-                                            <div class="review-top-wrap">
-                                                <div class="review-left">
-                                                    <div class="review-name">
-                                                        <h4>White Lewis</h4>
+                                    @if(isset($product->review))
+                                        @foreach($product->review as $review)
+                                            <div class="single-review" style="border-bottom: 1px solid #eee;
+    padding: 17px;">
+                                                <div class="review-img" style="width: 20px;height: 20px">
+                                                    <img
+                                                        src="{{asset('upload/product/'.$product->code.'/'.$thumb->image)}}"
+                                                        width="100%" alt="">
+                                                </div>
+                                                <div class="review-content">
+                                                    <div class="review-top-wrap">
+                                                        <div class="review-left">
+                                                            <div class="review-name">
+                                                                <h2><strong>{{$review->name}}</strong></h2>
+                                                                <span>({{$review->created_at}})</span>
+                                                            </div>
+                                                            <div class="rating-product">
+                                                                @for($i = 0; $i < $review->rate;$i++)
+                                                                    <i class="ion-android-star"></i>
+                                                                @endfor
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="rating-product">
-                                                        <i class="ion-android-star"></i>
+                                                    <div class="review-bottom">
+                                                        <p>
+                                                            {{$review->content}}
+
+                                                        </p>
+                                                        <p>
+                                                            @php
+                                                                $path = public_path('upload/review/'.$review->video);
+                                                                $extension = \Illuminate\Support\Facades\File::extension($path);
+                                                                $videoExtensions = ['mp4', 'avi', 'mov', 'wmv'];
+                                                            @endphp
+                                                            @if(in_array($extension,$videoExtensions))
+                                                                <video id="video" class="video" autoplay width="150"
+                                                                       src="{{asset('upload/review/'.$review->video)}}" height="150"
+                                                                       controls></video>
+                                                            @else
+                                                                <img src="{{asset('upload/review/'.$review->video)}}" width="200px">
+                                                            @endif
+                                                        </p>
                                                     </div>
                                                 </div>
-                                                <div class="review-left">
-                                                    <a href="#">Reply</a>
-                                                </div>
                                             </div>
-                                            <div class="review-bottom">
-                                                <p>
-                                                    Vestibulum ante ipsum primis aucibus orci luctustrices posuere cubilia Curae Suspendisse viverra ed viverra. Mauris ullarper euismod vehicula. Phasellus quam nisi, congue id nulla.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        @endforeach
+                                    @endif
 
                                 </div>
                             </div>
                             <div class="col-lg-5">
-                                <div class="ratting-form-wrapper pl-50">
-                                    <h3>Add a Review</h3>
-                                    <div class="ratting-form">
-                                        <form action="#">
-                                            <div class="star-box">
-                                                <span>Your rating:</span>
-                                                <div id="rating">
-                                                    <input type="radio" id="star5" name="rating" value="5" />
-                                                    <label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                                @if(\Illuminate\Support\Facades\Auth::check())
+                                    <div class="ratting-form-wrapper pl-50">
+                                        <h3>Add a Review</h3>
+                                        <div class="ratting-form">
+                                            <form id="review" method="post"
+                                                  action="{{route('post-review',$product->id)}}"
+                                                  enctype="multipart/form-data">
+                                                @csrf
+                                                <div class="star-box">
+                                                    <span>Your rating:</span>
+                                                    <div id="rating">
+                                                        <input type="radio" id="star5" name="rating" checked value="5"/>
+                                                        <label class="full" for="star5"
+                                                               title="Awesome - 5 stars"></label>
 
-                                                    <input type="radio" id="star4half" name="rating" value="4 and a half" />
-                                                    <label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                                                        <input type="radio" id="star4half" name="rating"
+                                                               value="4"/>
+                                                        <label class="half" for="star4half"
+                                                               title="Pretty good - 4.5 stars"></label>
 
-                                                    <input type="radio" id="star4" name="rating" value="4" />
-                                                    <label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                                                        <input type="radio" id="star4" name="rating" value="4"/>
+                                                        <label class="full" for="star4"
+                                                               title="Pretty good - 4 stars"></label>
 
-                                                    <input type="radio" id="star3half" name="rating" value="3 and a half" />
-                                                    <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                                                        <input type="radio" id="star3" name="rating" value="3"/>
+                                                        <label class="full" for="star3" title="Meh - 3 stars"></label>
 
-                                                    <input type="radio" id="star3" name="rating" value="3" />
-                                                    <label class = "full" for="star3" title="Meh - 3 stars"></label>
+                                                        <input type="radio" id="star2half" name="rating"
+                                                               value="2 and a half"/>
+                                                        <label class="half" for="star2half"
+                                                               title="Kinda bad - 2.5 stars"></label>
 
-                                                    <input type="radio" id="star2half" name="rating" value="2 and a half" />
-                                                    <label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                                                        <input type="radio" id="star2" name="rating" value="2"/>
+                                                        <label class="full" for="star2"
+                                                               title="Kinda bad - 2 stars"></label>
 
-                                                    <input type="radio" id="star2" name="rating" value="2" />
-                                                    <label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                                                        <input type="radio" id="star1half" name="rating"
+                                                               value="1 and a half"/>
+                                                        <label class="half" for="star1half"
+                                                               title="Meh - 1.5 stars"></label>
 
-                                                    <input type="radio" id="star1half" name="rating" value="1 and a half" />
-                                                    <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                                                        <input type="radio" id="star1" name="rating" value="1"/>
+                                                        <label class="full" for="star1"
+                                                               title="Sucks big time - 1 star"></label>
 
-                                                    <input type="radio" id="star1" name="rating" value="1" />
-                                                    <label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-
-                                                    <input type="radio" id="starhalf" name="rating" value="half" />
-                                                    <label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="rating-form-style mb-10">
-                                                        <input placeholder="Name" type="text">
+                                                        <input type="radio" id="starhalf" name="rating" value="half"/>
+                                                        <label class="half" for="starhalf"
+                                                               title="Sucks big time - 0.5 stars"></label>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="rating-form-style mb-10">
-                                                        <input placeholder="Email" type="email">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="rating-form-style mb-10">
+                                                            <input placeholder="Name" type="text" name="name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="rating-form-style mb-10">
+                                                            <input placeholder="Email" type="email" name="email">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-12">
+                                                        <div class="rating-form-style form-submit">
+                                                            <textarea name="contents" placeholder="Message"></textarea>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="rating-form-style form-submit">
+                                                            <input type="file" class="form-control" name="file"
+                                                                   id="file">
+                                                            <button type="submit" class="btn btn-primary">Đánh giá
+                                                            </button>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-12">
-                                                    <div class="rating-form-style form-submit">
-                                                        <textarea name="Your Review" placeholder="Message"></textarea>
-                                                        <input type="submit" value="Submit">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
+                                            </form>
+                                        </div>
                                     </div>
-                                </div>
+                                @else
+                                    <div class="ratting-form-wrapper pl-50">
+                                        <h3>Vui lòng <a href="">đăng nhập</a> để bình luận sản phẩm</h3>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -321,7 +389,9 @@
                             <div class="add-to-link">
                                 <ul>
                                     <li class="cart">
-                                        <a class="cart-btn" href="javascript:void(0)" onclick="addToCart({{$product}}, document.getElementById('mess-success').value, document.getElementById('mess-exist').value)"> + {{trans('homepage.addToCart')}}</a>
+                                        <a class="cart-btn" href="javascript:void(0)"
+                                           onclick="addToCart({{$product}}, document.getElementById('mess-success').value, document.getElementById('mess-exist').value)">
+                                            + {{trans('homepage.addToCart')}}</a>
                                     </li>
                                 </ul>
                             </div>
@@ -382,7 +452,9 @@
                             <div class="add-to-link">
                                 <ul>
                                     <li class="cart">
-                                        <a class="cart-btn" href="javascript:void(0)" onclick="addToCart({{$product}}, document.getElementById('mess-success').value, document.getElementById('mess-exist').value)"> + {{trans('homepage.addToCart')}}</a>
+                                        <a class="cart-btn" href="javascript:void(0)"
+                                           onclick="addToCart({{$product}}, document.getElementById('mess-success').value, document.getElementById('mess-exist').value)">
+                                            + {{trans('homepage.addToCart')}}</a>
                                     </li>
                                 </ul>
                             </div>
@@ -396,5 +468,6 @@
     <!-- Recent product area end -->
 
 @endsection
+
 
 

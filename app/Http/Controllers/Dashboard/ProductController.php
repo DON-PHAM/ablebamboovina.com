@@ -72,6 +72,14 @@ class ProductController extends Controller
     {
         return $this->productData->deleteImage($idmage);
     }
+    public function review($id, Request $request)
+    {
+        $request->validate([
+            'image' => 'image|file|mimes:jpeg,png,jpg,gif,mp4,mov,ogg|max:30000'
+        ]);
+        $result = $this->productData->review($id,$request);
+        return redirect()->back();
+    }
 
 
 }
