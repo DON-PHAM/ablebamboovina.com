@@ -19,7 +19,12 @@
 {{--        </div>--}}
     </section>
     <!-- Breadcrumb Area End -->
-    <section class="about-area">
+    <section class="about-area review pt-3">
+        <div class="section-title border-bottom">
+            <div class="container">
+                <h2 class="pb-3">Promotion</h2>
+            </div>
+        </div>
         <div class="container">
             <div class="row">
                 @if($videos)
