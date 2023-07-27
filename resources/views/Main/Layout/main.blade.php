@@ -39,8 +39,8 @@
 
         #footer_wrap #footer .Layout_footer > div { float:left; }
         #footer_wrap #footer .Layout_footer .layoutFooter1st { width:30%; }
-        #footer_wrap #footer .Layout_footer .layoutFooter2nd { width:30%; padding:0 0 0 2.5%;}
-        #footer_wrap #footer .Layout_footer .layoutFooter3rd { width:37%;}
+        #footer_wrap #footer .Layout_footer .layoutFooter2nd { width:35%; padding:0 0 0 2.5%;}
+        #footer_wrap #footer .Layout_footer .layoutFooter3rd { width:35%; padding-left: 100px;}
         #footer_wrap #footer .Layout_footer .layoutFooter1st .btn_business {color:#545454; line-height:5px;}
         #footer_wrap #footer .Layout_footer .title { margin-bottom:2px; color:#545454;}
         #footer_wrap #footer .Layout_footer .title_big{ color:#717171; margin-bottom:10px;}

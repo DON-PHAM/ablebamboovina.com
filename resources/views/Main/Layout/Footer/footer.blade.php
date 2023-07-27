@@ -199,7 +199,7 @@
     <div class="footer-bottom">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 col-lg-5 text-center text-md-start order-2 order-md-1 mt-4 mt-md-0">
+                <div class="col-md-12 col-lg-12 text-center mt-4">
                     <p class="copy-text">
                         Copyright © <a href="#"> Ablebamboovina</a>. All Rights Reserved
                     </p>
