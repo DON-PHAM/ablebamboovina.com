@@ -44,6 +44,10 @@ class Product extends Model
         return $this->belongsTo(ProductCategoryTranslate::class,'categoryid','productcategoryid')
             ->where('languageid',$locale);
     }
+    public function getCategory()
+    {
+        return $this->belongsTo(ProductCategory::class,'categoryid','id');
+    }
 
     public function branch()
     {

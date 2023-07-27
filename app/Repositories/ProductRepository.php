@@ -5,20 +5,26 @@ use App\Http\Requests\Admin\ProductRequest;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\ProductTranslate;
+use App\Models\Review;
 use App\Services\ProductService;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-class ProductRepository implements ProductService {
+class ProductRepository implements ProductService
+{
 
     protected $product;
     protected $productTranslate;
     protected $productImage;
-    public function __construct(Product $product, ProductTranslate $productTranslate,ProductImage $productImage)
+    protected $review;
+
+    public function __construct(Product $product, ProductTranslate $productTranslate, ProductImage $productImage, Review $review)
     {
         $this->product = $product;
         $this->productTranslate = $productTranslate;
         $this->productImage = $productImage;
+        $this->review = $review;
     }
 
     public function create(ProductRequest $request)
@@ -175,7 +181,7 @@ class ProductRepository implements ProductService {
 
     public function showHomeById(int $id)
     {
-        $products = $this->product->with(['images', 'translate','category','branch','review'])->find($id);
+        $products = $this->product->with(['images', 'translate', 'category', 'getCategory', 'branch', 'review'])->find($id);
         return $products;
     }
 
@@ -219,11 +225,30 @@ class ProductRepository implements ProductService {
     {
         $image = $this->productImage->find($idimage);
         $product = $this->product->find($image->productid);
-        $path = 'upload/product/'.$product->code.'/'.$image->image;
+        $path = 'upload/product/' . $product->code . '/' . $image->image;
         if (Storage::disk('public')->delete($path)) {
             $this->productImage->destroy($idimage);
-            return response()->json(['status'=>true,'data'=>$product]);
+            return response()->json(['status' => true, 'data' => $product]);
         }
-        return response()->json(['status'=>false,'data'=>'']);
+        return response()->json(['status' => false, 'data' => '']);
+    }
+
+    public function review($id, $request)
+    {
+        $userid = Auth::user()->id;
+        $data = [
+            'userid' => $userid,
+            'productid' => $id,
+            'rate' => $request->rating,
+            'content'=> $request->contents,
+            'name'=> $request->name
+        ];
+        if ($request->hasFile('file')) {
+            $image = $request->file('file');
+            $image_new = rand() . '_review.' . $image->getClientOriginalExtension();
+            $image->move(public_path('upload/review/'), $image_new);
+            $data['video'] = $image_new;
+        }
+        return $this->review->create($data);
     }
 }

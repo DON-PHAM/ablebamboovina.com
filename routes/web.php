@@ -50,6 +50,9 @@ Route::group(['middleware'=>'locale'],function () {
     Route::get('province','Main\CheckoutController@getProvince')->name('province');
     Route::get('district/{province_code}','Main\CheckoutController@getDistrict')->name('district');
     Route::get('ward/{district_code}','Main\CheckoutController@getWard')->name('ward');
+
+    //Review
+    Route::post('review/{id}','Dashboard\ProductController@review')->name('post-review');
 });
  Route::group(['middleware'=>['locale','checkLoggedIn']],function() {
      Route::post('/login','LoginController@login')->name('post-login');

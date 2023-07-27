@@ -4,23 +4,22 @@ namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
 use App\Services\ProductService;
+use App\Services\VideoService;
 use Illuminate\Support\Facades\App;
 
 class PromotionController extends Controller
 {
-    protected $productService;
 
-    public function __construct(ProductService $productService)
+    protected $videoService;
+
+    public function __construct(VideoService $videoService)
     {
-        $this->productService = $productService;
+        $this->videoService = $videoService;
     }
 
     public function index()
     {
-        $locale = session()->get('locale');
-        if ($locale == null)
-            $locale = App::getLocale();
-        $products = $this->productService->getAll($locale);
-        return view('Main.Promotion.index', compact('products'));
+        $videos = $this->videoService->getAll();
+        return view('Main.Promotion.index', compact('videos'));
     }
 }
