@@ -19,7 +19,12 @@
 {{--        </div>--}}
     </section>
     <!-- Breadcrumb Area End -->
-    <section class="about-area">
+    <section class="about-area event pt-3">
+        <div class="section-title border-bottom">
+            <div class="container">
+                <h2 class="pb-3">Event</h2>
+            </div>
+        </div>
         <div class="container">
             <div class="row">
                 @if($events)
