@@ -3,8 +3,9 @@
     position: relative;
     padding: 193px 0;
     background: url(../images/breadcrumb-bg.png) no-repeat;
-    background-size: 100%;
+    background-size: contain;
     background-position: center;
+    background-color: #bebebe;
 }
 .best-sell-slider .thumbnail img {
     max-height: 250px;
