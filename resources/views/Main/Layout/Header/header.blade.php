@@ -94,7 +94,7 @@
         <div class="container">
             <div class="row">
                 <!-- Logo Start -->
-                <div class="col-md-2 col-sm-2">
+                <div class="col-md-3 col-sm-3">
                     <div class="logo">
                         <a href="{{route('homepage')}}">
                             @if(session('setting'))
@@ -107,7 +107,7 @@
                     </div>
                 </div>
                 <!-- Logo End -->
-                <div class="col-md-10 col-sm-10 d-flex align-items-center">
+                <div class="col-md-9 col-sm-9 d-flex align-items-center">
                     <!--Header Bottom Account Start -->
                     <div class="header_account_area">
                         <!--Seach Area Start -->
