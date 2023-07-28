@@ -193,7 +193,7 @@
                         </div>
                     </div>
                     <div id="des-details3" class="tab-pane">
-                        <div class="row">
+                        <div class="row w-100">
                             <div class="col-lg-7">
                                 <div class="review-wrapper">
                                     @if(isset($product->review))
@@ -329,7 +329,7 @@
                                     </div>
                                 @else
                                     <div class="ratting-form-wrapper pl-50">
-                                        <h3>Vui lòng <a href="">đăng nhập</a> để bình luận sản phẩm</h3>
+                                        <h3>Vui lòng <a href="{{route('login-page')}}">đăng nhập</a> để bình luận sản phẩm</h3>
                                     </div>
                                 @endif
                             </div>

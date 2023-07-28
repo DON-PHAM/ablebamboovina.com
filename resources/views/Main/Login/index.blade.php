@@ -19,7 +19,7 @@
                             <div id="lg1" class="tab-pane active">
                                 <div class="login-form-container w-100">
                                     <div class="login-register-form">
-                                        <form action="#" method="post">
+                                        <form action="{{route('post-login')}}" method="post">
                                             <input type="text" name="username" placeholder="{!! trans('login.email') !!}">
                                             <input type="password" name="password" placeholder="{!! trans('login.password') !!}">
                                             <div class="button-box text-center">
