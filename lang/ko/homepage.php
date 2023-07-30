@@ -1,7 +1,7 @@
 <?php
 return [
     'welcome' => 'Ablebamboovina 스토어에 오신 것을 환영합니다!',
-    'config' => '설정',
+    'config' => 'join',
     'account' => '계정',
     'payment' => '결제',
     'logout' => '로그아웃',

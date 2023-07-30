@@ -3,21 +3,7 @@
 @section('content')
 
     <!-- Breadcrumb Area start -->
-    <section class="breadcrumb-area">
-        {{--        <div class="container">--}}
-        {{--            <div class="row">--}}
-        {{--                <div class="col-md-12">--}}
-        {{--                    <div class="breadcrumb-content">--}}
-        {{--                        <h1 class="breadcrumb-hrading">Đánh giá</h1>--}}
-        {{--                        <ul class="breadcrumb-links">--}}
-        {{--                            <li><a href="{{route('homepage')}}">{{trans('home.home')}}</a></li>--}}
-        {{--                            <li>Đánh giá</li>--}}
-        {{--                        </ul>--}}
-        {{--                    </div>--}}
-        {{--                </div>--}}
-        {{--            </div>--}}
-        {{--        </div>--}}
-    </section>
+    <section class="breadcrumb-area"></section>
     <!-- Breadcrumb Area End -->
     <section class="about-area review pt-3">
         <div class="section-title border-bottom">
@@ -31,13 +17,15 @@
                     @foreach($videos as $video)
                         @if($video->status == 1)
                             <div class="col-6 col-sm-4 col-md-3 mb-3 video-container">
-                                <article class="list-product mb-30px">
-                                    <div class="img-block text-center">
-                                        <video id="video" class="video" autoplay width="300"
-                                               src="{{asset('upload/video/'.$video->video)}}" height="300"
-                                               controls></video>
-                                        <div class="mt-1 mb-3 px-2"
-                                             style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; height: 48px">
+                                <article class="list-product mb-30px" style="height: 215px">
+                                    <div class="img-block text-center" style="height: 100%;width: 100%">
+                                        <div style="height: 70%">
+                                            <video id="video" class="video" autoplay  width="100%"
+                                                   src="{{asset('upload/video/'.$video->video)}}" height="100%"
+                                            ></video>
+                                        </div>
+
+                                        <div class="mt-1 mb-3 px-2 name-promotion">
                                             {{$video->name}}
                                         </div>
                                     </div>

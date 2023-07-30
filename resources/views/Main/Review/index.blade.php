@@ -1,23 +1,8 @@
 @extends('Main.Layout.main')
 @section('title',trans('Ablebamboovina'))
 @section('content')
-
     <!-- Breadcrumb Area start -->
-    <section class="breadcrumb-area">
-        {{--        <div class="container">--}}
-        {{--            <div class="row">--}}
-        {{--                <div class="col-md-12">--}}
-        {{--                    <div class="breadcrumb-content">--}}
-        {{--                        <h1 class="breadcrumb-hrading">Đánh giá</h1>--}}
-        {{--                        <ul class="breadcrumb-links">--}}
-        {{--                            <li><a href="{{route('homepage')}}">{{trans('home.home')}}</a></li>--}}
-        {{--                            <li>Đánh giá</li>--}}
-        {{--                        </ul>--}}
-        {{--                    </div>--}}
-        {{--                </div>--}}
-        {{--            </div>--}}
-        {{--        </div>--}}
-    </section>
+    <section class="breadcrumb-area"></section>
     <!-- Breadcrumb Area End -->
     <section class="about-area review pt-3">
         <div class="section-title border-bottom">
@@ -25,28 +10,63 @@
                 <h2 class="pb-3">Review</h2>
             </div>
         </div>
+
         <div class="container">
+            <div class="shop-top-bar">
+                <!-- Right Side Start -->
+                <div class="select-shoing-wrap">
+                    <div class="shot-product">
+                        <p>Bộ lọc:</p>
+                    </div>
+                    <div class="shop-select" style="max-width: 27%">
+                        <select class="nice-select">
+                            <option value="">Mới nhất</option>
+                            <option value="">A-Z</option>
+                            <option value="">Z-A</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Right Side End -->
+            </div>
             <div class="row">
                 @if($videos)
                     @foreach($videos as $video)
                         <div class="col-6 col-sm-4 col-md-3 mb-3 video-container">
                             <article class="list-product mb-30px">
-                                <div class="img-block text-center">
+                                <div class="img-block text-center" style="position: relative;width: 100%;height: 100%">
                                     @php
                                         $path = public_path('upload/review/'.$video->video);
                                         $extension = \Illuminate\Support\Facades\File::extension($path);
                                         $videoExtensions = ['mp4', 'avi', 'mov', 'wmv'];
                                     @endphp
                                     @if(in_array($extension,$videoExtensions))
-                                        <video id="video" class="video" autoplay width="300"
-                                               src="{{asset('upload/review/'.$video->video)}}" height="300"
-                                               controls></video>
-                                        <div class="mt-1 mb-3 px-2"
-                                             style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; height: 48px">
-                                            {{$video->name}}
+                                        <div style="height: 70%;width: 100%">
+                                            <video src="{{asset('upload/review/'.$video->video)}}" preload="auto" loop playsinline webkit-playsinline x5-playsinline autoplay width="100%" height="100%"></video>
+                                        </div>
+                                        <div class="mt-1 mb-3 px-2 info-review">
+                                            <div class="rating-product">
+                                                @for($i = 0; $i < $video->rate;$i++)
+                                                    <i class="ion-android-star"></i>
+                                                @endfor
+                                            </div>
+                                            <span class="name-review">{{$video->name}}</span>
+                                            <span class="time-review">{{$video->created_at}}</span>
                                         </div>
                                     @else
-                                        <img src="{{asset('upload/review/'.$video->video)}}" width="300">
+                                        <div style="height: 70%;width: 100%">
+                                            <img src="{{asset('upload/review/'.$video->video)}}" width="100%" height="100%">
+                                        </div>
+
+                                        <div class="mt-1 mb-3 px-2 info-review">
+                                            <div class="rating-product">
+                                                @for($i = 0; $i < $video->rate;$i++)
+                                                    <i class="ion-android-star"></i>
+                                                @endfor
+                                            </div>
+                                            <span class="name-review"> {{$video->name}}</span>
+                                            <span class="time-review">{{$video->created_at}}</span>
+
+                                        </div>
                                     @endif
                                 </div>
                             </article>
