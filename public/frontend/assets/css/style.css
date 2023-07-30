@@ -1,10 +1,11 @@
 .breadcrumb-area {
     text-align: center;
     position: relative;
-    padding: 240px 0;
+    padding: 193px 0;
     background: url(../images/breadcrumb-bg.png) no-repeat;
     background-size: contain;
     background-position: center;
+    background-color: #bebebe;
 }
 .best-sell-slider .thumbnail img {
     max-height: 250px;
