@@ -50,23 +50,9 @@
 
     <!-- Breadcrumb Area start -->
     <section class="breadcrumb-area" style="background-image: url({{asset('upload/category/'.$categoryParent->banner)}})">
-
-{{--        <div class="container">--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-md-12">--}}
-{{--                    <div class="breadcrumb-content">--}}
-{{--                        <h1 class="breadcrumb-hrading">Danh mục</h1>--}}
-{{--                        <ul class="breadcrumb-links">--}}
-{{--                            <li><a href="{{route('homepage')}}">{{trans('home.home')}}</a></li>--}}
-{{--                            <li>{{$categoryParent->translate->name}}</li>--}}
-{{--                        </ul>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
     </section>
     <!-- Breadcrumb Area End -->
-    <section class="about-area category pt-3">
+    <section class="about-area category pt-3 banner-3-area">
         <div class="section-title border-bottom">
             <div class="container">
                 <h2 class="pb-3">Category</h2>

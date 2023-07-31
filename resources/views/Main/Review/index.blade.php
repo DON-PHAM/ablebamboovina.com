@@ -32,7 +32,7 @@
                 @if($videos)
                     @foreach($videos as $video)
                         <div class="col-6 col-sm-4 col-md-3 mb-3 video-container">
-                            <article class="list-product mb-30px">
+                            <article class="list-product mb-30px" style="height: 300px">
                                 <div class="img-block text-center" style="position: relative;width: 100%;height: 100%">
                                     @php
                                         $path = public_path('upload/review/'.$video->video);
