@@ -33,7 +33,7 @@
                             <div class="col-6 col-sm-4 col-md-3 mb-3 video-container">
                                 <article class="list-product mb-30px">
                                     <div class="img-block text-center">
-                                        <video id="video" class="video" autoplay width="300"
+                                        <video id="video-{{$video->id}}" class="video" autoplay width="300" muted="muted"
                                                src="{{asset('upload/video/'.$video->video)}}" height="300"
                                                controls></video>
                                         <div class="mt-1 mb-3 px-2"
@@ -43,38 +43,66 @@
                                     </div>
                                 </article>
                             </div>
+
+                            <div class="modal fade" id="showVideoDetail-video-{{$video->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <video class="video-render" autoplay width="100%"
+                                                   src="{{asset('upload/video/'.$video->video)}}"
+                                                   controls></video>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         @endif
                     @endforeach
                 @endif
             </div>
         </div>
     </section>
-    <script>
+@endsection
 
-        let videoContainers = document.querySelectorAll(".video-container");
+@section('script')
+    <script type="text/javascript">
+        $(document).ready(function () {
+            let videoContainers = document.querySelectorAll(".video-container");
 
-        for (let i = 0; i < videoContainers.length; i++) {
-            let video = videoContainers[i].querySelector(".video");
-            let isPlaying = false;
+            for (let i = 0; i < videoContainers.length; i++) {
+                let video = videoContainers[i].querySelector(".video");
+                let isPlaying = false;
 
-            // Pause the video on page load
-            video.pause();
-
-            // Play the video on hover
-            videoContainers[i].onmouseover = function() {
-                if (!isPlaying) {
-                    video.play();
-                    isPlaying = true;
-                }
-            };
-
-            // Pause the video when the mouse leaves the video element
-            videoContainers[i].onmouseleave = function() {
+                // Pause the video on page load
                 video.pause();
-                isPlaying = false;
-            };
-        }
 
+                // Play the video on hover
+                videoContainers[i].onmouseover = function() {
+                    if (!isPlaying) {
+                        video.play();
+                        isPlaying = true;
+                    }
+                };
+
+                // Pause the video when the mouse leaves the video element
+                videoContainers[i].onmouseleave = function() {
+                    video.pause();
+                    isPlaying = false;
+                };
+
+                let videoContainersRender = document.querySelectorAll(`#showVideoDetail-${video.id}`);
+                let videoRender = videoContainersRender[0].querySelector(".video-render");
+                videoContainers[i].onclick = function() {
+                    $(`#showVideoDetail-${video.id}`).modal('show');
+                    video.pause();
+                    videoRender.play();
+                    isPlaying = false;
+                }
+
+                $(`#showVideoDetail-${video.id}`).on('hide.bs.modal', function(){
+                    video.pause();
+                    videoRender.pause();
+                });
+            }
+        });
     </script>
-
 @endsection
