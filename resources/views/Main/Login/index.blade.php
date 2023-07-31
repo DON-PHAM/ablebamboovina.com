@@ -20,6 +20,7 @@
                                 <div class="login-form-container w-100">
                                     <div class="login-register-form">
                                         <form action="{{route('post-login')}}" method="post">
+                                            @csrf
                                             <input type="text" name="username" placeholder="{!! trans('login.email') !!}">
                                             <input type="password" name="password" placeholder="{!! trans('login.password') !!}">
                                             <div class="button-box text-center">
@@ -32,13 +33,14 @@
                             <div id="lg2" class="tab-pane">
                                 <div class="login-form-container">
                                     <div class="login-register-form">
+
                                         <form action="{{route('post-register')}}" method="Post">
                                             @csrf
-                                            <input type="email" name="email" placeholder="{!! trans('login.email') !!}">
-                                            <input type="text" name="username" placeholder="Tên người dùng">
-                                            <input type="text" name="name" placeholder="Tên hiển thị">
-                                            <input type="password" name="password" placeholder="{!! trans('login.password') !!}">
-                                            <input type="password" name="confirm" placeholder="{!! trans('login.passwordConfirm') !!}">
+                                            <input type="email" name="email" placeholder="{!! trans('login.email') !!}" required>
+                                            <input type="text" name="username" placeholder="{{trans('login.username')}}" required>
+                                            <input type="text" name="name" placeholder="{{trans('login.name')}}" required>
+                                            <input type="password" name="password" placeholder="{!! trans('login.password') !!}" required>
+                                            <input type="password" name="confirm" placeholder="{!! trans('login.passwordConfirm') !!}" required>
                                             <input type="text" name="phonenumber" placeholder="{{trans('login.phone')}}">
                                             <div class="button-box text-center">
                                                 <button type="submit"><span>{{trans('homepage.register')}}</span></button>

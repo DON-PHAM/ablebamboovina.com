@@ -1,7 +1,7 @@
 <?php
 return [
     'welcome' => 'Chào mừng tới Ablebamboovina store!',
-    'config' => 'Thiết lập',
+    'config' => 'join',
     'account' => 'Tài khoản',
     'payment' => 'Thanh toán',
     'logout' => 'Đăng xuất',

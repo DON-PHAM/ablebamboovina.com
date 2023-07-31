@@ -233,7 +233,7 @@
                                                             @if(in_array($extension,$videoExtensions))
                                                                 <video id="video" class="video" autoplay width="150"
                                                                        src="{{asset('upload/review/'.$review->video)}}" height="150"
-                                                                       controls></video>
+                                                                       preload="auto" loop playsinline webkit-playsinline x5-playsinline autoplay></video>
                                                             @else
                                                                 <img src="{{asset('upload/review/'.$review->video)}}" width="200px">
                                                             @endif

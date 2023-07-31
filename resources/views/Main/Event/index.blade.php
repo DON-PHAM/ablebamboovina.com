@@ -3,24 +3,10 @@
 @section('content')
 
     <!-- Breadcrumb Area start -->
-    <section class="breadcrumb-area">
-{{--        <div class="container">--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-md-12">--}}
-{{--                    <div class="breadcrumb-content">--}}
-{{--                        <h1 class="breadcrumb-hrading">Sự kiện</h1>--}}
-{{--                        <ul class="breadcrumb-links">--}}
-{{--                            <li><a href="{{route('homepage')}}">{{trans('home.home')}}</a></li>--}}
-{{--                            <li>Sự kiện</li>--}}
-{{--                        </ul>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-    </section>
+    <section class="breadcrumb-area"></section>
     <!-- Breadcrumb Area End -->
     <section class="about-area event pt-3">
-        <div class="section-title border-bottom">
+        <div class="section-title border-bottom banner-3-area">
             <div class="container">
                 <h2 class="pb-3">Event</h2>
             </div>
