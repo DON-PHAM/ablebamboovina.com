@@ -61,7 +61,7 @@
                                     <div class="add-to-link">
                                         <ul class="d-flex justify-content-center">
                                             <li class="cart">
-                                                <button class="cart-btn add-to-cart" onclick="addToCart({{$product}})">
+                                                <button class="cart-btn add-to-cart" onclick="addToCart({{$product->id}})">
                                                     Thêm vào giỏ hàng
                                                 </button>
                                             </li>

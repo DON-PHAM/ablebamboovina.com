@@ -62,7 +62,7 @@
     <section class="product-details-area mtb-60px">
         <div class="container">
             <div class="row">
-                <div class="col-xl-6 col-lg-6 col-md-12">
+                <div class="col-xl-6 col-lg-6 col-md-12 product-detail">
                     <div class="product-details-img product-details-tab">
                         <div class="zoompro-wrap zoompro-2">
                             <div class="zoompro-border zoompro-span">
@@ -127,7 +127,7 @@
                             </div>
                             <div class="pro-details-cart btn-hover">
                                 <a href="javascript:void(0)"
-                                   onclick="addToCart({{$product}}, document.getElementById('mess-success').value, document.getElementById('mess-exist').value)">
+                                   onclick="addToCart({{$product->id}})">
                                     + {{trans('homepage.addToCart')}}</a>
                             </div>
                         </div>
@@ -390,7 +390,7 @@
                                 <ul>
                                     <li class="cart">
                                         <a class="cart-btn" href="javascript:void(0)"
-                                           onclick="addToCart({{$product}}, document.getElementById('mess-success').value, document.getElementById('mess-exist').value)">
+                                           onclick="addToCart({{$product->id}})">
                                             + {{trans('homepage.addToCart')}}</a>
                                     </li>
                                 </ul>
@@ -453,7 +453,7 @@
                                 <ul>
                                     <li class="cart">
                                         <a class="cart-btn" href="javascript:void(0)"
-                                           onclick="addToCart({{$product}}, document.getElementById('mess-success').value, document.getElementById('mess-exist').value)">
+                                           onclick="addToCart({{$product->id}})">
                                             + {{trans('homepage.addToCart')}}</a>
                                     </li>
                                 </ul>
@@ -467,6 +467,21 @@
     </section>
     <!-- Recent product area end -->
 
+@endsection
+@section('script')
+    <script>
+        function addToCart(id) {
+            $.ajax({
+                url:'{{route('add-to-cart',':id')}}'.replace(':id',id),
+                dataType:'json',
+                method:'get',
+                success:function (response){
+                    location.reload();
+                    toastr.success('Thêm thành công giỏ hàng');
+                }
+            })
+        }
+    </script>
 @endsection
 
 

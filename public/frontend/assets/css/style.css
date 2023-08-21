@@ -72,15 +72,107 @@
     .breadcrumb-area {
         padding: 120px 0;
     }
+    .product-category {
+        width: 50% !important;
+        padding: 0px 5px 5px 3px !important;
+    }
+    .section-title h2 {
+        font-size: 16px;
+    }
+    button.cart-btn.add-to-cart {
+        font-size: 10px;
+    }
+    .category-topsaler {
+        display: none;
+    }
+    #gallery {
+        display: none;
+    }
+    .product-detail {
+        margin: auto;
+        width: 70%;
+    }
+    .pro-details-cart a{
+        font-size: 13px;
+    }
+    .review-content {
+        font-size: 12px;
+    }
+    .review-content h2 {
+        font-size: 12px;
+    }
 }
 @media only screen and (max-width: 639px) {
     .breadcrumb-area {
         padding: 90px 0;
+    }
+    .product-category {
+        width: 50% !important;
+        padding: 0px 5px 5px 3px !important;
+    }
+    .section-title h2 {
+        font-size: 16px;
+    }
+    button.cart-btn.add-to-cart {
+        font-size: 10px;
+    }
+    .category-topsaler {
+        display: none;
+    }
+    #gallery {
+        display: none;
+    }
+    .product-detail {
+        margin: auto;
+        width: 70%;
+    }
+    .pro-details-cart a{
+        font-size: 13px;
+    }
+    .review-content {
+        font-size: 12px;
+    }
+    .review-content h2 {
+        font-size: 12px;
     }
 }
 @media only screen and (max-width: 480px) {
     .breadcrumb-area {
         padding: 70px 0 50px;
     }
+    .product-category {
+        width: 50% !important;
+        padding: 0px 5px 5px 3px !important;
+    }
+    .section-title h2 {
+        font-size: 16px;
+    }
+    button.cart-btn.add-to-cart {
+        font-size: 10px;
+    }
+    .category-topsaler {
+        display: none;
+    }
+    .home-8 .static-area
+    {
+        margin: 0px !important;
+    }
+    #gallery {
+        display: none;
+    }
+    .product-detail {
+        margin: auto;
+        width: 70%;
+    }
+    .pro-details-cart a{
+        font-size: 13px;
+    }
+    .review-content {
+        font-size: 12px;
+    }
+    .review-content h2 {
+        font-size: 12px;
+    }
 }
+
 

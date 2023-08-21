@@ -33,7 +33,7 @@
                             <div class="col-6 col-sm-4 col-md-3 mb-3 video-container">
                                 <article class="list-product mb-30px">
                                     <div class="img-block text-center">
-                                        <video id="video-{{$video->id}}" class="video" autoplay width="300" muted="muted"
+                                        <video id="video-{{$video->id}}" class="video" width="300"
                                                src="{{asset('upload/video/'.$video->video)}}" height="300"
                                                controls></video>
                                         <div class="mt-1 mb-3 px-2"
@@ -48,7 +48,7 @@
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-body">
-                                            <video class="video-render" autoplay width="100%"
+                                            <video class="video-render" width="100%"
                                                    src="{{asset('upload/video/'.$video->video)}}"
                                                    controls></video>
                                         </div>
