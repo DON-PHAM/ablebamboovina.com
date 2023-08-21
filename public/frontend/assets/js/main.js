@@ -1334,25 +1334,25 @@
 
 }(jQuery));
 
-function addToCart(e, messSuccess, messExist) {
-    const listProductInCart = localStorage.getItem('listProductInCart')
-    if (!listProductInCart) {
-        const temp = []
-        temp.push(e)
-        localStorage.setItem('listProductInCart', JSON.stringify(temp))
-        toastr.success(messSuccess || 'Thêm vào giỏ hàng thành công');
-        $(".item-quantity-tag").html(1)
-    } else {
-        const temp = JSON.parse(listProductInCart)
-        const check = temp.find(item => item.id === e.id)
-        if (!check) {
-            temp.push(e)
-            localStorage.setItem('listProductInCart', JSON.stringify(temp))
-            toastr.success(messSuccess || 'Thêm vào giỏ hàng thành công');
-            $(".item-quantity-tag").html(JSON.parse(listProductInCart).length + 1)
-        } else {
-            toastr.warning(messExist || 'Sản phẩm đã có trong giỏ hàng');
-        }
-    }
-}
+// function addToCart(e, messSuccess, messExist) {
+//     const listProductInCart = localStorage.getItem('listProductInCart')
+//     if (!listProductInCart) {
+//         const temp = []
+//         temp.push(e)
+//         localStorage.setItem('listProductInCart', JSON.stringify(temp))
+//         toastr.success(messSuccess || 'Thêm vào giỏ hàng thành công');
+//         $(".item-quantity-tag").html(1)
+//     } else {
+//         const temp = JSON.parse(listProductInCart)
+//         const check = temp.find(item => item.id === e.id)
+//         if (!check) {
+//             temp.push(e)
+//             localStorage.setItem('listProductInCart', JSON.stringify(temp))
+//             toastr.success(messSuccess || 'Thêm vào giỏ hàng thành công');
+//             $(".item-quantity-tag").html(JSON.parse(listProductInCart).length + 1)
+//         } else {
+//             toastr.warning(messExist || 'Sản phẩm đã có trong giỏ hàng');
+//         }
+//     }
+// }
 

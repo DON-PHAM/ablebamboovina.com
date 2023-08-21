@@ -63,7 +63,7 @@
                 @if($categoryChildren)
                     @foreach($categoryChildren as $category)
                         @if(isset($category->product))
-                        <div class="col-6 col-sm-3 col-md-3 mb-4">
+                        <div class="col-sm-3 col-md-3 mb-4 product-category">
                             <div class="col-category border">
                                 <a href="{{route('detail-page', $category->product->id)}}" class="item">
                                     <img style="max-width: 100%" src="{{asset('upload/category/'.$category->image)}}" alt=""/>

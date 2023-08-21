@@ -253,7 +253,7 @@
                         <div class="mini-cart-warp">
                             <a href="#offcanvas-cart" class="count-cart color-black offcanvas-toggle">
                                 <span class="amount-tag">$20.00</span>
-                                <span class="item-quantity-tag">0</span>
+                                <span class="item-quantity-tag">{{count((array) session('cart'))}}</span>
                             </a>
                         </div>
                     </div>

@@ -116,7 +116,7 @@
     <section class="hot-deal-area">
         <div class="container">
             <div class="row">
-                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 category-topsaler">
                     <div class="row">
                         <div class="col-md-12">
                             <!-- Section Title -->
