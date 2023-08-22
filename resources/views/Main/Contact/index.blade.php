@@ -3,19 +3,7 @@
 @section('content')
 
     <section class="breadcrumb-area">
-{{--        <div class="container">--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-md-12">--}}
-{{--                    <div class="breadcrumb-content">--}}
-{{--                        <h1 class="breadcrumb-hrading">Contact Page</h1>--}}
-{{--                        <ul class="breadcrumb-links">--}}
-{{--                            <li><a href="{{route('homepage')}}">Home</a></li>--}}
-{{--                            <li>Contact Us</li>--}}
-{{--                        </ul>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
+
     </section>
     <!-- Breadcrumb Area End -->
 
@@ -67,7 +55,7 @@
                                 </div>
                             </div>
                             <div class="contact-social">
-                                <h3>Theo dõi</h3>
+                                <h3>{{trans("contact.follow")}}</h3>
                                 <div class="social-info">
                                     <ul>
                                         <li>
@@ -119,17 +107,17 @@
                                 <div class="row">
                                     <input name="status" hidden="" type="text" value="0">
                                     <div class="col-lg-6">
-                                        <input name="fullname" placeholder="Tên*" type="text">
+                                        <input name="fullname" placeholder="{{trans("contact.contact")}}*" type="text">
                                     </div>
                                     <div class="col-lg-6">
-                                        <input name="email" placeholder="Email*" type="email">
+                                        <input name="email" placeholder="{{trans("contact.email")}}*" type="email">
                                     </div>
                                     <div class="col-lg-12">
-                                        <input name="phonenumber" placeholder="Số điện thoại*" type="text">
+                                        <input name="phonenumber" placeholder="{{trans("contact.phone")}}*" type="text">
                                     </div>
                                     <div class="col-lg-12">
-                                        <textarea name="contents" placeholder="Nội dung*"></textarea>
-                                        <button class="submit contact-submit" type="submit">Gửi</button>
+                                        <textarea name="contents" placeholder="{{trans("contact.content")}}*"></textarea>
+                                        <button class="submit contact-submit" type="submit">{{trans("contact.send")}}</button>
                                     </div>
                                 </div>
                             </form>
