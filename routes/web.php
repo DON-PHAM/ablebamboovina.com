@@ -33,9 +33,10 @@ Route::group(['middleware'=>'locale'],function () {
     Route::get('product-review', 'Main\ReviewController@index')->name('review-client-page');
     Route::get('product-promotion', 'Main\PromotionController@index')->name('promotion-client-page');
     Route::get('create-user','LoginController@register')->name('register');
-    Route::post('postCreateUser','LoginController@postRegister')->name('post-register');
+    Route::post('postCreateUser','Main\LoginController@postRegister')->name('post-register');
     Route::get('verify-email/{id}/{token}','LoginController@verifyEmail')->name('verifyEmail');
     Route::get('/login-fe','Main\LoginController@index')->name('login-page');
+    Route::post('/login-fe','Main\LoginController@login')->name('post-login-page');
     Route::get('/my-account','Main\MyAccountController@index')->name('my-account-page');
     // Add to Cart
     Route::get('cart', 'Main\CartController@index')->name('cart-page');
