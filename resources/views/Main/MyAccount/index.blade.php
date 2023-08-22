@@ -19,7 +19,6 @@
         </div>
     </section>
     <!-- Breadcrumb Area End -->
-
     <div class="checkout-area mtb-60px">
         <div class="container">
             <div class="row">
@@ -30,6 +29,7 @@
                                 <div class="panel-heading my-account-title">
                                     <h3 class="panel-title"><span>1 .</span> <a data-bs-toggle="collapse" data-parent="#faq" href="#my-account-1" aria-expanded="true" class="">Edit your account information </a></h3>
                                 </div>
+                                @if(session()->get('user'))
                                 <div id="my-account-1" class="panel-collapse collapse show" style="">
                                     <div class="panel-body">
                                         <div class="myaccount-info-wrapper">
@@ -40,25 +40,25 @@
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="billing-info">
                                                         <label>Full Name</label>
-                                                        <input type="text">
+                                                        <input type="text" name="name" value="{{session()->get('user')->name}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="billing-info">
                                                         <label>UserName</label>
-                                                        <input type="text">
+                                                        <input type="text" name="username" value="{{session()->get('user')->username}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="billing-info">
                                                         <label>Email</label>
-                                                        <input type="email">
+                                                        <input type="email" name="email" disabled value="{{session()->get('user')->email}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="billing-info">
                                                         <label>Phone</label>
-                                                        <input type="text">
+                                                        <input type="text" name="phonenumber" value="{{session()->get('user')->phonenumber}}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -73,6 +73,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endif
                             </div>
                             <div class="panel panel-default single-my-account">
                                 <div class="panel-heading my-account-title">
