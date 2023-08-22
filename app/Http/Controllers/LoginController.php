@@ -87,6 +87,10 @@ class LoginController extends Controller
             $user->email_verified_at = now();
             $user->email_verification_token = null;
             $user->save();
+            if ($user->role == 0)
+            {
+                return redirect('/login-fe')->with('success', 'Your email has been verified. Please log in.');
+            }
             return redirect('/login')->with('success', 'Your email has been verified. Please log in.');
         } else {
             return redirect('/register')->with('error', 'Invalid verification link.');

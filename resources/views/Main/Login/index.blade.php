@@ -15,11 +15,12 @@
                                 <h4>{{trans('homepage.register')}}</h4>
                             </a>
                         </div>
+                        @include('Error.message')
                         <div class="tab-content">
                             <div id="lg1" class="tab-pane active">
                                 <div class="login-form-container w-100">
                                     <div class="login-register-form">
-                                        <form action="{{route('post-login')}}" method="post">
+                                        <form action="{{route('post-login-page')}}" method="post">
                                             @csrf
                                             <input type="text" name="username" placeholder="{!! trans('login.email') !!}">
                                             <input type="password" name="password" placeholder="{!! trans('login.password') !!}">
