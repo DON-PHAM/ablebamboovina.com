@@ -33,5 +33,8 @@ return [
     'review' => 'Product review',
     'event' => 'Product Event',
     'trailer' => 'Trailer',
-    'needHelp' => 'Trợ giúp?'
+    'needHelp' => 'Trợ giúp?',
+    'description' => 'Mô tả',
+    'youmaylike' => 'Bạn Có Thể Thích',
+    'samecategory' => 'Cùng danh mục',
 ];

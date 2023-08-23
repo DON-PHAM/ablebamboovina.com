@@ -183,7 +183,7 @@
         <div class="container">
             <div class="description-review-wrapper">
                 <div class="description-review-topbar nav">
-                    <a class="active" data-bs-toggle="tab" href="#des-details1">Mô tả</a>
+                    <a class="active" data-bs-toggle="tab" href="#des-details1">{{trans("homepage.description")}}</a>
                     <a data-bs-toggle="tab" href="#des-details3">Reviews </a>
                 </div>
                 <div class="tab-content description-review-bottom">
@@ -347,7 +347,7 @@
                 <div class="col-md-12">
                     <!-- Section Title -->
                     <div class="section-title">
-                        <h2>Bạn Có Thể Thích</h2>
+                        <h2>{{trans('homepage.youmaylike')}}</h2>
                     </div>
                     <!-- Section Title -->
                 </div>
@@ -410,7 +410,7 @@
                 <div class="col-md-12">
                     <!-- Section Title -->
                     <div class="section-title">
-                        <h2>Cùng Danh Mục</h2>
+                        <h2>{{trans('homepage.samecategory')}}</h2>
                     </div>
                     <!-- Section Title -->
                 </div>

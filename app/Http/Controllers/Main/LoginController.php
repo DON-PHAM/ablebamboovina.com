@@ -57,7 +57,7 @@ class LoginController extends Controller
         }
         else if($user->email_verification_token != null)
         {
-            return redirect()->to('login-page')->withErrors(trans('message.inverify'));
+            return redirect()->to('login-fe')->withErrors(trans('message.inverify'));
         }
         Auth::login($user);
         Session::put('user', $user);

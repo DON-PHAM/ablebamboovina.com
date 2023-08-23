@@ -34,4 +34,7 @@ return [
     'event' => 'Product Event',
     'trailer' => 'Trailer',
     'needHelp' => '도움이 필요하다?',
+    'description' => '',
+    'youmaylike' => '',
+    'samecategory' => '',
 ];
