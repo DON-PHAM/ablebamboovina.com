@@ -31,7 +31,6 @@ class ShipRepository implements IShipService
             'code' => $data->code
         ];
         $result = $this->ship->create($ship);
-
         $languages = ['ko','vi'];
         foreach ($languages as $language)
         {

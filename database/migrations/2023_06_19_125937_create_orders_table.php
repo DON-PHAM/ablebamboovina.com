@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->string('oder_code');
             $table->integer('customerid');
             $table->decimal('discount',15,0);
             $table->dateTime('orderdate');
