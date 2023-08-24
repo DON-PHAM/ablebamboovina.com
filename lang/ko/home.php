@@ -27,6 +27,7 @@ return [
     'feedback' => '고객 피드백',
     'online-buy' =>'온라인 판매',
     'about' => '소개하다',
-    'back' => ''
-
+    'back' => '',
+    'ship' => '',
+    'event' => 'Sự kiện'
 ];

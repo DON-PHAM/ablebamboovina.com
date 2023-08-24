@@ -1,4 +1,5 @@
 @extends('Admin_cp.Layout.master')
+@section('title',trans('video.title'))
 @section('content')
     <style>
         video
@@ -66,24 +67,24 @@
                                     <span class="btn btn-flat btn-primary grid-refresh" title="Làm mới"><i
                                             class="fas fa-sync-alt"></i></span>
                                 </div>
-                                <div class="menu-left">
-                                    <div class="input-group float-right ml-1" style="width: 350px;">
-                                        <div class="btn-group">
-                                            <select class="form-control rounded-0 float-right" id="order_sort">
-                                                <option value="id__desc">ID giảm dần</option>
-                                                <option value="id__asc">ID tăng dần</option>
-                                                <option value="username__desc">username theo thứ tự z-a</option>
-                                                <option value="alpha__asc">username theo thứ tự a-z</option>
-                                                <option value="name__desc">Tên theo thứ tự z-a</option>
-                                                <option value="name__asc">Tên theo thứ tự a-z</option>
-                                            </select>
-                                        </div>
-                                        <div class="input-group-append">
-                                            <button id="button_sort" type="submit" class="btn btn-primary"><i
-                                                    class="fas fa-sort-amount-down-alt"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
+{{--                                <div class="menu-left">--}}
+{{--                                    <div class="input-group float-right ml-1" style="width: 350px;">--}}
+{{--                                        <div class="btn-group">--}}
+{{--                                            <select class="form-control rounded-0 float-right" id="order_sort">--}}
+{{--                                                <option value="id__desc">ID giảm dần</option>--}}
+{{--                                                <option value="id__asc">ID tăng dần</option>--}}
+{{--                                                <option value="username__desc">username theo thứ tự z-a</option>--}}
+{{--                                                <option value="alpha__asc">username theo thứ tự a-z</option>--}}
+{{--                                                <option value="name__desc">Tên theo thứ tự z-a</option>--}}
+{{--                                                <option value="name__asc">Tên theo thứ tự a-z</option>--}}
+{{--                                            </select>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="input-group-append">--}}
+{{--                                            <button id="button_sort" type="submit" class="btn btn-primary"><i--}}
+{{--                                                    class="fas fa-sort-amount-down-alt"></i></button>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                             </div>
                         </div>
 
@@ -94,9 +95,9 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>{{trans('video.name')}}</th>
-                                        <th>{{trans('user.link')}}</th>
-                                        <th>{{trans('user.status')}}</th>
-                                        <th>{{trans('user.action')}}</th>
+                                        <th>{{trans('video.link')}}</th>
+                                        <th>{{trans('video.status')}}</th>
+                                        <th>{{trans('video.action')}}</th>
                                     </tr>
                                     </thead>
                                     @if($videos)
@@ -108,7 +109,7 @@
                                                 <td>{{$video->name}}</td>
                                                 <td>
                                                     <div class="video-container">
-                                                        <video id="video" autoplay width="300" src="{{asset('upload/video/'.$video->video)}}" height="300" controls></video>
+                                                        <video id="video" width="300" src="{{asset('upload/video/'.$video->video)}}" height="300" controls></video>
                                                     </div>
                                                 </td>
                                                 <td>{{$video->status == 1 ? "Kích hoạt" : "Chưa kích hoạt"}}</td>

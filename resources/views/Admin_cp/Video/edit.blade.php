@@ -1,5 +1,5 @@
 @extends('Admin_cp.Layout.master')
-@section('title',trans('video.title'))
+@section('title',trans('video.title-edit'))
 @section('content')
 
     <div class="content-header">
@@ -34,7 +34,7 @@
                                 <div class="btn-group float-right mr-5">
                                     <a href="{{route('video')}}" class="btn  btn-flat btn-default"
                                        title="List"><i class="fa fa-list"></i><span
-                                            class="hidden-xs"> {{trans('video.back')}}</span></a>
+                                            class="hidden-xs"> {{trans('home.back')}}</span></a>
                                 </div>
                             </div>
                         </div>
@@ -91,11 +91,11 @@
                                     <div class="col-md-8">
                                         <div class="btn-group float-right">
                                             <button type="submit"
-                                                    class="btn btn-primary">{{trans('video.save')}}</button>
+                                                    class="btn btn-primary">{{trans('home.save')}}</button>
                                         </div>
                                         <div class="btn-group float-left">
                                             <button type="reset"
-                                                    class="btn btn-warning">{{trans('video.reset')}}</button>
+                                                    class="btn btn-warning">{{trans('home.reset')}}</button>
                                         </div>
                                     </div>
                                 </div>

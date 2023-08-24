@@ -1,5 +1,5 @@
 @extends('Admin_cp.Layout.master')
-@section('title',trans('product.title'))
+@section('title',trans('setting.title'))
 @section('content')
 
     <div class="content-header">

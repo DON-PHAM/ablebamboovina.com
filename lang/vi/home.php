@@ -27,6 +27,8 @@ return [
     'feedback' => 'Phản hồi',
     'online-buy' =>'Mua online',
     'about' => 'Giới thiệu',
-    'back' => 'Trở lại'
+    'back' => 'Trở lại',
+    'ship' => 'Vận chuyển',
+    'event' => 'Sự kiện'
 
 ];
