@@ -144,30 +144,30 @@
                     <p class="sub-header"> Marketing</p>
                 </li>
 
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon  fas fa-chart-pie "></i>
-                        <p>
-                            Quản lý báo cáo
-                            <i class="right fas fa-angle-right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item ">
-                            <a href="" class="nav-link">
-                                <i class="fas fa-bars nav-icon"></i>
-                                <p>Báo cáo sản phẩm</p>
-                            </a>
-                        </li>
-                    </ul>
+{{--                <li class="nav-item has-treeview">--}}
+{{--                    <a href="#" class="nav-link">--}}
+{{--                        <i class="nav-icon  fas fa-chart-pie "></i>--}}
+{{--                        <p>--}}
+{{--                            Quản lý báo cáo--}}
+{{--                            <i class="right fas fa-angle-right"></i>--}}
+{{--                        </p>--}}
+{{--                    </a>--}}
+{{--                    <ul class="nav nav-treeview">--}}
+{{--                        <li class="nav-item ">--}}
+{{--                            <a href="" class="nav-link">--}}
+{{--                                <i class="fas fa-bars nav-icon"></i>--}}
+{{--                                <p>Báo cáo sản phẩm</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
 
 
-                </li>
+{{--                </li>--}}
                 <li class="nav-item ">
                     <a href="{{route('event')}}" class="nav-link">
                         <i class="nav-icon fas fa-file-code"></i>
                         <p>
-                            Sự kiện
+                            {{trans('home.event')}}
                         </p>
                     </a>
                 </li>
