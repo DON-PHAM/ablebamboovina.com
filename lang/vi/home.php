@@ -29,6 +29,10 @@ return [
     'about' => 'Giới thiệu',
     'back' => 'Trở lại',
     'ship' => 'Vận chuyển',
-    'event' => 'Sự kiện'
+    'event' => 'Sự kiện',
+    'register' => 'Đăng ký',
+    'video' => 'Video',
+    'configPay' => 'Cấu hình thanh toán',
+    'coresetting' => 'Cấu hình'
 
 ];

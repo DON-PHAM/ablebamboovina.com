@@ -27,7 +27,7 @@
 
                 <li class="nav-link header">
                     <i class="nav-icon  fas fa-cogs "></i>
-                    <p class="sub-header"> Cấu hình hệ thống</p>
+                    <p class="sub-header"> {{trans("home.coresetting")}}</p>
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
@@ -41,7 +41,7 @@
                         <li>
                             <a href="{{route('user-create')}}" class="nav-link">
                                 <i class="fas fa-user-circle nav-icon"></i>
-                                <p>Đăng ký</p>
+                                <p>{{trans("home.register")}}</p>
                             </a>
                         </li>
                         <li class="nav-item ">
@@ -79,29 +79,30 @@
 
                     <p class="sub-header">{{trans('home.online-buy')}}</p>
                 </li>
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon  fas fa-cart-arrow-down "></i>
-                        <p>
-                            {{trans('home.order-manager')}}
-                            <i class="right fas fa-angle-right"></i>
-                        </p>
+                <li class="nav-item ">
+                    <a href="" class="nav-link">
+                        <i class="fas fa-shopping-cart nav-icon"></i>
+                        <p>{{trans('home.order')}}</p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item ">
-                            <a href="" class="nav-link">
-                                <i class="fas fa-shopping-cart nav-icon"></i>
-                                <p>{{trans('home.order')}}</p>
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a href="{{route('product-list')}}" class="nav-link">
-                                <i class="far fa-file-image nav-icon"></i>
-                                <p>{{trans('home.product')}}</p>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
+                <li class="nav-item ">
+                    <a href="{{route('product-list')}}" class="nav-link">
+                        <i class="far fa-file-image nav-icon"></i>
+                        <p>{{trans('home.product')}}</p>
+                    </a>
+                </li>
+{{--                <li class="nav-item has-treeview">--}}
+{{--                    <a href="#" class="nav-link">--}}
+{{--                        <i class="nav-icon  fas fa-cart-arrow-down "></i>--}}
+{{--                        <p>--}}
+{{--                            {{trans('home.order-manager')}}--}}
+{{--                            <i class="right fas fa-angle-right"></i>--}}
+{{--                        </p>--}}
+{{--                    </a>--}}
+{{--                    <ul class="nav nav-treeview">--}}
+{{--                        --}}
+{{--                    </ul>--}}
+{{--                </li>--}}
 
                 <li class="nav-link header">
                     <i class="nav-icon  fas fa-file-signature "></i>
@@ -175,7 +176,7 @@
                     <a href="{{route('video')}}" class="nav-link">
                         <i class="nav-icon fas fa-video"></i>
                         <p>
-                            Video
+                            {{trans("home.video")}}
                         </p>
                     </a>
                 </li>
@@ -183,43 +184,56 @@
 
                 <li class="nav-link header">
                     <i class="nav-icon  fas fa-th "></i>
-                    <p class="sub-header"> Phần mở rộng</p>
+                    <p class="sub-header"> {{trans("home.extension")}}</p>
                 </li>
 
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon  fas fa-puzzle-piece "></i>
-                        <p>
-                            Tiện ích
-                            <i class="right fas fa-angle-right"></i>
-                        </p>
+                <li class="nav-item ">
+                    <a href="{{route('ship')}}" class="nav-link">
+                        <i class="fas fa-ambulance nav-icon"></i>
+                        <p>{{trans('home.ship')}}</p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item ">
-                            <a href="" class="nav-link">
-                                <i class="far fa-money-bill-alt nav-icon"></i>
-                                <p>Thanh toán </p>
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a href="{{route('ship')}}" class="nav-link">
-                                <i class="fas fa-ambulance nav-icon"></i>
-                                <p>{{trans('home.ship')}}</p>
-                            </a>
-                        </li>
-                    </ul>
+                </li>
+                <li class="nav-item ">
+                    <a href="" class="nav-link">
+                        <i class="far fa-money-bill-alt nav-icon"></i>
+                        <p>{{trans("home.configPay")}}</p>
+                    </a>
                 </li>
 
-                <li id="summary">
-                    <ul>
-                        <li class="footer-static">
-                            <div>Orders New <span class="float-right">100%</span></div>
-                            <div class="progress">
-                                <div class="progress-bar bg-info" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"> <span class="sr-only">100%</span></div>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
+{{--                <li class="nav-item has-treeview">--}}
+{{--                    <a href="#" class="nav-link">--}}
+{{--                        <i class="nav-icon  fas fa-puzzle-piece "></i>--}}
+{{--                        <p>--}}
+{{--                            {{}}--}}
+{{--                            <i class="right fas fa-angle-right"></i>--}}
+{{--                        </p>--}}
+{{--                    </a>--}}
+{{--                    <ul class="nav nav-treeview">--}}
+{{--                        <li class="nav-item ">--}}
+{{--                            <a href="" class="nav-link">--}}
+{{--                                <i class="far fa-money-bill-alt nav-icon"></i>--}}
+{{--                                <p>Thanh toán </p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item ">--}}
+{{--                            <a href="{{route('ship')}}" class="nav-link">--}}
+{{--                                <i class="fas fa-ambulance nav-icon"></i>--}}
+{{--                                <p>{{trans('home.ship')}}</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                </li>--}}
+
+{{--                <li id="summary">--}}
+{{--                    <ul>--}}
+{{--                        <li class="footer-static">--}}
+{{--                            <div>Orders New <span class="float-right">100%</span></div>--}}
+{{--                            <div class="progress">--}}
+{{--                                <div class="progress-bar bg-info" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"> <span class="sr-only">100%</span></div>--}}
+{{--                            </div>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                </li>--}}
             </ul>
         </nav>
     </div>
