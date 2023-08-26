@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
 use App\Services\CategoryProductService;
+use App\Services\PostService;
 use App\Services\ProductService;
 use App\Services\SettingService;
 use App\Services\SliderService;
@@ -17,13 +18,15 @@ class Homecontroller extends Controller
     protected $sliderService;
     protected $categoryService;
     protected $settingService;
+    protected $postService;
 
-    public function __construct(ProductService $productService, SliderService $sliderService, CategoryProductService $categoryProductService, SettingService $settingService)
+    public function __construct(ProductService $productService, SliderService $sliderService, CategoryProductService $categoryProductService, SettingService $settingService,PostService $postService)
     {
         $this->productService = $productService;
         $this->sliderService = $sliderService;
         $this->categoryService = $categoryProductService;
         $this->settingService = $settingService;
+        $this->postService = $postService;
     }
 
     public function index()
@@ -36,6 +39,7 @@ class Homecontroller extends Controller
         $products = $this->productService->getAll($locale);
         $sliders = $this->sliderService->getAll();
         $categories = $this->categoryService->getCategoryParent($locale);
+        $posts = $this->postService->getPostHot($locale);
         return view('Main.index', compact('products', 'sliders', 'categories'));
     }
 

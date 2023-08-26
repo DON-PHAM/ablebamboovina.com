@@ -37,4 +37,5 @@ return [
     'description' => 'Mô tả',
     'youmaylike' => 'Bạn Có Thể Thích',
     'samecategory' => 'Cùng danh mục',
+    'all' => 'Tổng'
 ];

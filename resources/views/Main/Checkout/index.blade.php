@@ -12,50 +12,50 @@
             <div class="row">
                 <div class="col-lg-7">
                     <div class="billing-info-wrap">
-                        <h3>Chi tiết thanh toán</h3>
+                        <h3>{{trans("checkout.detail")}}</h3>
                         <div class="row">
                             <div class="col-lg-6 col-md-6">
                                 <div class="billing-info mb-20px">
-                                    <label>Họ và tên</label>
+                                    <label>{{trans("checkout.fullname")}} *</label>
                                     <input type="text" name="name"
-                                           value="{{\Illuminate\Support\Facades\Auth::user()->name ?? ""}}">
+                                           value="{{\Illuminate\Support\Facades\Auth::user()->name ?? ""}}" @if(Auth::check()) disabled @endif>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6">
                                 <div class="billing-info mb-20px">
-                                    <label>Email</label>
+                                    <label>{{trans("checkout.email")}} *</label>
                                     <input type="email"
-                                           value="{{\Illuminate\Support\Facades\Auth::user()->email ?? ""}}">
+                                           value="{{\Illuminate\Support\Facades\Auth::user()->email ?? ""}}" @if(Auth::check()) disabled @endif>
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="billing-info mb-20px">
-                                    <label>Điện thoại</label>
+                                    <label>{{trans("checkout.phone")}} *</label>
                                     <input type="text" name="phone"
                                            value="{{\Illuminate\Support\Facades\Auth::user()->phone ?? ""}}">
                                 </div>
                             </div>
 
                             <div class="col-lg-12">
-                                <label>Tỉnh/TP</label>
+                                <label>{{trans("checkout.province")}} *</label>
                                 <select id="province" class="nice-select"></select>
                             </div>
 
                             <div class="col-lg-12">
-                                <label>Quận/Huyện</label>
+                                <label>{{trans("checkout.district")}} *</label>
                                 <select id="district" class="nice-select"></select>
                             </div>
                             <div class="col-lg-12">
-                                <label>Phường/xã</label>
+                                <label>{{trans("checkout.ward")}} *</label>
                                 <select id="ward" class="nice-select"></select>
                             </div>
 
 
                         </div>
                         <div class="additional-info-wrap">
-                            <h4>Thông tin thêm</h4>
+                            <h4>{{trans("checkout.moreinfo")}}</h4>
                             <div class="additional-info">
-                                <label>Ghi chú đặt hàng</label>
+                                <label>{{trans("checkout.note")}}</label>
                                 <textarea placeholder="Ghi chú về đơn đặt hàng của bạn" name="message"></textarea>
                             </div>
                         </div>
@@ -63,13 +63,13 @@
                 </div>
                 <div class="col-lg-5">
                     <div class="your-order-area">
-                        <h3>Đơn hàng</h3>
+                        <h3>{{trans("checkout.order")}}</h3>
                         <div class="your-order-wrap gray-bg-4">
                             <div class="your-order-product-info">
                                 <div class="your-order-top">
                                     <ul>
-                                        <li>Sản phẩm</li>
-                                        <li>Thành tiền</li>
+                                        <li>{{trans("checkout.product")}}</li>
+                                        <li>{{trans("checkout.price")}}</li>
                                     </ul>
                                 </div>
                                 <div class="your-order-middle">
@@ -95,7 +95,7 @@
                                     @if($ships)
 
                                         <div class="total-shipping">
-                                            <h5>{{trans('cart.totalShipping')}}</h5>
+                                            <h5>{{trans('checkout.totalShipping')}}</h5>
                                         </div>
                                         @if($ships)
 
@@ -103,8 +103,7 @@
 
                                                 <div class="total-shipping form-group">
                                                     <ul>
-                                                    <li><input type="radio"
-                                                                                   name="ship"> {{$ship->translate->name}}</li>
+                                                    <li><input type="radio" name="ship"> {{$ship->translate->name}}</li>
                                                     @if(intval($total) > intval($ship->price_free))
                                                        <li>Miễn phí</li>
                                                     @else
@@ -122,8 +121,8 @@
                                 <div class="your-order-total">
 
                                     <ul>
-                                        <li class="order-total">Tổng</li>
-                                        <li>{{number_format($total)}}0VNĐ</li>
+                                        <li class="order-total">{{trans("homepage.all")}}</li>
+                                        <li>{{number_format($total)}} VNĐ</li>
                                     </ul>
                                 </div>
                             </div>

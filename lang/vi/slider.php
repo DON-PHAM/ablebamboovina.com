@@ -1,15 +1,16 @@
 <?php
 return [
-    'title' => '',
-    'list' => '',
-    'image' => '',
-    'name' => '',
+    'title' => 'Slider',
+    'title-add' => 'Thêm mới slider'
+    'list' => 'Danh sách slider',
+    'image' => 'Hình ảnh',
+    'name' => 'Tên slider',
     'url' => 'URL',
-    'status' => '',
-    'action' => '',
-    'add' => '',
-    'edit' => '',
-    'delete' => '',
-    'description' => '',
+    'status' => 'Trạng thái',
+    'action' => 'Hành động',
+    'add' => 'Thêm',
+    'edit' => 'Sửa',
+    'delete' => 'Xóa',
+    'description' => 'Mô tả',
 
 ];

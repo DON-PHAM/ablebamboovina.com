@@ -186,13 +186,13 @@
                                 </div>
 
                                 <div class="form-group  row ">
-                                    <label for="image" class="col-sm-2 col-form-label">Danh mục</label>
+                                    <label for="image" class="col-sm-2 col-form-label">{{trans("post.category")}}</label>
                                     <div class="col-sm-8">
                                         <select class="form-control" name="categoryid">
                                             <option disabled >Chọn danh mục</option>
                                             @if($categories)
                                                 @foreach($categories as $category)
-                                                    <option value="{{$category->id}}">{{$category->name}} </option>
+                                                    <option value="{{$category->id}}">{{$category->translate->name}} </option>
                                                 @endforeach
                                             @endif
                                         </select>
@@ -200,7 +200,7 @@
                                 </div>
 
                                 <div class="form-group  row ">
-                                    <label for="image" class="col-sm-2 col-form-label">Hình ảnh</label>
+                                    <label for="image" class="col-sm-2 col-form-label">{{trans("post.image")}}</label>
                                     <div class="col-sm-8">
                                         <div class="input-group">
                                             <input type="file" id="image" name="image" value=""
@@ -214,13 +214,13 @@
 
 
                                 <div class="form-group  row">
-                                    <label for="status" class="col-sm-2 col-form-label">Trạng thái</label>
+                                    <label for="status" class="col-sm-2 col-form-label">{{trans("post.status")}}</label>
                                     <div class="col-sm-8">
                                         <input class="checkbox" type="checkbox" name="status" >
                                     </div>
                                 </div>
                                 <div class="form-group  row">
-                                    <label for="status" class="col-sm-2 col-form-label">Hot</label>
+                                    <label for="status" class="col-sm-2 col-form-label">{{trans("post.hot")}}</label>
                                     <div class="col-sm-8">
                                         <input class="checkbox" type="checkbox" name="hot" >
                                     </div>
@@ -233,10 +233,10 @@
                                 </div>
                                 <div class="col-md-8">
                                     <div class="btn-group float-right">
-                                        <button type="submit" class="btn btn-primary">Gửi</button>
+                                        <button type="submit" class="btn btn-primary">{{trans("home.save")}}</button>
                                     </div>
                                     <div class="btn-group float-left">
-                                        <button type="reset" class="btn btn-warning">Làm lại</button>
+                                        <button type="reset" class="btn btn-warning">{{trans("home.reset")}}</button>
                                     </div>
                                 </div>
                             </div>

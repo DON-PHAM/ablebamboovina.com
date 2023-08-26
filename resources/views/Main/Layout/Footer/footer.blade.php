@@ -120,23 +120,19 @@
                             <a href="https://www.ilogen.com/web/personal/tkSearch" class="btn_business" target="_blank">택배조회</a>
                         </div>
                     </div>
-                    <div class="footerEtc"><ul>
-                            <li class="content"><a href="../service/company.php">회사소개</a> | </li>
-                            <li class="content"><a href="../service/agreement.php">이용약관</a> | </li>
-                            <li class="content"><a href="../service/private.php">개인정보취급방침</a> | </li>
-                            <li class="content"><a href="../service/guide.php">이용안내</a></li>
-                        </ul></div>
+                    @if(session()->get('setting'))
                     <div class="footerSns"><ul>
                             <!-- <li><a href="#none" target="_blank" onmouseover="changeImg(this,'/data/skin/front/mplshop/_mplshop/images/snsico_over_01.png')" onmouseout="changeImg(this,'https://cdn-pro-web-155-169.cdn-nhncommerce.com/withna_godomall_com/data/skin/front/mplshop/_mplshop/images/snsico_01.png')"><img src="https://cdn-pro-web-155-169.cdn-nhncommerce.com/withna_godomall_com/data/skin/front/mplshop/_mplshop/images/snsico_01.png" alt="카페"></a></li>
                             <li><a href="#none" target="_blank" onmouseover="changeImg(this,'/data/skin/front/mplshop/_mplshop/images/snsico_over_02.png')" onmouseout="changeImg(this,'https://cdn-pro-web-155-169.cdn-nhncommerce.com/withna_godomall_com/data/skin/front/mplshop/_mplshop/images/snsico_02.png')"><img src="https://cdn-pro-web-155-169.cdn-nhncommerce.com/withna_godomall_com/data/skin/front/mplshop/_mplshop/images/snsico_02.png" alt="카카오스토리"></a></li> -->
-                            <li><a href="https://www.instagram.com/hayanhayan_official/" target="_blank" onmouseover="changeImg(this,'/data/skin/front/mplshop/_mplshop/images/snsico_over_03.png')" onmouseout="changeImg(this,'https://cdn-pro-web-155-169.cdn-nhncommerce.com/withna_godomall_com/data/skin/front/mplshop/_mplshop/images/snsico_03.png')"><img src="https://cdn-pro-web-155-169.cdn-nhncommerce.com/withna_godomall_com/data/skin/front/mplshop/_mplshop/images/snsico_03.png" alt="인스타그램"></a></li>
-                            <li><a href="https://www.facebook.com/hayanhayanofficial" target="_blank" onmouseover="changeImg(this,'/data/skin/front/mplshop/_mplshop/images/snsico_over_04.png')" onmouseout="changeImg(this,'https://cdn-pro-web-155-169.cdn-nhncommerce.com/withna_godomall_com/data/skin/front/mplshop/_mplshop/images/snsico_04.png')"><img src="https://cdn-pro-web-155-169.cdn-nhncommerce.com/withna_godomall_com/data/skin/front/mplshop/_mplshop/images/snsico_04.png" alt="페이스북"></a></li>
+                            <li><a href="{{session()->get('setting')->intagram}}" target="_blank" onmouseover="changeImg(this,'/data/skin/front/mplshop/_mplshop/images/snsico_over_03.png')" onmouseout="changeImg(this,'https://cdn-pro-web-155-169.cdn-nhncommerce.com/withna_godomall_com/data/skin/front/mplshop/_mplshop/images/snsico_03.png')"><img src="https://cdn-pro-web-155-169.cdn-nhncommerce.com/withna_godomall_com/data/skin/front/mplshop/_mplshop/images/snsico_03.png" alt="인스타그램"></a></li>
+                            <li><a href="{{session()->get('setting')->facebook}}" target="_blank" onmouseover="changeImg(this,'/data/skin/front/mplshop/_mplshop/images/snsico_over_04.png')" onmouseout="changeImg(this,'https://cdn-pro-web-155-169.cdn-nhncommerce.com/withna_godomall_com/data/skin/front/mplshop/_mplshop/images/snsico_04.png')"><img src="https://cdn-pro-web-155-169.cdn-nhncommerce.com/withna_godomall_com/data/skin/front/mplshop/_mplshop/images/snsico_04.png" alt="페이스북"></a></li>
                             <!--li><a href="https://twitter.com/fpshf222" target="_blank" onmouseover="changeImg(this,'/data/skin/front/mplshop/_mplshop/images/snsico_over_05.png')" onmouseout="changeImg(this,'https://cdn-pro-web-155-169.cdn-nhncommerce.com/withna_godomall_com/data/skin/front/mplshop/_mplshop/images/snsico_05.png')"><img src="https://cdn-pro-web-155-169.cdn-nhncommerce.com/withna_godomall_com/data/skin/front/mplshop/_mplshop/images/snsico_05.png" alt="트위터"></a></li-->
-                            <li><a href="http://pf.kakao.com/_kgrCT/" target="_blank" onmouseover="changeImg(this,'/data/skin/front/mplshop/_mplshop/images/snsico_over_06.png')" onmouseout="changeImg(this,'https://cdn-pro-web-155-169.cdn-nhncommerce.com/withna_godomall_com/data/skin/front/mplshop/_mplshop/images/snsico_06.png')"><img src="https://cdn-pro-web-155-169.cdn-nhncommerce.com/withna_godomall_com/data/skin/front/mplshop/_mplshop/images/snsico_06.png" alt="카카오톡"></a></li>
-                            <li><a href="https://blog.naver.com/bluebluebl" target="_blank" onmouseover="changeImg(this,'/data/skin/front/mplshop/_mplshop/images/snsico_over_07.png')" onmouseout="changeImg(this,'https://cdn-pro-web-155-169.cdn-nhncommerce.com/withna_godomall_com/data/skin/front/mplshop/_mplshop/images/snsico_07.png')"><img src="https://cdn-pro-web-155-169.cdn-nhncommerce.com/withna_godomall_com/data/skin/front/mplshop/_mplshop/images/snsico_07.png" alt="블로그"></a></li>
+                            <li><a href="{{session()->get('setting')->kakaotalk}}" target="_blank" onmouseover="changeImg(this,'/data/skin/front/mplshop/_mplshop/images/snsico_over_06.png')" onmouseout="changeImg(this,'https://cdn-pro-web-155-169.cdn-nhncommerce.com/withna_godomall_com/data/skin/front/mplshop/_mplshop/images/snsico_06.png')"><img src="https://cdn-pro-web-155-169.cdn-nhncommerce.com/withna_godomall_com/data/skin/front/mplshop/_mplshop/images/snsico_06.png" alt="카카오톡"></a></li>
+{{--                            <li><a href="https://blog.naver.com/bluebluebl" target="_blank" onmouseover="changeImg(this,'/data/skin/front/mplshop/_mplshop/images/snsico_over_07.png')" onmouseout="changeImg(this,'https://cdn-pro-web-155-169.cdn-nhncommerce.com/withna_godomall_com/data/skin/front/mplshop/_mplshop/images/snsico_07.png')"><img src="https://cdn-pro-web-155-169.cdn-nhncommerce.com/withna_godomall_com/data/skin/front/mplshop/_mplshop/images/snsico_07.png" alt="블로그"></a></li>--}}
                             <!--<li><a href="#none" target="_blank" onmouseover="changeImg(this,'/data/skin/front/mplshop/_mplshop/images/snsico_over_08.png')" onmouseout="changeImg(this,'https://cdn-pro-web-155-169.cdn-nhncommerce.com/withna_godomall_com/data/skin/front/mplshop/_mplshop/images/snsico_08.png')"><img src="https://cdn-pro-web-155-169.cdn-nhncommerce.com/withna_godomall_com/data/skin/front/mplshop/_mplshop/images/snsico_08.png" alt="유튜브"></a></li> -->
-                            <li><a href="https://post.naver.com/hipjo0706?isHome=1#" target="_blank" onmouseover="changeImg(this,'/data/skin/front/mplshop/_mplshop/images/snsico_over_09.png')" onmouseout="changeImg(this,'https://cdn-pro-web-155-169.cdn-nhncommerce.com/withna_godomall_com/data/skin/front/mplshop/_mplshop/images/snsico_09.png')"><img src="https://cdn-pro-web-155-169.cdn-nhncommerce.com/withna_godomall_com/data/skin/front/mplshop/_mplshop/images/snsico_09.png" alt="포스트"></a></li>
+{{--                            <li><a href="https://post.naver.com/hipjo0706?isHome=1#" target="_blank" onmouseover="changeImg(this,'/data/skin/front/mplshop/_mplshop/images/snsico_over_09.png')" onmouseout="changeImg(this,'https://cdn-pro-web-155-169.cdn-nhncommerce.com/withna_godomall_com/data/skin/front/mplshop/_mplshop/images/snsico_09.png')"><img src="https://cdn-pro-web-155-169.cdn-nhncommerce.com/withna_godomall_com/data/skin/front/mplshop/_mplshop/images/snsico_09.png" alt="포스트"></a></li>--}}
                         </ul></div>
+
                 </div>
                 <div class="layoutFooter2nd -moveDom">
                     <div class="footerCs">
@@ -161,31 +157,27 @@
                 <div class="layoutFooter3rd -moveDom">
                     <div class="foot_info">
                         <div class="foot_info_list">
-                            <strong>회사명</strong> : ㈜위드나 | <strong>대표</strong> : 서기성
+                            <strong>회사명</strong> : {{session()->get('setting')->company}}
                             <dl>
-                                <dt>사업자등록번호 </dt>
-                                <dd>542-88-01137  <a href="#" class="btn_licensee_info" onclick="gd_popup_bizInfo('5428801137'); return false;">조회</a> </dd>
-                            </dl>
-                            <dl>
-                                <dt>통신판매업신고 </dt>
-                                <dd>제 2019-서울마포-1506호</dd>
+                                <dt>사업자등록번호: </dt>
+                                <dd>{{session()->get('setting')->tax}}</dd>
                             </dl>
                         </div>
                         <div class="foot_info_list">
                             <dl>
-                                <dt>주소 </dt>
-                                <dd>서울특별시 마포구 와우산로 70 (군봉빌딩) 3층</dd>
+                                <dt>주소: </dt>
+                                <dd>{{session()->get('setting')->address}}</dd>
                             </dl>
                         </div>
-                        <strong>고객센터</strong> : 1800-7654 | <strong>팩스</strong> : 070-4032-3033<br>
-                        <strong>이메일</strong> : <a href="mailto:godo@godo.co.kr" class="btn_email">hayanhayan@withna.kr</a>
+                        <strong>고객센터</strong> : {{session()->get('setting')->phone}}<br>
+                        <strong>이메일</strong> : <a href="{{session()->get('setting')->email}}" class="btn_email">{{session()->get('setting')->email}}</a>
                         <!-- // -->
 
                     </div>
                     <!-- //foot_info -->
                 </div>
             </div>
-
+            @endif
             <div class="foot_certify displaynone">
                 <span></span>
                 <span></span>
