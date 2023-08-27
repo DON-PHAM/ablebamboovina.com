@@ -51,6 +51,31 @@
         }
 
         /* Modified from: https://github.com/mukulkant/Star-rating-using-pure-css */
+        .size-product-list {
+            display: flex;
+            padding: unset;
+            margin: unset;
+            list-style: none;
+            margin: 10px 0px;
+        }
+
+        .size-product-item {
+            position: relative;
+            min-width: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 48px;
+            margin-right: 5px;
+            border: 1px solid #DDE1EF;
+            white-space: nowrap;
+            font-size: 16px;
+            text-align: center;
+            /* line-height: 46px; */
+            border-radius: 2px;
+            cursor: pointer;
+            padding: 0px 5px;
+        }
     </style>
 
     <!-- Breadcrumb Area start -->
@@ -130,6 +155,26 @@
                                    onclick="addToCart({{$product->id}})">
                                     + {{trans('homepage.addToCart')}}</a>
                             </div>
+                        </div>
+                        <div class="attributes-product">
+                            <div class="order-2-attr">
+                                <div class="mrt-20">Size:<span class="size-product-tpl value-product-template"></span>
+                                </div>
+                                <ul class="size-product-list attr-list">
+
+                                    <li class="size-product-item value-click data-title-value" data-quantity="" data-title="S" data-attributes="Size" data-value="S" onclick="handleClick('S', 'Size', this)">S</li>
+
+                                    <li class="size-product-item value-click data-title-value" data-quantity="" data-title="M" data-attributes="Size" data-value="M" onclick="handleClick('M', 'Size', this)">M</li>
+
+                                    <li class="size-product-item value-click data-title-value" data-quantity="" data-title="L" data-attributes="Size" data-value="L" onclick="handleClick('L', 'Size', this)">L</li>
+
+                                    <li class="size-product-item value-click data-title-value" data-quantity="" data-title="XL" data-attributes="Size" data-value="XL" onclick="handleClick('XL', 'Size', this)">XL</li>
+
+                                </ul>
+                            </div>
+
+
+
                         </div>
                         <div class="pro-details-social-info">
                             <span>Share</span>
@@ -377,11 +422,11 @@
                                 <div class="pricing-meta">
                                     <ul>
                                         @if($product->discount)
-                                            <li class="old-price">{{$product->price}}</li>
-                                            <li class="current-price">{{$product->price * $product->discount / 100}}</li>
+                                            <li class="old-price">{{number_format($product->price)}} VNĐ</li>
+                                            <li class="current-price">{{number_format($product->price * $product->discount / 100)}} VNĐ</li>
                                             <li class="discount-price">-{{$product->discount}}%</li>
                                         @else
-                                            <li class="current-price">{{$product->price}}</li>
+                                            <li class="current-price">{{number_format($product->price)}} VNĐ</li>
                                         @endif
                                     </ul>
                                 </div>
@@ -440,11 +485,11 @@
                                 <div class="pricing-meta">
                                     <ul>
                                         @if($product->discount)
-                                            <li class="old-price">{{$product->price}}</li>
-                                            <li class="current-price">{{$product->price * $product->discount / 100}}</li>
+                                            <li class="old-price">{{number_format($product->price)}} VNĐ</li>
+                                            <li class="current-price">{{number_format($product->price * $product->discount / 100)}} VNĐ</li>
                                             <li class="discount-price">-{{$product->discount}}%</li>
                                         @else
-                                            <li class="current-price">{{$product->price}}</li>
+                                            <li class="current-price">{{number_format($product->price)}} VNĐ</li>
                                         @endif
                                     </ul>
                                 </div>

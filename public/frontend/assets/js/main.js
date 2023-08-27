@@ -546,12 +546,12 @@
         margin: 30,
         responsive: {
             0: {
-                items: 1,
+                items: 2,
                 autoplay: true,
                 loop: true,
             },
             360: {
-                items: 1,
+                items: 2,
                 autoplay: true,
                 loop: true,
             },
@@ -627,19 +627,19 @@
         margin: 30,
         responsive: {
             0: {
-                items: 1,
+                items: 2,
             },
             360: {
-                items: 1,
+                items: 2,
                 margin: 0,
             },
             576: {
-                items: 1,
+                items: 2,
                 margin: 0,
 
             },
             768: {
-                items: 1,
+                items: 2,
                 margin: 0,
             },
             992: {
@@ -663,15 +663,15 @@
         margin: 30,
         responsive: {
             0: {
-                items: 1,
+                items: 2,
                 autoplay: true,
             },
             360: {
-                items: 1,
+                items: 2,
                 autoplay: true,
             },
             576: {
-                items: 1,
+                items: 2,
                 autoplay: true,
             },
             768: {
@@ -699,17 +699,17 @@
         margin: 30,
         responsive: {
             0: {
-                items: 1,
+                items: 2,
                 autoplay: true,
                 loop: true,
             },
             360: {
-                items: 1,
+                items: 2,
                 autoplay: true,
                 loop: true,
             },
             576: {
-                items: 1,
+                items: 2,
                 autoplay: true,
                 loop: true,
 
@@ -745,17 +745,17 @@
         margin: 0,
         responsive: {
             0: {
-                items: 1,
+                items: 2,
                 autoplay: true,
                 loop: true,
             },
             360: {
-                items: 1,
+                items: 2,
                 autoplay: true,
                 loop: true,
             },
             576: {
-                items: 1,
+                items: 2,
                 autoplay: true,
                 loop: true,
 
@@ -789,12 +789,12 @@
         margin: 30,
         responsive: {
             0: {
-                items: 1,
+                items: 2,
                 autoplay: true,
                 loop: true,
             },
             360: {
-                items: 1,
+                items: 2,
                 autoplay: true,
                 loop: true,
             },
@@ -805,10 +805,10 @@
 
             },
             768: {
-                items: 1,
+                items: 2,
             },
             992: {
-                items: 1,
+                items: 2,
             },
             1200: {
                 items: 2,
@@ -829,12 +829,12 @@
         margin: 30,
         responsive: {
             0: {
-                items: 1,
+                items: 2,
                 autoplay: true,
                 loop: true,
             },
             360: {
-                items: 1,
+                items: 2,
                 autoplay: true,
                 loop: true,
             },
@@ -845,7 +845,7 @@
 
             },
             768: {
-                items: 1,
+                items: 2,
             },
             992: {
                 items: 1,

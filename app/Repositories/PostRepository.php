@@ -116,4 +116,11 @@ class PostRepository implements PostService {
         $post->save();
         return $post;
     }
+
+    public function getPostHot(string $locale)
+    {
+        return $this->post->with(['translate' => function ($query) use ($locale) {
+            $query->where('languageid', $locale);
+        }])->where('hot',1)->get();
+    }
 }

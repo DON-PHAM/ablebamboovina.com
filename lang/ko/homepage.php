@@ -37,4 +37,5 @@ return [
     'description' => '',
     'youmaylike' => '',
     'samecategory' => '',
+    'all' => '총'
 ];

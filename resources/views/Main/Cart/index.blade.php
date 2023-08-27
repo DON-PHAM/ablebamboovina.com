@@ -87,7 +87,7 @@
                                 <h5>{{trans('cart.totalProduct')}} <input type="hidden" class="totalMoneyProduct"
                                                                           value="{{number_format($total)}}"
                                                                           name="totalMoneyProduct"><span
-                                        class="totalMoneyProduct">{{number_format($total)}}</span></h5>
+                                        class="totalMoneyProduct">{{number_format($total)}} VNĐ</span></h5>
                                 <div class="total-shipping">
                                     <h5>{{trans('cart.totalShipping')}}</h5>
                                     @if($ships)

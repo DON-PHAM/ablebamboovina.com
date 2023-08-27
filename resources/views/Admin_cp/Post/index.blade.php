@@ -48,7 +48,7 @@
                                 <div class="card-tools">
                                     <div class="menu-right">
                                         <a href="{{route('get-new-create')}}" class="btn  btn-success  btn-flat" title="New" id="button_create_new">
-                                            <i class="fa fa-plus" title="Thêm mới"></i>
+                                            <i class="fa fa-plus" title="{{trans("post.add")}}"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -81,10 +81,10 @@
                                         <thead>
                                         <tr>
                                             <th></th>
-                                            <th>Tiêu đề</th>
-                                            <th>Hình ảnh</th>
-                                            <th>Trạng thái</th>
-                                            <th>Thao tác</th>
+                                            <th>{{trans("post.name")}}</th>
+                                            <th>{{trans("post.image")}}</th>
+                                            <th>{{trans("post.status")}}</th>
+                                            <th>{{trans("post.action")}}</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -114,10 +114,10 @@
                                                         @endif
 
                                                     </td>
-                                                    <td><a href="{{route('get-new-edit',$post->id)}}"><span title="Chỉnh sửa" type="button"
+                                                    <td><a href="{{route('get-new-edit',$post->id)}}"><span title="{{trans("post.edit")}}" type="button"
                                                                          class="btn btn-flat btn-sm btn-primary"><i
                                                                     class="fa fa-edit"></i></span></a>
-                                                        <span onclick="deleteItem({{$post->id}});" title="Xóa"
+                                                        <span onclick="deleteItem({{$post->id}});" title="{{trans("post.delete")}}"
                                                               class="btn btn-flat btn-sm btn-danger"><i
                                                                 class="fas fa-trash-alt"></i></span>
 

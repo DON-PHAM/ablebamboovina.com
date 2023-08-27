@@ -1,5 +1,6 @@
 <?php
 return [
+    'title' => 'Sản phẩm',
     'title-add' => 'Thêm mới sản phẩm',
     'title-edit' => 'Sửa sản phẩm',
     'image' => 'Hình ảnh',

@@ -1,11 +1,11 @@
 <?php
 return [
-    'search' => '',
-    'call' => '',
-    'category' => '',
-    'store' => '',
-    'about'=>'',
-    'page' => '',
-    'contact' => '',
-    'cart' => '',
+    'search' => 'Tìm kiếm',
+    'call' => 'Gọi',
+    'category' => 'Danh mục',
+    'store' => 'Cửa hàng',
+    'about'=> 'Giới thiệu',
+    'page' => 'Trang',
+    'contact' => 'Liên hệ',
+    'cart' => 'Giỏ hàng',
 ];

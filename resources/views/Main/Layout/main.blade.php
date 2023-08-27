@@ -242,7 +242,7 @@
                                 <div class="content">
                                     <a href="javascript:void(0)" class="title">{{$details['name']}}</a>
                                     <span class="quantity-price">{{$details['quantity']}} x <span
-                                            class="amount">{{$details['price']}}</span></span>
+                                            class="amount">{{number_format($details['price'])}} VNĐ</span></span>
                                     <a href="javascript:void(0)" class="remove-cart"
                                        >×</a>
 
@@ -253,7 +253,7 @@
                 </ul>
             </div>
             <div class="shopping-cart-total">
-                <h4 class="shop-total">{{trans('cart.total')}} : <span class="header-cart-total">{{$total}}</span></h4>
+                <h4 class="shop-total">{{trans('cart.total')}} : <span class="header-cart-total">{{number_format($total)}} VNĐ</span></h4>
             </div>
             <div class="foot">
                 <div class="buttons">
