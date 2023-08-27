@@ -93,15 +93,15 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="add-to-link">
-                                        <ul class="d-flex justify-content-center">
-                                            <li class="cart">
-                                                <button class="cart-btn add-to-cart" onclick="addToCart({{$product->id}})">
-                                                    {{trans('homepage.addToCart')}}
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </div>
+{{--                                    <div class="add-to-link">--}}
+{{--                                        <ul class="d-flex justify-content-center">--}}
+{{--                                            <li class="cart">--}}
+{{--                                                <button class="cart-btn add-to-cart" onclick="addToCart({{$product->id}})">--}}
+{{--                                                    {{trans('homepage.addToCart')}}--}}
+{{--                                                </button>--}}
+{{--                                            </li>--}}
+{{--                                        </ul>--}}
+{{--                                    </div>--}}
                                 </article>
                             </div>
                         @endif
@@ -172,15 +172,15 @@
                                                     @endif
                                                 </ul>
                                             </div>
-                                            <div class="add-to-link">
-                                                <ul class="d-flex justify-content-center">
-                                                    <li class="cart">
-                                                        <button class="cart-btn add-to-cart" onclick="addToCart({{$product->id}})">
-                                                            {{trans('homepage.addToCart')}}
-                                                        </button>
-                                                    </li>
-                                                </ul>
-                                            </div>
+{{--                                            <div class="add-to-link">--}}
+{{--                                                <ul class="d-flex justify-content-center">--}}
+{{--                                                    <li class="cart">--}}
+{{--                                                        <button class="cart-btn add-to-cart" onclick="addToCart({{$product->id}})">--}}
+{{--                                                            {{trans('homepage.addToCart')}}--}}
+{{--                                                        </button>--}}
+{{--                                                    </li>--}}
+{{--                                                </ul>--}}
+{{--                                            </div>--}}
                                         </div>
                                     </article>
                                 @endif
@@ -252,15 +252,15 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        <div class="add-to-link">
-                                            <ul>
-                                                <li class="cart">
-                                                    <button class="cart-btn add-to-cart" onclick="addToCart({{$product->id}})">
-                                                        {{trans('homepage.addToCart')}}
-                                                    </button>
-                                                </li>
-                                            </ul>
-                                        </div>
+{{--                                        <div class="add-to-link">--}}
+{{--                                            <ul>--}}
+{{--                                                <li class="cart">--}}
+{{--                                                    <button class="cart-btn add-to-cart" onclick="addToCart({{$product->id}})">--}}
+{{--                                                        {{trans('homepage.addToCart')}}--}}
+{{--                                                    </button>--}}
+{{--                                                </li>--}}
+{{--                                            </ul>--}}
+{{--                                        </div>--}}
                                     </article>
                                 </div>
                             @endforeach
@@ -455,18 +455,18 @@
     <!-- Blog Area End -->
 
 @endsection
-@section('script')
-    <script>
-        function addToCart(id) {
-            $.ajax({
-                url:'{{route('add-to-cart',':id')}}'.replace(':id',id),
-                dataType:'json',
-                method:'get',
-                success:function (response){
-                   location.reload();
-                   toastr.success('Thêm thành công giỏ hàng');
-                }
-            })
-        }
-    </script>
-@endsection
+{{--@section('script')--}}
+{{--    <script>--}}
+{{--        function addToCart(id) {--}}
+{{--            $.ajax({--}}
+{{--                url:'{{route('add-to-cart',':id')}}'.replace(':id',id),--}}
+{{--                dataType:'json',--}}
+{{--                method:'get',--}}
+{{--                success:function (response){--}}
+{{--                   location.reload();--}}
+{{--                   toastr.success('Thêm thành công giỏ hàng');--}}
+{{--                }--}}
+{{--            })--}}
+{{--        }--}}
+{{--    </script>--}}
+{{--@endsection--}}

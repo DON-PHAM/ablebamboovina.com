@@ -40,7 +40,7 @@
                                                         </a>
                                                     </td>
                                                     <td class="product-name"><a
-                                                            href="javascript:void(0)">{{$details['name']}}</a></td>
+                                                            href="javascript:void(0)">{{$details['name']}} & Size: {{$details['size']}}</a></td>
                                                     <td class="product-price-cart">
                                                         <input type="hidden" class="amount-value"
                                                                value="{{$details['price']}}">

@@ -76,6 +76,11 @@
             cursor: pointer;
             padding: 0px 5px;
         }
+
+        .active-size {
+            border: 2px solid #f08522;
+            color: #f08522;
+        }
     </style>
 
     <!-- Breadcrumb Area start -->
@@ -162,19 +167,28 @@
                                 </div>
                                 <ul class="size-product-list attr-list">
 
-                                    <li class="size-product-item value-click data-title-value" data-quantity="" data-title="S" data-attributes="Size" data-value="S" onclick="handleClick('S', 'Size', this)">S</li>
+                                    <li class="size-product-item value-click data-title-value" data-quantity=""
+                                        data-title="S" data-attributes="Size" data-value="S"
+                                        onclick="handleSize('S', 'Size', this)">S
+                                    </li>
 
-                                    <li class="size-product-item value-click data-title-value" data-quantity="" data-title="M" data-attributes="Size" data-value="M" onclick="handleClick('M', 'Size', this)">M</li>
+                                    <li class="size-product-item value-click data-title-value" data-quantity=""
+                                        data-title="M" data-attributes="Size" data-value="M"
+                                        onclick="handleSize('M', 'Size', this)">M
+                                    </li>
 
-                                    <li class="size-product-item value-click data-title-value" data-quantity="" data-title="L" data-attributes="Size" data-value="L" onclick="handleClick('L', 'Size', this)">L</li>
+                                    <li class="size-product-item value-click data-title-value" data-quantity=""
+                                        data-title="L" data-attributes="Size" data-value="L"
+                                        onclick="handleSize('L', 'Size', this)">L
+                                    </li>
 
-                                    <li class="size-product-item value-click data-title-value" data-quantity="" data-title="XL" data-attributes="Size" data-value="XL" onclick="handleClick('XL', 'Size', this)">XL</li>
+                                    <li class="size-product-item value-click data-title-value" data-quantity=""
+                                        data-title="XL" data-attributes="Size" data-value="XL"
+                                        onclick="handleSize('XL', 'Size', this)">XL
+                                    </li>
 
                                 </ul>
                             </div>
-
-
-
                         </div>
                         <div class="pro-details-social-info">
                             <span>Share</span>
@@ -277,10 +291,14 @@
                                                             @endphp
                                                             @if(in_array($extension,$videoExtensions))
                                                                 <video id="video" class="video" autoplay width="150"
-                                                                       src="{{asset('upload/review/'.$review->video)}}" height="150"
-                                                                       preload="auto" loop playsinline webkit-playsinline x5-playsinline autoplay></video>
+                                                                       src="{{asset('upload/review/'.$review->video)}}"
+                                                                       height="150"
+                                                                       preload="auto" loop playsinline
+                                                                       webkit-playsinline x5-playsinline
+                                                                       autoplay></video>
                                                             @else
-                                                                <img src="{{asset('upload/review/'.$review->video)}}" width="200px">
+                                                                <img src="{{asset('upload/review/'.$review->video)}}"
+                                                                     width="200px">
                                                             @endif
                                                         </p>
                                                     </div>
@@ -374,7 +392,8 @@
                                     </div>
                                 @else
                                     <div class="ratting-form-wrapper pl-50">
-                                        <h3>Vui lòng <a href="{{route('login-page')}}">đăng nhập</a> để bình luận sản phẩm</h3>
+                                        <h3>Vui lòng <a href="{{route('login-page')}}">đăng nhập</a> để bình luận sản
+                                            phẩm</h3>
                                     </div>
                                 @endif
                             </div>
@@ -423,7 +442,9 @@
                                     <ul>
                                         @if($product->discount)
                                             <li class="old-price">{{number_format($product->price)}} VNĐ</li>
-                                            <li class="current-price">{{number_format($product->price * $product->discount / 100)}} VNĐ</li>
+                                            <li class="current-price">{{number_format($product->price * $product->discount / 100)}}
+                                                VNĐ
+                                            </li>
                                             <li class="discount-price">-{{$product->discount}}%</li>
                                         @else
                                             <li class="current-price">{{number_format($product->price)}} VNĐ</li>
@@ -431,15 +452,15 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="add-to-link">
-                                <ul>
-                                    <li class="cart">
-                                        <a class="cart-btn" href="javascript:void(0)"
-                                           onclick="addToCart({{$product->id}})">
-                                            + {{trans('homepage.addToCart')}}</a>
-                                    </li>
-                                </ul>
-                            </div>
+                            {{--                            <div class="add-to-link">--}}
+                            {{--                                <ul>--}}
+                            {{--                                    <li class="cart">--}}
+                            {{--                                        <a class="cart-btn" href="javascript:void(0)"--}}
+                            {{--                                           onclick="addToCart({{$product->id}})">--}}
+                            {{--                                            + {{trans('homepage.addToCart')}}</a>--}}
+                            {{--                                    </li>--}}
+                            {{--                                </ul>--}}
+                            {{--                            </div>--}}
                         </article>
                     @endforeach
                 @endif
@@ -486,7 +507,9 @@
                                     <ul>
                                         @if($product->discount)
                                             <li class="old-price">{{number_format($product->price)}} VNĐ</li>
-                                            <li class="current-price">{{number_format($product->price * $product->discount / 100)}} VNĐ</li>
+                                            <li class="current-price">{{number_format($product->price * $product->discount / 100)}}
+                                                VNĐ
+                                            </li>
                                             <li class="discount-price">-{{$product->discount}}%</li>
                                         @else
                                             <li class="current-price">{{number_format($product->price)}} VNĐ</li>
@@ -494,15 +517,15 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="add-to-link">
-                                <ul>
-                                    <li class="cart">
-                                        <a class="cart-btn" href="javascript:void(0)"
-                                           onclick="addToCart({{$product->id}})">
-                                            + {{trans('homepage.addToCart')}}</a>
-                                    </li>
-                                </ul>
-                            </div>
+                            {{--                            <div class="add-to-link">--}}
+                            {{--                                <ul>--}}
+                            {{--                                    <li class="cart">--}}
+                            {{--                                        <a class="cart-btn" href="javascript:void(0)"--}}
+                            {{--                                           onclick="addToCart({{$product->id}})">--}}
+                            {{--                                            + {{trans('homepage.addToCart')}}</a>--}}
+                            {{--                                    </li>--}}
+                            {{--                                </ul>--}}
+                            {{--                            </div>--}}
                         </article>
                     @endforeach
                 @endif
@@ -515,16 +538,43 @@
 @endsection
 @section('script')
     <script>
+        let size = "";
+
         function addToCart(id) {
+            if (size === "") {
+                toastr.error("Vui lòng chọn SIZE");
+                return;
+            }
+
             $.ajax({
-                url:'{{route('add-to-cart',':id')}}'.replace(':id',id),
-                dataType:'json',
-                method:'get',
-                success:function (response){
+                url: '{{route('add-to-cart',':id')}}'.replace(':id', id),
+                dataType: 'json',
+                data: {size : size},
+                method: 'get',
+                success: function (response) {
                     location.reload();
                     toastr.success('Thêm thành công giỏ hàng');
                 }
             })
+        }
+
+        function handleSize(whichValue, whichAttributes, self) {
+            let dataAttributes = document.querySelectorAll("[data-attributes]")
+
+            for (let i = 0; i < dataAttributes.length; i++) {
+                if (dataAttributes[i].getAttribute("data-attributes") === whichAttributes) {
+                    dataAttributes[i].classList.remove("active-size")
+                }
+            }
+
+            for (let i = 0; i < dataAttributes.length; i++) {
+                if (dataAttributes[i].getAttribute("data-attributes") === whichAttributes) {
+                    if (dataAttributes[i].getAttribute("data-value") === whichValue) {
+                        self.classList.add("active-size");
+                    }
+                }
+            }
+            size = whichValue;
         }
     </script>
 @endsection
