@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('orderid');
             $table->integer('productid');
+            $table->string('size');
             $table->integer('quantity');
             $table->decimal('price',15,0);
             $table->decimal('total',15,0);

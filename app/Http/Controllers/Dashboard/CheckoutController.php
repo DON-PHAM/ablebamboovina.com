@@ -18,4 +18,9 @@ class CheckoutController extends Controller
         $checkouts = $this->checkoutService->getAll();
         return view("Admin_cp.Order.index",compact("checkouts"));
     }
+    public function show($id)
+    {
+        $checkout = $this->checkoutService->findById($id);
+        return view("Admin_cp.Order.detail",compact('checkout'));
+    }
 }
