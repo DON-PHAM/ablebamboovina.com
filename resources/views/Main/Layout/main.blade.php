@@ -240,7 +240,7 @@
                                         alt="Cart product Image">
                                 </a>
                                 <div class="content">
-                                    <a href="javascript:void(0)" class="title">{{$details['name']}}</a>
+                                    <a href="javascript:void(0)" class="title">{{$details['name']}} & Size: {{$details['size']}}</a>
                                     <span class="quantity-price">{{$details['quantity']}} x <span
                                             class="amount">{{number_format($details['price'])}} VNĐ</span></span>
                                     <a href="javascript:void(0)" class="remove-cart"

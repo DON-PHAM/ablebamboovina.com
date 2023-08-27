@@ -48,25 +48,25 @@
                                     <div class="pricing-meta">
                                         <ul>
                                             @if($product->discount)
-                                                <li class="old-price">{{$product->price}}</li>
-                                                <li class="current-price">{{$product->price * $product->discount / 100}}</li>
+                                                <li class="old-price">{{number_format($product->price)}} VNĐ</li>
+                                                <li class="current-price">{{number_format($product->price - ($product->price * $product->discount / 100))}} VNĐ</li>
                                                 <li class="discount-price">
                                                     -{{$product->discount}}%
                                                 </li>
                                             @else
-                                                <li class="current-price">{{$product->price}}</li>
+                                                <li class="current-price">{{number_format($product->price) }} VNĐ</li>
                                             @endif
                                         </ul>
                                     </div>
-                                    <div class="add-to-link">
-                                        <ul class="d-flex justify-content-center">
-                                            <li class="cart">
-                                                <button class="cart-btn add-to-cart" onclick="addToCart({{$product->id}})">
-                                                    Thêm vào giỏ hàng
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </div>
+{{--                                    <div class="add-to-link">--}}
+{{--                                        <ul class="d-flex justify-content-center">--}}
+{{--                                            <li class="cart">--}}
+{{--                                                <button class="cart-btn add-to-cart" onclick="addToCart({{$product->id}})">--}}
+{{--                                                    Thêm vào giỏ hàng--}}
+{{--                                                </button>--}}
+{{--                                            </li>--}}
+{{--                                        </ul>--}}
+{{--                                    </div>--}}
                                 </div>
                             </article>
                         </div>
@@ -78,28 +78,28 @@
     </section>
 
 @endsection
-@section('script')
-    <script>
-        function addToCart(e) {
-            const listProductInCart = localStorage.getItem('listProductInCart')
-            if (!listProductInCart) {
-                const temp = []
-                temp.push(e)
-                localStorage.setItem('listProductInCart', JSON.stringify(temp))
-                toastr.success('Thêm vào giỏ hàng thành công');
-                $(".item-quantity-tag").html(1)
-            } else {
-                const temp = JSON.parse(listProductInCart)
-                const check = temp.find(item => item.id === e.id)
-                if (!check) {
-                    temp.push(e)
-                    localStorage.setItem('listProductInCart', JSON.stringify(temp))
-                    toastr.success('Thêm vào giỏ hàng thành công');
-                    $(".item-quantity-tag").html(JSON.parse(listProductInCart).length + 1)
-                } else {
-                    toastr.warning('Sản phẩm đã có trong giỏ hàng');
-                }
-            }
-        }
-    </script>
-@endsection
+{{--@section('script')--}}
+{{--    <script>--}}
+{{--        function addToCart(e) {--}}
+{{--            const listProductInCart = localStorage.getItem('listProductInCart')--}}
+{{--            if (!listProductInCart) {--}}
+{{--                const temp = []--}}
+{{--                temp.push(e)--}}
+{{--                localStorage.setItem('listProductInCart', JSON.stringify(temp))--}}
+{{--                toastr.success('Thêm vào giỏ hàng thành công');--}}
+{{--                $(".item-quantity-tag").html(1)--}}
+{{--            } else {--}}
+{{--                const temp = JSON.parse(listProductInCart)--}}
+{{--                const check = temp.find(item => item.id === e.id)--}}
+{{--                if (!check) {--}}
+{{--                    temp.push(e)--}}
+{{--                    localStorage.setItem('listProductInCart', JSON.stringify(temp))--}}
+{{--                    toastr.success('Thêm vào giỏ hàng thành công');--}}
+{{--                    $(".item-quantity-tag").html(JSON.parse(listProductInCart).length + 1)--}}
+{{--                } else {--}}
+{{--                    toastr.warning('Sản phẩm đã có trong giỏ hàng');--}}
+{{--                }--}}
+{{--            }--}}
+{{--        }--}}
+{{--    </script>--}}
+{{--@endsection--}}
