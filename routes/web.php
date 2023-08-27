@@ -45,6 +45,7 @@ Route::group(['middleware'=>'locale'],function () {
     Route::get('remove-from-cart', 'Main\CartController@remove')->name('remove-cart');
 
     Route::get('checkout', 'Main\CheckoutController@index')->name('checkout-page');
+    Route::post('checkout','Main\CheckoutController@checkout')->name('post-checkout');
     Route::get('invoice', 'Main\InvoiceController@index')->name('invoice-page');
 
     //địa chỉ
@@ -54,6 +55,12 @@ Route::group(['middleware'=>'locale'],function () {
 
     //Review
     Route::post('review/{id}','Dashboard\ProductController@review')->name('post-review');
+
+    //format Number
+    Route::get("format-number/{number}",function ($number) {
+        $formattedTotalProduct = number_format($number, 0, '.', ',') . ' VNĐ';
+        return response()->json($formattedTotalProduct);
+    })->name('format-number');
 });
  Route::group(['middleware'=>['locale','checkLoggedIn']],function() {
      Route::post('/login','LoginController@login')->name('post-login');
@@ -162,5 +169,8 @@ Route::group(['prefix'=>'dashboard','middleware'=>['locale','checkAuth']],functi
     Route::get('ship/edit/{id}','Dashboard\ShipController@edit')->name('get-ship-edit');
     Route::post('ship/edit/{id}','Dashboard\ShipController@update')->name('post-ship-edit');
     Route::get('ship/delete/{id}','Dashboard\ShipController@delete')->name('delete-ship');
+
+    //Checkout
+    Route::get('checkout','Dashboard\CheckoutController@index')->name('checkout');
 
 });

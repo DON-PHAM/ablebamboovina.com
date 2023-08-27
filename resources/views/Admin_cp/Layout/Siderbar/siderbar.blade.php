@@ -80,7 +80,7 @@
                     <p class="sub-header">{{trans('home.online-buy')}}</p>
                 </li>
                 <li class="nav-item ">
-                    <a href="" class="nav-link">
+                    <a href="{{route('checkout')}}" class="nav-link">
                         <i class="fas fa-shopping-cart nav-icon"></i>
                         <p>{{trans('home.order')}}</p>
                     </a>

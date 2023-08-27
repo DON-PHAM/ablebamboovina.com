@@ -13,6 +13,9 @@ return [
     'product' => 'Sản phẩm',
     'price' => 'Thành tiền',
     'totalShipping' => 'Phí vận chuyển',
+    'processorder' => 'Đặt hàng',
+    'street' => 'Đường',
+    'address' => 'Địa chỉ'
 
 
 ];

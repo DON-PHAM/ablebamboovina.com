@@ -6,6 +6,7 @@ use App\Repositories\AboutRepository;
 use App\Repositories\BranchRepository;
 use App\Repositories\CategoryPostRepository;
 use App\Repositories\CategoryProductRepository;
+use App\Repositories\CheckoutRepository;
 use App\Repositories\EventRepository;
 use App\Repositories\FeedbackRepository;
 use App\Repositories\PaymentRepository;
@@ -20,6 +21,7 @@ use App\Services\AboutService;
 use App\Services\BranchService;
 use App\Services\CategoryPostService;
 use App\Services\CategoryProductService;
+use App\Services\CheckoutService;
 use App\Services\EventService;
 use App\Services\FeedbackService;
 use App\Services\IPaymentDetailService;
@@ -84,6 +86,9 @@ class AppServiceProvider extends ServiceProvider
         );
         $this->app->bind(
             IShipService::class,ShipRepository::class
+        );
+        $this->app->bind(
+            CheckoutService::class,CheckoutRepository::class
         );
     }
 

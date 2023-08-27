@@ -6,15 +6,20 @@ use App\Http\Controllers\Controller;
 use App\Models\District;
 use App\Models\Province;
 use App\Models\Ward;
+use App\Services\CheckoutService;
 use App\Services\IShipService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use mysql_xdevapi\Exception;
 
 class CheckoutController extends Controller
 {
     protected $shipService;
-    public function __construct(IShipService $shipService)
+    protected $checkoutService;
+    public function __construct(IShipService $shipService, CheckoutService $checkoutService)
     {
         $this->shipService = $shipService;
+        $this->checkoutService = $checkoutService;
     }
 
     public function index()
@@ -37,5 +42,16 @@ class CheckoutController extends Controller
     {
         $wards = Ward::where('district_code',$district_code)->get();
         return response()->json(['status'=>true,'data'=>$wards]);
+    }
+
+    public function checkout(Request $request) {
+        if (session()->get('cart') == 0)
+        {
+            $errorMessage = 'Không thể thanh toán khi không có sản phẩm';
+            session()->flash('error',$errorMessage);
+            return redirect()->back()->withInput()->withErrors($errorMessage);
+        }
+        $result = $this->checkoutService->create($request);
+        return redirect()->route('homepage')->with('success','Đặt hàng thành công!');
     }
 }
