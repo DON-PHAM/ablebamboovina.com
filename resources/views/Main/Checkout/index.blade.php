@@ -115,7 +115,7 @@
                                                 @foreach(session('cart') as $id => $details)
                                                     @php $total_product = $details['price'] * $details['quantity'] @endphp
                                                     <li><span
-                                                            class="order-middle-left">{{$details['name']}} X {{$details['quantity']}}</span>
+                                                            class="order-middle-left">{{$details['name']}} & Size: {{$details['size']}} X <strong>{{$details['quantity']}}</strong></span>
                                                         <span
                                                             class="order-price">{{number_format($total_product)}}VNĐ </span>
                                                     </li>

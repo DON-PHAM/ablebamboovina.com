@@ -12,6 +12,7 @@ use App\Services\CheckoutService;
 use Carbon\Carbon;
 use Carbon\Traits\Date;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 
 class CheckoutRepository implements CheckoutService
@@ -29,7 +30,7 @@ class CheckoutRepository implements CheckoutService
 
     public function getAll()
     {
-        return $this->order->paginate(15);
+        return $this->order->with(['customer','orderDetails','ship'])->paginate(15);
     }
 
     public function changeStatusShip()
@@ -39,7 +40,12 @@ class CheckoutRepository implements CheckoutService
 
     public function findById($id)
     {
-        // TODO: Implement findById() method.
+        $locale = session()->get('locale') ?? App::getLocale();
+        return $this->order->with(['customer','orderDetails.product' => function ($query) use ($locale) {
+            $query->where('languageid', $locale);
+        },'ship','shipTranslate'=> function ($query) use ($locale) {
+            $query->where('languageid', $locale);
+        }])->find($id);
     }
 
     public function create(Request $request)
@@ -72,6 +78,7 @@ class CheckoutRepository implements CheckoutService
             $orderDetail = [
                 'orderid' => $orderResult->id,
                 'productid' => $details['productid'],
+                'size'=> $details['size'],
                 'quantity' => $details['quantity'],
                 'price' => $details['price'],
                 'total' => intval($details['quantity']) * intval($details['price'])

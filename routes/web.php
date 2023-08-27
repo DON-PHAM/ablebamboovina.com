@@ -172,5 +172,6 @@ Route::group(['prefix'=>'dashboard','middleware'=>['locale','checkAuth']],functi
 
     //Checkout
     Route::get('checkout','Dashboard\CheckoutController@index')->name('checkout');
+    Route::get('checkout/{id}','Dashboard\CheckoutController@show')->name('show-checkout');
 
 });
