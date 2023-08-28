@@ -40,7 +40,7 @@ class Homecontroller extends Controller
         $sliders = $this->sliderService->getAll();
         $categories = $this->categoryService->getCategoryParent($locale);
         $posts = $this->postService->getPostHot($locale);
-        return view('Main.index', compact('products', 'sliders', 'categories'));
+        return view('Main.index', compact('products', 'sliders', 'categories','posts'));
     }
 
     public function changLanguage($language)

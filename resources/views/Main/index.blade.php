@@ -93,15 +93,15 @@
                                             </ul>
                                         </div>
                                     </div>
-{{--                                    <div class="add-to-link">--}}
-{{--                                        <ul class="d-flex justify-content-center">--}}
-{{--                                            <li class="cart">--}}
-{{--                                                <button class="cart-btn add-to-cart" onclick="addToCart({{$product->id}})">--}}
-{{--                                                    {{trans('homepage.addToCart')}}--}}
-{{--                                                </button>--}}
-{{--                                            </li>--}}
-{{--                                        </ul>--}}
-{{--                                    </div>--}}
+                                    {{--                                    <div class="add-to-link">--}}
+                                    {{--                                        <ul class="d-flex justify-content-center">--}}
+                                    {{--                                            <li class="cart">--}}
+                                    {{--                                                <button class="cart-btn add-to-cart" onclick="addToCart({{$product->id}})">--}}
+                                    {{--                                                    {{trans('homepage.addToCart')}}--}}
+                                    {{--                                                </button>--}}
+                                    {{--                                            </li>--}}
+                                    {{--                                        </ul>--}}
+                                    {{--                                    </div>--}}
                                 </article>
                             </div>
                         @endif
@@ -172,15 +172,15 @@
                                                     @endif
                                                 </ul>
                                             </div>
-{{--                                            <div class="add-to-link">--}}
-{{--                                                <ul class="d-flex justify-content-center">--}}
-{{--                                                    <li class="cart">--}}
-{{--                                                        <button class="cart-btn add-to-cart" onclick="addToCart({{$product->id}})">--}}
-{{--                                                            {{trans('homepage.addToCart')}}--}}
-{{--                                                        </button>--}}
-{{--                                                    </li>--}}
-{{--                                                </ul>--}}
-{{--                                            </div>--}}
+                                            {{--                                            <div class="add-to-link">--}}
+                                            {{--                                                <ul class="d-flex justify-content-center">--}}
+                                            {{--                                                    <li class="cart">--}}
+                                            {{--                                                        <button class="cart-btn add-to-cart" onclick="addToCart({{$product->id}})">--}}
+                                            {{--                                                            {{trans('homepage.addToCart')}}--}}
+                                            {{--                                                        </button>--}}
+                                            {{--                                                    </li>--}}
+                                            {{--                                                </ul>--}}
+                                            {{--                                            </div>--}}
                                         </div>
                                     </article>
                                 @endif
@@ -252,15 +252,15 @@
                                                 </ul>
                                             </div>
                                         </div>
-{{--                                        <div class="add-to-link">--}}
-{{--                                            <ul>--}}
-{{--                                                <li class="cart">--}}
-{{--                                                    <button class="cart-btn add-to-cart" onclick="addToCart({{$product->id}})">--}}
-{{--                                                        {{trans('homepage.addToCart')}}--}}
-{{--                                                    </button>--}}
-{{--                                                </li>--}}
-{{--                                            </ul>--}}
-{{--                                        </div>--}}
+                                        {{--                                        <div class="add-to-link">--}}
+                                        {{--                                            <ul>--}}
+                                        {{--                                                <li class="cart">--}}
+                                        {{--                                                    <button class="cart-btn add-to-cart" onclick="addToCart({{$product->id}})">--}}
+                                        {{--                                                        {{trans('homepage.addToCart')}}--}}
+                                        {{--                                                    </button>--}}
+                                        {{--                                                </li>--}}
+                                        {{--                                            </ul>--}}
+                                        {{--                                        </div>--}}
                                     </article>
                                 </div>
                             @endforeach
@@ -356,98 +356,33 @@
             </div>
             <!-- Blog Slider Start -->
             <div class="blog-slider-active owl-carousel owl-nav-style">
+                @foreach($posts as $post)
+                    <!-- single item -->
+                    <article class="blog-post">
+                        <div class="blog-post-top">
+                            <div class="blog-img">
+                                <img src="{{asset('upload/post/'.$post->image)}}" alt=""/>
+                            </div>
+                        </div>
+                        <div class="blog-post-content d-flex">
+                            <div class="blog-post-content-cell">
+                                <a href="javascript:void(0)" class="blog-meta">Tag new</a>
+                                <h4 class="blog-post-heading">
+                                    <a href="blog-single-left-sidebar.html">{{$post->translate->name}}</a>
+                                </h4>
+                                <p class="blog-text">
+                                    {{$post->translate->description}}
+                                </p>
+                                <a class="read-more-btn" href="#">
+                                    {{trans('homepage.readMore')}} <i class="ion-android-arrow-dropright-circle"></i
+                                    ></a>
+                            </div>
+                        </div>
+                    </article>
+                @endforeach
                 <!-- single item -->
-                <article class="blog-post">
-                    <div class="blog-post-top">
-                        <div class="blog-img">
-                            <img src="{{asset('frontend/assets/images/blog-default.png')}}" alt=""/>
-                        </div>
-                    </div>
-                    <div class="blog-post-content d-flex">
-                        <div class="blog-post-content-cell">
-                            <a href="javascript:void(0)" class="blog-meta">Tag new</a>
-                            <h4 class="blog-post-heading">
-                                <a href="blog-single-left-sidebar.html">Sản phẩm hot nhất tháng</a>
-                            </h4>
-                            <p class="blog-text">
-                                Lorem Ipsum is simply dummy text of the printing and typeSettings industry. Lorem Ipsum
-                                has been the industrys ...
-                            </p>
-                            <a class="read-more-btn" href="blog-single-left-sidebar.html">
-                                {{trans('homepage.readMore')}} <i class="ion-android-arrow-dropright-circle"></i
-                                ></a>
-                        </div>
-                    </div>
-                </article>
-                <!-- single item -->
-                <article class="blog-post">
-                    <div class="blog-post-top">
-                        <div class="blog-img">
-                            <img src="{{asset('frontend/assets/images/blog-default.png')}}" alt=""/>
-                        </div>
-                    </div>
-                    <div class="blog-post-content d-flex">
-                        <div class="blog-post-content-cell">
-                            <a href="javascript:void(0)" class="blog-meta">Tag new</a>
-                            <h4 class="blog-post-heading">
-                                <a href="blog-single-left-sidebar.html">Sản phẩm hot nhất tháng</a>
-                            </h4>
-                            <p class="blog-text">
-                                Lorem Ipsum is simply dummy text of the printing and typeSettings industry. Lorem Ipsum
-                                has been the industrys ...
-                            </p>
-                            <a class="read-more-btn" href="blog-single-left-sidebar.html">
-                                {{trans('homepage.readMore')}} <i class="ion-android-arrow-dropright-circle"></i
-                                ></a>
-                        </div>
-                    </div>
-                </article>
-                <!-- single item -->
-                <article class="blog-post">
-                    <div class="blog-post-top">
-                        <div class="blog-img">
-                            <img src="{{asset('frontend/assets/images/blog-default.png')}}" alt=""/>
-                        </div>
-                    </div>
-                    <div class="blog-post-content d-flex">
-                        <div class="blog-post-content-cell">
-                            <a href="javascript:void(0)" class="blog-meta">Tag new</a>
-                            <h4 class="blog-post-heading">
-                                <a href="blog-single-left-sidebar.html">Sản phẩm hot nhất tháng</a>
-                            </h4>
-                            <p class="blog-text">
-                                Lorem Ipsum is simply dummy text of the printing and typeSettings industry. Lorem Ipsum
-                                has been the industrys ...
-                            </p>
-                            <a class="read-more-btn" href="blog-single-left-sidebar.html">
-                                {{trans('homepage.readMore')}} <i class="ion-android-arrow-dropright-circle"></i
-                                ></a>
-                        </div>
-                    </div>
-                </article>
-                <!-- single item -->
-                <article class="blog-post">
-                    <div class="blog-post-top">
-                        <div class="blog-img">
-                            <img src="{{asset('frontend/assets/images/blog-default.png')}}" alt=""/>
-                        </div>
-                    </div>
-                    <div class="blog-post-content d-flex">
-                        <div class="blog-post-content-cell">
-                            <a href="javascript:void(0)" class="blog-meta">Tag new</a>
-                            <h4 class="blog-post-heading">
-                                <a href="blog-single-left-sidebar.html">Sản phẩm hot nhất tháng</a>
-                            </h4>
-                            <p class="blog-text">
-                                Lorem Ipsum is simply dummy text of the printing and typeSettings industry. Lorem Ipsum
-                                has been the industrys ...
-                            </p>
-                            <a class="read-more-btn" href="blog-single-left-sidebar.html">
-                                {{trans('homepage.readMore')}} <i class="ion-android-arrow-dropright-circle"></i
-                                ></a>
-                        </div>
-                    </div>
-                </article>
+
+
             </div>
             <!-- Blog Slider Start -->
         </div>

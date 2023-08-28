@@ -1,10 +1,10 @@
 <?php
 return [
-    'email' => '이메일',
-    'password' => '비밀번호',
-    'passwordConfirm' => '비밀번호 확인',
-    'login' => '로그인',
-    'phone' => '전화 번호',
+    'email' => 'Email',
+    'password' => 'Password',
+    'passwordConfirm' => 'Confirm Password',
+    'login' => 'Login',
+    'phone' => 'Phone number',
     'name' => 'Full name',
     'username' => 'Username'
 ];

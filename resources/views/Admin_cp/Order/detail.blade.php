@@ -40,7 +40,7 @@
                                     <div class="btn-group float-right"
                                          style="margin-right: 10px;border:1px solid #c5b5b5;">
                                         <a class="btn btn-flat" target="_new" title="Invoice"
-                                           href="https://demo.s-cart.org/sc_admin/order/invoice?order_id=O-JFhTD-8JA6e"><i
+                                           href=""><i
                                                 class="far fa-file-pdf"></i><span class="hidden-xs"> Hóa đơn</span></a>
                                     </div>
                                 </div>
