@@ -145,7 +145,7 @@ class CategoryProductRepository implements CategoryProductService {
     {
         $category = $this->category->where('parentid',0)->where('status',1)->with(['translate' => function ($query) use ($locale) {
             $query->where('languageid', $locale);
-        }])->get();
+        }])->where('typeid',1)->get();
         return $category;
     }
 

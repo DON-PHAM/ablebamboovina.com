@@ -1,5 +1,5 @@
 @extends('Admin_cp.Layout.master')
-@section('title',trans('product.title'))
+@section('title',trans('product.title-add'))
 @section('content')
 <style>
     input[type="file"] {
@@ -235,7 +235,7 @@
                                                 <option selected disabled>Chọn danh mục sản phẩm</option>
                                                 @if($categories)
                                                     @foreach($categories as $category)
-                                                        <option value="{{$category->id}}">{{$category->translate->name}}</option>
+                                                        <option value="{{$category->id}}">{{$category->translate->name ?? ""}}</option>
                                                     @endforeach
                                                 @endif
                                             </select>

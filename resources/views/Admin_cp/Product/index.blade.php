@@ -1,5 +1,5 @@
 @extends('Admin_cp.Layout.master')
-@section('title',trans('product.title'))
+@section('title',trans('product.list'))
 @section('content')
     <style>
         .checkbox{
@@ -181,14 +181,14 @@
                                                              style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
                                                     </div>
                                                 </td>
-                                                <td><img alt="{{$product->translate->name}}" title=""
+                                                <td><img alt="{{$product->translate->name ?? ""}}" title=""
                                                          src="{{asset('upload/product/'.$product->code.'/'.$product->image)}}"
                                                          style=" width:50px; height:50px;"></td>
-                                                <td>{{$product->translate->name}}</td>
-                                                <td>{{$product->category->name}}</td>
+                                                <td>{{$product->translate->name ?? ""}}</td>
+                                                <td>{{$product->category->name ?? ""}}</td>
                                                 <td>{{ number_format(round($product->price), 0, ',', '.') }}</td>
                                                 <td>{{number_format($product->price - ($product->price*$product->discount/100), 0, ',', '.')}}</td>
-                                                <td>{{$product->branch->name}}</td>
+                                                <td>{{$product->branch->name ?? ""}}</td>
                                                 <td>
                                                     <input type="checkbox" class="status checkbox" id="status" name="status"  @if($product->status == 1) checked @endif>
 

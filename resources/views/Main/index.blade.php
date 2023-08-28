@@ -84,11 +84,11 @@
                                         <div class="pricing-meta">
                                             <ul>
                                                 @if($product->discount)
-                                                    <li class="old-price">{{number_format($product->price)}}</li>
+                                                    <li class="old-price">{{number_format($product->price)}} VNĐ</li>
                                                     <li class="current-price">{{$product->price * $product->discount / 100}}</li>
                                                     <li class="discount-price">-{{$product->discount}}%</li>
                                                 @else
-                                                    <li class="current-price">{{number_format($product->price)}}</li>
+                                                    <li class="current-price">{{number_format($product->price)}} VNĐ</li>
                                                 @endif
                                             </ul>
                                         </div>
@@ -164,11 +164,11 @@
                                             <div class="pricing-meta">
                                                 <ul>
                                                     @if($product->discount)
-                                                        <li class="old-price">{{number_format($product->price)}}</li>
-                                                        <li class="current-price">{{$product->price * $product->discount / 100}}</li>
+                                                        <li class="old-price">{{number_format($product->price)}} VNĐ</li>
+                                                        <li class="current-price">{{$product->price * $product->discount / 100}} VNĐ</li>
                                                         <li class="discount-price">-{{$product->discount}}%</li>
                                                     @else
-                                                        <li class="current-price">{{number_format($product->price)}}</li>
+                                                        <li class="current-price">{{number_format($product->price)}} VNĐ</li>
                                                     @endif
                                                 </ul>
                                             </div>
@@ -243,11 +243,11 @@
                                             <div class="pricing-meta">
                                                 <ul>
                                                     @if($product->discount)
-                                                        <li class="old-price">{{number_format($product->price)}}</li>
-                                                        <li class="current-price">{{$product->price * $product->discount / 100}}</li>
+                                                        <li class="old-price">{{number_format($product->price)}} VNĐ</li>
+                                                        <li class="current-price">{{$product->price * $product->discount / 100}} VNĐ</li>
                                                         <li class="discount-price">-{{$product->discount}}%</li>
                                                     @else
-                                                        <li class="current-price">{{number_format($product->price)}}</li>
+                                                        <li class="current-price">{{number_format($product->price)}} VNĐ</li>
                                                     @endif
                                                 </ul>
                                             </div>
@@ -368,7 +368,7 @@
                             <div class="blog-post-content-cell">
                                 <a href="javascript:void(0)" class="blog-meta">Tag new</a>
                                 <h4 class="blog-post-heading">
-                                    <a href="blog-single-left-sidebar.html">{{$post->translate->name}}</a>
+                                    <a href="javascript:void(0)">{{$post->translate->name}}</a>
                                 </h4>
                                 <p class="blog-text">
                                     {{$post->translate->description}}

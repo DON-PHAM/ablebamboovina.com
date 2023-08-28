@@ -166,26 +166,37 @@
                                 <div class="mrt-20">Size:<span class="size-product-tpl value-product-template"></span>
                                 </div>
                                 <ul class="size-product-list attr-list">
+                                    @php $arrayName = explode('-',$product->slug); $sizeName = end($arrayName); @endphp
+                                    @if($sizeName == "rainer")
+                                        <li class="size-product-item value-click data-title-value" data-quantity=""
+                                            data-title="S" data-attributes="Size" data-value="S"
+                                            onclick="handleSize('S', 'Size', this)">S
+                                        </li>
+                                    @elseif($sizeName == "middle")
+                                        <li class="size-product-item value-click data-title-value" data-quantity=""
+                                            data-title="M" data-attributes="Size" data-value="M"
+                                            onclick="handleSize('M', 'Size', this)">M
+                                        </li>
+                                    @elseif($sizeName == "big")
+                                        <li class="size-product-item value-click data-title-value" data-quantity=""
+                                            data-title="L" data-attributes="Size" data-value="L"
+                                            onclick="handleSize('L', 'Size', this)">L
+                                        </li>
+                                    @else
+                                        <li class="size-product-item value-click data-title-value" data-quantity=""
+                                            data-title="S" data-attributes="Size" data-value="S"
+                                            onclick="handleSize('S', 'Size', this)">S
+                                        </li>
+                                        <li class="size-product-item value-click data-title-value" data-quantity=""
+                                            data-title="M" data-attributes="Size" data-value="M"
+                                            onclick="handleSize('M', 'Size', this)">M
+                                        </li>
+                                        <li class="size-product-item value-click data-title-value" data-quantity=""
+                                            data-title="L" data-attributes="Size" data-value="L"
+                                            onclick="handleSize('L', 'Size', this)">L
+                                        </li>
+                                    @endif
 
-                                    <li class="size-product-item value-click data-title-value" data-quantity=""
-                                        data-title="S" data-attributes="Size" data-value="S"
-                                        onclick="handleSize('S', 'Size', this)">S
-                                    </li>
-
-                                    <li class="size-product-item value-click data-title-value" data-quantity=""
-                                        data-title="M" data-attributes="Size" data-value="M"
-                                        onclick="handleSize('M', 'Size', this)">M
-                                    </li>
-
-                                    <li class="size-product-item value-click data-title-value" data-quantity=""
-                                        data-title="L" data-attributes="Size" data-value="L"
-                                        onclick="handleSize('L', 'Size', this)">L
-                                    </li>
-
-{{--                                    <li class="size-product-item value-click data-title-value" data-quantity=""--}}
-{{--                                        data-title="XL" data-attributes="Size" data-value="XL"--}}
-{{--                                        onclick="handleSize('XL', 'Size', this)">XL--}}
-{{--                                    </li>--}}
 
                                 </ul>
                             </div>
@@ -549,7 +560,7 @@
             $.ajax({
                 url: '{{route('add-to-cart',':id')}}'.replace(':id', id),
                 dataType: 'json',
-                data: {size : size},
+                data: {size: size},
                 method: 'get',
                 success: function (response) {
                     location.reload();

@@ -2,6 +2,7 @@
 return [
     'title' => 'Sản phẩm',
     'title-add' => 'Thêm mới sản phẩm',
+    'list-product' => 'Danh sách sản phẩm',
     'title-edit' => 'Sửa sản phẩm',
     'image' => 'Hình ảnh',
     'name' => 'Tên sản phẩm',

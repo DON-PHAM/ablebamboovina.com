@@ -1,6 +1,7 @@
 <?php
 return [
     'title-add' => '신제품 추가',
+    'list-product' => '제품 목록',
     'title-edit' => '제품 수정',
     'image' => '사진',
     'name' => '제품명',
