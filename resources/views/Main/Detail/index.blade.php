@@ -182,10 +182,10 @@
                                         onclick="handleSize('L', 'Size', this)">L
                                     </li>
 
-                                    <li class="size-product-item value-click data-title-value" data-quantity=""
-                                        data-title="XL" data-attributes="Size" data-value="XL"
-                                        onclick="handleSize('XL', 'Size', this)">XL
-                                    </li>
+{{--                                    <li class="size-product-item value-click data-title-value" data-quantity=""--}}
+{{--                                        data-title="XL" data-attributes="Size" data-value="XL"--}}
+{{--                                        onclick="handleSize('XL', 'Size', this)">XL--}}
+{{--                                    </li>--}}
 
                                 </ul>
                             </div>

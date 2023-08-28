@@ -20,9 +20,9 @@
                     </div>
                     <div class="shop-select" style="max-width: 27%">
                         <select class="nice-select">
-                            <option value="">Mới nhất</option>
-                            <option value="">A-Z</option>
-                            <option value="">Z-A</option>
+                            <option value="">Đánh giá mới nhất</option>
+                            <option value="">Đánh giá tốt nhất</option>
+                            <option value="">Đánh giá </option>
                         </select>
                     </div>
                 </div>
