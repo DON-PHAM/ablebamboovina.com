@@ -1,5 +1,5 @@
 @extends('Admin_cp.Layout.master')
-@section('title',trans('order.title-detail'))
+@section('title',trans('checkout.title-detail'))
 @section('content')
 
     <div class="content-header">
@@ -7,15 +7,15 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0 text-dark">
-                        <i class="fa fa-file-text-o" aria-hidden="true"></i> Chi tiết đơn hàng
+                        <i class="fa fa-file-text-o" aria-hidden="true"></i> {{trans('checkout.detail')}}
                     </h1>
                     <div class="more_info"></div>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="https://demo.s-cart.org/sc_admin"><i
-                                    class="fa fa-home fa-1x"></i> Trang chủ</a></li>
-                        <li class="breadcrumb-item active">Chi tiết đơn hàng</li>
+                        <li class="breadcrumb-item"><a href="{{route('admin')}}"><i
+                                    class="fa fa-home fa-1x"></i> {{trans('home.home')}}</a></li>
+                        <li class="breadcrumb-item active">{{trans('checkout.detail')}}</li>
                     </ol>
                 </div>
             </div>
@@ -30,18 +30,19 @@
                     @if($checkout)
                         <div class="card">
                             <div class="card-header with-border">
-                                <h3 class="card-title">Chi tiết đơn hàng #{{$checkout->id}}</h3>
+                                <h3 class="card-title">{{trans('checkout.detail')}} #{{$checkout->id}}</h3>
                                 <div class="card-tools not-print">
                                     <div class="btn-group float-right" style="margin-right: 0px">
-                                        <a href="https://demo.s-cart.org/sc_admin/order"
+                                        <a href=""
                                            class="btn btn-flat btn-default"><i
-                                                class="fa fa-list"></i>&nbsp;Trở lại danh sách</a>
+                                                class="fa fa-list"></i>&nbsp;{{trans('home.back')}}</a>
                                     </div>
                                     <div class="btn-group float-right"
                                          style="margin-right: 10px;border:1px solid #c5b5b5;">
-                                        <a class="btn btn-flat" target="_new" title="Invoice"
-                                           href=""><i
-                                                class="far fa-file-pdf"></i><span class="hidden-xs"> Hóa đơn</span></a>
+                                        <a class="btn btn-primary" data-toggle="modal"
+                                           data-target="#exampleModalCenter"><i
+                                                class="far fa-file-pdf"></i><span
+                                                class="hidden-xs">{{trans('checkout.addorder')}}</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -50,46 +51,46 @@
                                     <table class="table table-hover box-body text-wrap table-bordered">
                                         <tbody>
                                         <tr>
-                                            <td class="td-title">Họ và tên:</td>
+                                            <td class="td-title">{{trans('checkout.fullname')}}:</td>
                                             <td><a href="#" class="updateInfoRequired editable editable-click"
                                                    data-title="Tên">{{$checkout->customer->name}}</a></td>
                                         </tr>
 
                                         <tr>
-                                            <td class="td-title">Điện thoại:</td>
+                                            <td class="td-title">{{trans('checkout.phone')}}:</td>
                                             <td><a href="#" class="updateInfoRequired editable editable-click"
 
                                                    data-title="Điện thoại">{{$checkout->customer->phone}}</a></td>
                                         </tr>
                                         <tr>
-                                            <td class="td-title">Email:</td>
+                                            <td class="td-title">{{trans('checkout.email')}}:</td>
                                             <td>{{$checkout->customer->email}}</td>
                                         </tr>
                                         <tr>
-                                            <td class="td-title">Tỉnh/Thành:</td>
+                                            <td class="td-title">{{trans('checkout.province')}}:</td>
                                             <td><a href="#"
                                                    class="updateInfoRequired editable editable-click">{{$checkout->customer->province}}</a>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="td-title">Quận/Huyện:</td>
+                                            <td class="td-title">{{trans('checkout.district')}}:</td>
                                             <td><a href="#" class="updateInfoRequired editable editable-click"
                                                 >{{$checkout->customer->District}}</a></td>
                                         </tr>
                                         <tr>
-                                            <td class="td-title">Xã/Phường</td>
+                                            <td class="td-title">{{trans('checkout.ward')}}</td>
                                             <td><a href="#"
                                                    class="updateInfoRequired editable editable-click">{{$checkout->customer->ward}}</a>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="td-title">Đường</td>
+                                            <td class="td-title">{{trans('checkout.street')}}</td>
                                             <td><a href="#"
                                                    class="updateInfoRequired editable editable-click">{{$checkout->customer->street}}</a>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="td-title">Địa chỉ</td>
+                                            <td class="td-title">{{trans('checkout.address')}}</td>
                                             <td><a href="#"
                                                    class="updateInfoRequired editable editable-click">{{$checkout->customer->address}}</a>
                                             </td>
@@ -101,36 +102,36 @@
                                     <table class="table table-bordered">
                                         <tbody>
                                         <tr>
-                                            <td class="td-title">Trạng thái đơn hàng:</td>
+                                            <td class="td-title">{{trans('checkout.statusorder')}}:</td>
                                             <td><a href="#" class="updateStatus editable editable-click">New</a></td>
                                         </tr>
                                         <tr>
-                                            <td>Trạng thái vận chuyển:</td>
+                                            <td>{{trans('checkout.statusship')}}:</td>
                                             <td><a href="#"
                                                    class="updateStatus editable editable-click">{{$checkout->shippingstatus == 0 ? "Not Send" : "Sent"}}</a>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Trạng thái thanh toán:</td>
+                                            <td>{{trans('checkout.statuspayment')}}:</td>
                                             <td><a href="#"
                                                    class="updateStatus editable editable-click">{{$checkout->payment}}</a>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Phương thức vận chuyển:</td>
+                                            <td>{{trans('checkout.shipmethod')}}:</td>
                                             <td><a href="#"
                                                    class="updateStatus editable editable-click">{{$checkout->shipTranslate->name}}</a>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Phương thức thanh toán:</td>
+                                            <td>{{trans('checkout.paymentmethod')}}:</td>
                                             <td><a href="#"
                                                    class="updateStatus editable editable-click">{{$checkout->payment}}</a>
                                             </td>
                                         </tr>
 
                                         <tr>
-                                            <td> Tạo lúc:</td>
+                                            <td> {{trans('checkout.ordercreated')}}</td>
                                             <td>{{$checkout->orderdate}}</td>
                                         </tr>
                                         </tbody>
@@ -138,7 +139,9 @@
                                     <table class="table table-hover box-body text-wrap table-bordered">
                                         <tbody>
                                         <tr>
-                                            <td class="td-title"><i class="far fa-money-bill-alt nav-icon"></i> Tiền tệ:
+                                            <td class="td-title"><i
+                                                    class="far fa-money-bill-alt nav-icon"></i> {{trans('checkout.unitmoney')}}
+                                                :
                                             </td>
                                             <td>VNĐ</td>
                                         </tr>
@@ -148,9 +151,6 @@
                                 </div>
                             </div>
                             <form id="form-add-item" action="" method="">
-                                <input type="hidden" name="_token" value="gUeDIP7PYOIq3azeyv6H52HfXAyInLu3I2Lu2Xyk">
-                                <input
-                                    type="hidden" name="order_id" value="O-JFhTD-8JA6e">
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="card collapsed-card">
@@ -159,9 +159,9 @@
                                                     <thead>
                                                     <tr>
                                                         <th>Tên</th>
-                                                        <th class="product_price">Giá</th>
-                                                        <th class="product_qty">Số lượng</th>
-                                                        <th class="product_total">Tổng tiền</th>
+                                                        <th class="product_price">{{trans('checkout.price')}}</th>
+                                                        <th class="product_qty">{{trans('checkout.quantity')}}</th>
+                                                        <th class="product_total">{{trans('checkout.totalmoney')}}</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -195,7 +195,7 @@
                                         <table class="table table-bordered">
                                             <tbody>
                                             <tr>
-                                                <td class="td-title-normal">SubTotal:</td>
+                                                <td class="td-title-normal">{{trans('checkout.money')}}:</td>
                                                 <td style="text-align:right"
                                                     class="data-subtotal">{{number_format($checkout->totalmoney)}} VNĐ
                                                 </td>
@@ -203,21 +203,22 @@
                                             <tr>
                                                 @php $ship = intval($checkout->totalmoney) > intval($checkout->ship->price_free) ? 0 : $checkout->ship->price  @endphp
 
-                                                <td>Shipping Standard:</td>
-                                                <td style="text-align:right"><a href="#">{{number_format($ship)}} VNĐ</a>
+                                                <td>{{trans('checkout.totalShipping')}}:</td>
+                                                <td style="text-align:right"><a href="#">{{number_format($ship)}}
+                                                        VNĐ</a>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Discount(-):</td>
+                                                <td>{{trans('checkout.discount')}}:</td>
                                                 <td style="text-align:right"><a
                                                         href="#">{{number_format($checkout->discount)}}</a></td>
                                             </tr>
                                             <tr>
-                                                <td>Other fee:</td>
+                                                <td>{{trans('checkout.orther')}}:</td>
                                                 <td style="text-align:right"><a href="#">0 VNĐ</a></td>
                                             </tr>
                                             <tr style="background:#f5f3f3;font-weight: bold;">
-                                                <td>Total:</td>
+                                                <td>{{trans('checkout.totalmoney')}}:</td>
                                                 <td style="text-align:right"
                                                     class="data-total">{{number_format(intval($checkout->totalmoney) + intval($ship))}}
                                                     VNĐ
@@ -233,7 +234,7 @@
                                         <table class="table table-hover box-body text-wrap table-bordered">
                                             <tbody>
                                             <tr>
-                                                <td class="td-title">Ghi chú:</td>
+                                                <td class="td-title">{{trans('checkout.note')}}:</td>
                                                 <td>
                                                     <a href="#">{{$checkout->note}}</a>
                                                 </td>
@@ -249,5 +250,32 @@
             </div>
         </div>
     </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <p><img src="{{session()->get('setting')->logo}}" width="100%"></p>
+                    <h3 style="border-bottom: 7px dotted #eee;padding: 15px 0;">
+                        Tổng tiền thu hộ: {{number_format(intval($checkout->totalmoney) + intval($ship))}} VNĐ
+                    </h3>
+                    <strong>Ghi chú: </strong>
+                    <h5 style="border-bottom: 7px dotted #eee;padding: 15px 0;">Bên gửi: <strong>{{session()->get('setting')->company}} - {{session()->get('setting')->phone}}
+                            - {{session()->get('setting')->address}}</strong></h5>
+
+                    <h5 style="border-bottom: 7px dotted #eee;padding: 15px 0;">Bên nhận: <strong>{{$checkout->customer->name}} - {{$checkout->customer->phone}}
+                            - {{$checkout->customer->address}},{{$checkout->customer->street}},{{$checkout->customer->ward}},{{$checkout->customer->District}},{{$checkout->customer->province}}</strong></h5>
+                    <h5 style="border-bottom: 7px dotted #eee;padding: 15px 0;">Tên sản phẩm:  @foreach($checkout->orderDetails as $orderDetail) {{$orderDetail->product->name.","}} @endforeach </h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Print</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 @endsection

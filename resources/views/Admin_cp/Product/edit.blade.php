@@ -1,5 +1,5 @@
 @extends('Admin_cp.Layout.master')
-@section('title',trans('product.title'))
+@section('title',trans('product.title-edit'))
 @section('content')
     <style>
         input[type="file"] {

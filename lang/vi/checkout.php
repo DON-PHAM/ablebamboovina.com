@@ -1,5 +1,7 @@
 <?php
 return [
+    'title-detail' => 'Chi tiết đặt hàng',
+    'list' => 'Danh sách đặt hàng',
     'detail' => 'Chi tiết thanh toán',
     'fullname' => 'Họ và tên',
     'email' => 'Email',
@@ -15,5 +17,25 @@ return [
     'totalShipping' => 'Phí vận chuyển',
     'processorder' => 'Đặt hàng',
     'street' => 'Đường',
-    'address' => 'Địa chỉ'
+    'address' => 'Địa chỉ',
+    'money' => 'Tiền hàng',
+    'shipmoney' => 'Tiền vận chuyển',
+    'discount' => 'Giảm giá',
+    'totalmoney' => 'Tổng tiền',
+    'paymentmethod' => 'Phương thức thanh toán',
+    'status' => 'Trạng thái',
+    'ordercreated' => 'Thời gian tạo đơn hàng',
+    'action' => 'Hành động',
+    'view' => 'Xem chi tiết',
+    'addorder' => 'Tạo đơn hàng',
+    'statusorder' => 'Trạng thái đơn hàng',
+    'statusship' => 'Trạng thái vận chuyển',
+    'statuspayment' => 'Trạng thái thanh toán',
+    'shipmethod' => 'Phương thức vận chuyển',
+    'unitmoney' => 'Đơn vị tiền tệ',
+    'quantity' => 'Số lượng',
+    'orther' => 'Phí khác'
+
+
+
 ];

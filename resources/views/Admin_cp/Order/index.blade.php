@@ -1,20 +1,20 @@
 @extends('Admin_cp.Layout.master')
-@section('title','order.title')
+@section('title',trans('checkout.list'))
 @section('content')
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0 text-dark">
-                        <i class="fa fa-indent" aria-hidden="true"></i> {{trans("order.list")}}
+                        <i class="fa fa-indent" aria-hidden="true"></i> {{trans("checkout.list")}}
                     </h1>
                     <div class="more_info"></div>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="https://demo.s-cart.org/sc_admin"><i
+                        <li class="breadcrumb-item"><a href="{{route('admin')}}"><i
                                     class="fa fa-home fa-1x"></i> {{trans("home.home")}}</a></li>
-                        <li class="breadcrumb-item active">{{trans("order.list")}}</li>
+                        <li class="breadcrumb-item active">{{trans("checkout.list")}}</li>
                     </ol>
                 </div>
             </div>
@@ -27,7 +27,39 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
+                        <div class="card-header with-border">
+                            <div class="card-tools">
+                                <div class="menu-right">
+                                    <form action="" id="button_search">
+                                        <div class="input-group float-left">
+                                            <div style="width:130px">
+                                                <div class="form-group">
+                                                    <label>Từ:</label>
+                                                    <div class="input-group">
+                                                        <input type="text" name="from_to" id="from_to"
+                                                               class="form-control input-sm date_time rounded-0 hasDatepicker"
+                                                               data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd">
+                                                    </div>
+                                                </div>
+                                            </div> &nbsp;
+                                            <div style="width:130px">
+                                                <div class="form-group">
+                                                    <label>Đến:</label>
+                                                    <div class="input-group">
+                                                        <input type="text" name="end_to" id="end_to"
+                                                               class="form-control input-sm date_time rounded-0 hasDatepicker"
+                                                               data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd">
+                                                    </div>
+                                                </div>
+                                            </div> &nbsp;
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="float-left">
+                            </div>
 
+                        </div>
 
                         <div class="card-body p-0" id="pjax-container">
                             <div class="table-responsive">
@@ -35,20 +67,26 @@
                                     <thead>
                                     <tr>
                                         <th></th>
-                                        <th><i class="fas fa-envelope" aria-hidden="true" title="Email"></i></th>
-                                        <th><i class="fa fa-shopping-cart" aria-hidden="true" title="Tiền hàng"></i>
+                                        <th><i class="fas fa-envelope" aria-hidden="true"
+                                               title="{{trans('checkout.email')}}"></i></th>
+                                        <th><i class="fa fa-shopping-cart" aria-hidden="true"
+                                               title="{{trans('checkout.money')}}"></i>
                                         </th>
-                                        <th><i class="fa fa-truck" aria-hidden="true" title="Vận chuyển"></i></th>
-                                        <th><i class="fa fa-tags" aria-hidden="true" title="Giảm giá"></i></th>
-                                        <th><i class="fas fa-coins" aria-hidden="true" title="Tổng tiền"></i></th>
-                                        <th><i class="fa fa-credit-card" aria-hidden="true" title="Payment method"></i>
+                                        <th><i class="fa fa-truck" aria-hidden="true"
+                                               title="{{trans('checkoout.shipmoney')}}"></i></th>
+                                        <th><i class="fa fa-tags" aria-hidden="true"
+                                               title="{{trans('checkout.discount')}}"></i></th>
+                                        <th><i class="fas fa-coins" aria-hidden="true"
+                                               title="{{trans('checkout.totalmoney')}}"></i></th>
+                                        <th><i class="fa fa-credit-card" aria-hidden="true"
+                                               title="{{trans('checkout.paymentmethod')}}"></i>
                                         </th>
-                                        <th>Trạng thái</th>
-                                        <th>Tạo lúc</th>
-                                        <th>Thao tác</th>
+                                        <th>{{trans('checkout.status')}}</th>
+                                        <th>{{trans('checkout.ordercreated')}}</th>
+                                        <th>{{trans('checkout.action')}}</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="data-order">
                                     @if($checkouts)
                                         @foreach($checkouts as $checkout)
                                             <tr>
@@ -74,7 +112,7 @@
                                                 <td>{{$checkout->orderdate}}</td>
                                                 <td>
                                                     <a href="{{route('show-checkout',$checkout->id)}}"><span
-                                                            title="Chỉnh sửa" type="button"
+                                                            title="{{trans('checkout.view')}}" type="button"
                                                             class="btn btn-flat btn-sm btn-primary"><i
                                                                 class="fa fa-eye"></i></span></a>&nbsp;
                                                 </td>
@@ -100,4 +138,13 @@
         </div>
     </section>
 
+@endsection
+@section('script')
+    <script>
+        $(document).ready(function () {
+            $(".date_time").datepicker({
+                dateFormat: "yy-mm-dd"
+            });
+        });
+    </script>
 @endsection
