@@ -157,7 +157,7 @@
                                     <div class="your-order-total">
 
                                         <ul>
-                                            <li class="order-total">{{trans("homepage.all")}}</li>
+                                            <li class="order-total">{{trans("checkout.totalmoney")}}</li>
                                             <li class="totalProduct">{{number_format($total)}} VNĐ</li>
                                             <input type="hidden" value="{{$total}}" name="total" id="total">
                                         </ul>
