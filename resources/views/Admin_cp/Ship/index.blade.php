@@ -6,15 +6,15 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0 text-dark">
-                        <i class="" aria-hidden="true"></i> Chức năng vận chuyển
+                        <i class="" aria-hidden="true"></i> {{trans('ship.title')}}
                     </h1>
                     <div class="more_info"></div>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="https://demo.s-cart.org/sc_admin"><i
-                                    class="fa fa-home fa-1x"></i> Trang chủ</a></li>
-                        <li class="breadcrumb-item active">Chức năng vận chuyển</li>
+                        <li class="breadcrumb-item"><a href="{{route('admin')}}"><i
+                                    class="fa fa-home fa-1x"></i> {{trans('home.home')}}</a></li>
+                        <li class="breadcrumb-item active">{{trans('ship.title')}}</li>
                     </ol>
                 </div>
             </div>

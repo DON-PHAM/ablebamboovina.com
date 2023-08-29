@@ -33,6 +33,7 @@ return [
     'register' => '회원가입',
     'video' => '동영상',
     'configPay' => '정산 컨피그',
-    'coresetting' => '컨피그'
+    'coresetting' => '컨피그',
+    'extension'=> '연장하다'
 
 ];
