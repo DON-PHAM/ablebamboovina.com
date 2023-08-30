@@ -1,7 +1,7 @@
 <?php
 return [
     'title' => 'Slider',
-    'title-add' => 'Thêm mới slider'
+    'title-add' => 'Thêm mới slider',
     'list' => 'Danh sách slider',
     'image' => 'Hình ảnh',
     'name' => 'Tên slider',

@@ -33,6 +33,8 @@ return [
     'register' => 'Đăng ký',
     'video' => 'Video',
     'configPay' => 'Cấu hình thanh toán',
-    'coresetting' => 'Cấu hình'
+    'coresetting' => 'Cấu hình',
+    'extension'=> 'Mở rộng',
+    'active' => 'Kích hoạt'
 
 ];

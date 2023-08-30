@@ -1,5 +1,5 @@
 @extends('Admin_cp.Layout.master')
-@section('title',trans('product.list'))
+@section('title',trans('product.list-product'))
 @section('content')
     <style>
         .checkbox{
@@ -66,15 +66,15 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0 text-dark">
-                        <i class="fa fa-indent" aria-hidden="true"></i> Danh sách sản phẩm
+                        <i class="fa fa-indent" aria-hidden="true"></i> {{trans("product.list-product")}}
                     </h1>
                     <div class="more_info"></div>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('admin')}}"><i
-                                    class="fa fa-home fa-1x"></i> Trang chủ</a></li>
-                        <li class="breadcrumb-item active">Danh sách sản phẩm</li>
+                                    class="fa fa-home fa-1x"></i> {{trans("home.home")}}</a></li>
+                        <li class="breadcrumb-item active">{{trans("product.list-product")}}</li>
                     </ol>
                 </div>
             </div>
@@ -111,7 +111,7 @@
                             <div class="card-tools">
                                 <div class="menu-right">
                                     <a href="{{route('get-product-create')}}"
-                                       class="btn btn-success btn-flat" title="Tạo sản phẩm" id="button_create_new">
+                                       class="btn btn-success btn-flat" title="{{trans('product.add')}}" id="button_create_new">
                                         <i class="fa fa-plus"></i>
                                     </a>
                                 </div>
@@ -199,12 +199,12 @@
                                                 </td>
                                                 <td>
                                                     <a href="{{route('get-product-edit',$product->id)}}">
-                                                        <span title="Sửa" type="button" class="btn btn-flat btn-sm btn-primary">
+                                                        <span title="{{trans('product.edit')}}" type="button" class="btn btn-flat btn-sm btn-primary">
                                                         <i class="fa fa-edit"></i>
                                                         </span>
                                                     </a>
                                                     <span onclick="deleteItem({{$product->id}});"
-                                                          title="Xóa"
+                                                          title="{{trans('product.delete')}}"
                                                           class="btn btn-flat btn-sm btn-danger">
 <i class="fas fa-trash-alt"></i>
 </span>

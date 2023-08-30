@@ -1,5 +1,5 @@
 @extends('Admin_cp.Layout.master')
-@section('title',trans('product.title'))
+@section('title',trans('slider.title'))
 @section('content')
     <style>
         #status{
@@ -67,15 +67,15 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0 text-dark">
-                        <i class="fa fa-indent" aria-hidden="true"></i> Danh sách banner
+                        <i class="fa fa-indent" aria-hidden="true"></i> {{trans('slider.list')}}
                     </h1>
                     <div class="more_info"></div>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('admin')}}"><i
-                                    class="fa fa-home fa-1x"></i> Trang chủ</a></li>
-                        <li class="breadcrumb-item active">Danh sách banner</li>
+                                    class="fa fa-home fa-1x"></i> {{trans('home.home')}}</a></li>
+                        <li class="breadcrumb-item active">{{trans('slider.title')}}</li>
                     </ol>
                 </div>
             </div>
@@ -141,11 +141,11 @@
                                 <table class="table table-hover box-body text-wrap table-bordered">
                                     <thead>
                                     <tr>
-                                        <th>Hình ảnh</th>
-                                        <th>Tiêu đề</th>
-                                        <th>URL</th>
-                                        <th>Trạng thái</th>
-                                        <th>Thao tác</th>
+                                        <th>{{trans('slider.image')}}</th>
+                                        <th>{{trans('slider.title')}}</th>
+                                        <th>{{trans('slider.url')}}</th>
+                                        <th>{{trans('slider.status')}}</th>
+                                        <th>{{trans('slider.action')}}</th>
                                     </tr>
                                     </thead>
                                     <tbody>

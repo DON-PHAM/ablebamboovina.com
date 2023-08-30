@@ -4,6 +4,8 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <meta name="description" content="ablebamboovina cam kết bán Băng Vệ Sinh chính hãng 100% ✓ Giá Tốt Mọi Thời Điểm ✓ +200 thương hiệu nổi tiếng ✓ Giao Nhanh Miễn Phí 2H Từ 90k (Trễ Tặng 100k)" />
+    <meta name="keywords" content="ablebamboovina.com, mua mỹ phẩm chính hãng giá tốt nhất thị trường."/>
     <title>@yield('title')</title>
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('frontend/assets/images/favicon.png')}}"/>
