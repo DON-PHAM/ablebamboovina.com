@@ -11,6 +11,7 @@ use App\Models\Ward;
 use App\Services\CheckoutService;
 use Carbon\Carbon;
 use Carbon\Traits\Date;
+use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
@@ -33,9 +34,16 @@ class CheckoutRepository implements CheckoutService
         return $this->order->with(['customer','orderDetails','ship'])->paginate(15);
     }
 
-    public function changeStatusShip()
+    public function changeStatusShip($id)
     {
-        // TODO: Implement changeStatusShip() method.
+        $status = $this->order->find($id);
+        if (!$status)
+        {
+            return response()->json(['status'=>false]);
+        }
+        $status->shippingstatus = !$status->shippingstatus;
+        $status->save();
+        return response()->json(['status' => 'change successfully','data'=> $status]);
     }
 
     public function findById($id)
@@ -88,5 +96,10 @@ class CheckoutRepository implements CheckoutService
             session()->put('cart',$cart);
         }
         return $orderResult;
+    }
+
+    public function getSearchData($startData, $endData)
+    {
+        return $this->order->with(['customer','orderDetails','ship'])->whereBetween('orderdate',[$startData,$endData])->get();
     }
 }

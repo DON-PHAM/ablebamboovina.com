@@ -28,32 +28,40 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header with-border">
-                            <div class="card-tools">
-                                <div class="menu-right">
-                                    <form action="" id="button_search">
-                                        <div class="input-group float-left">
-                                            <div style="width:130px">
-                                                <div class="form-group">
-                                                    <label>Từ:</label>
-                                                    <div class="input-group">
-                                                        <input type="text" name="from_to" id="from_to"
-                                                               class="form-control input-sm date_time rounded-0 hasDatepicker"
-                                                               data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd">
-                                                    </div>
+                            <div class="card-tools" style="float: left !important;">
+                                <div class="menu-left">
+                                    {{--                                    <form id="button_search">--}}
+                                    <div class="input-group float-left">
+                                        <div style="width:130px">
+                                            <div class="form-group">
+                                                <label>Từ:</label>
+                                                <div class="input-group">
+                                                    <input type="text" name="from_to"
+                                                           class="form-control input-sm datapicker" id="from_to"
+                                                           placeholder="yyyy-mm-dd">
                                                 </div>
-                                            </div> &nbsp;
-                                            <div style="width:130px">
-                                                <div class="form-group">
-                                                    <label>Đến:</label>
-                                                    <div class="input-group">
-                                                        <input type="text" name="end_to" id="end_to"
-                                                               class="form-control input-sm date_time rounded-0 hasDatepicker"
-                                                               data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd">
-                                                    </div>
+                                            </div>
+                                        </div> &nbsp;
+                                        <div style="width:130px">
+                                            <div class="form-group">
+                                                <label>Đến:</label>
+                                                <div class="input-group">
+                                                    <input type="text" name="end_to" id="end_to"
+                                                           class="form-control input-sm datapicker"
+                                                           placeholder="yyyy-mm-dd">
                                                 </div>
-                                            </div> &nbsp;
-                                        </div>
-                                    </form>
+                                            </div>
+                                        </div> &nbsp;
+                                        <div style="width:130px">
+                                            <label> </label>
+                                            <div class="form-group">
+                                                <div class="input-group" style="margin-top: 2px;">
+                                                    <a class="form-control search btn btn-primary">Search</a>
+                                                </div>
+                                            </div>
+                                        </div> &nbsp;
+                                    </div>
+                                    {{--                                    </form>--}}
                                 </div>
                             </div>
                             <div class="float-left">
@@ -66,7 +74,7 @@
                                 <table class="table table-hover box-body text-wrap table-bordered">
                                     <thead>
                                     <tr>
-                                        <th></th>
+
                                         <th><i class="fas fa-envelope" aria-hidden="true"
                                                title="{{trans('checkout.email')}}"></i></th>
                                         <th><i class="fa fa-shopping-cart" aria-hidden="true"
@@ -87,41 +95,30 @@
                                     </tr>
                                     </thead>
                                     <tbody class="data-order">
-                                    @if($checkouts)
-                                        @foreach($checkouts as $checkout)
-                                            <tr>
-                                                <td>
-                                                    <div class="icheckbox_square-blue" aria-checked="false"
-                                                         aria-disabled="false" style="position: relative;"><input
-                                                            class="checkbox grid-row-checkbox" type="checkbox"
-                                                            data-id="O-JFhTD-8JA6e"
-                                                            style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">
-                                                        <ins class="iCheck-helper"
-                                                             style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
-                                                    </div>
-                                                </td>
-                                                <td>{{$checkout->customer->email}}</td>
-                                                <td>{{number_format($checkout->totalmoney)}} VNĐ</td>
-                                                @php $ship = intval($checkout->totalmoney) > intval($checkout->ship->price_free) ? 0 : $checkout->ship->price  @endphp
-                                                <td>{{number_format($ship)}} VNĐ</td>
-                                                <td>{{$checkout->discount}} VNĐ</td>
-                                                @php $totalMoney= intval($checkout->totalmoney) + intval($ship);   @endphp
-                                                <td>{{number_format($totalMoney)}}</td>
-                                                <td>{{$checkout->payment}}</td>
-                                                <td><span class="badge badge-info">New</span></td>
-                                                <td>{{$checkout->orderdate}}</td>
-                                                <td>
-                                                    <a href="{{route('show-checkout',$checkout->id)}}"><span
-                                                            title="{{trans('checkout.view')}}" type="button"
-                                                            class="btn btn-flat btn-sm btn-primary"><i
-                                                                class="fa fa-eye"></i></span></a>&nbsp;
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    @else
-                                        <h3>No data</h3>
-                                    @endif
-
+                                    {{--                                    @if($checkouts)--}}
+                                    {{--                                        @foreach($checkouts as $checkout)--}}
+                                    {{--                                            <tr>--}}
+                                    {{--                                                <td>{{$checkout->customer->email}}</td>--}}
+                                    {{--                                                <td>{{number_format($checkout->totalmoney)}} VNĐ</td>--}}
+                                    {{--                                                @php $ship = intval($checkout->totalmoney) > intval($checkout->ship->price_free) ? 0 : $checkout->ship->price  @endphp--}}
+                                    {{--                                                <td>{{number_format($ship)}} VNĐ</td>--}}
+                                    {{--                                                <td>{{$checkout->discount}} VNĐ</td>--}}
+                                    {{--                                                @php $totalMoney= intval($checkout->totalmoney) + intval($ship);   @endphp--}}
+                                    {{--                                                <td>{{number_format($totalMoney)}}</td>--}}
+                                    {{--                                                <td>{{$checkout->payment}}</td>--}}
+                                    {{--                                                <td><span class="badge badge-info">New</span></td>--}}
+                                    {{--                                                <td>{{$checkout->orderdate}}</td>--}}
+                                    {{--                                                <td>--}}
+                                    {{--                                                    <a href="{{route('show-checkout',$checkout->id)}}"><span--}}
+                                    {{--                                                            title="{{trans('checkout.view')}}" type="button"--}}
+                                    {{--                                                            class="btn btn-flat btn-sm btn-primary"><i--}}
+                                    {{--                                                                class="fa fa-eye"></i></span></a>&nbsp;--}}
+                                    {{--                                                </td>--}}
+                                    {{--                                            </tr>--}}
+                                    {{--                                        @endforeach--}}
+                                    {{--                                    @else--}}
+                                    {{--                                        <h3>No data</h3>--}}
+                                    {{--                                    @endif--}}
 
                                     </tbody>
                                 </table>
@@ -140,10 +137,42 @@
 
 @endsection
 @section('script')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script>
         $(document).ready(function () {
-            $(".date_time").datepicker({
-                dateFormat: "yy-mm-dd"
+            $(".datapicker").datepicker();
+
+            $.ajax({
+                url: '{{route('load-data')}}',
+                dataType: 'JSON',
+                method: 'GET',
+                success: function (response) {
+                    $('.data-order').append(response.data)
+
+                }
+            });
+
+            $('.search').click(function (e) {
+                $('.data-order').empty()
+                e.preventDefault()
+
+                let startDate = moment($('#from_to').val()).format('YYYY/MM/DD')
+                let endData = moment($('#end_to').val()).format('YYYY/MM/DD')
+                $.ajax({
+                    url:'{{route('search-data')}}',
+                    data: {
+                        _token: '{{csrf_token()}}',
+                        start_date: startDate,
+                        end_date: endData
+                    },
+                    method: 'POST',
+                    dataType: 'JSON',
+                    success:function (response) {
+                        $('.data-order').append(response.data)
+                    }
+                })
+
+
             });
         });
     </script>

@@ -2,6 +2,11 @@
 @section('title',trans('checkout.title-detail'))
 @section('content')
 
+    <style>
+        #shipstatus a {
+            border-bottom: dashed 1px #0088cc
+        }
+    </style>
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -107,14 +112,31 @@
                                         </tr>
                                         <tr>
                                             <td>{{trans('checkout.statusship')}}:</td>
-                                            <td><a href="#"
-                                                   class="updateStatus editable editable-click">{{$checkout->shippingstatus == 0 ? "Not Send" : "Sent"}}</a>
+                                            <td id="shipstatus">
+                                                @if($checkout->shippingstatus == 0)
+                                                    <a href="javascript:void(0)"
+                                                       onclick="handleStatus({{$checkout->id}})"
+                                                       class="updateStatus editable editable-click">Not
+                                                        Send
+                                                        <i class="fa fa-times show" aria-hidden="true"
+                                                           title="Chưa xác nhận"></i>
+                                                    </a>
+
+                                                @else
+                                                    <a href="javascript:void(0)"
+                                                       onclick="handleStatus({{$checkout->id}})"
+                                                       class="updateStatus editable editable-click">Send <i
+                                                            class="fa fa-check hide" aria-hidden="true"
+                                                            title="Đã xác nhận"></i></a>
+
+                                                @endif
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>{{trans('checkout.statuspayment')}}:</td>
                                             <td><a href="#"
                                                    class="updateStatus editable editable-click">{{$checkout->payment}}</a>
+
                                             </td>
                                         </tr>
                                         <tr>
@@ -161,6 +183,7 @@
                                                         <th>Tên</th>
                                                         <th class="product_price">{{trans('checkout.price')}}</th>
                                                         <th class="product_qty">{{trans('checkout.quantity')}}</th>
+                                                        <th class="product_qty">Size</th>
                                                         <th class="product_total">{{trans('checkout.totalmoney')}}</th>
                                                     </tr>
                                                     </thead>
@@ -175,7 +198,9 @@
                                                             <td class="product_qty">x <a
                                                                     href="#">{{$orderDetail->quantity}}</a>
                                                             </td>
-
+                                                            <td class="product_qty"><a
+                                                                    href="#">{{$orderDetail->size}}</a>
+                                                            </td>
                                                             <td class="product_tax"><a
                                                                     href="#">{{number_format($orderDetail->total)}}</a>
                                                             </td>
@@ -263,12 +288,19 @@
                         Tổng tiền thu hộ: {{number_format(intval($checkout->totalmoney) + intval($ship))}} VNĐ
                     </h3>
                     <strong>Ghi chú: </strong>
-                    <h5 style="border-bottom: 7px dotted #eee;padding: 15px 0;">Bên gửi: <strong>{{session()->get('setting')->company}} - {{session()->get('setting')->phone}}
+                    <h5 style="border-bottom: 7px dotted #eee;padding: 15px 0;">Bên gửi:
+                        <strong>{{session()->get('setting')->company}} - {{session()->get('setting')->phone}}
                             - {{session()->get('setting')->address}}</strong></h5>
 
-                    <h5 style="border-bottom: 7px dotted #eee;padding: 15px 0;">Bên nhận: <strong>{{$checkout->customer->name}} - {{$checkout->customer->phone}}
-                            - {{$checkout->customer->address}},{{$checkout->customer->street}},{{$checkout->customer->ward}},{{$checkout->customer->District}},{{$checkout->customer->province}}</strong></h5>
-                    <h5 style="border-bottom: 7px dotted #eee;padding: 15px 0;">Tên sản phẩm:  @foreach($checkout->orderDetails as $orderDetail) {{$orderDetail->product->name.","}} @endforeach </h5>
+                    <h5 style="border-bottom: 7px dotted #eee;padding: 15px 0;">Bên nhận:
+                        <strong>{{$checkout->customer->name}} - {{$checkout->customer->phone}}
+                            - {{$checkout->customer->address}},{{$checkout->customer->street}}
+                            ,{{$checkout->customer->ward}},{{$checkout->customer->District}}
+                            ,{{$checkout->customer->province}}</strong></h5>
+                    <h5 style="border-bottom: 7px dotted #eee;padding: 15px 0;">Tên sản
+                        phẩm: @foreach($checkout->orderDetails as $orderDetail)
+                            {{$orderDetail->product->name.","}}
+                        @endforeach </h5>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -278,4 +310,30 @@
         </div>
     </div>
 
+@endsection
+@section('script')
+    <script>
+        function handleStatus(id) {
+            $('#shipstatus').empty()
+            $.ajax({
+                url:'{{route('change-ship-status',':id')}}'.replace(':id',id),
+                dataType: 'JSON',
+                method: 'GET',
+                success: function (response) {
+                    console.log(response.data);
+                    if(response.status)
+                    {
+                        toastr.success("Change status ship successfully!")
+                        if(response.data.shippingstatus)
+                        {
+                            $('#shipstatus').append('<a href="javascript:void(0)" onclick="handleStatus('+response.data.id+')" class="updateStatus editable editable-click">Send <i class="fa fa-check hide" aria-hidden="true" ></i></a>')
+                        }
+                        else {
+                            $('#shipstatus').append('<a href="javascript:void(0)" onclick="handleStatus('+response.data.id+')" class="updateStatus editable editable-click">Not Send <i class="fa fa-times show" aria-hidden="true" ></i></a>')
+                        }
+                    }
+                }
+            })
+        }
+    </script>
 @endsection
