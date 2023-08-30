@@ -173,6 +173,9 @@ Route::group(['prefix'=>'dashboard','middleware'=>['locale','checkAuth']],functi
 
     //Checkout
     Route::get('checkout','Dashboard\CheckoutController@index')->name('checkout');
+    Route::get('getData','Dashboard\CheckoutController@loadData')->name('load-data');
+    Route::post('searchdata','Dashboard\CheckoutController@searchData')->name('search-data');
     Route::get('checkout/{id}','Dashboard\CheckoutController@show')->name('show-checkout');
+    Route::get('checkout/changeshipstatus/{id}','Dashboard\CheckoutController@changeShipStatus')->name('change-ship-status');
 
 });
