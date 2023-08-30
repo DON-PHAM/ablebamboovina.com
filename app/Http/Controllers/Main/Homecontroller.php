@@ -43,6 +43,13 @@ class Homecontroller extends Controller
         return view('Main.index', compact('products', 'sliders', 'categories','posts'));
     }
 
+    public function showPostById($id)
+    {
+        $locale = session()->get('locale');
+        $result = $this->postService->getHomeById($locale,$id);
+        return response()->json(['status'=>true,'data'=> $result]);
+    }
+
     public function changLanguage($language)
     {
         App::setLocale($language);

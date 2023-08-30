@@ -123,6 +123,17 @@
     .cart-btn {
         font-size: 13px !important;
     }
+    h2#header-title {
+        font-size: 13px;
+    }
+    #scrollUp {
+        width: 20px;
+        height: 20px;
+    }
+    #scrollUp i {
+        line-height: 24px;
+        font-size: 13px;
+    }
 }
 @media only screen and (max-width: 639px) {
     .breadcrumb-area {
@@ -179,6 +190,18 @@
     .cart-btn {
         font-size: 13px !important;
     }
+    h2#header-title {
+        font-size: 13px;
+    }
+    #scrollUp {
+        width: 20px;
+        height: 20px;
+    }
+    #scrollUp i {
+        line-height: 24px;
+        font-size: 13px;
+    }
+
 }
 @media only screen and (max-width: 480px) {
     .breadcrumb-area {
@@ -239,6 +262,18 @@
     .cart-btn {
         font-size: 13px !important;
     }
+    h2#header-title {
+        font-size: 13px;
+    }
+    #scrollUp {
+        width: 20px;
+        height: 20px;
+    }
+    #scrollUp i {
+        line-height: 24px;
+        font-size: 13px;
+    }
+
 }
 
 
