@@ -21,6 +21,7 @@ Route::get('change_language/{language}','Dashboard\HomeController@changLanguage'
     ->name('change-language');
 Route::group(['middleware'=>'locale'],function () {
     Route::get('/', 'Main\Homecontroller@index')->name('homepage');
+    Route::get('/post/{id}', 'Main\Homecontroller@showPostById')->name('show-post-by-id');
     Route::get('shop/{id}', 'Main\ShopController@index')->name('shop-page');
     Route::get('detail/{id}', 'Main\DetailController@index')->name('detail-page');
     Route::get('detail/event/{id}', 'Main\DetailController@event')->name('detail-event-page');

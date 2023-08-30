@@ -1,7 +1,13 @@
 @extends('Main.Layout.main')
 @section('title',trans('Ablebamboovina'))
 @section('content')
-
+    <style>
+        div#description {
+            background-color: lightpink;
+            margin: 22px 0;
+            padding: 25px;
+        }
+    </style>
     <!-- Slider Arae Start -->
     <div class="slider-area">
         <div class="slider-active-3 owl-carousel slider-hm8 owl-dot-style">
@@ -88,7 +94,8 @@
                                                     <li class="current-price">{{$product->price * $product->discount / 100}}</li>
                                                     <li class="discount-price">-{{$product->discount}}%</li>
                                                 @else
-                                                    <li class="current-price">{{number_format($product->price)}} VNĐ</li>
+                                                    <li class="current-price">{{number_format($product->price)}}VNĐ
+                                                    </li>
                                                 @endif
                                             </ul>
                                         </div>
@@ -164,11 +171,16 @@
                                             <div class="pricing-meta">
                                                 <ul>
                                                     @if($product->discount)
-                                                        <li class="old-price">{{number_format($product->price)}} VNĐ</li>
-                                                        <li class="current-price">{{$product->price * $product->discount / 100}} VNĐ</li>
+                                                        <li class="old-price">{{number_format($product->price)}}VNĐ
+                                                        </li>
+                                                        <li class="current-price">{{$product->price * $product->discount / 100}}
+                                                            VNĐ
+                                                        </li>
                                                         <li class="discount-price">-{{$product->discount}}%</li>
                                                     @else
-                                                        <li class="current-price">{{number_format($product->price)}} VNĐ</li>
+                                                        <li class="current-price">{{number_format($product->price)}}
+                                                            VNĐ
+                                                        </li>
                                                     @endif
                                                 </ul>
                                             </div>
@@ -243,11 +255,16 @@
                                             <div class="pricing-meta">
                                                 <ul>
                                                     @if($product->discount)
-                                                        <li class="old-price">{{number_format($product->price)}} VNĐ</li>
-                                                        <li class="current-price">{{$product->price * $product->discount / 100}} VNĐ</li>
+                                                        <li class="old-price">{{number_format($product->price)}}VNĐ
+                                                        </li>
+                                                        <li class="current-price">{{$product->price * $product->discount / 100}}
+                                                            VNĐ
+                                                        </li>
                                                         <li class="discount-price">-{{$product->discount}}%</li>
                                                     @else
-                                                        <li class="current-price">{{number_format($product->price)}} VNĐ</li>
+                                                        <li class="current-price">{{number_format($product->price)}}
+                                                            VNĐ
+                                                        </li>
                                                     @endif
                                                 </ul>
                                             </div>
@@ -358,7 +375,7 @@
             <div class="blog-slider-active owl-carousel owl-nav-style">
                 @foreach($posts as $post)
                     <!-- single item -->
-                    <article class="blog-post">
+                    <article class="blog-post" onclick="showPostById({{$post->id}})">
                         <div class="blog-post-top">
                             <div class="blog-img">
                                 <img src="{{asset('upload/post/'.$post->image)}}" alt=""/>
@@ -366,7 +383,7 @@
                         </div>
                         <div class="blog-post-content d-flex">
                             <div class="blog-post-content-cell">
-                                <a href="javascript:void(0)" class="blog-meta">Tag new</a>
+                                <a href="javascript:void(0)" class="blog-meta" >Tag new</a>
                                 <h4 class="blog-post-heading">
                                     <a href="javascript:void(0)">{{$post->translate->name}}</a>
                                 </h4>
@@ -379,6 +396,8 @@
                             </div>
                         </div>
                     </article>
+
+
                 @endforeach
                 <!-- single item -->
 
@@ -387,21 +406,60 @@
             <!-- Blog Slider Start -->
         </div>
     </section>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <!-- Blog Area End -->
+    <div id="id01" class="w3-modal w3-margin-top" style="overflow: scroll;">
+        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="overflow: scroll;height: 80vh;padding: 8px;">
+            <header class="w3-container w3-blue">
+                <h2 id="header-title"></h2>
+            </header>
+            <br>
+            <main class="container-fluid">
+                <div id="image">
 
+                </div>
+                <div id="description">
+
+                </div>
+                <div id="content" class="w3-container city">
+
+
+                </div>
+            </main>
+
+            <div class="w3-container w3-light-grey w3-padding">
+                <button class="w3-button w3-right w3-white w3-border"
+                        onclick="document.getElementById('id01').style.display='none'">Close
+                </button>
+            </div>
+        </div>
+    </div>
 @endsection
-{{--@section('script')--}}
-{{--    <script>--}}
-{{--        function addToCart(id) {--}}
-{{--            $.ajax({--}}
-{{--                url:'{{route('add-to-cart',':id')}}'.replace(':id',id),--}}
-{{--                dataType:'json',--}}
-{{--                method:'get',--}}
-{{--                success:function (response){--}}
-{{--                   location.reload();--}}
-{{--                   toastr.success('Thêm thành công giỏ hàng');--}}
-{{--                }--}}
-{{--            })--}}
-{{--        }--}}
-{{--    </script>--}}
-{{--@endsection--}}
+@section('script')
+    <script>
+        function showPostById(id) {
+            $('#header-title').empty()
+            $('#image').empty()
+            $('#description').empty()
+            $('#content').empty()
+            $.ajax({
+                url:'{{route('show-post-by-id',':id')}}'.replace(':id',id),
+                dataType:'json',
+                method:'GET',
+                success:function (response) {
+                    if(response.status)
+                    {
+                        console.log(response)
+                        $('#header-title').append(response.data.translate.name)
+                        $('#image').append('<img src="{{asset('upload/post')}}/'+response.data.image+'" style="width:100%;"id="image-post"/>')
+                        $('#description').append(response.data.translate.description)
+                        $('#content').append(response.data.translate.content)
+                        let showPostId = document.getElementById('id01');
+                        showPostId.style.display = 'block'
+                    }
+                }
+            })
+
+        }
+    </script>
+@endsection

@@ -32,6 +32,13 @@ class PostRepository implements PostService {
         return $this->post->with(['translates'])->find($id);
     }
 
+    public function getHomeById($locale,$id)
+    {
+        return $this->post->with(['translate' => function ($query) use ($locale) {
+            $query->where('languageid', $locale);
+        }])->find($id);
+    }
+
     public function getAll(string $locale)
     {
         return $this->post->with(['translate' => function ($query) use ($locale) {
