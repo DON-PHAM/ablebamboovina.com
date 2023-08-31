@@ -90,11 +90,11 @@
                                         <div class="pricing-meta">
                                             <ul>
                                                 @if($product->discount)
-                                                    <li class="old-price">{{number_format($product->price)}} VNĐ</li>
-                                                    <li class="current-price">{{$product->price * $product->discount / 100}}</li>
+                                                    <li class="current-price">{{number_format($product->price - ($product->price * $product->discount / 100))}}</li>
+                                                    <li class="old-price">{{number_format($product->price)}}</li>
                                                     <li class="discount-price">-{{$product->discount}}%</li>
                                                 @else
-                                                    <li class="current-price">{{number_format($product->price)}}VNĐ
+                                                    <li class="current-price">{{number_format($product->price)}}
                                                     </li>
                                                 @endif
                                             </ul>
@@ -171,12 +171,13 @@
                                             <div class="pricing-meta">
                                                 <ul>
                                                     @if($product->discount)
-                                                        <li class="old-price">{{number_format($product->price)}}VNĐ
-                                                        </li>
-                                                        <li class="current-price">{{$product->price * $product->discount / 100}}
+                                                        <li class="current-price">{{number_format($product->price - ($product->price * $product->discount / 100))}}
                                                             VNĐ
                                                         </li>
                                                         <li class="discount-price">-{{$product->discount}}%</li>
+                                                        <li class="old-price ">{{number_format($product->price)}}VNĐ
+                                                        </li>
+
                                                     @else
                                                         <li class="current-price">{{number_format($product->price)}}
                                                             VNĐ
@@ -257,7 +258,7 @@
                                                     @if($product->discount)
                                                         <li class="old-price">{{number_format($product->price)}}VNĐ
                                                         </li>
-                                                        <li class="current-price">{{$product->price * $product->discount / 100}}
+                                                        <li class="current-price">{{number_format($product->price - ($product->price * $product->discount / 100))}}
                                                             VNĐ
                                                         </li>
                                                         <li class="discount-price">-{{$product->discount}}%</li>
@@ -387,12 +388,12 @@
                                 <h4 class="blog-post-heading">
                                     <a href="javascript:void(0)">{{$post->translate->name}}</a>
                                 </h4>
-                                <p class="blog-text">
-                                    {{$post->translate->description}}
-                                </p>
-                                <a class="read-more-btn" href="#">
-                                    {{trans('homepage.readMore')}} <i class="ion-android-arrow-dropright-circle"></i
-                                    ></a>
+{{--                                <p class="blog-text">--}}
+{{--                                    {{$post->translate->description}}--}}
+{{--                                </p>--}}
+{{--                                <a class="read-more-btn" href="#">--}}
+{{--                                    {{trans('homepage.readMore')}} <i class="ion-android-arrow-dropright-circle"></i--}}
+{{--                                    ></a>--}}
                             </div>
                         </div>
                     </article>
