@@ -56,6 +56,11 @@
 .d-flex.align-items-start.justify-content-start {
     font-size: 19px;
 }
+.blog-img img {
+    width: 30% !important;
+    margin: auto;
+    transform: scale(2.8);
+}
 
 @media only screen and (max-width: 1400px) {
     .breadcrumb-area {
@@ -134,6 +139,31 @@
         line-height: 24px;
         font-size: 13px;
     }
+    #description {
+        font-size: 13px;
+    }
+    #content {
+        font-size: 13px;
+    }
+    .blog-post-content {
+        padding: 15px !important;
+    }
+    .blog-post-content-cell a {
+        font-size: 12px;
+    }
+    .blog-post-heading a {
+        font-size: 12px;
+    }
+    .blog-img img {
+        width: 100% !important;
+    }
+    .blog-meta {
+        margin-bottom: 8px;
+    }
+    .about-area .item > img {
+        max-height: 180px;
+    }
+
 }
 @media only screen and (max-width: 639px) {
     .breadcrumb-area {
@@ -201,6 +231,31 @@
         line-height: 24px;
         font-size: 13px;
     }
+    #description {
+        font-size: 13px;
+    }
+    #content {
+        font-size: 13px;
+    }
+    .blog-post-content {
+        padding: 15px !important;
+    }
+    .blog-post-content-cell a {
+        font-size: 12px;
+    }
+    .blog-post-heading a {
+        font-size: 12px;
+    }
+    .blog-img img {
+        width: 100% !important;
+    }
+    .blog-meta {
+        margin-bottom: 8px;
+    }
+    .about-area .item > img {
+        max-height: 180px;
+    }
+
 
 }
 @media only screen and (max-width: 480px) {
@@ -272,6 +327,30 @@
     #scrollUp i {
         line-height: 24px;
         font-size: 13px;
+    }
+    #description {
+        font-size: 13px;
+    }
+    #content {
+        font-size: 13px;
+    }
+    .blog-post-content {
+        padding: 15px !important;
+    }
+    .blog-post-content-cell a {
+        font-size: 12px;
+    }
+    .blog-post-heading a {
+        font-size: 12px;
+    }
+    .blog-img img {
+        width: 100% !important;
+    }
+    .blog-meta {
+        margin-bottom: 8px;
+    }
+    .about-area .item > img {
+        max-height: 180px;
     }
 
 }

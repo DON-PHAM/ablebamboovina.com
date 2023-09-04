@@ -139,8 +139,8 @@
                         <div class="pricing-meta">
                             <ul>
                                 @if($product->discount)
-                                    <li class="old-price not-cut pe-2">{{number_format($product->price)}}</li>
-                                    <li class="current-price old-price">{{$product->price * $product->discount / 100}}</li>
+                                    <li class="old-price not-cut pe-2">{{number_format($product->price - ($product->price * $product->discount / 100))}} VNĐ</li>
+                                    <li class="current-price old-price">{{number_format($product->price)}} VNĐ</li>
                                     <li class="discount-price">-{{$product->discount}}%</li>
                                 @else
                                     <li class="old-price not-cut">{{number_format($product->price)}} VNĐ</li>

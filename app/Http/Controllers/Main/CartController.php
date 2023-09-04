@@ -32,18 +32,22 @@ class CartController extends Controller
     {
         $product = $this->productService->showHomeById($id);
         $size = $request->size;
+        $discountPrice = 0;
         $cart = session()->get('cart', []);
         $existingItem = $this->findCartItem($cart, $id, $size);
         if ($existingItem != null) {
             $cart[$id."_".$size]['quantity']++;
         } else {
+            if ($product->discount != 0) {
+                $discountPrice =$product->price * $product->discount / 100;
+            }
             $cart[$id."_".$size] = [
                 'name' => $product->translate->name,
                 'productid' => $id,
                 'size' => $size,
                 'code' => $product->code,
                 'quantity' => 1,
-                'price' => $product->price,
+                'price' => ($product->price - $discountPrice),
                 'image' => $product->image,
             ];
         }
