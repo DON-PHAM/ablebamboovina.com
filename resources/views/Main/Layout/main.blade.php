@@ -300,6 +300,20 @@
 </script>
 <script type="text/javascript">
     $(document).ready(function () {
+        let language = localStorage.getItem('locale');
+        if(language === null)
+        {
+            language = 'ko'
+        }
+        $.ajax({
+            url: "{{ route('change-language',':language') }}".replace(':language',language),
+            type: "get",
+            success: function(response) {
+                // reload trang để hiển thị nội dung mới
+                localStorage.setItem('locale',language);
+                $("#language").val(language);
+            }
+        })
         $('.change-language-fe').on('click', function () {
             let language = $(this).data("value");
             $.ajax({

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Session;
 class HomeController extends Controller
 {
     protected $settingService;
+
     public function __construct(SettingService $settingService)
     {
         $this->settingService = $settingService;
@@ -25,9 +26,12 @@ class HomeController extends Controller
 
     public function changLanguage($language)
     {
-       App::setLocale($language);
-
-        Session::put('locale',$language);
+        if ($language == null)
+        {
+            $language = 'ko';
+            App::setLocale($language);
+        }
+        Session::put('locale', $language);
         $data = [
             'message' => trans('message.success'),
 

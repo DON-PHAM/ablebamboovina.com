@@ -371,6 +371,10 @@
             });
         });
         let language = localStorage.getItem('locale');
+        if(language === null)
+        {
+            language = 'ko'
+        }
         $.ajax({
             url: "{{ route('change-language',':language') }}".replace(':language',language),
             type: "get",
