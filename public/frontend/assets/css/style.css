@@ -156,6 +156,7 @@
     }
     .blog-img img {
         width: 100% !important;
+        transform: scale(1);
     }
     .blog-meta {
         margin-bottom: 8px;
@@ -248,6 +249,7 @@
     }
     .blog-img img {
         width: 100% !important;
+        transform: scale(1);
     }
     .blog-meta {
         margin-bottom: 8px;
@@ -345,6 +347,7 @@
     }
     .blog-img img {
         width: 100% !important;
+        transform: scale(1);
     }
     .blog-meta {
         margin-bottom: 8px;
