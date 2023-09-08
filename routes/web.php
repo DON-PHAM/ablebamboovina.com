@@ -178,4 +178,8 @@ Route::group(['prefix'=>'dashboard','middleware'=>['locale','checkAuth']],functi
     Route::get('checkout/{id}','Dashboard\CheckoutController@show')->name('show-checkout');
     Route::get('checkout/changeshipstatus/{id}','Dashboard\CheckoutController@changeShipStatus')->name('change-ship-status');
 
+    //Policy
+    Route::get('policy','Dashboard\PolicyController@index')->name('policy');
+    Route::post('policy/{id}','Dashboard\PolicyController@postPolicy')->name('post-policy');
+
 });

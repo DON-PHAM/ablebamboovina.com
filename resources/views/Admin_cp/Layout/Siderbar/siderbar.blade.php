@@ -62,6 +62,16 @@
                     </a>
 
                 </li>
+
+                <li class="nav-item has-treeview">
+                    <a href="{{route('policy')}}" class="nav-link">
+                        <i class="nav-icon  fab fa-whmcs "></i>
+                        <p>
+                            Policy
+                        </p>
+                    </a>
+
+                </li>
                 <li class="nav-item">
                     <a href="{{route('branch-list')}}" class="nav-link">
                         <i class="fas fa-user-secret nav-icon"></i>
