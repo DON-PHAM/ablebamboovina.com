@@ -304,8 +304,7 @@
                                 class="img-responsive"
                             />
                             <div class="single-static-meta">
-                                <h4>{{trans('homepage.freeShipping')}}</h4>
-                                <p>{{trans('homepage.freeShipping2')}}</p>
+                                {{$policy['freeship'] ?? ''}}
                             </div>
                         </div>
                     </div>
@@ -319,8 +318,7 @@
                                 class="img-responsive"
                             />
                             <div class="single-static-meta">
-                                <h4>{{trans('homepage.freeReturn')}}</h4>
-                                <p>{{trans('homepage.freeReturn2')}}</p>
+                                {{$policy['exchange'] ?? ''}}
                             </div>
                         </div>
                     </div>
@@ -334,8 +332,7 @@
                                 class="img-responsive"
                             />
                             <div class="single-static-meta">
-                                <h4>{{trans('homepage.securePayment')}}</h4>
-                                <p>{{trans('homepage.securePayment2')}}</p>
+                                {{$policy['paymentSecurity'] ?? ''}}
                             </div>
                         </div>
                     </div>
@@ -349,8 +346,7 @@
                                 class="img-responsive"
                             />
                             <div class="single-static-meta">
-                                <h4>{{trans('homepage.support247')}}</h4>
-                                <p>{{trans('homepage.support247Contact')}}</p>
+                                {{$policy['support'] ?? ''}}
                             </div>
                         </div>
                     </div>

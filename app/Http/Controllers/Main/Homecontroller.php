@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
+use App\Models\Policy;
 use App\Services\CategoryProductService;
 use App\Services\PostService;
 use App\Services\ProductService;
@@ -40,7 +41,8 @@ class Homecontroller extends Controller
         $sliders = $this->sliderService->getAll();
         $categories = $this->categoryService->getCategoryParent($locale);
         $posts = $this->postService->getPostHot($locale);
-        return view('Main.index', compact('products', 'sliders', 'categories','posts'));
+        $policy = Policy::find(1);
+        return view('Main.index', compact('products', 'sliders', 'categories','posts','policy'));
     }
 
     public function showPostById($id)
