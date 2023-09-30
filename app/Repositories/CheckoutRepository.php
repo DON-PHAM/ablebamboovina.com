@@ -86,7 +86,6 @@ class CheckoutRepository implements CheckoutService
             $orderDetail = [
                 'orderid' => $orderResult->id,
                 'productid' => $details['productid'],
-                'size'=> $details['size'],
                 'quantity' => $details['quantity'],
                 'price' => $details['price'],
                 'total' => intval($details['quantity']) * intval($details['price'])
