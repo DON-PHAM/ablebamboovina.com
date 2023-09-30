@@ -17,5 +17,6 @@ return [
     'add' => '추가',
     'edit' => '수정',
     'delete' => '삭제',
+    'quantity' => '수량',
 
 ];

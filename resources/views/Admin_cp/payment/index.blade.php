@@ -27,28 +27,6 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card card-primary card-outline card-outline-tabs">
-                        <div class="card-header p-0 border-bottom-0">
-                            <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="#" aria-controls="custom-tabs-four-home"
-                                       aria-selected="true">Đã lưu trên máy</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="https://demo.s-cart.org/sc_admin/plugin/payment/online">Tải
-                                        từ thư viện</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" target="_new"
-                                       href="https://demo.s-cart.org/sc_admin/plugin/import"><span><i
-                                                class="fas fa-save"></i> Import plugin</span></a>
-                                </li>
-                                <li class="btn-group float-right m-2">
-                                    <a href="https://s-cart.org/vi/plugin.html" target="_new"><i class="fa fa-download"
-                                                                                                 aria-hidden="true"></i>
-                                        Download đầy đủ Ở ĐÂY</a>
-                                </li>
-                            </ul>
-                        </div>
                         <div class="card-body" id="pjax-container">
                             <div class="tab-content" id="custom-tabs-four-tabContent">
                                 <div class="table-responsive">
@@ -58,10 +36,6 @@
                                             <th>Hình ảnh</th>
                                             <th>Mã code</th>
                                             <th>Tên chức năng</th>
-                                            <th>Phiên bản</th>
-                                            <th>Tác giả</th>
-                                            <th>Liên kết</th>
-                                            <th>Thứ tự</th>
                                             <th>Hành động</th>
                                         </tr>
                                         </thead>
@@ -72,45 +46,11 @@
                                                      style=" width:50px;"></td>
                                             <td>BankTransfer</td>
                                             <td>Chuyển khoản ngân hàng</td>
-                                            <td>1.2</td>
-                                            <td>Lanh Le</td>
-                                            <td><a href="https://S-Cart.Org" target="_new"><i class="fa fa-link"
-                                                                                              aria-hidden="true"></i>Link</a>
-                                            </td>
-                                            <td>0</td>
                                             <td>
-                                                <span onclick="disablePlugin($(this),'BankTransfer');" title="Tắt"
-                                                      type="button" class="btn btn-flat btn-warning btn-flat"><i
-                                                        class="fa fa-power-off"></i></span>&nbsp;<a
-                                                    href="https://demo.s-cart.org/sc_admin/plugin/payment?action=config&amp;pluginKey=BankTransfer"><span
+                                                <a
+                                                    href="" data-toggle="modal" data-target="#exampleModalCenter"><span
                                                         title="Cấu hình" class="btn btn-flat btn-primary"><i
-                                                            class="fas fa-cog"></i></span>&nbsp;</a><span
-                                                    onclick="uninstallPlugin($(this),'BankTransfer', 1);"
-                                                    title="Chỉ xóa dữ liệu" class="btn btn-flat btn-danger"><i
-                                                        class="fas fa-times"></i></span> <span
-                                                    onclick="uninstallPlugin($(this),'BankTransfer');" title="Gỡ bỏ"
-                                                    class="btn btn-flat btn-danger"><i class="fa fa-trash"></i></span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><img alt="Thanh toán tiền mặt" title=""
-                                                     src="https://demo.s-cart.org/Plugins/Payment/Cash/images/logo.png"
-                                                     style=" width:50px;"></td>
-                                            <td>Cash</td>
-                                            <td>Thanh toán tiền mặt</td>
-                                            <td>1.2</td>
-                                            <td>Lanh Le</td>
-                                            <td><a href="https://S-Cart.Org" target="_new"><i class="fa fa-link"
-                                                                                              aria-hidden="true"></i>Link</a>
-                                            </td>
-                                            <td>0</td>
-                                            <td>
-                                                <span onclick="disablePlugin($(this),'Cash');" title="Tắt" type="button"
-                                                      class="btn btn-flat btn-warning btn-flat"><i
-                                                        class="fa fa-power-off"></i></span>&nbsp;<span
-                                                    onclick="uninstallPlugin($(this),'Cash', 1);"
-                                                    title="Chỉ xóa dữ liệu" class="btn btn-flat btn-danger"><i
-                                                        class="fas fa-times"></i></span>
+                                                            class="fas fa-cog"></i></span>&nbsp;</a>
                                             </td>
                                         </tr>
                                         </tbody>
@@ -125,4 +65,84 @@
         </div>
     </section>
 
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Thông tin chuyển khoản</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" id="id" value="{{$payments->id ?? ""}}" >
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Tên ngân hàng:</label>
+                            <input type="text" class="form-control" id="tennganhang" value="{{$payments->tennganhang ?? ""}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Chủ tài khoản:</label>
+                            <input type="text" class="form-control" id="chutaikhoan" value="{{$payments->chutaikhoan ?? ""}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Số tài khoản:</label>
+                            <input type="text" class="form-control" id="sotaikhoan" value="{{$payments->sotaikhoan ?? ""}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">QRCode:</label>
+                            <input type="file" class="form-control" id="qrcode">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btn-send">Send message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@endsection
+@section('script')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+           $('.btn-send').click(function() {
+               let tenNganHang = document.getElementById('tennganhang').value;
+               let chuTaiKhoan = document.getElementById('chutaikhoan').value;
+               let soTaiKhoan = document.getElementById('sotaikhoan').value;
+               let qrCode = document.getElementById('qrcode').files[0];
+               let id = $('#id').val();
+               let formData = new FormData();
+               formData.append('id',id);
+               formData.append('tennganhang',tenNganHang);
+               formData.append('chutaikhoan',chuTaiKhoan);
+               formData.append('sotaikhoan',soTaiKhoan);
+               formData.append('qrcode',qrCode);
+               formData.append('_token', '{{ csrf_token() }}');
+
+               $.ajax({
+                   url:'{{route("update")}}',
+                   data: formData,
+                   type: 'POST',
+                   contentType: false,
+                   processData: false,
+                   success:function (res)
+                   {
+                       if(res.status)
+                       {
+                           toastr.success(res.message);
+                           window.location.reload();
+                       }
+                   }
+               })
+           })
+
+        })
+
+    </script>
 @endsection

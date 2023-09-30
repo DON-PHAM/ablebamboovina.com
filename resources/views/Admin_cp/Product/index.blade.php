@@ -162,6 +162,7 @@
                                         <th>{{trans('product.cost-price')}}</th>
                                         <th>{{trans('product.promotion-price')}}</th>
                                         <th>{{trans('product.bran')}}</th>
+                                        <th>{{trans('product.quantity')}}</th>
                                         <th>{{trans('product.status')}}</th>
                                         <th>{{trans('product.hot')}}</th>
                                         <th>{{trans('product.action')}}</th>
@@ -189,6 +190,7 @@
                                                 <td>{{ number_format(round($product->price), 0, ',', '.') }}</td>
                                                 <td>{{number_format($product->price - ($product->price*$product->discount/100), 0, ',', '.')}}</td>
                                                 <td>{{$product->branch->name ?? ""}}</td>
+                                                <td>{{$product->quantity}}</td>
                                                 <td>
                                                     <input type="checkbox" class="status checkbox" id="status" name="status"  @if($product->status == 1) checked @endif>
 

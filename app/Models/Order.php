@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\App;
 class Order extends Model
 {
     use HasFactory;
-    protected $fillable = ["customerid","discount","orderdate","status","payment","note","totalmoney","shipper","shippingstatus"];
+    protected $guarded = [];
     public $timestamps = false;
     public function customer()
     {

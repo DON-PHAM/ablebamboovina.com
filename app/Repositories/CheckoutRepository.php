@@ -6,6 +6,7 @@ use App\Models\Customer;
 use App\Models\District;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\Product;
 use App\Models\Province;
 use App\Models\Ward;
 use App\Services\CheckoutService;
@@ -90,6 +91,9 @@ class CheckoutRepository implements CheckoutService
                 'price' => $details['price'],
                 'total' => intval($details['quantity']) * intval($details['price'])
             ];
+            $product = Product::find($details['productid']);
+            $product->quantity = $product->quantity - intval($details['quantity']);
+            $product->save();
             $this->orderDetail->create($orderDetail);
             unset($cart[$id]);
             session()->put('cart',$cart);

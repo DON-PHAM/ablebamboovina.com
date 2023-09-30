@@ -4,34 +4,54 @@ namespace App\Repositories;
 
 use App\Http\Requests\Admin\PaymentRequest;
 use App\Models\Payment;
+use App\Models\PaymentDetail;
 use App\Services\PaymentService;
+use Illuminate\Http\Request;
 
 class PaymentRepository implements PaymentService
 {
     protected $model;
-    public function __construct(Payment $model)
+    public function __construct(PaymentDetail $model)
     {
         $this->model = $model;
     }
 
-    public function create(PaymentRequest $request)
+    public function create(Request $request)
     {
         $data = [
-            'name' => $request->name,
-            'description' => $request->description,
-            'status' => $request->status == 'on' ? 1 : 0,
+            'paymentid' => 1,
+            'tennganhang' => $request->tennganhang,
+            'logonganhang' => '',
+            'sotaikhoan' => $request->sotaikhoan,
+            'chutaikhoan' => $request->chutaikhoan,
         ];
+        if ($request->file('qrcode'))
+        {
+            $file = $request->file('qrcode');
+            $file_name = $file->getClientOriginalExtension();
+            $file->move(public_path('upload/payment/'),$file_name);
+            $data['qrcode'] = $file;
+        }
         return $this->model->create($data);
     }
 
-    public function update($id, PaymentRequest $request)
+    public function update($id, Request $request)
     {
         $payment = $this->model->find($id);
         $data = [
-            'name' => $request->name,
-            'description' => $request->description,
-            'status' => $request->status == 'on' ? 1 : 0,
+            'paymentid' => 1,
+            'tennganhang' => $request->tennganhang,
+            'logonganhang' => '',
+            'sotaikhoan' => $request->sotaikhoan,
+            'chutaikhoan' => $request->chutaikhoan,
         ];
+        if ($request->file('qrcode'))
+        {
+            $file = $request->file('qrcode');
+            $file_name = $file->getClientOriginalExtension();
+            $file->move(public_path('upload/payment/'),$file_name);
+            $data['qrcode'] = $file;
+        }
         $payment->update($data);
         return $payment;
     }

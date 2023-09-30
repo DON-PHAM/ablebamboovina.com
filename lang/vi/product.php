@@ -18,5 +18,5 @@ return [
     'add' => 'Thêm mới',
     'edit' => 'Sửa',
     'delete' => 'Xóa',
-
+    'quantity' => 'Số lượng',
 ];
