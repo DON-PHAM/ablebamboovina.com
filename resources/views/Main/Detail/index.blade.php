@@ -153,7 +153,7 @@
                         <div class="pro-details-list"></div>
                         <div class="pro-details-quality mt-0px">
                             <div class="cart-plus-minus">
-                                <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1"/>
+                                <input class="cart-plus-minus-box" type="text" id="quantity" name="quantity" value="1"/>
                             </div>
                             <div class="pro-details-cart btn-hover">
                                 <a href="javascript:void(0)"
@@ -161,46 +161,46 @@
                                     + {{trans('homepage.addToCart')}}</a>
                             </div>
                         </div>
-                        <div class="attributes-product">
-                            <div class="order-2-attr">
-                                <div class="mrt-20">Size:<span class="size-product-tpl value-product-template"></span>
-                                </div>
-                                <ul class="size-product-list attr-list">
-                                    @php $arrayName = explode('-',$product->slug); $sizeName = end($arrayName); @endphp
-                                    @if($sizeName == "rainer")
-                                        <li class="size-product-item value-click data-title-value" data-quantity=""
-                                            data-title="S" data-attributes="Size" data-value="S"
-                                            onclick="handleSize('S', 'Size', this)">S
-                                        </li>
-                                    @elseif($sizeName == "middle")
-                                        <li class="size-product-item value-click data-title-value" data-quantity=""
-                                            data-title="M" data-attributes="Size" data-value="M"
-                                            onclick="handleSize('M', 'Size', this)">M
-                                        </li>
-                                    @elseif($sizeName == "big")
-                                        <li class="size-product-item value-click data-title-value" data-quantity=""
-                                            data-title="L" data-attributes="Size" data-value="L"
-                                            onclick="handleSize('L', 'Size', this)">L
-                                        </li>
-                                    @else
-                                        <li class="size-product-item value-click data-title-value" data-quantity=""
-                                            data-title="S" data-attributes="Size" data-value="S"
-                                            onclick="handleSize('S', 'Size', this)">S
-                                        </li>
-                                        <li class="size-product-item value-click data-title-value" data-quantity=""
-                                            data-title="M" data-attributes="Size" data-value="M"
-                                            onclick="handleSize('M', 'Size', this)">M
-                                        </li>
-                                        <li class="size-product-item value-click data-title-value" data-quantity=""
-                                            data-title="L" data-attributes="Size" data-value="L"
-                                            onclick="handleSize('L', 'Size', this)">L
-                                        </li>
-                                    @endif
+{{--                        <div class="attributes-product">--}}
+{{--                            <div class="order-2-attr">--}}
+{{--                                <div class="mrt-20">Size:<span class="size-product-tpl value-product-template"></span>--}}
+{{--                                </div>--}}
+{{--                                <ul class="size-product-list attr-list">--}}
+{{--                                    @php $arrayName = explode('-',$product->slug); $sizeName = end($arrayName); @endphp--}}
+{{--                                    @if($sizeName == "rainer")--}}
+{{--                                        <li class="size-product-item value-click data-title-value" data-quantity=""--}}
+{{--                                            data-title="S" data-attributes="Size" data-value="S"--}}
+{{--                                            onclick="handleSize('S', 'Size', this)">S--}}
+{{--                                        </li>--}}
+{{--                                    @elseif($sizeName == "middle")--}}
+{{--                                        <li class="size-product-item value-click data-title-value" data-quantity=""--}}
+{{--                                            data-title="M" data-attributes="Size" data-value="M"--}}
+{{--                                            onclick="handleSize('M', 'Size', this)">M--}}
+{{--                                        </li>--}}
+{{--                                    @elseif($sizeName == "big")--}}
+{{--                                        <li class="size-product-item value-click data-title-value" data-quantity=""--}}
+{{--                                            data-title="L" data-attributes="Size" data-value="L"--}}
+{{--                                            onclick="handleSize('L', 'Size', this)">L--}}
+{{--                                        </li>--}}
+{{--                                    @else--}}
+{{--                                        <li class="size-product-item value-click data-title-value" data-quantity=""--}}
+{{--                                            data-title="S" data-attributes="Size" data-value="S"--}}
+{{--                                            onclick="handleSize('S', 'Size', this)">S--}}
+{{--                                        </li>--}}
+{{--                                        <li class="size-product-item value-click data-title-value" data-quantity=""--}}
+{{--                                            data-title="M" data-attributes="Size" data-value="M"--}}
+{{--                                            onclick="handleSize('M', 'Size', this)">M--}}
+{{--                                        </li>--}}
+{{--                                        <li class="size-product-item value-click data-title-value" data-quantity=""--}}
+{{--                                            data-title="L" data-attributes="Size" data-value="L"--}}
+{{--                                            onclick="handleSize('L', 'Size', this)">L--}}
+{{--                                        </li>--}}
+{{--                                    @endif--}}
 
 
-                                </ul>
-                            </div>
-                        </div>
+{{--                                </ul>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                         <div class="pro-details-social-info">
                             <span>Share</span>
                             <div class="social-info">
@@ -549,18 +549,18 @@
 @endsection
 @section('script')
     <script>
-        let size = "";
+
 
         function addToCart(id) {
-            if (size === "") {
-                toastr.error("Vui lòng chọn SIZE");
-                return;
-            }
-
+            // if (size === "") {
+            //     toastr.error("Vui lòng chọn SIZE");
+            //     return;
+            // }
+            let quantity = $('#quantity').val()
             $.ajax({
                 url: '{{route('add-to-cart',':id')}}'.replace(':id', id),
                 dataType: 'json',
-                data: {size: size},
+                data: {quantity: quantity},
                 method: 'get',
                 success: function (response) {
                     location.reload();
