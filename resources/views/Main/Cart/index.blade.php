@@ -40,7 +40,7 @@
                                                         </a>
                                                     </td>
                                                     <td class="product-name"><a
-                                                            href="javascript:void(0)">{{$details['name']}} & Size: {{$details['size']}}</a></td>
+                                                            href="javascript:void(0)">{{$details['name']}}</a></td>
                                                     <td class="product-price-cart">
                                                         <input type="hidden" class="amount-value"
                                                                value="{{$details['price']}}">
@@ -150,23 +150,23 @@
             })
         });
 
-        $('.remove-cart').click(function (e) {
-            e.preventDefault();
-            let ele = $(this);
-            if (confirm('{{trans('cart.confirm-delete')}}')) {
-                $.ajax({
-                    url: '{{route('remove-cart')}}',
-                    method: 'get',
-                    data: {
-                        _token: '{{csrf_token()}}',
-                        id: ele.parents("tr").attr("data-id")
-                    },
-                    success: function (res) {
-                        location.reload();
-                    }
-                })
-            }
-        });
+        {{--$('.remove-cart').click(function (e) {--}}
+        {{--    e.preventDefault();--}}
+        {{--    let ele = $(this);--}}
+        {{--    if (confirm('{{trans('cart.removeCart')}}')) {--}}
+        {{--        $.ajax({--}}
+        {{--            url: '{{route('remove-cart')}}',--}}
+        {{--            method: 'get',--}}
+        {{--            data: {--}}
+        {{--                _token: '{{csrf_token()}}',--}}
+        {{--                id: ele.parents("tr").attr("data-id")--}}
+        {{--            },--}}
+        {{--            success: function (res) {--}}
+        {{--                location.reload();--}}
+        {{--            }--}}
+        {{--        })--}}
+        {{--    }--}}
+        {{--});--}}
 
 
     </script>

@@ -529,8 +529,6 @@
                                         alt="Cart product Image">
                                 </a>
                                 <div class="content">
-                                    <a href="javascript:void(0)" class="title">{{$details['name']}} &
-                                        Size: {{$details['size']}}</a>
                                     <span class="quantity-price">{{$details['quantity']}} x <span
                                             class="amount">{{number_format($details['price'])}} VNĐ</span></span>
                                     <a href="javascript:void(0)" class="remove-cart"
@@ -613,6 +611,23 @@
                 }
             });
         })
+        $('.remove-cart').click(function (e) {
+            e.preventDefault();
+            let ele = $(this);
+            if (confirm('{{trans('cart.removeCart')}}')) {
+                $.ajax({
+                    url: '{{route('remove-cart')}}',
+                    method: 'get',
+                    data: {
+                        _token: '{{csrf_token()}}',
+                        id: ele.parents("tr").attr("data-id")
+                    },
+                    success: function (res) {
+                        location.reload();
+                    }
+                })
+            }
+        });
     });
 
 </script>

@@ -31,22 +31,20 @@ class CartController extends Controller
     public function addToCart($id, Request $request)
     {
         $product = $this->productService->showHomeById($id);
-        $size = $request->size;
         $discountPrice = 0;
         $cart = session()->get('cart', []);
-        $existingItem = $this->findCartItem($cart, $id, $size);
+        $existingItem = $this->findCartItem($cart, $id);
         if ($existingItem != null) {
-            $cart[$id."_".$size]['quantity']++;
+            $cart[$id]['quantity']++;
         } else {
             if ($product->discount != 0) {
                 $discountPrice =$product->price * $product->discount / 100;
             }
-            $cart[$id."_".$size] = [
+            $cart[$id] = [
                 'name' => $product->translate->name,
                 'productid' => $id,
-                'size' => $size,
                 'code' => $product->code,
-                'quantity' => 1,
+                'quantity' => $request->quantity,
                 'price' => ($product->price - $discountPrice),
                 'image' => $product->image,
             ];
@@ -78,11 +76,11 @@ class CartController extends Controller
         }
     }
 
-    private function findCartItem($cart, $productId, $size)
+    private function findCartItem($cart, $productId)
     {
         if (!empty($cart)) {
             foreach ($cart as $item) {
-                if ($item['productid'] == $productId && $item['size'] == $size) {
+                if ($item['productid'] == $productId) {
                     return $item;
                 }
             }
