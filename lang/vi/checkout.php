@@ -34,7 +34,14 @@ return [
     'shipmethod' => 'Phương thức vận chuyển',
     'unitmoney' => 'Đơn vị tiền tệ',
     'quantity' => 'Số lượng',
-    'orther' => 'Phí khác'
+    'orther' => 'Phí khác',
+    'onlinepayment' => 'Chuyển khoản ngân hàng',
+    'chutaikhoan' => 'Chủ tài khoản',
+    'sotaikhoan' => 'Số tài khoản',
+    'tennganhang' => 'Tên ngân hàng',
+    'paymentnote' => 'Vui lòng chuyển khoản với nội dung',
+    'offline' => 'Nhận hàng trả tiền',
+    'paymentnotoff' => 'Bạn sẽ nhận hàng kiểm tra hàng và thanh toán!'
 
 
 

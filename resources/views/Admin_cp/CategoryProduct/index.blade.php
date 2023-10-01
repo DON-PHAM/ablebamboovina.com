@@ -95,9 +95,9 @@
                                                 <td><img alt="Toi Ly Son" title=""
                                                          src="{{asset('upload/category/'.$category->image)}}"
                                                          style=" width:50px; height:50px;"></td>
-                                                <td>{{$category->translate->name}}</td>
+                                                <td>{{$category->translate->name ?? ""}}</td>
                                                 <td>{{$category->status == 1 ? "Kích hoạt" : "Chưa kích hoạt"}}</td>
-                                                <td>{{$category->translate->description}}</td>
+                                                <td>{{$category->translate->description ?? ""}}</td>
                                                 <td>{{$category->typeid ==1 ? "Sản phẩm" : "Tin tức"}}</td>
                                                 <td>
                                                     <a href="{{route('get-category-edit',$category->id)}}">
@@ -128,9 +128,9 @@
                                                             <td><img alt="Toi Ly Son" title=""
                                                                      src="{{asset('upload/category/'.$sub->image)}}"
                                                                      style=" width:50px; height:50px;"></td>
-                                                            <td>----- {{$sub->translate->name}}</td>
+                                                            <td>----- {{$sub->translate->name ?? ""}}</td>
                                                             <td>{{$sub->status == 1 ? "Kích hoạt" : "Chưa kích hoạt"}}</td>
-                                                            <td>{{$sub->translate->description}}</td>
+                                                            <td>{{$sub->translate->description ?? ""}}</td>
                                                             <td>{{$sub->typeid ==1 ? "Sản phẩm" : "Tin tức"}}</td>
                                                             <td>
                                                                 <a href="{{route('get-category-edit',$sub->id)}}">

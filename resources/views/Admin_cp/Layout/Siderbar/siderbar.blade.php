@@ -204,7 +204,7 @@
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a href="" class="nav-link">
+                    <a href="{{route('payment')}}" class="nav-link">
                         <i class="far fa-money-bill-alt nav-icon"></i>
                         <p>{{trans("home.configPay")}}</p>
                     </a>

@@ -35,6 +35,12 @@ return [
     'unitmoney' => '화폐단위',
     'quantity' => '수량',
     'orther' => '기타비용',
-
+    'onlinepayment' => '은행 송금',
+    'chutaikhoan' => '계정 소유자',
+    'sotaikhoan' => '계좌 번호',
+    'tennganhang' => '은행 이름',
+    'paymentnote' => '콘텐츠와 함께 전송해주세요',
+    'offline' => '결제 받기',
+    'paymentnotoff' => '상품을 받아보시고 상품을 확인하시고 결제하시면 됩니다!'
 
 ];
