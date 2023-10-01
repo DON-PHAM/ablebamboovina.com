@@ -116,7 +116,7 @@
                     <div class="foot_info">
                         <div class="foot_info_list_1">
                             <a href="{{route('contact-page')}}" class="btn_business">고객의소리</a> |
-                            <a href="" class="btn_business">제휴문의</a>
+                            <a href="{{route('contact-page')}}" class="btn_business">제휴문의</a>
                         </div>
                     </div>
                     @if(session()->get('setting'))

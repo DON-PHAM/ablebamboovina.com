@@ -182,4 +182,9 @@ Route::group(['prefix'=>'dashboard','middleware'=>['locale','checkAuth']],functi
     Route::get('policy','Dashboard\PolicyController@index')->name('policy');
     Route::post('policy/{id}','Dashboard\PolicyController@postPolicy')->name('post-policy');
 
+
+    //payment
+    Route::get('payment','Dashboard\PaymentController@index')->name('payment');
+    Route::post('payment','Dashboard\PaymentController@update')->name('update');
+
 });

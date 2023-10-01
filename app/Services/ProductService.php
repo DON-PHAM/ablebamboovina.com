@@ -11,7 +11,7 @@ interface ProductService
     public function delete(int $id);
 
     public function getById(int $id);
-    public function showHomeById(int $id);
+    public function showHomeById(string $locale,int $id);
     public function showShopById(string $locale, int $id);
 
     public function getAll(string $locale);
