@@ -28,7 +28,7 @@ class PaymentRepository implements PaymentService
         if ($request->file('qrcode'))
         {
             $file = $request->file('qrcode');
-            $file_name = $file->getClientOriginalExtension();
+            $file_name =  rand().'.'.$file->getClientOriginalExtension();
             $file->move(public_path('upload/payment/'),$file_name);
             $data['qrcode'] = $file;
         }
@@ -48,9 +48,9 @@ class PaymentRepository implements PaymentService
         if ($request->file('qrcode'))
         {
             $file = $request->file('qrcode');
-            $file_name = $file->getClientOriginalExtension();
+            $file_name = rand().'.'.$file->getClientOriginalExtension();
             $file->move(public_path('upload/payment/'),$file_name);
-            $data['qrcode'] = $file;
+            $data['qrcode'] = $file_name;
         }
         $payment->update($data);
         return $payment;

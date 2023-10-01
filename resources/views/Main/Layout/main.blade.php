@@ -522,7 +522,7 @@
                 <ul class="minicart-product-list">
                     @if(session('cart'))
                         @foreach(session('cart') as $id => $details)
-                            <li id="${listProduct[i].id}">
+                            <li id="{{$id}}">
                                 <a href="javascript:void(0)" class="image">
                                     <img
                                         src="{{asset('upload/product/'.$details['code'].'/'.$details['image'])}}"
@@ -531,7 +531,7 @@
                                 <div class="content">
                                     <span class="quantity-price">{{$details['quantity']}} x <span
                                             class="amount">{{number_format($details['price'])}} VNĐ</span></span>
-                                    <a href="javascript:void(0)" class="remove-cart"
+                                    <a href="javascript:void(0)" class="remove"
                                     >×</a>
 
                                 </div>
@@ -621,6 +621,23 @@
                     data: {
                         _token: '{{csrf_token()}}',
                         id: ele.parents("tr").attr("data-id")
+                    },
+                    success: function (res) {
+                        location.reload();
+                    }
+                })
+            }
+        });
+        $('.remove').click(function (e) {
+            e.preventDefault();
+            let liID = $(this).closest('li').attr('id');
+            if (confirm('{{trans('cart.removeCart')}}')) {
+                $.ajax({
+                    url: '{{route('remove-cart')}}',
+                    method: 'get',
+                    data: {
+                        _token: '{{csrf_token()}}',
+                        id: liID
                     },
                     success: function (res) {
                         location.reload();

@@ -138,7 +138,7 @@
                                                         <ul>
                                                             <li data-price="{{intval($total) > intval($ship->price_free) ? 0 : intval($ship->price)}}">
                                                                 <input type="radio"
-                                                                       name="ship"
+                                                                       name="ship" checked
                                                                        value="{{$ship->id}}"> {{$ship->translate->name}}
                                                             </li>
                                                             @if(intval($total) > intval($ship->price_free))
@@ -174,9 +174,9 @@
                                                     </h4>
                                                 </div>
                                                 <div id="method1" class="panel-collapse collapse">
-                                                    <p>Chủ tài khoản:</p>
-                                                    <p>Số tài khoản:</p>
-                                                    <p>Ngân hàng:</p>
+                                                    <p>Chủ tài khoản: <strong>{{$payment->chutaikhoan ?? ""}}</strong></p>
+                                                    <p>Số tài khoản:  <strong>{{$payment->sotaikhoan ?? ""}}</strong></p>
+                                                    <p>Ngân hàng: <strong>{{$payment->tennganhang ?? ""}}</strong></p>
                                                     <p>Vui lòng chuyển khoản với nội dung:
                                                         <strong>ORDER_{{$orderId}}</strong></p>
                                                     <input type="hidden" name="orderid" value="ORDER_{{$orderId}}">

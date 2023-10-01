@@ -8,6 +8,7 @@ use App\Models\Province;
 use App\Models\Ward;
 use App\Services\CheckoutService;
 use App\Services\IShipService;
+use App\Services\PaymentService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use mysql_xdevapi\Exception;
@@ -16,17 +17,20 @@ class CheckoutController extends Controller
 {
     protected $shipService;
     protected $checkoutService;
-    public function __construct(IShipService $shipService, CheckoutService $checkoutService)
+    protected $paymentService;
+    public function __construct(IShipService $shipService, CheckoutService $checkoutService,PaymentService $paymentService)
     {
         $this->shipService = $shipService;
         $this->checkoutService = $checkoutService;
+        $this->paymentService = $paymentService;
     }
 
     public function index()
     {
         $locale = session()->get('locale') ?? App::getLocale();
         $ships = $this->shipService->getAll($locale);
-        return view('Main.Checkout.index',compact('ships'));
+        $payment = $this->paymentService->getById(1);
+        return view('Main.Checkout.index',compact('ships','payment'));
     }
     public function getProvince()
     {

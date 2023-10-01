@@ -179,9 +179,11 @@ class ProductRepository implements ProductService
         return $products;
     }
 
-    public function showHomeById(int $id)
+    public function showHomeById(string $locale,int $id)
     {
-        $products = $this->product->with(['images', 'translate', 'category', 'getCategory', 'branch', 'review'])->find($id);
+        $products = $this->product->with(['images', 'translate' => function ($query) use ($locale) {
+            $query->where('languageid', $locale);
+        }, 'category', 'getCategory', 'branch', 'review'])->find($id);
         return $products;
     }
 

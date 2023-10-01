@@ -28,7 +28,7 @@ class DetailController extends Controller
         if ($locale == null)
             $locale = App::getLocale();
         $products = $this->productService->getAll($locale);
-        $product = $this->productService->showHomeById($id);
+        $product = $this->productService->showHomeById($locale,$id);
         $sliders = $this->sliderService->getAll();
         return view('Main.Detail.index', compact('product', 'products','sliders'));
     }

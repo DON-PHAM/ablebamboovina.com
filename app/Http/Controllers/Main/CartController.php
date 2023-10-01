@@ -30,7 +30,8 @@ class CartController extends Controller
 
     public function addToCart($id, Request $request)
     {
-        $product = $this->productService->showHomeById($id);
+        $locale = session()->get('locale');
+        $product = $this->productService->showHomeById($locale,$id);
         $discountPrice = 0;
         $cart = session()->get('cart', []);
         $existingItem = $this->findCartItem($cart, $id);
