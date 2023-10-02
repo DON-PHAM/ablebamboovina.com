@@ -12,7 +12,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="https://demo.s-cart.org/sc_admin"><i
+                        <li class="breadcrumb-item"><a href="{{route('admin')}}"><i
                                     class="fa fa-home fa-1x"></i> Trang chủ</a></li>
                         <li class="breadcrumb-item active">Chức năng thanh toán</li>
                     </ol>

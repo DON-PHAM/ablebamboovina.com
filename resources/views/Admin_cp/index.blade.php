@@ -13,7 +13,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="https://demo.s-cart.org/sc_admin"><i class="fa fa-home fa-1x"></i> Trang chủ</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('admin')}}"><i class="fa fa-home fa-1x"></i> Trang chủ</a></li>
                         <li class="breadcrumb-item active">Tổng hợp</li>
                     </ol>
                 </div>
@@ -29,7 +29,7 @@
                         <div class="info-box-content">
                             <span class="info-box-text">Tổng đơn hàng</span>
                             <span class="info-box-number">68</span>
-                            <a href="https://demo.s-cart.org/sc_admin/order" class="small-box-footer">
+                            <a href="" class="small-box-footer">
                                 Xem thêm&nbsp;
                                 <i class="fa fa-arrow-circle-right"></i>
                             </a>
@@ -42,7 +42,7 @@
                         <div class="info-box-content">
                             <span class="info-box-text">Tổng sản phẩm</span>
                             <span class="info-box-number">36</span>
-                            <a href="https://demo.s-cart.org/sc_admin/product" class="small-box-footer">
+                            <a href="" class="small-box-footer">
                                 Xem thêm&nbsp;
                                 <i class="fa fa-arrow-circle-right"></i>
                             </a>
@@ -55,7 +55,7 @@
                         <div class="info-box-content">
                             <span class="info-box-text">Tổng khách hàng</span>
                             <span class="info-box-number">26</span>
-                            <a href="https://demo.s-cart.org/sc_admin/customer" class="small-box-footer">
+                            <a href="" class="small-box-footer">
                                 Xem thêm&nbsp;
                                 <i class="fa fa-arrow-circle-right"></i>
                             </a>
@@ -68,7 +68,7 @@
                         <div class="info-box-content">
                             <span class="info-box-text">Tổng blog</span>
                             <span class="info-box-number">6</span>
-                            <a href="https://demo.s-cart.org/sc_admin/news" class="small-box-footer">
+                            <a href="" class="small-box-footer">
                                 Xem thêm&nbsp;
                                 <i class="fa fa-arrow-circle-right"></i>
                             </a>
@@ -151,61 +151,61 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td><a href="https://demo.s-cart.org/sc_admin/order/detail/O-JFhTD-8JA6e">#O-JFhTD-8JA6e</a></td>
+                                        <td><a href="">#O-JFhTD-8JA6e</a></td>
                                         <td>gs24746.gs@gmail.com</td>
                                         <td><span class="badge badge-info">New</span></td>
                                         <td>2023-06-27 01:55:13</td>
                                     </tr>
                                     <tr>
-                                        <td><a href="https://demo.s-cart.org/sc_admin/order/detail/O-3T4ur-sU408">#O-3T4ur-sU408</a></td>
+                                        <td><a href="">#O-3T4ur-sU408</a></td>
                                         <td>bertojunikrisnanto@gmail.com</td>
                                         <td><span class="badge badge-info">New</span></td>
                                         <td>2023-06-26 15:54:39</td>
                                     </tr>
                                     <tr>
-                                        <td><a href="https://demo.s-cart.org/sc_admin/order/detail/O-WbiyN-cLvh4">#O-WbiyN-cLvh4</a></td>
+                                        <td><a href="">#O-WbiyN-cLvh4</a></td>
                                         <td>bertojunikrisnanto@gmail.com</td>
                                         <td><span class="badge badge-info">New</span></td>
                                         <td>2023-06-26 15:51:15</td>
                                     </tr>
                                     <tr>
-                                        <td><a href="https://demo.s-cart.org/sc_admin/order/detail/O-FZUxD-CXHHr">#O-FZUxD-CXHHr</a></td>
+                                        <td><a href="">#O-FZUxD-CXHHr</a></td>
                                         <td>mutharasuram561@gmail.com</td>
                                         <td><span class="badge badge-info">New</span></td>
                                         <td>2023-06-19 12:57:13</td>
                                     </tr>
                                     <tr>
-                                        <td><a href="https://demo.s-cart.org/sc_admin/order/detail/O-1KMOJ-g7T7d">#O-1KMOJ-g7T7d</a></td>
+                                        <td><a href="">#O-1KMOJ-g7T7d</a></td>
                                         <td>nabilamandap@gmail.com</td>
                                         <td><span class="badge badge-info">New</span></td>
                                         <td>2023-06-19 11:00:06</td>
                                     </tr>
                                     <tr>
-                                        <td><a href="https://demo.s-cart.org/sc_admin/order/detail/O-fuJVW-ss2zc">#O-fuJVW-ss2zc</a></td>
+                                        <td><a href="">#O-fuJVW-ss2zc</a></td>
                                         <td>1@gmail.com</td>
                                         <td><span class="badge badge-info">New</span></td>
                                         <td>2023-06-16 21:24:56</td>
                                     </tr>
                                     <tr>
-                                        <td><a href="https://demo.s-cart.org/sc_admin/order/detail/O-4ol5u-mgRzz">#O-4ol5u-mgRzz</a></td>
+                                        <td><a href="">#O-4ol5u-mgRzz</a></td>
                                         <td>jefoly@mailinator.com</td>
                                         <td><span class="badge badge-info">New</span></td>
                                         <td>2023-06-16 01:25:50</td>
                                     </tr>
                                     <tr>
-                                        <td><a href="https://demo.s-cart.org/sc_admin/order/detail/O-c5DMD-iLfo7">#O-c5DMD-iLfo7</a></td>
+                                        <td><a href="">#O-c5DMD-iLfo7</a></td>
                                         <td>slkdfjwelk232@gmail.com</td>
                                         <td><span class="badge badge-info">New</span></td>
                                         <td>2023-06-13 10:03:19</td>
                                     </tr>
                                     <tr>
-                                        <td><a href="https://demo.s-cart.org/sc_admin/order/detail/O-ghWGw-Hfwou">#O-ghWGw-Hfwou</a></td>
+                                        <td><a href="">#O-ghWGw-Hfwou</a></td>
                                         <td>becef92254@soombo.com</td>
                                         <td><span class="badge badge-info">New</span></td>
                                         <td>2023-06-12 23:18:48</td>
                                     </tr>
                                     <tr>
-                                        <td><a href="https://demo.s-cart.org/sc_admin/order/detail/O-hWexk-Losxb">#O-hWexk-Losxb</a></td>
+                                        <td><a href="">#O-hWexk-Losxb</a></td>
                                         <td>qweqwe@yopmail.com</td>
                                         <td><span class="badge badge-info">New</span></td>
                                         <td>2023-06-08 16:39:01</td>
@@ -241,61 +241,61 @@
                                     </tr>
                                     <tbody>
                                     <tr>
-                                        <td><a href="https://demo.s-cart.org/sc_admin/customer/edit/99830c0c-5019-45f6-a8ac-46466bb091a3">bertojunikrisnanto@gmail.com</a></td>
+                                        <td><a href="">bertojunikrisnanto@gmail.com</a></td>
                                         <td>Berto Krisnanto</td>
                                         <td>google</td>
                                         <td>2023-06-27 22:53:39</td>
                                     </tr>
                                     <tr>
-                                        <td><a href="https://demo.s-cart.org/sc_admin/customer/edit/998072aa-0d88-4dd9-911b-9e05dc8ca5ff">bertojunikrisnanto@gmail.com</a></td>
+                                        <td><a href="">bertojunikrisnanto@gmail.com</a></td>
                                         <td>Berto Krisnanto</td>
                                         <td></td>
                                         <td>2023-06-26 15:53:06</td>
                                     </tr>
                                     <tr>
-                                        <td><a href="https://demo.s-cart.org/sc_admin/customer/edit/99447cf3-b6d4-4d9b-b3df-f95edd5f9246">hackerkill8442@gmail.com</a></td>
+                                        <td><a href="">hackerkill8442@gmail.com</a></td>
                                         <td>Thà Lê Thanh </td>
                                         <td>google</td>
                                         <td>2023-05-27 20:32:11</td>
                                     </tr>
                                     <tr>
-                                        <td><a href="https://demo.s-cart.org/sc_admin/customer/edit/993f5366-f75b-4f52-b94e-71a4f6f076f7">refiloeraselane@gmail.com</a></td>
+                                        <td><a href="">refiloeraselane@gmail.com</a></td>
                                         <td>Refiloe Raselane</td>
                                         <td></td>
                                         <td>2023-05-25 06:56:52</td>
                                     </tr>
                                     <tr>
-                                        <td><a href="https://demo.s-cart.org/sc_admin/customer/edit/990cf31d-39e6-418d-ba46-5997a90f0aa5">fyds.arts@gmail.com</a></td>
+                                        <td><a href="">fyds.arts@gmail.com</a></td>
                                         <td>fyds fyds </td>
                                         <td>google</td>
                                         <td>2023-04-30 05:56:14</td>
                                     </tr>
                                     <tr>
-                                        <td><a href="https://demo.s-cart.org/sc_admin/customer/edit/9909b42e-fce7-4ffd-b7b7-69c34894c932">test@test.com</a></td>
+                                        <td><a href="">test@test.com</a></td>
                                         <td>js lee</td>
                                         <td></td>
                                         <td>2023-04-28 15:12:47</td>
                                     </tr>
                                     <tr>
-                                        <td><a href="https://demo.s-cart.org/sc_admin/customer/edit/99068fe1-fe8c-452b-8a4d-69a0fa9329c5">qemadawep@mailinator.com</a></td>
+                                        <td><a href="">qemadawep@mailinator.com</a></td>
                                         <td>Ori Carver</td>
                                         <td></td>
                                         <td>2023-04-27 01:43:48</td>
                                     </tr>
                                     <tr>
-                                        <td><a href="https://demo.s-cart.org/sc_admin/customer/edit/9905ccdb-3350-4c88-8632-bd621f886e04">tienhm@beetsoft.com.vn</a></td>
+                                        <td><a href="">tienhm@beetsoft.com.vn</a></td>
                                         <td>Hoang Tien</td>
                                         <td></td>
                                         <td>2023-04-26 16:38:28</td>
                                     </tr>
                                     <tr>
-                                        <td><a href="https://demo.s-cart.org/sc_admin/customer/edit/99046fe1-ff68-43ca-8d6a-56535edcc602">yan1477@gmail.com</a></td>
+                                        <td><a href="">yan1477@gmail.com</a></td>
                                         <td>Yan Nykonorov </td>
                                         <td>google</td>
                                         <td>2023-04-26 00:22:40</td>
                                     </tr>
                                     <tr>
-                                        <td><a href="https://demo.s-cart.org/sc_admin/customer/edit/98fa08ec-2b51-4e87-ad40-88eddae564f7">hbh@gmail.com</a></td>
+                                        <td><a href="">hbh@gmail.com</a></td>
                                         <td>dems hbdha</td>
                                         <td></td>
                                         <td>2023-04-20 20:16:29</td>
@@ -547,39 +547,39 @@
     <script type="text/javascript">
         (function( $ ){
 
-            $.fn.filemanager = function(type, options) {
-                type = type || 'other';
-
-                this.on('click', function(e) {
-                    type = $(this).data('type') || type;//sc
-                    var route_prefix = (options && options.prefix) ? options.prefix : 'https://demo.s-cart.org/sc_admin/uploads';
-                    var target_input = $('#' + $(this).data('input'));
-                    var target_preview = $('#' + $(this).data('preview'));
-                    window.open(route_prefix + '?type=' + type, 'Quản lý file', 'width=900,height=600');
-                    window.SetUrl = function (items) {
-                        var file_path = items.map(function (item) {
-                            return item.url;
-                        }).join(',');
-
-                        // set the value of the desired input to image url
-                        target_input.val('').val(file_path).trigger('change');
-
-                        // clear previous preview
-                        target_preview.html('');
-
-                        // set or change the preview image src
-                        items.forEach(function (item) {
-                            target_preview.append(
-                                $('<img>').attr('src', item.thumb_url)
-                            );
-                        });
-
-                        // trigger change event
-                        target_preview.trigger('change');
-                    };
-                    return false;
-                });
-            }
+            // $.fn.filemanager = function(type, options) {
+            //     type = type || 'other';
+            //
+            //     this.on('click', function(e) {
+            //         type = $(this).data('type') || type;//sc
+            //         var route_prefix = (options && options.prefix) ? options.prefix : 'https://demo.s-cart.org/sc_admin/uploads';
+            //         var target_input = $('#' + $(this).data('input'));
+            //         var target_preview = $('#' + $(this).data('preview'));
+            //         window.open(route_prefix + '?type=' + type, 'Quản lý file', 'width=900,height=600');
+            //         window.SetUrl = function (items) {
+            //             var file_path = items.map(function (item) {
+            //                 return item.url;
+            //             }).join(',');
+            //
+            //             // set the value of the desired input to image url
+            //             target_input.val('').val(file_path).trigger('change');
+            //
+            //             // clear previous preview
+            //             target_preview.html('');
+            //
+            //             // set or change the preview image src
+            //             items.forEach(function (item) {
+            //                 target_preview.append(
+            //                     $('<img>').attr('src', item.thumb_url)
+            //                 );
+            //             });
+            //
+            //             // trigger change event
+            //             target_preview.trigger('change');
+            //         };
+            //         return false;
+            //     });
+            // }
 
         })(jQuery);
 
