@@ -88,15 +88,7 @@
                                                                 </ul>
                                                             </div>
                                                         </div>
-                                                        <div class="add-to-link">
-                                                            <ul class="d-flex justify-content-center">
-                                                                <li class="cart">
-                                                                    <button class="cart-btn add-to-cart" onclick="addToCart({{$product}}, document.getElementById('mess-success').value, document.getElementById('mess-exist').value)">
-                                                                        {{trans('homepage.addToCart')}}
-                                                                    </button>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
+
                                                     </article>
                                                 </div>
                                             @endif
