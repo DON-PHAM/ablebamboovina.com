@@ -90,6 +90,16 @@
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td><i class="fas fa-map-marked"></i>Open in the morning</td>
+                                            <td><input type="text" id="morningstart" name="morningstart" value="{{ isset($setting['morningstart']) ? $setting['morningstart'] : ''}}"
+                                                       class="form-control input-sm icon" placeholder=""></td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fas fa-map-marked"></i> Lunch hour</td>
+                                            <td><input type="text" id="lunchstart" name="lunchstart" value="{{ isset($setting['lunchstart']) ? $setting['lunchstart'] : ''}}"
+                                                       class="form-control input-sm icon" placeholder=""></td>
+                                        </tr>
+                                        <tr>
                                             <td><i class="fas fa-map-marked"></i> facebook</td>
                                             <td><input type="text" id="facebook" name="facebook" value="{{ isset($setting['facebook']) ? $setting['facebook'] : ''}}"
                                                        class="form-control input-sm icon" placeholder=""></td>

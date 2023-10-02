@@ -16,6 +16,8 @@ class Setting extends Model
         'email',
         'phone',
         'address',
+        'morningstart',
+        'lunchstart',
         'facebook',
         'tiktok',
         'intagram',

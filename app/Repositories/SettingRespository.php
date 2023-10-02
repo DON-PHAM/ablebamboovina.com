@@ -24,6 +24,8 @@ class SettingRespository implements SettingService
             'email' => $request->email,
             'phone' => $request->phone,
             'address' => $request->address,
+            'morningstart' => $request->morningstart,
+            'lunchstart' => $request->lunchstart,
             'facebook' => $request->facebook,
             'tiktok' => $request->tiktok,
             'intagram' => $request->intagram,

@@ -493,7 +493,7 @@
                                         <ul class="sub-menu">
                                             @foreach($subcategory as $item_sub)
                                                 <li><a href="{{route('shop-page', $item_sub->id)}}"><span
-                                                            class="menu-text">{{$item_sub->translate->name}}</span></a></a>
+                                                            class="menu-text">{{$item_sub->translate->name ?? ""}}</span></a></a>
                                                 </li>
                                             @endforeach
                                         </ul>

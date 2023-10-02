@@ -170,14 +170,14 @@
                                                 <div class="panel-heading" id="method-one">
                                                     <h4 class="panel-title">
                                                         <input type="radio" name="payment" id="payment"
-                                                               value="Chuyển ngân hàng"> Chuyển khoản ngân hàng
+                                                               value="Chuyển ngân hàng"> {{trans('checkout.onlinepayment')}}
                                                     </h4>
                                                 </div>
                                                 <div id="method1" class="panel-collapse collapse">
-                                                    <p>Chủ tài khoản: <strong>{{$payment->chutaikhoan ?? ""}}</strong></p>
-                                                    <p>Số tài khoản:  <strong>{{$payment->sotaikhoan ?? ""}}</strong></p>
-                                                    <p>Ngân hàng: <strong>{{$payment->tennganhang ?? ""}}</strong></p>
-                                                    <p>Vui lòng chuyển khoản với nội dung:
+                                                    <p>{{trans('checkout.chutaikhoan')}}: <strong>{{$payment->chutaikhoan ?? ""}}</strong></p>
+                                                    <p>{{trans('checkout.sotaikhoan')}}:  <strong>{{$payment->sotaikhoan ?? ""}}</strong></p>
+                                                    <p>{{trans('checkout.tennganhang')}}: <strong>{{$payment->tennganhang ?? ""}}</strong></p>
+                                                    <p>{{trans('checkout.paymentnote')}}:
                                                         <strong>ORDER_{{$orderId}}</strong></p>
                                                     <input type="hidden" name="orderid" value="ORDER_{{$orderId}}">
                                                 </div>
@@ -186,12 +186,12 @@
                                                 <div class="panel-heading" id="method-two">
                                                     <h4 class="panel-title">
                                                         <input type="radio" name="payment" id="payment"
-                                                               value="Thanh toán trả tiền"> Nhận hàng trả tiền
+                                                               value="Thanh toán trả tiền">{{trans('checkout.offline')}}
                                                     </h4>
                                                 </div>
                                                 <div id="method2" class="panel-collapse collapse">
                                                     <div class="panel-body">
-                                                        <p>Bạn sẽ được nhận hàng. Kiểm tra hàng và thanh toán</p>
+                                                        <p>{{trans('checkout.paymentnotoff')}}</p>
                                                     </div>
                                                 </div>
                                             </div>
