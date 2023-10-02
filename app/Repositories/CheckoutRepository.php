@@ -73,7 +73,7 @@ class CheckoutRepository implements CheckoutService
         $order = [
             'customerid' => $customResult->id,
             'discount' => 0,
-            'orderdate' => Carbon::now(),
+            'orderdate' => Carbon::now()->addHour(7),
             'status' => 1,
             'payment' => $request->payment . "_" . $request->orderid,
             'note' => $request->note,
